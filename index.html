@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Mastery — The Complete Ebook</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <span class="logo-icon">{JS}</span>
+        <span class="logo-text">JS Mastery</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#topics">Topics</a></li>
+        <li><a href="#toc">Contents</a></li>
+        <li><a href="#about">About</a></li>
+        <li>
+          <a href="https://github.com/Aman-0402" target="_blank" rel="noopener noreferrer" class="btn btn-nav">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.42 7.88 10.95.58.1.79-.25.79-.56v-2.03c-3.2.69-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 2.87-.39c.97 0 1.95.13 2.87.39 2.18-1.49 3.14-1.18 3.14-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.13v3.16c0 .31.2.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            GitHub
+          </a>
+        </li>
+      </ul>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="grid-lines"></div>
+      <div class="glow glow-1"></div>
+      <div class="glow glow-2"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="badge">Free & Open Source</div>
+        <h1 class="hero-title">
+          Master <span class="highlight">JavaScript</span><br />
+          From Zero to Pro
+        </h1>
+        <p class="hero-desc">
+          A comprehensive, beginner-friendly ebook covering everything from variables
+          to advanced async patterns — with real code examples throughout.
+        </p>
+        <div class="hero-actions">
+          <a href="content/content.html" class="btn btn-primary">
+            Start Reading
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="https://github.com/Aman-0402" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.42 7.88 10.95.58.1.79-.25.79-.56v-2.03c-3.2.69-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 2.87-.39c.97 0 1.95.13 2.87.39 2.18-1.49 3.14-1.18 3.14-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.13v3.16c0 .31.2.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            Star on GitHub
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-target="12">0</span>
+            <span class="stat-label">Chapters</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="100">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Code Examples</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="0">0</span>
+            <span class="stat-label">Cost (Free!)</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-book">
+        <div class="book-wrapper">
+          <div class="book">
+            <div class="book-cover">
+              <div class="book-cover-top">
+                <span class="book-tag">EBOOK</span>
+              </div>
+              <div class="book-title-wrap">
+                <div class="book-js-icon">{JS}</div>
+                <h2 class="book-cover-title">JavaScript<br /><span>Mastery</span></h2>
+              </div>
+              <div class="book-cover-code">
+                <span class="code-line"><span class="kw">const</span> dev = <span class="kw">you</span>;</span>
+                <span class="code-line"><span class="fn">learn</span>(JavaScript);</span>
+                <span class="code-line"><span class="kw">return</span> <span class="str">'expert'</span>;</span>
+              </div>
+              <div class="book-author">by Aman</div>
+            </div>
+            <div class="book-spine"></div>
+          </div>
+          <div class="book-shadow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS GRID -->
+  <section class="topics section" id="topics">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What You'll Learn</span>
+        <h2 class="section-title">Everything JavaScript</h2>
+        <p class="section-desc">From the fundamentals to modern ES2024+ features — structured for real understanding.</p>
+      </div>
+      <div class="topics-grid">
+        <div class="topic-card" data-delay="0">
+          <div class="topic-icon">📦</div>
+          <h3>Variables & Types</h3>
+          <p>var, let, const — primitive & reference types, type coercion</p>
+        </div>
+        <div class="topic-card" data-delay="1">
+          <div class="topic-icon">⚙️</div>
+          <h3>Functions</h3>
+          <p>Declarations, expressions, arrow functions, closures, IIFE</p>
+        </div>
+        <div class="topic-card" data-delay="2">
+          <div class="topic-icon">🔗</div>
+          <h3>Scope & Hoisting</h3>
+          <p>Lexical scope, the scope chain, hoisting behavior in depth</p>
+        </div>
+        <div class="topic-card" data-delay="3">
+          <div class="topic-icon">🏗️</div>
+          <h3>Objects & Prototypes</h3>
+          <p>Object creation, prototype chain, inheritance patterns</p>
+        </div>
+        <div class="topic-card" data-delay="4">
+          <div class="topic-icon">🎯</div>
+          <h3>ES6+ Features</h3>
+          <p>Destructuring, spread/rest, template literals, modules</p>
+        </div>
+        <div class="topic-card" data-delay="5">
+          <div class="topic-icon">⏳</div>
+          <h3>Async JavaScript</h3>
+          <p>Callbacks, Promises, async/await, the event loop</p>
+        </div>
+        <div class="topic-card" data-delay="6">
+          <div class="topic-icon">🌐</div>
+          <h3>DOM Manipulation</h3>
+          <p>Selecting, traversing, modifying elements and events</p>
+        </div>
+        <div class="topic-card" data-delay="7">
+          <div class="topic-icon">🚀</div>
+          <h3>Advanced Patterns</h3>
+          <p>Design patterns, functional programming, performance tips</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABLE OF CONTENTS -->
+  <section class="toc-section section" id="toc">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Table of Contents</span>
+        <h2 class="section-title">Full Curriculum</h2>
+      </div>
+      <div class="toc-grid">
+        <div class="toc-chapter">
+          <div class="chapter-num">01</div>
+          <div class="chapter-body">
+            <h4>Introduction to JavaScript</h4>
+            <ul>
+              <li>What is JavaScript?</li>
+              <li>History & evolution</li>
+              <li>How browsers execute JS</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">02</div>
+          <div class="chapter-body">
+            <h4>Variables & Data Types</h4>
+            <ul>
+              <li>var, let, const</li>
+              <li>Primitive types</li>
+              <li>Type conversion</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">03</div>
+          <div class="chapter-body">
+            <h4>Operators & Control Flow</h4>
+            <ul>
+              <li>Arithmetic & logical operators</li>
+              <li>Conditionals & loops</li>
+              <li>Switch statements</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">04</div>
+          <div class="chapter-body">
+            <h4>Functions Deep Dive</h4>
+            <ul>
+              <li>Declarations vs expressions</li>
+              <li>Arrow functions</li>
+              <li>Higher-order functions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">05</div>
+          <div class="chapter-body">
+            <h4>Arrays & Objects</h4>
+            <ul>
+              <li>Array methods (map, filter, reduce)</li>
+              <li>Object manipulation</li>
+              <li>Spread & destructuring</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">06</div>
+          <div class="chapter-body">
+            <h4>Scope, Closures & this</h4>
+            <ul>
+              <li>Scope chain & hoisting</li>
+              <li>Closure patterns</li>
+              <li>this keyword explained</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">07</div>
+          <div class="chapter-body">
+            <h4>Prototypes & Classes</h4>
+            <ul>
+              <li>Prototype chain</li>
+              <li>ES6 Classes</li>
+              <li>Inheritance & mixins</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">08</div>
+          <div class="chapter-body">
+            <h4>The Event Loop</h4>
+            <ul>
+              <li>Call stack & web APIs</li>
+              <li>Microtasks & macrotasks</li>
+              <li>Non-blocking I/O</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">09</div>
+          <div class="chapter-body">
+            <h4>Async Patterns</h4>
+            <ul>
+              <li>Callbacks & callback hell</li>
+              <li>Promises & chaining</li>
+              <li>async / await</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">10</div>
+          <div class="chapter-body">
+            <h4>DOM & Browser APIs</h4>
+            <ul>
+              <li>Selecting & modifying DOM</li>
+              <li>Event handling</li>
+              <li>Fetch API</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">11</div>
+          <div class="chapter-body">
+            <h4>ES Modules & Tooling</h4>
+            <ul>
+              <li>import / export</li>
+              <li>Module patterns</li>
+              <li>Intro to bundlers</li>
+            </ul>
+          </div>
+        </div>
+        <div class="toc-chapter">
+          <div class="chapter-num">12</div>
+          <div class="chapter-body">
+            <h4>Advanced Patterns</h4>
+            <ul>
+              <li>Design patterns</li>
+              <li>Functional JS</li>
+              <li>Performance best practices</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODE PREVIEW -->
+  <section class="code-preview section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Inside the Book</span>
+        <h2 class="section-title">Learn by Example</h2>
+        <p class="section-desc">Every concept is paired with clear, runnable code.</p>
+      </div>
+      <div class="code-tabs">
+        <button type="button" class="tab-btn active" data-tab="closures">Closures</button>
+        <button type="button" class="tab-btn" data-tab="promises">Promises</button>
+        <button type="button" class="tab-btn" data-tab="destructuring">Destructuring</button>
+      </div>
+      <div class="code-blocks">
+        <pre class="code-block active" id="tab-closures"><code><span class="c">// Closure — a function that remembers its outer scope</span>
+<span class="kw">function</span> <span class="fn">makeCounter</span>() {
+  <span class="kw">let</span> count = <span class="num">0</span>;             <span class="c">// private variable</span>
+
+  <span class="kw">return</span> {
+    increment: () => ++count,
+    decrement: () => --count,
+    value:     () => count,
+  };
+}
+
+<span class="kw">const</span> counter = <span class="fn">makeCounter</span>();
+counter.<span class="fn">increment</span>();           <span class="c">// 1</span>
+counter.<span class="fn">increment</span>();           <span class="c">// 2</span>
+console.<span class="fn">log</span>(counter.<span class="fn">value</span>()); <span class="c">// 2</span></code></pre>
+
+        <pre class="code-block" id="tab-promises"><code><span class="c">// Promises — handle async work cleanly</span>
+<span class="kw">function</span> <span class="fn">fetchUser</span>(id) {
+  <span class="kw">return</span> <span class="kw">fetch</span>(<span class="str">`/api/users/<span class="tmpl">${id}</span>`</span>)
+    .<span class="fn">then</span>(res => res.<span class="fn">json</span>())
+    .<span class="fn">catch</span>(err => console.<span class="fn">error</span>(err));
+}
+
+<span class="c">// Or with async/await (cleaner!)</span>
+<span class="kw">async function</span> <span class="fn">getUser</span>(id) {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res  = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">`/api/users/<span class="tmpl">${id}</span>`</span>);
+    <span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
+    <span class="kw">return</span> data;
+  } <span class="kw">catch</span> (err) {
+    console.<span class="fn">error</span>(err);
+  }
+}</code></pre>
+
+        <pre class="code-block" id="tab-destructuring"><code><span class="c">// Destructuring — unpack values elegantly</span>
+<span class="kw">const</span> user = { name: <span class="str">'Aman'</span>, age: <span class="num">22</span>, role: <span class="str">'dev'</span> };
+
+<span class="c">// Object destructuring</span>
+<span class="kw">const</span> { name, age } = user;
+
+<span class="c">// With rename + default</span>
+<span class="kw">const</span> { role: title = <span class="str">'guest'</span> } = user;
+
+<span class="c">// Array destructuring</span>
+<span class="kw">const</span> [first, , third] = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>];
+
+<span class="c">// In function params</span>
+<span class="kw">function</span> <span class="fn">greet</span>({ name, role }) {
+  <span class="kw">return</span> <span class="str">`Hi <span class="tmpl">${name}</span>, you are a <span class="tmpl">${role}</span>!`</span>;
+}
+console.<span class="fn">log</span>(<span class="fn">greet</span>(user)); <span class="c">// Hi Aman, you are a dev!</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / AUTHOR -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-card">
+        <div class="about-avatar">
+          <div class="avatar-circle">A</div>
+          <div class="avatar-glow"></div>
+        </div>
+        <div class="about-content">
+          <span class="section-tag">About the Author</span>
+          <h2>Hi, I'm Aman 👋</h2>
+          <p>
+            A passionate JavaScript developer who believes learning should be free and accessible.
+            This ebook distills everything I wished I had when starting out — clear explanations,
+            practical examples, and no fluff.
+          </p>
+          <div class="about-actions">
+            <a href="https://github.com/Aman-0402" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.42 7.88 10.95.58.1.79-.25.79-.56v-2.03c-3.2.69-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 2.87-.39c.97 0 1.95.13 2.87.39 2.18-1.49 3.14-1.18 3.14-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.13v3.16c0 .31.2.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+              Follow on GitHub
+            </a>
+            <a href="https://github.com/Aman-0402" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              ⭐ Star this Ebook
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-inner">
+        <h2>Ready to master JavaScript?</h2>
+        <p>It's free. It's open source. Start reading right now.</p>
+        <div class="cta-actions">
+          <a href="content/content.html" class="btn btn-primary btn-lg">Start Reading Free</a>
+          <a href="https://github.com/Aman-0402" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.42 7.88 10.95.58.1.79-.25.79-.56v-2.03c-3.2.69-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.24 3.33.95.1-.74.4-1.24.72-1.53-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 2.87-.39c.97 0 1.95.13 2.87.39 2.18-1.49 3.14-1.18 3.14-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.66.41.36.78 1.06.78 2.13v3.16c0 .31.2.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+            ⭐ Star on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-icon">{JS}</span>
+          <span>JavaScript Mastery Ebook</span>
+        </div>
+        <p class="footer-copy">
+          Created with ❤️ by <a href="https://github.com/Aman-0402" target="_blank" rel="noopener noreferrer">Aman</a> ·
+          Open source & free forever
+        </p>
+        <div class="footer-links">
+          <a href="https://github.com/Aman-0402" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="content/content.html">Read Now</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
