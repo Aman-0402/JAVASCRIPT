@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.1 Operators &amp; Debugging — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 1</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">1.1 Operators &amp; Debugging</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">1.1</span>
+      <span class="module-tag">Module 1 · Operators, Methods &amp; Keywords</span>
+    </div>
+    <h1>Operators <span class="highlight">&amp;</span> Debugging</h1>
+    <p class="subtitle">
+      Understand how JavaScript operators work — from basic arithmetic to tricky
+      type-coercion bugs — and learn to debug them confidently.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>JavaScript Operators</strong> are symbols used to perform operations on
+        values and variables — assigning values, performing arithmetic calculations,
+        and evaluating expressions.
+      </p>
+      <p>
+        Every program you write relies on operators, from storing a score in a variable
+        to checking whether a user is logged in.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Operators are tools that tell JavaScript:
+        <strong>"Do something with these values."</strong>
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">+</span>
+          <span class="op-arrow">→</span>
+          <span>Add numbers together</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">=</span>
+          <span class="op-arrow">→</span>
+          <span>Store a value in a variable</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">+=</span>
+          <span class="op-arrow">→</span>
+          <span>Add to a variable and update it in one step</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Assignment -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Assignment Operators</span>
+        </div>
+        <pre><code class="language-javascript">let score = 10;   // Assign value
+score += 5;       // Add 5 to score
+
+console.log(score);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>=</code> assigns a value to a variable</li>
+            <li><code>+=</code> adds to the variable and updates it in one step</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Arithmetic -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Arithmetic Operators</span>
+        </div>
+        <pre><code class="language-javascript">let a = 10;
+let b = 3;
+
+console.log(a + b);
+console.log(a - b);
+console.log(a * b);
+console.log(a / b);
+console.log(a % b);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>%</code> returns the remainder after division — 10 ÷ 3 = 3 remainder <strong>1</strong></li>
+            <li>Useful for even/odd checks: <code>n % 2 === 0</code> means even</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Debugging -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Debugging a Type Issue</span>
+        </div>
+        <pre><code class="language-javascript">let x = 10;
+let y = "5";
+
+console.log(x + y);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — can you predict this?</span>
+          </div>
+        </div>
+        <div class="problem-box">
+          <div class="box-label">Problem</div>
+          <p>JavaScript sees <code>"5"</code> as a string, so <code>+</code> concatenates instead of adding.</p>
+        </div>
+        <div class="solution-box">
+          <div class="solution-box-label">Solution — convert to Number first</div>
+          <pre><code class="language-javascript">console.log(x + Number(y));</code></pre>
+          <div class="output-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Output</span>
+              <button type="button" class="run-btn">▶ Run fix</button>
+            </div>
+            <div class="output-body">
+              <span class="output-placeholder">Click ▶ Run fix</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">Think of operators like managing money in a wallet:</p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">=</div>
+          <div class="analogy-desc">You receive ₹100 — stored in your wallet</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">+=</div>
+          <div class="analogy-desc">You add ₹50 more — balance updates</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">-=</div>
+          <div class="analogy-desc">You spend ₹30 — deducted automatically</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">%</div>
+          <div class="analogy-desc">You split money and check what's left over</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JS EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Operators work inside real HTML pages too. Click <strong>▶ Preview</strong> to
+        run it live in the browser below.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Operators Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:20px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;JavaScript Operators&lt;/h2&gt;
+  &lt;p id="result"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    let marks = 40;
+    marks += 10;
+    document.getElementById("result").textContent =
+      "Total Marks: " + marks;
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Add to a score</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let marks = 50;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Add <code>20</code> to <code>marks</code> using <code>+=</code></li>
+              <li>Print the final value with <code>console.log()</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Wallet tracker</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let total = 100;
+let spent = 37;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Calculate remaining money after spending</li>
+              <li>Use <code>%</code> to check the remainder when divided by <code>5</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            What does <code>+=</code> do?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Subtract</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Multiply</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Add and assign</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Divide</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>+=</code> adds the right-hand value and saves it back — one step instead of two.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What is the output?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(10 % 3);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 3</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 1</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> 0</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> 10</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> 10 ÷ 3 = 3 with a remainder of <strong>1</strong>. The <code>%</code> operator returns that remainder.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What is the output?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(5 + "5");</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 10</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> "55"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Error</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> undefined</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> When one operand of <code>+</code> is a string, JavaScript converts the other to a string too and concatenates — giving <code>"55"</code>, not <code>10</code>.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Prefer <code>Number()</code> when you expect a numeric value from a string — it's explicit and avoids silent concatenation bugs.</p>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Always check a value's type before operating on it:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Type checking</span>
+              </div>
+              <pre><code class="language-javascript">let value = 42;
+console.log(typeof value);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Watch out for the <code>=+</code> vs <code>+=</code> typo — a very common mistake:</p>
+            <div class="warn-box example-block">
+              <div class="example-header">
+                <span class="example-label">Wrong vs Correct</span>
+              </div>
+              <pre><code class="language-javascript">let a = 5;
+a =+ 3; // WRONG  → unary +3, so a becomes 3
+a += 3; // RIGHT  → a = a + 3 = 6</code></pre>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use <code>console.log()</code> frequently while debugging — it's your best tool for catching unexpected values at any point in your code.</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Predict the output before running — apply each operator one step at a time.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let coins = 10;
+coins += 5;
+coins %= 4;
+
+console.log(coins);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Step 1:  coins = 10
+// Step 2:  coins += 5   →  coins = 15
+// Step 3:  coins %= 4   →  15 % 4 = 3  (15 = 3 × 4 + 3)
+// Output:  3</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <span></span>
+    <a href="1-2.html" class="nav-btn next">
+      1.2 Best Practices
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
