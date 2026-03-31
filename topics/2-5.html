@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.4 Functions — JS Mastery</title>
+  <title>2.5 Parameters &amp; Return Values — JS Mastery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
@@ -33,20 +33,20 @@
     <span class="breadcrumb-sep">/</span>
     <a href="../content.html">Module 2</a>
     <span class="breadcrumb-sep">/</span>
-    <span class="breadcrumb-current">2.4 Functions</span>
+    <span class="breadcrumb-current">2.5 Parameters &amp; Return Values</span>
   </div>
 
   <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
   <div class="topic-hero">
     <div class="topic-tag-row">
-      <span class="topic-badge">2.4</span>
+      <span class="topic-badge">2.5</span>
       <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
     </div>
-    <h1><span class="highlight">Functions</span></h1>
+    <h1>Parameters <span class="highlight">&amp;</span> Return Values</h1>
     <p class="subtitle">
-      Learn how to write reusable blocks of code that take inputs, do work, and return
-      outputs — in three different styles: declarations, expressions, and arrow
-      functions.
+      Master how functions receive data through parameters, how arguments supply the
+      actual values, and how <code>return</code> sends a result back — the complete
+      input-process-output cycle.
     </p>
   </div>
 
@@ -60,15 +60,14 @@
     </div>
     <div class="section-body">
       <p>
-        A <strong>function</strong> in JavaScript is a reusable block of code designed
-        to perform a specific task. It can be defined once and executed (called) multiple
-        times, optionally taking inputs called <em>parameters</em> and returning an
-        output using the <code>return</code> keyword.
+        <strong>Parameters</strong> are variables listed in a function definition that
+        act as placeholders for values. <strong>Arguments</strong> are the actual values
+        passed to the function when it is called — they fill those placeholders.
       </p>
       <p>
-        Functions are the foundation of organised, maintainable code — instead of
-        repeating the same logic in multiple places, you write it once inside a function
-        and call it wherever needed.
+        A <strong>return value</strong> is the output that a function sends back to
+        its caller after execution, using the <code>return</code> statement. Without
+        <code>return</code>, the function automatically returns <code>undefined</code>.
       </p>
     </div>
   </section>
@@ -83,29 +82,26 @@
     </div>
     <div class="section-body">
       <p class="intro-text">
-        A function is like a <strong>machine</strong>:
+        Every function follows the same flow:
+        <strong>Input → Process → Output</strong>
       </p>
       <div class="simple-ops">
         <div class="simple-op-row">
-          <span class="op-badge">Input</span>
+          <span class="op-badge">Parameter</span>
           <span class="op-arrow">→</span>
-          <span>You pass values in as <em>arguments</em></span>
+          <span>The named placeholder defined in the function — <code>function add(a, b)</code></span>
         </div>
         <div class="simple-op-row">
-          <span class="op-badge">Process</span>
+          <span class="op-badge">Argument</span>
           <span class="op-arrow">→</span>
-          <span>The function body runs its logic</span>
+          <span>The real value passed when calling — <code>add(5, 3)</code></span>
         </div>
         <div class="simple-op-row">
-          <span class="op-badge">Output</span>
+          <span class="op-badge">return</span>
           <span class="op-arrow">→</span>
-          <span>A value is <code>return</code>ed back to the caller</span>
+          <span>Sends the output back to whoever called the function</span>
         </div>
       </div>
-      <p class="intro-text" style="margin-top:16px">
-        You write the machine <strong>once</strong> and use it <strong>as many times
-        as you need</strong> — that's the power of functions.
-      </p>
     </div>
   </section>
 
@@ -119,17 +115,17 @@
     </div>
     <div class="section-body">
 
-      <!-- Example 1 — Function Declaration -->
+      <!-- Example 1 — Parameters & Arguments -->
       <div class="example-block">
         <div class="example-header">
-          <span class="example-label">Example 1 — Function Declaration</span>
+          <span class="example-label">Example 1 — Parameters &amp; Arguments</span>
         </div>
-        <pre><code class="language-javascript">function greet() {
-  console.log("Hello, Aman!");
+        <pre><code class="language-javascript">function greet(name) {        // name = parameter
+  console.log("Hello " + name);
 }
 
-greet(); // Call the function
-greet(); // Reuse it — no need to rewrite the logic</code></pre>
+greet("Aman");   // "Aman"  = argument
+greet("Rahul");  // "Rahul" = argument — same function, different input</code></pre>
         <div class="output-panel">
           <div class="output-header">
             <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -142,24 +138,27 @@ greet(); // Reuse it — no need to rewrite the logic</code></pre>
         <div class="explanation">
           <div class="explanation-title">Explanation</div>
           <ul>
-            <li><code>function greet() {}</code> → defines (creates) the function</li>
-            <li><code>greet()</code> → calls (executes) it — the parentheses are required</li>
-            <li>You can call it as many times as needed without rewriting the code</li>
+            <li><code>name</code> is the <strong>parameter</strong> — a local variable inside the function</li>
+            <li><code>"Aman"</code> and <code>"Rahul"</code> are <strong>arguments</strong> — the values supplied at call time</li>
+            <li>The same function produces a customised output for each argument</li>
           </ul>
         </div>
       </div>
 
-      <!-- Example 2 — Function with Parameters -->
+      <!-- Example 2 — Return Value -->
       <div class="example-block">
         <div class="example-header">
-          <span class="example-label">Example 2 — Function with Parameters</span>
+          <span class="example-label">Example 2 — Return Value</span>
         </div>
         <pre><code class="language-javascript">function add(a, b) {
-  console.log(a + b);
+  return a + b;   // sends result back to the caller
 }
 
-add(5, 3);   // a=5, b=3
-add(10, 20); // a=10, b=20 — same function, different inputs</code></pre>
+let result = add(5, 3); // capture the returned value
+console.log(result);
+
+// You can also use the return value directly
+console.log(add(10, 20));</code></pre>
         <div class="output-panel">
           <div class="output-header">
             <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -172,60 +171,55 @@ add(10, 20); // a=10, b=20 — same function, different inputs</code></pre>
         <div class="explanation">
           <div class="explanation-title">Explanation</div>
           <ul>
-            <li><code>a</code> and <code>b</code> are <strong>parameters</strong> — placeholders defined in the function</li>
-            <li><code>5</code> and <code>3</code> are <strong>arguments</strong> — the actual values passed when calling</li>
-            <li>The same function handles different inputs each call</li>
+            <li><code>return a + b</code> exits the function and sends the sum back</li>
+            <li>The returned value can be stored in a variable, passed to another function, or used directly</li>
+            <li>This makes the function reusable in expressions — not just for printing</li>
           </ul>
         </div>
       </div>
 
-      <!-- Example 3 — Function Expression -->
+      <!-- Example 3 — No Return → undefined -->
       <div class="example-block">
         <div class="example-header">
-          <span class="example-label">Example 3 — Function Expression</span>
+          <span class="example-label">Example 3 — No Return → undefined</span>
         </div>
-        <pre><code class="language-javascript">const multiply = function(a, b) {
-  return a * b;
-};
+        <pre><code class="language-javascript">function test() {
+  console.log("Hi"); // prints, but returns nothing
+}
 
-console.log(multiply(4, 5));
-console.log(multiply(3, 7));</code></pre>
+let output = test(); // captures the return value
+
+console.log(output); // what is output?</code></pre>
         <div class="output-panel">
           <div class="output-header">
             <span class="output-label"><span class="output-dot"></span>Output</span>
             <button type="button" class="run-btn">▶ Run</button>
           </div>
           <div class="output-body">
-            <span class="output-placeholder">Click ▶ Run to execute</span>
+            <span class="output-placeholder">Click ▶ Run — can you predict it?</span>
           </div>
         </div>
         <div class="explanation">
           <div class="explanation-title">Explanation</div>
           <ul>
-            <li>A function stored inside a <code>const</code> variable — called a <strong>function expression</strong></li>
-            <li><code>return</code> sends the result back to the caller instead of printing it</li>
-            <li>Unlike declarations, expressions are <em>not</em> hoisted — you must define before calling</li>
+            <li>A function with no <code>return</code> statement implicitly returns <code>undefined</code></li>
+            <li><code>console.log()</code> <em>prints</em> a value — it does <em>not</em> <code>return</code> one</li>
+            <li>Always use <code>return</code> if you need to use the result elsewhere in your code</li>
           </ul>
         </div>
       </div>
 
-      <!-- Example 4 — Arrow Function -->
+      <!-- Example 4 — Default Parameters -->
       <div class="example-block">
         <div class="example-header">
-          <span class="example-label">Example 4 — Arrow Function</span>
+          <span class="example-label">Example 4 — Default Parameters</span>
         </div>
-        <pre><code class="language-javascript">// Full arrow function
-const subtract = (a, b) => {
-  return a - b;
-};
+        <pre><code class="language-javascript">function greet(name = "Guest") {  // default value if none given
+  console.log("Hello " + name);
+}
 
-console.log(subtract(10, 3));
-
-// Short form — single expression, implicit return
-const square = x => x * x;
-
-console.log(square(5));
-console.log(square(9));</code></pre>
+greet();         // no argument → uses default "Guest"
+greet("Aman");   // argument provided → uses "Aman"</code></pre>
         <div class="output-panel">
           <div class="output-header">
             <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -238,9 +232,9 @@ console.log(square(9));</code></pre>
         <div class="explanation">
           <div class="explanation-title">Explanation</div>
           <ul>
-            <li>Arrow functions use <code>=&gt;</code> instead of the <code>function</code> keyword — modern and concise</li>
-            <li>When the body is a single expression, you can drop the curly braces and <code>return</code> — the value is returned implicitly</li>
-            <li>If there is only one parameter, you can also drop the parentheses: <code>x =&gt; x * x</code></li>
+            <li>Default parameters let you define a fallback value used when no argument is passed</li>
+            <li>If an argument is provided, it overrides the default</li>
+            <li>They prevent <code>undefined</code> bugs when a caller forgets to pass a value</li>
           </ul>
         </div>
       </div>
@@ -258,24 +252,24 @@ console.log(square(9));</code></pre>
     </div>
     <div class="section-body">
       <p class="analogy-intro">
-        Think of a function like a <strong>coffee machine</strong>:
+        Think of a food-order system at a restaurant:
       </p>
       <div class="analogy-grid">
         <div class="analogy-card">
-          <div class="analogy-op">Input</div>
-          <div class="analogy-desc">Coffee beans + water — the arguments you pass in</div>
+          <div class="analogy-op">Function</div>
+          <div class="analogy-desc">The kitchen — it knows how to prepare any dish</div>
         </div>
         <div class="analogy-card">
-          <div class="analogy-op">Process</div>
-          <div class="analogy-desc">Brewing — the logic inside the function body</div>
+          <div class="analogy-op">Parameter</div>
+          <div class="analogy-desc">The order slot — "what item?" is the placeholder</div>
         </div>
         <div class="analogy-card">
-          <div class="analogy-op">Output</div>
-          <div class="analogy-desc">A cup of coffee — the value the function returns</div>
+          <div class="analogy-op">Argument</div>
+          <div class="analogy-desc">"Veg Pizza" — the specific value you actually order</div>
         </div>
         <div class="analogy-card">
-          <div class="analogy-op">Reuse</div>
-          <div class="analogy-desc">Press the button again — call the function whenever you need it</div>
+          <div class="analogy-op">return</div>
+          <div class="analogy-desc">The prepared food delivered back to your table</div>
         </div>
       </div>
     </div>
@@ -291,54 +285,60 @@ console.log(square(9));</code></pre>
     </div>
     <div class="section-body">
       <p class="section-intro-p">
-        Functions power real UI interactions. Click <strong>▶ Preview</strong>, enter
-        two numbers, and watch the function calculate and display the result live.
+        Click <strong>▶ Preview</strong>, enter two numbers, and watch the function
+        receive them as arguments, multiply them, and <code>return</code> the result
+        to the page.
       </p>
       <div class="example-block">
         <div class="example-header">
-          <span class="example-label">Live in Browser — Function Calculator</span>
+          <span class="example-label">Live in Browser — Multiply with Return</span>
         </div>
         <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-&lt;head&gt;&lt;title&gt;Function Example&lt;/title&gt;&lt;/head&gt;
+&lt;head&gt;&lt;title&gt;Parameters &amp; Return&lt;/title&gt;&lt;/head&gt;
 &lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
 
-  &lt;h2&gt;Function Calculator&lt;/h2&gt;
+  &lt;h2&gt;Multiply Numbers&lt;/h2&gt;
 
-  &lt;input id="num1" type="number" placeholder="Number 1"
+  &lt;input id="n1" type="number" placeholder="Number 1"
     style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
            font-size:1rem;width:130px"&gt;
 
-  &lt;input id="num2" type="number" placeholder="Number 2"
+  &lt;input id="n2" type="number" placeholder="Number 2"
     style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
            font-size:1rem;width:130px;margin-left:8px"&gt;
 
   &lt;button onclick="calculate()"
     style="margin-left:8px;padding:8px 18px;background:#f7df1e;border:none;
            border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
-    Add
+    Multiply
   &lt;/button&gt;
 
-  &lt;div id="output" style="margin-top:16px;font-size:1rem;line-height:2"&gt;&lt;/div&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2;font-size:0.95rem"&gt;&lt;/div&gt;
 
   &lt;script&gt;
-    function add(a, b) {
-      return a + b;
+    // Parameter: a, b — placeholders defined here
+    function multiply(a, b) {
+      return a * b;  // return sends result back
     }
 
     function calculate() {
-      let a = Number(document.getElementById("num1").value);
-      let b = Number(document.getElementById("num2").value);
+      let a = Number(document.getElementById("n1").value);
+      let b = Number(document.getElementById("n2").value);
 
-      if (isNaN(a) || isNaN(b)) {
+      if (!document.getElementById("n1").value ||
+          !document.getElementById("n2").value) {
         document.getElementById("output").innerHTML =
-          "&lt;b style='color:red'&gt;Please enter valid numbers.&lt;/b&gt;";
+          "&lt;b style='color:red'&gt;Please enter both numbers.&lt;/b&gt;";
         return;
       }
 
-      let result = add(a, b);
+      // Argument: a, b — actual values passed here
+      let result = multiply(a, b);
+
       document.getElementById("output").innerHTML =
-        "&lt;b&gt;add(" + a + ", " + b + ")&lt;/b&gt; → &lt;b style='color:#e07b00'&gt;" + result + "&lt;/b&gt;";
+        "&lt;b&gt;multiply(" + a + ", " + b + ")&lt;/b&gt; returned: " +
+        "&lt;b style='color:#e07b00'&gt;" + result + "&lt;/b&gt;";
     }
   &lt;/script&gt;
 
@@ -369,21 +369,23 @@ console.log(square(9));</code></pre>
         <div class="task-card">
           <div class="task-card-header">
             <span class="task-difficulty easy">Easy</span>
-            <span class="task-title">Task 1 — sayHello function</span>
+            <span class="task-title">Task 1 — Personalised greeting</span>
           </div>
           <div class="task-card-body">
             <div class="example-block">
               <div class="example-header">
                 <span class="example-label">Starter code</span>
               </div>
-              <pre><code class="language-javascript">function sayHello() {
+              <pre><code class="language-javascript">function sayHello(name) {
   // your code here
-}</code></pre>
+}
+
+sayHello("Priya");</code></pre>
             </div>
             <ul class="task-steps">
-              <li>Inside <code>sayHello</code>, print <em>"Welcome to JavaScript"</em> using <code>console.log()</code></li>
-              <li>Call the function and verify the output</li>
-              <li>Call it a second time — notice how reuse works</li>
+              <li>Inside the function, print <em>"Hello Priya"</em> using the <code>name</code> parameter</li>
+              <li>Call the function with two different names</li>
+              <li>Add a default value of <code>"Friend"</code> for when no argument is passed</li>
             </ul>
           </div>
         </div>
@@ -391,23 +393,23 @@ console.log(square(9));</code></pre>
         <div class="task-card">
           <div class="task-card-header">
             <span class="task-difficulty medium">Medium</span>
-            <span class="task-title">Task 2 — Multiply two numbers</span>
+            <span class="task-title">Task 2 — Average of three numbers</span>
           </div>
           <div class="task-card-body">
             <div class="example-block">
               <div class="example-header">
                 <span class="example-label">Starter code</span>
               </div>
-              <pre><code class="language-javascript">function multiply(a, b) {
-  // return the result
+              <pre><code class="language-javascript">function average(a, b, c) {
+  // return the average
 }
 
-console.log(multiply(4, 6));</code></pre>
+console.log(average(10, 20, 30));</code></pre>
             </div>
             <ul class="task-steps">
-              <li>Complete the function so it <code>return</code>s <code>a * b</code></li>
-              <li>Print the result using <code>console.log()</code></li>
-              <li>Try rewriting it as an arrow function using <code>const</code></li>
+              <li>Calculate the sum of <code>a</code>, <code>b</code>, and <code>c</code></li>
+              <li>Divide by <code>3</code> and <code>return</code> the result</li>
+              <li>Expected output: <em>20</em></li>
             </ul>
           </div>
         </div>
@@ -431,17 +433,17 @@ console.log(multiply(4, 6));</code></pre>
         <div class="mcq-card">
           <div class="mcq-question">
             <div class="mcq-q-num">Q1</div>
-            Which keyword is used to create a function in JavaScript?
+            What is a <strong>parameter</strong> in a function?
           </div>
           <ul class="mcq-options">
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> func</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> function</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> def</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> create</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> The output value</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> A named input variable in the function definition</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> The function name</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> A type of error</li>
           </ul>
           <div class="mcq-explanation">
             <span class="mcq-explanation-icon">💡</span>
-            <span><strong>B is correct.</strong> JavaScript uses the <code>function</code> keyword for declarations. <code>def</code> is Python, <code>func</code> is Go/Swift — neither exists in JavaScript.</span>
+            <span><strong>B is correct.</strong> A parameter is the named placeholder inside the function definition — e.g. <code>name</code> in <code>function greet(name)</code>. The <em>argument</em> is the actual value you pass when calling it.</span>
           </div>
         </div>
 
@@ -449,12 +451,12 @@ console.log(multiply(4, 6));</code></pre>
         <div class="mcq-card">
           <div class="mcq-question">
             <div class="mcq-q-num">Q2</div>
-            What is the output?
+            What does a function return when it has no <code>return</code> statement?
             <div class="mcq-question-code">
-              <pre><code class="language-javascript">function test() {
-  return 5;
+              <pre><code class="language-javascript">function noReturn() {
+  let x = 5;
 }
-console.log(test());</code></pre>
+console.log(noReturn());</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -467,14 +469,14 @@ console.log(test());</code></pre>
             </div>
           </div>
           <ul class="mcq-options">
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> test</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 5</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> undefined</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> null</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> 0</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> undefined</li>
             <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Error</li>
           </ul>
           <div class="mcq-explanation">
             <span class="mcq-explanation-icon">💡</span>
-            <span><strong>B is correct.</strong> <code>return 5</code> sends the value <code>5</code> back to the caller. <code>console.log(test())</code> then prints that returned value.</span>
+            <span><strong>C is correct.</strong> JavaScript automatically returns <code>undefined</code> from any function that does not have an explicit <code>return</code> statement.</span>
           </div>
         </div>
 
@@ -482,11 +484,12 @@ console.log(test());</code></pre>
         <div class="mcq-card">
           <div class="mcq-question">
             <div class="mcq-q-num">Q3</div>
-            Which is the correct arrow function syntax?
+            What is the output?
             <div class="mcq-question-code">
-              <pre><code class="language-javascript">// Which of these runs without error?
-const double = x => x * 2;
-console.log(double(6));</code></pre>
+              <pre><code class="language-javascript">function test(a) {
+  return a * 2;
+}
+console.log(test(4));</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -499,14 +502,14 @@ console.log(double(6));</code></pre>
             </div>
           </div>
           <ul class="mcq-options">
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> function() {}</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> () =&gt; {}</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> =&gt;() {}</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> func =&gt; {}</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">A</span> 8</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> 4</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> undefined</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Error</li>
           </ul>
           <div class="mcq-explanation">
             <span class="mcq-explanation-icon">💡</span>
-            <span><strong>B is correct.</strong> Arrow function syntax is <code>(params) =&gt; {}</code> or <code>param =&gt; expression</code>. The arrow <code>=&gt;</code> always comes <em>after</em> the parameters.</span>
+            <span><strong>A is correct.</strong> The argument <code>4</code> is passed to parameter <code>a</code>. The function returns <code>4 * 2 = 8</code>, which <code>console.log</code> then prints.</span>
           </div>
         </div>
 
@@ -528,22 +531,23 @@ console.log(double(6));</code></pre>
         <li class="pro-tip">
           <span class="tip-icon">01</span>
           <div class="tip-content">
-            <p>Function <strong>declarations</strong> are hoisted — you can call them before they appear in the file. Function <strong>expressions</strong> are not:</p>
+            <p>Always <code>return</code> a value if you need to use it later. A function that only <code>console.log</code>s cannot be reused in expressions:</p>
             <div class="example-block">
               <div class="example-header">
-                <span class="example-label">Hoisting difference</span>
+                <span class="example-label">console.log vs return</span>
               </div>
-              <pre><code class="language-javascript">// Declaration — hoisted, works before definition
-console.log(add(2, 3));
-function add(a, b) { return a + b; }
-
-// Expression — NOT hoisted
-try {
-  console.log(multiply(2, 3)); // Error!
-} catch (e) {
-  console.log("Error:", e.message);
+              <pre><code class="language-javascript">// ✗ Not reusable — result is lost
+function sumBad(a, b) {
+  console.log(a + b);
 }
-const multiply = (a, b) => a * b;</code></pre>
+
+// ✓ Reusable — caller decides what to do with the value
+function sumGood(a, b) {
+  return a + b;
+}
+
+let total = sumGood(5, 10) * 2; // usable in expressions
+console.log(total);</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -560,23 +564,17 @@ const multiply = (a, b) => a * b;</code></pre>
         <li class="pro-tip">
           <span class="tip-icon">02</span>
           <div class="tip-content">
-            <p>Keep functions small and focused on <strong>one task</strong>. A function that does too much is hard to test and reuse:</p>
+            <p><code>return</code> immediately stops the function — any code after it in the same block is unreachable:</p>
             <div class="example-block">
               <div class="example-header">
-                <span class="example-label">Single responsibility</span>
+                <span class="example-label">return stops execution</span>
               </div>
-              <pre><code class="language-javascript">// ✗ Bad — does too many things
-function doEverything(a, b) {
-  console.log("Adding...");
-  let sum = a + b;
-  console.log("Result: " + sum);
-  return sum;
+              <pre><code class="language-javascript">function test() {
+  return 5;
+  console.log("Hello"); // never runs — dead code
 }
 
-// ✓ Good — one focused task
-const add = (a, b) => a + b;
-
-console.log(add(5, 10));</code></pre>
+console.log(test()); // 5</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -593,23 +591,17 @@ console.log(add(5, 10));</code></pre>
         <li class="pro-tip">
           <span class="tip-icon">03</span>
           <div class="tip-content">
-            <p>Prefer <strong>arrow functions</strong> for short, single-expression logic — they are more concise and easier to read:</p>
+            <p>Use default parameters to make functions safer — they prevent <code>undefined</code> when a caller forgets an argument:</p>
             <div class="example-block">
               <div class="example-header">
-                <span class="example-label">Arrow function short forms</span>
+                <span class="example-label">Default parameter safety</span>
               </div>
-              <pre><code class="language-javascript">// One parameter — no parentheses needed
-const double = x => x * 2;
+              <pre><code class="language-javascript">function power(base, exponent = 2) {
+  return base ** exponent;
+}
 
-// Two parameters — parentheses required
-const add = (a, b) => a + b;
-
-// No parameters — empty parentheses required
-const greet = () => "Hello!";
-
-console.log(double(5));
-console.log(add(3, 4));
-console.log(greet());</code></pre>
+console.log(power(3));    // 3² = 9  (uses default)
+console.log(power(3, 3)); // 3³ = 27 (overrides default)</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -626,21 +618,17 @@ console.log(greet());</code></pre>
         <li class="pro-tip">
           <span class="tip-icon">04</span>
           <div class="tip-content">
-            <p>A function without a <code>return</code> statement returns <code>undefined</code> automatically — this is a very common source of bugs:</p>
+            <p>Return values can be passed directly as arguments to another function — this is called <strong>function chaining</strong>:</p>
             <div class="example-block">
               <div class="example-header">
-                <span class="example-label">Missing return → undefined</span>
+                <span class="example-label">Chaining return values</span>
               </div>
-              <pre><code class="language-javascript">function noReturn(a, b) {
-  let sum = a + b; // calculated but not returned!
-}
+              <pre><code class="language-javascript">const double = x => x * 2;
+const addTen = x => x + 10;
 
-function withReturn(a, b) {
-  return a + b;
-}
-
-console.log(noReturn(2, 3));   // undefined
-console.log(withReturn(2, 3)); // 5</code></pre>
+// Pass the return value of double() directly to addTen()
+let result = addTen(double(5));
+console.log(result); // double(5)=10, addTen(10)=20</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -666,20 +654,21 @@ console.log(withReturn(2, 3)); // 5</code></pre>
       <span class="challenge-title">Mini Challenge</span>
     </div>
     <p class="challenge-subtitle">
-      The function is called and its result stored in a variable — what gets printed?
-      Think carefully before running.
+      The return value of the first call becomes the argument of the second — trace
+      through each step before running.
     </p>
     <div class="challenge-code-wrap example-block">
       <div class="example-header">
         <span class="example-label">What does this print?</span>
       </div>
-      <pre><code class="language-javascript">function test() {
-  console.log("Hello");
+      <pre><code class="language-javascript">function calc(a, b) {
+  return a + b;
 }
 
-let result = test();
+let x = calc(2, 3);
+let y = calc(x, 4);
 
-console.log(result);</code></pre>
+console.log(y);</code></pre>
       <div class="output-panel">
         <div class="output-header">
           <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -693,41 +682,33 @@ console.log(result);</code></pre>
     <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
     <div class="challenge-answer">
       <div class="challenge-answer-header">Step-by-Step Explanation</div>
-      <pre><code class="language-javascript">// Step 1: test() is called
-//         Inside the function: console.log("Hello") runs
-//         Output line 1 → "Hello"
+      <pre><code class="language-javascript">// Step 1: calc(2, 3)
+//         a=2, b=3 → return 2 + 3 = 5
+//         x = 5
 
-// Step 2: test() has no return statement
-//         JavaScript automatically returns undefined
-//         result = undefined
+// Step 2: calc(x, 4)  →  calc(5, 4)
+//         a=5, b=4 → return 5 + 4 = 9
+//         y = 9
 
-// Step 3: console.log(result)
-//         Output line 2 → undefined
-
-// Final output:
-//   Hello
-//   undefined
+// Step 3: console.log(y)
+//         Output → 9
 
 // Key takeaway:
-//   console.log() inside a function PRINTS but does not RETURN
-//   To capture a value, the function must use return:
-//
-//   function test() {
-//     return "Hello";   // now result = "Hello"
-//   }
-//   let result = test();
-//   console.log(result); // "Hello"</code></pre>
+//   The return value of a function becomes a usable value —
+//   here it is stored in x and then passed as an argument
+//   to the next call. This is the power of return values:
+//   functions can be chained and composed together.</code></pre>
     </div>
   </div>
 
   <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
   <div class="topic-nav">
-    <a href="2-3.html" class="nav-btn prev">
+    <a href="2-4.html" class="nav-btn prev">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      2.3 Type Conversion
+      2.4 Functions
     </a>
-    <a href="2-5.html" class="nav-btn next">
-      2.5 Parameters &amp; Return Values
+    <a href="2-6.html" class="nav-btn next">
+      2.6 Scope
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
