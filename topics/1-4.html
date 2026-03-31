@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.4 Exception Handling — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 1</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">1.4 Exception Handling</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">1.4</span>
+      <span class="module-tag">Module 1 · Operators, Methods &amp; Keywords</span>
+    </div>
+    <h1>Exception <span class="highlight">Handling</span></h1>
+    <p class="subtitle">
+      Learn how to use <code>try</code>, <code>catch</code>, and <code>finally</code>
+      to handle runtime errors gracefully — keeping your program running instead of crashing.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Exception Handling</strong> in JavaScript is a mechanism used to handle
+        runtime errors using constructs like <code>try</code>, <code>catch</code>, and
+        <code>finally</code>, ensuring the program continues to run without crashing.
+      </p>
+      <p>
+        Without exception handling, a single error stops all code from running.
+        With it, you control exactly what happens when something goes wrong.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Exception handling means: <strong>"If something breaks, don't crash — handle it smartly."</strong>
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">try</span>
+          <span class="op-arrow">→</span>
+          <span>Run code that might throw an error</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">catch</span>
+          <span class="op-arrow">→</span>
+          <span>Handle the error if one occurs — don't let it crash the page</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">finally</span>
+          <span class="op-arrow">→</span>
+          <span>Always runs regardless of success or failure</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">throw</span>
+          <span class="op-arrow">→</span>
+          <span>Manually trigger a custom error</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Basic try...catch -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Basic try...catch</span>
+        </div>
+        <pre><code class="language-javascript">try {
+    let result = 10 / 0;
+    console.log(result);   // Infinity — not an error in JS
+} catch (error) {
+    console.log("Something went wrong:", error.message);
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>try</code> wraps code that might fail</li>
+            <li><code>catch</code> runs only if an error is thrown — here none is, so it's skipped</li>
+            <li>In JavaScript, dividing by zero gives <code>Infinity</code>, not an error</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Handling a Real Error -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Handling a Real Error</span>
+        </div>
+        <pre><code class="language-javascript">try {
+    console.log(userName); // userName is not defined
+} catch (error) {
+    console.log("Error:", error.message);
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Accessing an undefined variable throws a <code>ReferenceError</code></li>
+            <li><code>error.message</code> gives the human-readable reason for the error</li>
+            <li>Without <code>try...catch</code> this would crash all code below it</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — finally Block -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — finally Block</span>
+        </div>
+        <pre><code class="language-javascript">try {
+    let num = 5;
+    console.log(num);
+} catch (error) {
+    console.log("Error occurred");
+} finally {
+    console.log("This always runs");
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>finally</code> runs no matter what — error or no error</li>
+            <li>Use it to clean up resources: close files, hide loading spinners, log attempts</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Custom Error with throw -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Custom Error with throw</span>
+        </div>
+        <pre><code class="language-javascript">function checkAge(age) {
+    try {
+        if (age &lt; 18) {
+            throw new Error("You are underage");
+        }
+        console.log("Access granted");
+    } catch (error) {
+        console.log("Blocked:", error.message);
+    }
+}
+
+checkAge(16);
+checkAge(21);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>throw</code> lets you create your own errors with custom messages</li>
+            <li><code>new Error("...")</code> is preferred over throwing a plain string</li>
+            <li>The thrown error is caught by the <code>catch</code> block immediately</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">Think of an online payment process:</p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">try</div>
+          <div class="analogy-desc">Payment process starts — charge the card</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">catch</div>
+          <div class="analogy-desc">Payment fails — show a friendly error, don't crash</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">finally</div>
+          <div class="analogy-desc">Show receipt or retry option — always happens</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">throw</div>
+          <div class="analogy-desc">Insufficient balance — raise a custom error</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JS EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        A real-world input validator — it uses <code>throw</code> to raise custom errors
+        and <code>catch</code> to display them to the user without crashing the page.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Exception Handling&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:20px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Enter a number&lt;/h2&gt;
+  &lt;input type="text" id="num" placeholder="e.g. 42"&gt;
+  &lt;button onclick="checkNumber()"&gt;Check&lt;/button&gt;
+  &lt;p id="result" style="margin-top:10px;font-weight:600"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+  function checkNumber() {
+    let value = document.getElementById("num").value;
+    let out   = document.getElementById("result");
+
+    try {
+      if (value === "") throw new Error("Input cannot be empty");
+
+      let number = Number(value);
+      if (isNaN(number)) throw new Error("Not a valid number");
+
+      out.style.color = "green";
+      out.innerText   = "Valid number: " + number;
+    } catch (error) {
+      out.style.color = "red";
+      out.innerText   = "Error: " + error.message;
+    } finally {
+      console.log("Validation attempted");
+    }
+  }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Exception handling live preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Safe division</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">function divide(a, b) {
+    // your code here
+}
+
+console.log(divide(10, 2));
+console.log(divide(10, 0));</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>try...catch</code> inside <code>divide()</code></li>
+              <li>If <code>b</code> is <code>0</code>, <code>throw new Error("Cannot divide by zero")</code></li>
+              <li>Otherwise return the result and log it</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Age eligibility checker</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">function checkEligibility(age) {
+    // your code here
+}
+
+checkEligibility(20);
+checkEligibility(15);</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Throw a custom error if <code>age &lt; 18</code></li>
+              <li>Print <code>"Eligible"</code> if the age is valid</li>
+              <li>Use <code>catch</code> to print the error message</li>
+              <li>Add <code>finally</code> to always log <code>"Check complete"</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which block handles errors in a try...catch statement?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> try</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> catch</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> finally</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> throw</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> The <code>catch</code> block receives the error object and decides what to do with it — log it, show a message, or recover.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What does the <code>finally</code> block do?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Runs only if an error occurs</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Runs only if no error occurs</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Always runs, error or not</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Stops execution</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>finally</code> always executes — it's the right place for cleanup code like closing connections or hiding loading spinners.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What is <code>throw</code> used for?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Ignore an error</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Create and raise a custom error</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Stop all code permanently</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Print a message to the console</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>throw</code> lets you raise your own errors with custom messages — useful for enforcing business rules like age limits or required fields.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Always throw an <code>Error</code> object instead of a plain string — you get a stack trace and a <code>.message</code> property:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Prefer Error objects</span>
+              </div>
+              <pre><code class="language-javascript">// Avoid
+throw "Invalid input";
+
+// Prefer
+throw new Error("Invalid input");
+
+try {
+    throw new Error("Invalid input");
+} catch (e) {
+    console.log(e.message); // "Invalid input"
+    console.log(e instanceof Error); // true
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Don't overuse <code>try...catch</code> — wrap only the risky operation, not your entire program. Catching everything hides bugs you need to know about.</p>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Validate inputs <em>before</em> risky operations — use <code>isNaN()</code> for numbers and check for empty strings up front:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Input validation pattern</span>
+              </div>
+              <pre><code class="language-javascript">function parseAmount(input) {
+    if (input === "") throw new Error("Field is required");
+    if (isNaN(Number(input))) throw new Error("Must be a number");
+    return Number(input);
+}
+
+try {
+    console.log(parseAmount("42"));
+    console.log(parseAmount("abc"));
+} catch (e) {
+    console.log("Caught:", e.message);
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Keep error messages user-friendly in the UI — log the technical details to the console, show a simple message to the user:</p>
+            <div class="warn-box example-block">
+              <div class="example-header">
+                <span class="example-label">Separate user-facing and dev-facing messages</span>
+              </div>
+              <pre><code class="language-javascript">try {
+    // risky operation
+} catch (e) {
+    console.error("Debug:", e.message);           // for developer
+    showToUser("Something went wrong. Try again."); // for user
+}</code></pre>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      What gets printed, and in what order? Predict before running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What is the output?</span>
+      </div>
+      <pre><code class="language-javascript">try {
+    let x = y + 10; // y is not defined
+} catch (e) {
+    console.log("Error handled");
+} finally {
+    console.log("Done");
+}</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Step 1: try block runs → y is not defined → ReferenceError thrown
+// Step 2: catch block catches it → prints "Error handled"
+// Step 3: finally always runs → prints "Done"
+
+// Output (in order):
+// "Error handled"
+// "Done"
+
+// Key insight: finally runs even after catch — it is truly unconditional.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="1-3.html" class="nav-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7-7-7"/></svg>
+      1.3 Internal vs External Scripts
+    </a>
+    <a href="1-5.html" class="nav-btn next">
+      1.5 Next Topic
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
