@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.1 Logical &amp; Comparison Operators — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 3</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">3.1 Logical &amp; Comparison Operators</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">3.1</span>
+      <span class="module-tag">Module 3 · Decisions &amp; Loops</span>
+    </div>
+    <h1>Logical <span class="highlight">&amp;</span> Comparison Operators</h1>
+    <p class="subtitle">
+      Learn how to compare values and combine conditions to produce
+      <code>true</code> or <code>false</code> — the foundation of every
+      decision your code will ever make.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Comparison operators</strong> compare two values and return a boolean
+        — e.g. is <code>a</code> greater than <code>b</code>? Are they equal?
+        <strong>Logical operators</strong> combine multiple boolean expressions —
+        e.g. is condition A <em>and</em> condition B both true?
+      </p>
+      <p>
+        Together they power every <code>if</code> statement, loop condition, and
+        decision in JavaScript. Understanding the difference between <code>==</code>
+        and <code>===</code> in particular is one of the most important fundamentals
+        in the language.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Think of these operators as <strong>questions JavaScript asks</strong> before
+        deciding what to do next:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">===</span>
+          <span class="op-arrow">→</span>
+          <span>"Are these <strong>exactly equal</strong> — same value <em>and</em> same type?"</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">&gt; / &lt;</span>
+          <span class="op-arrow">→</span>
+          <span>"Is one <strong>bigger or smaller</strong> than the other?"</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">&amp;&amp;</span>
+          <span class="op-arrow">→</span>
+          <span>"Are <strong>both</strong> conditions true? (AND)"</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">||</span>
+          <span class="op-arrow">→</span>
+          <span>"Is <strong>at least one</strong> condition true? (OR)"</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">!</span>
+          <span class="op-arrow">→</span>
+          <span>"Flip the result — <strong>NOT</strong> true becomes false, and vice versa"</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Comparison Operators -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Comparison Operators</span>
+        </div>
+        <pre><code class="language-javascript">let a = 10;
+let b = "10";
+
+console.log(a == b);   // true  — same value, type ignored
+console.log(a === b);  // false — different types (number vs string)
+console.log(a != b);   // false — values are equal
+console.log(a !== b);  // true  — types are different
+
+console.log(10 > 5);   // true
+console.log(10 &lt; 5);   // false
+console.log(10 &gt;= 10); // true
+console.log(10 &lt;= 9);  // false</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>==</code> checks only value — it converts types before comparing (loose equality)</li>
+            <li><code>===</code> checks value <em>and</em> type — no conversion (strict equality, always prefer this)</li>
+            <li><code>!==</code> is the strict "not equal" — returns <code>true</code> when value or type differs</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Logical Operators -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Logical Operators (&amp;&amp;, ||, !)</span>
+        </div>
+        <pre><code class="language-javascript">let age   = 20;
+let hasID = true;
+
+// && (AND) — both must be true
+console.log(age > 18 && hasID);   // true  (both true)
+console.log(age > 18 && !hasID);  // false (second is false)
+
+// || (OR) — at least one must be true
+console.log(age &lt; 18 || hasID);   // true  (second is true)
+console.log(age &lt; 18 || false);   // false (both false)
+
+// ! (NOT) — flips the boolean
+console.log(!hasID);              // false
+console.log(!false);              // true</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>&amp;&amp;</code> (AND) — the result is <code>true</code> only when <em>every</em> condition is <code>true</code></li>
+            <li><code>||</code> (OR) — the result is <code>true</code> when <em>at least one</em> condition is <code>true</code></li>
+            <li><code>!</code> (NOT) — inverts the boolean: <code>!true === false</code>, <code>!false === true</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Short-Circuit Evaluation -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Short-Circuit Evaluation</span>
+        </div>
+        <pre><code class="language-javascript">// && stops as soon as it finds false
+console.log(false && console.log("A")); // "A" never prints!
+
+// || stops as soon as it finds true
+console.log(true || console.log("B"));  // "B" never prints!
+
+// Practical use: default values
+let userName = null;
+let displayName = userName || "Guest"; // if userName is falsy, use "Guest"
+console.log(displayName);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — notice what does NOT print!</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><strong>Short-circuit</strong> means JavaScript stops evaluating as soon as the result is determined</li>
+            <li><code>false &amp;&amp; anything</code> — the right side is never reached because the result is already <code>false</code></li>
+            <li><code>true || anything</code> — the right side is never reached because the result is already <code>true</code></li>
+            <li>The <code>||</code> default value pattern is widely used to provide fallbacks</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Combining Conditions -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Combining Multiple Conditions</span>
+        </div>
+        <pre><code class="language-javascript">let score    = 75;
+let attended = true;
+
+// Pass if score >= 60 AND attended
+let passed = score >= 60 && attended;
+console.log("Passed:", passed);
+
+// Grade logic
+let isA = score >= 90;
+let isB = score >= 75 && score &lt; 90;
+let isC = score >= 60 && score &lt; 75;
+
+console.log("A grade:", isA);
+console.log("B grade:", isB);
+console.log("C grade:", isC);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Multiple comparison operators can be combined with logical operators to express complex rules</li>
+            <li>Each condition evaluates to a boolean — the logical operator then combines them</li>
+            <li>Use parentheses to make grouping explicit when combining <code>&amp;&amp;</code> and <code>||</code></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a club's entry check — every rule maps directly to an operator:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">===</div>
+          <div class="analogy-desc">ID name must exactly match the booking — value AND type must be the same</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">&gt; / &lt;</div>
+          <div class="analogy-desc">Age must be over 18 — a numeric comparison</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">&amp;&amp;</div>
+          <div class="analogy-desc">Must be over 18 AND have a valid ID — both conditions required</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">||</div>
+          <div class="analogy-desc">VIP pass OR special permission — either one is enough to enter</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">!</div>
+          <div class="analogy-desc">If you do NOT have ID — the bouncer flips the check to denied</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">!==</div>
+          <div class="analogy-desc">Guest name does NOT match the list — strict mismatch check</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, enter your age and check the ID box, then
+        click Check — watch <code>&amp;&amp;</code> and <code>||</code> decide the
+        outcome in real time.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Eligibility Checker</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Operators Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Check Eligibility&lt;/h2&gt;
+
+  &lt;label&gt;Age:
+    &lt;input id="ageInput" type="number" placeholder="Enter age"
+      style="padding:6px 10px;border:1px solid #ccc;border-radius:6px;
+             font-size:1rem;width:130px;margin-left:8px"&gt;
+  &lt;/label&gt;&lt;br&gt;&lt;br&gt;
+
+  &lt;label style="display:flex;align-items:center;gap:8px;cursor:pointer"&gt;
+    &lt;input id="idCheck" type="checkbox"
+      style="width:16px;height:16px;cursor:pointer"&gt;
+    Has valid ID
+  &lt;/label&gt;&lt;br&gt;
+
+  &lt;button onclick="checkEligibility()"
+    style="padding:8px 18px;background:#f7df1e;border:none;border-radius:6px;
+           cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Check
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2.2;font-size:0.95rem"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function checkEligibility() {
+      let age   = Number(document.getElementById("ageInput").value);
+      let hasID = document.getElementById("idCheck").checked;
+
+      if (!age) {
+        document.getElementById("output").innerHTML =
+          "&lt;b style='color:red'&gt;Please enter an age.&lt;/b&gt;";
+        return;
+      }
+
+      let isAdult    = age &gt;= 18;
+      let canEnter   = isAdult &amp;&amp; hasID;
+      let partialPass = isAdult || hasID;
+
+      document.getElementById("output").innerHTML =
+        "&lt;b&gt;Age (&gt;= 18):&lt;/b&gt; " + isAdult + "&lt;br&gt;" +
+        "&lt;b&gt;Has ID:&lt;/b&gt; " + hasID + "&lt;br&gt;" +
+        "&lt;b&gt;Can enter (age AND id):&lt;/b&gt; &lt;b style='color:" +
+          (canEnter ? "green" : "red") + "'&gt;" + canEnter + "&lt;/b&gt;&lt;br&gt;" +
+        "&lt;b&gt;Partial pass (age OR id):&lt;/b&gt; " + partialPass;
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Greater or smaller check</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let num = 60;
+
+// Print true or false — is num greater than 50?
+console.log(num > 50);</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Run the code — confirm it prints <code>true</code></li>
+              <li>Change <code>num</code> to <code>40</code> and run again — confirm it prints <code>false</code></li>
+              <li>Add a check using <code>===</code> to see if <code>num</code> equals <code>50</code> exactly</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Login validator</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let username = "admin";
+let password = "1234";
+
+// Use && to check both conditions at once</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>===</code> and <code>&amp;&amp;</code> to check if both username and password are correct</li>
+              <li>Store the result in a <code>let isLoggedIn</code> variable and print it</li>
+              <li>Try changing either value and confirm the result switches to <code>false</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            What will be the output?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(5 == "5");</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> false</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> true</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Error</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> undefined</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>==</code> performs type coercion — the string <code>"5"</code> is converted to the number <code>5</code> before comparing, so the values match and the result is <code>true</code>. This is why <code>===</code> is preferred.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What will be the output?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(5 === "5");</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> true</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> false</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> undefined</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Error</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>===</code> checks value <em>and</em> type. <code>5</code> is a number and <code>"5"</code> is a string — different types, so the result is <code>false</code> with no conversion.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What does the <code>&amp;&amp;</code> operator mean?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let a = true;
+let b = false;
+console.log(a &amp;&amp; b);
+console.log(a || b);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> OR — at least one must be true</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> AND — both must be true</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> NOT — flips the value</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> XOR — exactly one must be true</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>&amp;&amp;</code> (AND) returns <code>true</code> only when <em>both</em> operands are <code>true</code>. If either is <code>false</code>, the result is <code>false</code>. <code>||</code> (OR) returns <code>true</code> if at least one is <code>true</code>.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Always prefer <code>===</code> over <code>==</code> — loose equality causes unexpected bugs that are very hard to track down:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">== vs === traps</span>
+              </div>
+              <pre><code class="language-javascript">console.log(0 == false);   // true  — coercion!
+console.log(0 === false);  // false — correct
+
+console.log("" == false);  // true  — coercion!
+console.log("" === false); // false — correct
+
+console.log(null == undefined);  // true  — coercion!
+console.log(null === undefined); // false — correct</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use <code>!</code> to toggle boolean values cleanly — a common pattern for on/off switches:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Toggle with !</span>
+              </div>
+              <pre><code class="language-javascript">let isActive = true;
+
+isActive = !isActive; // toggle off
+console.log(isActive); // false
+
+isActive = !isActive; // toggle on
+console.log(isActive); // true</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use <code>||</code> for default values when a variable might be falsy — a very common real-world pattern:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">|| default value pattern</span>
+              </div>
+              <pre><code class="language-javascript">let userInput = "";          // empty string — falsy
+let name      = userInput || "Guest";
+console.log(name); // "Guest" — fallback used
+
+let score     = 0;           // zero — also falsy!
+let display   = score || "No score yet";
+console.log(display); // "No score yet" — careful with 0!</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use the <strong>nullish coalescing operator</strong> (<code>??</code>) when you only want to fall back on <code>null</code> or <code>undefined</code> — not on <code>0</code> or empty string:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">?? vs || for defaults</span>
+              </div>
+              <pre><code class="language-javascript">let score = 0;
+
+console.log(score || 100);  // 100 — 0 is falsy, || replaces it
+console.log(score ?? 100);  // 0   — ?? only replaces null/undefined
+
+let empty = null;
+console.log(empty ?? "default"); // "default"</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Operator precedence matters here — evaluate step by step, then run to confirm.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">console.log(10 > 5 &amp;&amp; 5 &lt; 3 || true);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Full expression: 10 > 5 && 5 < 3 || true
+
+// Operator precedence (highest to lowest here):
+//   > and <  evaluate first  (comparison)
+//   &&       evaluates next  (AND)
+//   ||       evaluates last  (OR)
+
+// Step 1: evaluate comparisons
+//   10 > 5  → true
+//   5 < 3   → false
+
+// Expression now: true && false || true
+
+// Step 2: evaluate && (higher precedence than ||)
+//   true && false → false
+
+// Expression now: false || true
+
+// Step 3: evaluate ||
+//   false || true → true
+
+// Output → true
+
+// Key takeaway:
+//   && binds tighter than || — the same way * binds before +
+//   Use parentheses to make intent explicit:
+//   (10 > 5 && 5 < 3) || true   → same result, much clearer</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="../topics/2-12.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      2.12 Advanced Functions
+    </a>
+    <a href="3-2.html" class="nav-btn next">
+      3.2 Decision Statements
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>

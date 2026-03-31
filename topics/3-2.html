@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2 Decision Statements — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 3</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">3.2 Decision Statements</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">3.2</span>
+      <span class="module-tag">Module 3 · Decisions &amp; Loops</span>
+    </div>
+    <h1>Decision <span class="highlight">Statements</span></h1>
+    <p class="subtitle">
+      Learn how to control what your program does next using
+      <code>if</code>, <code>else if</code>, <code>else</code>, and
+      <code>switch</code> — the building blocks of every branching decision in
+      JavaScript.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Decision statements</strong> in JavaScript control the flow of
+        execution based on conditions. They allow a program to choose different paths
+        depending on whether a condition evaluates to <code>true</code> or
+        <code>false</code>.
+      </p>
+      <p>
+        Without decision statements every program would run the same way every time —
+        decision statements are what give code the ability to respond differently to
+        different data, user input, or state.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Think of decision statements like <strong>choices you make in real life</strong>:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">if</span>
+          <span class="op-arrow">→</span>
+          <span>"If it's raining — take an umbrella." Run this block when the condition is <code>true</code></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">else if</span>
+          <span class="op-arrow">→</span>
+          <span>"If it's cloudy but not raining — bring a jacket." Check another condition</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">else</span>
+          <span class="op-arrow">→</span>
+          <span>"Otherwise — go as normal." The fallback when nothing else matched</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">switch</span>
+          <span class="op-arrow">→</span>
+          <span>Checks one value against many exact options — cleaner than a long chain of <code>if/else if</code></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — if / else if / else -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — if, else if, else</span>
+        </div>
+        <pre><code class="language-javascript">let marks = 75;
+
+if (marks >= 90) {
+  console.log("Grade A");
+} else if (marks >= 75) {
+  console.log("Grade B");
+} else if (marks >= 60) {
+  console.log("Grade C");
+} else {
+  console.log("Fail");
+}
+// Try changing marks to 95, 65, or 40</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>JavaScript checks conditions <em>top to bottom</em> and runs the <strong>first block that is true</strong></li>
+            <li>Once a matching block runs, all remaining <code>else if</code> and <code>else</code> branches are skipped</li>
+            <li><code>else</code> is optional — it acts as the default if no condition matched</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — switch -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — switch Statement</span>
+        </div>
+        <pre><code class="language-javascript">let day = 3;
+
+switch (day) {
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  case 3:
+    console.log("Wednesday");
+    break;
+  case 4:
+    console.log("Thursday");
+    break;
+  case 5:
+    console.log("Friday");
+    break;
+  default:
+    console.log("Weekend");
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>switch</code> compares one expression against multiple exact values using <strong>strict equality</strong></li>
+            <li><code>break</code> exits the switch — without it, execution falls through to the next case</li>
+            <li><code>default</code> runs when no case matches — equivalent to <code>else</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Ternary operator -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Ternary Operator (Short if/else)</span>
+        </div>
+        <pre><code class="language-javascript">let age = 20;
+
+// Long form
+let message1;
+if (age >= 18) {
+  message1 = "Adult";
+} else {
+  message1 = "Minor";
+}
+
+// Short form — ternary
+let message2 = age >= 18 ? "Adult" : "Minor";
+
+console.log(message1); // Adult
+console.log(message2); // Adult — same result, one line</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Syntax: <code>condition ? valueIfTrue : valueIfFalse</code></li>
+            <li>Ideal for simple two-way decisions that assign a value — keeps code concise</li>
+            <li>Avoid nesting ternaries — once it needs more than two outcomes, use <code>if/else</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — switch fall-through -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Switch Fall-Through (Intentional &amp; Accidental)</span>
+        </div>
+        <pre><code class="language-javascript">let signal = "red";
+
+switch (signal) {
+  case "red":
+    console.log("Stop");
+    break;
+  case "yellow":
+    console.log("Ready");
+    break;
+  case "green":
+    console.log("Go");
+    break;
+  default:
+    console.log("Invalid signal");
+}
+
+// Intentional fall-through — shared behaviour for multiple cases
+let month = 4; // April
+switch (month) {
+  case 1: case 3: case 5: case 7:
+  case 8: case 10: case 12:
+    console.log("31 days");
+    break;
+  case 4: case 6: case 9: case 11:
+    console.log("30 days");
+    break;
+  case 2:
+    console.log("28 or 29 days");
+    break;
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>When multiple cases should run the same code, stack them without <code>break</code> — intentional fall-through</li>
+            <li>The traffic signal example shows the clean form — one case, one action, one <code>break</code></li>
+            <li>The month example shows how to group cases that share the same outcome</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Two everyday systems that use decision logic constantly:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">if</div>
+          <div class="analogy-desc">ATM: if PIN is correct → allow access</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">else if</div>
+          <div class="analogy-desc">ATM: else if wrong PIN twice → show warning</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">else</div>
+          <div class="analogy-desc">ATM: else (3rd wrong attempt) → block card</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">switch</div>
+          <div class="analogy-desc">Traffic signal: Red → Stop, Yellow → Ready, Green → Go</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">? :</div>
+          <div class="analogy-desc">App theme: dark mode on? Show white text : show dark text</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">default</div>
+          <div class="analogy-desc">Traffic signal: unknown colour → do not proceed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, enter a score, and watch an
+        <code>if / else if / else</code> chain assign the correct grade live.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Grade Checker</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Decision Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Check Result&lt;/h2&gt;
+  &lt;input id="scoreInput" type="number" placeholder="Enter score (0–100)"
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:210px"&gt;
+  &lt;button onclick="checkGrade()"
+    style="margin-left:8px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Check Grade
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;font-size:1.05rem;line-height:2"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function checkGrade() {
+      let score = Number(document.getElementById("scoreInput").value);
+      let out   = document.getElementById("output");
+
+      if (isNaN(score) || score &lt; 0 || score &gt; 100) {
+        out.innerHTML = "&lt;b style='color:red'&gt;Enter a valid score between 0 and 100.&lt;/b&gt;";
+        return;
+      }
+
+      let grade, color;
+
+      if (score >= 90)      { grade = "A — Excellent";  color = "#22c55e"; }
+      else if (score >= 75) { grade = "B — Good";        color = "#3b82f6"; }
+      else if (score >= 60) { grade = "C — Average";     color = "#f59e0b"; }
+      else if (score >= 40) { grade = "D — Below Average"; color = "#f97316"; }
+      else                  { grade = "F — Fail";         color = "#ef4444"; }
+
+      out.innerHTML =
+        "&lt;b&gt;Score:&lt;/b&gt; " + score + "&lt;br&gt;" +
+        "&lt;b&gt;Grade:&lt;/b&gt; &lt;b style='color:" + color + ";font-size:1.15rem'&gt;" + grade + "&lt;/b&gt;";
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Even or Odd</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let num = 7;
+
+// Use if/else to print "Even" or "Odd"</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>num % 2 === 0</code> as the condition — if true it's even, else it's odd</li>
+              <li>Print the result with a label — e.g. <em>"7 is Odd"</em></li>
+              <li>Try changing <code>num</code> to <code>12</code> and verify it prints <em>"Even"</em></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Fruit switch</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let fruit = "apple";
+
+// Write a switch with cases for apple, banana, mango</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Add cases: <code>"apple"</code> → <em>"Red fruit"</em>, <code>"banana"</code> → <em>"Yellow fruit"</em>, <code>"mango"</code> → <em>"King of fruits"</em></li>
+              <li>Add a <code>default</code> case: <em>"Unknown fruit"</em></li>
+              <li>Test with each value — don't forget <code>break</code> in each case</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            What will be the output?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let x = 5;
+
+if (x > 10) {
+  console.log("A");
+} else {
+  console.log("B");
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> A</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> B</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Both A and B</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Error</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>5 &gt; 10</code> is <code>false</code>, so the <code>if</code> block is skipped and the <code>else</code> block runs, printing <code>"B"</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What happens if <code>break</code> is missing from a switch case?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let n = 1;
+switch (n) {
+  case 1:
+    console.log("One");
+  case 2:
+    console.log("Two");
+    break;
+  case 3:
+    console.log("Three");
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Stops at that case</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Skips the next case</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Falls through to the next case</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Throws an error</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> Without <code>break</code>, JavaScript continues executing the next case even if its value doesn't match — called fall-through. Here case 1 runs, then falls into case 2. Both <em>"One"</em> and <em>"Two"</em> print.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            Which statement is better for checking many exact fixed values?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> if / else if chain</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> switch</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> for loop</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> while loop</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>switch</code> is cleaner and more readable when checking one variable against many fixed values. Use <code>if/else if</code> for range conditions (<code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>) where switch does not apply.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Choose the right tool: use <code>if/else</code> for <strong>range conditions</strong> and <code>switch</code> for <strong>exact matches</strong>:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">if for ranges, switch for exact values</span>
+              </div>
+              <pre><code class="language-javascript">let score = 82;
+
+// if — best for ranges
+if (score >= 90)      console.log("A");
+else if (score >= 75) console.log("B");
+else                  console.log("C");
+
+// switch — best for exact matches
+let lang = "JS";
+switch (lang) {
+  case "JS":  console.log("JavaScript"); break;
+  case "PY":  console.log("Python");     break;
+  default:    console.log("Unknown");
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>You can use <strong>early return</strong> inside functions to avoid deeply nested <code>if</code> blocks — called a "guard clause":</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Guard clauses flatten nested ifs</span>
+              </div>
+              <pre><code class="language-javascript">// ✗ Deep nesting — hard to read
+function checkAccess(age, hasID) {
+  if (age >= 18) {
+    if (hasID) {
+      console.log("Access granted");
+    }
+  }
+}
+
+// ✓ Guard clauses — flat and readable
+function checkAccessClean(age, hasID) {
+  if (age &lt; 18) return console.log("Too young");
+  if (!hasID)   return console.log("No ID");
+  console.log("Access granted");
+}
+
+checkAccessClean(20, true);
+checkAccessClean(16, true);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use the <strong>ternary operator</strong> for simple two-way assignments — but switch back to <code>if/else</code> the moment logic gets complex:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Ternary for simple assignments</span>
+              </div>
+              <pre><code class="language-javascript">let temp = 35;
+
+// Ternary — clean for one simple choice
+let weather = temp > 30 ? "Hot" : "Cool";
+console.log(weather);
+
+// Use if/else when the logic needs more branches
+let advice;
+if (temp > 35)      advice = "Stay indoors";
+else if (temp > 25) advice = "Light clothing";
+else                advice = "Wear a jacket";
+console.log(advice);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Always add a <code>default</code> to every <code>switch</code> — it catches unexpected values and prevents silent failures:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">default catches unexpected values</span>
+              </div>
+              <pre><code class="language-javascript">function getStatus(code) {
+  switch (code) {
+    case 200: return "OK";
+    case 404: return "Not Found";
+    case 500: return "Server Error";
+    default:  return "Unknown status: " + code; // always provide this
+  }
+}
+
+console.log(getStatus(200));
+console.log(getStatus(403)); // caught by default</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      There is no <code>break</code> after <code>case 2</code> — predict every line that
+      will print before running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let value = 2;
+
+switch (value) {
+  case 1:
+    console.log("One");
+  case 2:
+    console.log("Two");
+  case 3:
+    console.log("Three");
+    break;
+  default:
+    console.log("Default");
+}</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// value = 2
+
+// case 1: value !== 1 → SKIPPED entirely
+
+// case 2: value === 2 → MATCH — execution begins here
+//   console.log("Two")   → prints "Two"
+//   No break → FALL THROUGH to next case
+
+// case 3: value !== 3, but we're already inside due to fall-through
+//   console.log("Three") → prints "Three"
+//   break → EXIT switch
+
+// default: not reached — we already exited
+
+// Final output:
+//   Two
+//   Three
+
+// Key takeaway:
+//   Without break, execution "falls through" every subsequent
+//   case regardless of whether the value matches.
+//   case 1 was skipped because we hadn't entered yet.
+//   Once inside (at case 2), all remaining cases run until
+//   a break or the end of the switch is reached.
+
+// Fix: add break after case 2 if fall-through is unintended:
+//   case 2:
+//     console.log("Two");
+//     break;  // ← prevents "Three" from printing</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="3-1.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      3.1 Logical &amp; Comparison Operators
+    </a>
+    <a href="3-3.html" class="nav-btn next">
+      3.3 Loops
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>

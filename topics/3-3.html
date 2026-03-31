@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.3 Loops — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 3</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">3.3 Loops</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">3.3</span>
+      <span class="module-tag">Module 3 · Decisions &amp; Loops</span>
+    </div>
+    <h1><span class="highlight">Loops</span></h1>
+    <p class="subtitle">
+      Automate repetitive work with <code>for</code>, <code>while</code>, and
+      <code>do...while</code> — and control the flow mid-loop with
+      <code>break</code> and <code>continue</code>.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Loops</strong> in JavaScript execute a block of code repeatedly as
+        long as a specified condition remains <code>true</code>. They automate
+        repetitive tasks and eliminate code duplication — instead of writing
+        <code>console.log(1)</code> through <code>console.log(100)</code>, one loop
+        handles all of it.
+      </p>
+      <p>
+        JavaScript provides three loop types — <code>for</code>, <code>while</code>,
+        and <code>do...while</code> — plus <code>break</code> and <code>continue</code>
+        to control what happens mid-loop.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Instead of writing the same code again and again, loops say:
+        <strong>"Do this work multiple times until the condition fails."</strong>
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">for</span>
+          <span class="op-arrow">→</span>
+          <span>When you know <strong>exactly how many times</strong> to repeat — <em>"loop 10 times"</em></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">while</span>
+          <span class="op-arrow">→</span>
+          <span>When you repeat <strong>until a condition changes</strong> — <em>"keep going while logged in"</em></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">do...while</span>
+          <span class="op-arrow">→</span>
+          <span>Run the code <strong>at least once</strong>, then check the condition</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">break</span>
+          <span class="op-arrow">→</span>
+          <span><strong>Exit the loop immediately</strong> — stop everything now</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">continue</span>
+          <span class="op-arrow">→</span>
+          <span><strong>Skip the current iteration</strong> — jump to the next one</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — for loop -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — for Loop</span>
+        </div>
+        <pre><code class="language-javascript">// Structure: for (initialise; condition; update)
+for (let i = 1; i &lt;= 5; i++) {
+  console.log(i);
+}
+
+// Count down
+for (let i = 5; i >= 1; i--) {
+  console.log(i);
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><strong>Initialise</strong> (<code>let i = 1</code>) — sets the counter before the loop starts</li>
+            <li><strong>Condition</strong> (<code>i &lt;= 5</code>) — checked before each iteration; loop stops when false</li>
+            <li><strong>Update</strong> (<code>i++</code>) — runs after each iteration to move the counter forward</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — while loop -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — while Loop</span>
+        </div>
+        <pre><code class="language-javascript">let i = 1;
+
+while (i &lt;= 3) {
+  console.log("Round " + i);
+  i++; // must update — otherwise infinite loop!
+}
+
+// while: condition checked BEFORE each run
+// if false from the start, the body never runs
+let count = 10;
+while (count &lt; 5) {
+  console.log("This never prints");
+  count++;
+}
+console.log("Loop skipped — condition was false from start");</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>The condition is evaluated <em>before</em> each iteration — if false at the start, the body never runs</li>
+            <li>Always update the variable inside the loop or it will run forever</li>
+            <li>Use <code>while</code> when the number of iterations is not known in advance</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — do...while -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — do...while Loop</span>
+        </div>
+        <pre><code class="language-javascript">let i = 1;
+
+do {
+  console.log("Run " + i);
+  i++;
+} while (i &lt;= 3);
+
+// Key difference: runs at least ONCE even if condition is false
+let x = 100;
+do {
+  console.log("Runs once even though x > 5");
+  x++;
+} while (x &lt; 5);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>The body runs <em>first</em>, then the condition is checked — guarantees at least one execution</li>
+            <li>Common use case: asking a user to input data until they provide a valid value</li>
+            <li>Less common than <code>for</code> and <code>while</code>, but essential when the first run must always happen</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — break & continue -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — break &amp; continue</span>
+        </div>
+        <pre><code class="language-javascript">// continue — skip current iteration, keep going
+for (let i = 1; i &lt;= 5; i++) {
+  if (i === 3) continue; // skip 3
+  console.log(i);
+}
+// Output: 1, 2, 4, 5
+
+// break — exit the loop entirely
+for (let i = 1; i &lt;= 10; i++) {
+  if (i === 4) break; // stop at 4
+  console.log(i);
+}
+// Output: 1, 2, 3</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — notice what's missing!</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>continue</code> skips the rest of the current iteration and jumps straight to the next one</li>
+            <li><code>break</code> exits the loop immediately — no further iterations run</li>
+            <li>Both work inside <code>for</code>, <code>while</code>, and <code>do...while</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 5 — Loops and Arrays -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 5 — Looping Over an Array</span>
+        </div>
+        <pre><code class="language-javascript">let fruits = ["Apple", "Banana", "Mango", "Grapes"];
+
+// Classic for loop with index
+for (let i = 0; i &lt; fruits.length; i++) {
+  console.log(i + ": " + fruits[i]);
+}
+
+// Modern for...of — cleaner when index not needed
+for (let fruit of fruits) {
+  console.log(fruit.toUpperCase());
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>The classic <code>for</code> loop with <code>array.length</code> is the most universal way to iterate an array</li>
+            <li><code>for...of</code> gives you each element directly — use it when you don't need the index</li>
+            <li>Always use <code>i &lt; array.length</code> (not <code>&lt;=</code>) — the last valid index is <code>length - 1</code></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a washing machine — its cycle maps perfectly to loop concepts:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">for</div>
+          <div class="analogy-desc">A 5-cycle setting — runs a fixed number of wash cycles</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">while</div>
+          <div class="analogy-desc">Washes until the timer reaches zero — condition-based</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">do...while</div>
+          <div class="analogy-desc">Always does one rinse first, then checks if more are needed</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">break</div>
+          <div class="analogy-desc">Emergency stop button — halts the machine immediately</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">continue</div>
+          <div class="analogy-desc">Skip the delicate cycle — jump straight to the next setting</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">for...of</div>
+          <div class="analogy-desc">Process each item in the laundry bag one at a time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, enter a range, and watch a loop generate
+        every number — with even numbers highlighted in yellow.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Number Printer with Loop</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Loops Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Print Numbers&lt;/h2&gt;
+
+  &lt;label&gt;From:
+    &lt;input id="from" type="number" value="1"
+      style="width:70px;padding:6px 10px;border:1px solid #ccc;
+             border-radius:6px;font-size:1rem;margin:0 8px"&gt;
+  &lt;/label&gt;
+  &lt;label&gt;To:
+    &lt;input id="to" type="number" value="10"
+      style="width:70px;padding:6px 10px;border:1px solid #ccc;
+             border-radius:6px;font-size:1rem;margin:0 8px"&gt;
+  &lt;/label&gt;
+  &lt;button onclick="printNums()"
+    style="padding:8px 18px;background:#f7df1e;border:none;border-radius:6px;
+           cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Show
+  &lt;/button&gt;
+
+  &lt;div id="output"
+    style="margin-top:16px;display:flex;flex-wrap:wrap;gap:8px"&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    function printNums() {
+      let from = Number(document.getElementById("from").value);
+      let to   = Number(document.getElementById("to").value);
+      let out  = document.getElementById("output");
+
+      if (from > to || to - from > 200) {
+        out.innerHTML = "&lt;b style='color:red'&gt;Enter a valid range (max 200 numbers).&lt;/b&gt;";
+        return;
+      }
+
+      let html = "";
+      for (let i = from; i &lt;= to; i++) {
+        let isEven = i % 2 === 0;
+        html += `&lt;span style="display:inline-block;width:38px;height:38px;
+          line-height:38px;text-align:center;border-radius:8px;font-weight:600;
+          background:${isEven ? '#f7df1e' : '#e2e8f0'};
+          color:${isEven ? '#111' : '#444'}"&gt;${i}&lt;/span&gt;`;
+      }
+
+      out.innerHTML = html;
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Print 1 to 10</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">// Use a for loop to print 1 through 10
+for (let i = 1; i &lt;= 10; i++) {
+  // your code here
+}</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Print each number using <code>console.log(i)</code></li>
+              <li>Modify the loop to count <em>down</em> from 10 to 1 instead</li>
+              <li>Calculate and print the sum of all numbers 1–10 inside the loop</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Even numbers 1 to 20</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">for (let i = 1; i &lt;= 20; i++) {
+  // print only even numbers
+}</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>i % 2 === 0</code> to check if a number is even — if not, <code>continue</code> to skip it</li>
+              <li>Print each even number with a label — e.g. <em>"Even: 2"</em></li>
+              <li>Count how many even numbers were printed and log the total at the end</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            How many times will this loop run?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">for (let i = 1; i &lt;= 3; i++) {
+  console.log(i);
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 2</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 3</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> 4</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> 1</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> The loop starts at <code>i = 1</code> and runs while <code>i &lt;= 3</code> — that's iterations for <code>1</code>, <code>2</code>, and <code>3</code>. When <code>i</code> becomes <code>4</code>, the condition is false and the loop stops.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Which loop always executes its body at least once?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let x = 100;
+
+do {
+  console.log("Ran once!");
+  x++;
+} while (x &lt; 5);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> for</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> while</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> do...while</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> for...of</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>do...while</code> runs its body <em>first</em> and checks the condition <em>after</em>. Even though <code>x = 100</code> fails <code>x &lt; 5</code> immediately, the body still executes once.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What does <code>break</code> do inside a loop?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">for (let i = 1; i &lt;= 5; i++) {
+  if (i === 3) break;
+  console.log(i);
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Skips the current iteration and continues</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Exits the loop immediately</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Restarts the loop from the beginning</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Throws an error</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>break</code> exits the loop immediately — no further iterations run. Here, <code>1</code> and <code>2</code> print but when <code>i === 3</code> the loop stops entirely. <code>continue</code> would only skip <code>3</code> and carry on to <code>4</code> and <code>5</code>.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Choose the right loop for the job — matching the loop to the situation makes your intent clear:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Which loop when?</span>
+              </div>
+              <pre><code class="language-javascript">// for — known count
+for (let i = 0; i &lt; 5; i++) console.log("Step", i);
+
+// while — unknown count (keep going until condition changes)
+let attempts = 0;
+while (attempts &lt; 3) {
+  console.log("Attempt", attempts + 1);
+  attempts++;
+}
+
+// for...of — iterate array values cleanly
+let names = ["Aman", "Priya", "Raj"];
+for (let name of names) console.log("Hello,", name);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Always avoid <strong>infinite loops</strong> — if the condition never becomes false, the browser will freeze. Always ensure your loop counter updates:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Safe while loop pattern</span>
+              </div>
+              <pre><code class="language-javascript">// ✗ Dangerous — i never changes, runs forever
+// while (i <= 5) { console.log(i); }  // commented out to be safe
+
+// ✓ Safe — i increments every iteration
+let i = 1;
+while (i &lt;= 5) {
+  console.log(i);
+  i++; // critical — this ends the loop
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use <code>continue</code> to write <strong>filter logic</strong> inside loops — it's often cleaner than nesting an <code>if</code> block around everything:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">continue as a filter</span>
+              </div>
+              <pre><code class="language-javascript">// Print only numbers divisible by 3 in range 1–15
+for (let i = 1; i &lt;= 15; i++) {
+  if (i % 3 !== 0) continue; // skip non-multiples of 3
+  console.log(i); // only 3, 6, 9, 12, 15 reach here
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use <code>break</code> with a search pattern — exit as soon as you find what you're looking for instead of running unnecessary iterations:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">break to stop early on find</span>
+              </div>
+              <pre><code class="language-javascript">let scores = [72, 88, 55, 95, 61];
+let target = 95;
+let found  = false;
+
+for (let i = 0; i &lt; scores.length; i++) {
+  if (scores[i] === target) {
+    console.log("Found " + target + " at index " + i);
+    found = true;
+    break; // no point checking the rest
+  }
+}
+
+if (!found) console.log("Not found");</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      <code>continue</code> skips certain numbers — predict exactly which numbers
+      will print before running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">for (let i = 1; i &lt;= 5; i++) {
+  if (i % 2 === 0) continue;
+  console.log(i);
+}</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Loop runs for i = 1, 2, 3, 4, 5
+
+// i = 1: 1 % 2 = 1 (not 0) → condition false → continue NOT triggered
+//        console.log(1) → prints 1
+
+// i = 2: 2 % 2 = 0 → condition true → continue triggered
+//        Rest of body skipped → 2 is NOT printed
+
+// i = 3: 3 % 2 = 1 → condition false → continue NOT triggered
+//        console.log(3) → prints 3
+
+// i = 4: 4 % 2 = 0 → condition true → continue triggered
+//        4 is NOT printed
+
+// i = 5: 5 % 2 = 1 → condition false → continue NOT triggered
+//        console.log(5) → prints 5
+
+// Final output:
+//   1
+//   3
+//   5   ← only the ODD numbers
+
+// Key takeaway:
+//   i % 2 === 0 is true for EVEN numbers (2, 4)
+//   continue skips the rest of the iteration for those numbers
+//   So only ODD numbers (1, 3, 5) reach console.log</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="3-2.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      3.2 Decision Statements
+    </a>
+    <a href="../content.html" class="nav-btn next">
+      Module 3 Complete
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
