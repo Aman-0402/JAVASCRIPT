@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.2 Data Types — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 2</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">2.2 Data Types</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">2.2</span>
+      <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
+    </div>
+    <h1>Data <span class="highlight">Types</span></h1>
+    <p class="subtitle">
+      Understand the kinds of values JavaScript can hold — from simple primitives like
+      numbers and strings, to complex reference types like objects and arrays.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        In JavaScript, <strong>data types</strong> define the kind of value a variable
+        can hold. They determine how data is stored, processed, and what operations can
+        be performed on it. JavaScript has two categories:
+      </p>
+      <p>
+        <strong>Primitive Types</strong> — basic, immutable values stored directly:
+        <code>String</code>, <code>Number</code>, <code>Boolean</code>,
+        <code>null</code>, <code>undefined</code>, <code>Symbol</code>, and
+        <code>BigInt</code>.
+      </p>
+      <p>
+        <strong>Non-Primitive Types</strong> — complex, reference values stored by
+        address in memory: <code>Object</code>, <code>Array</code>,
+        <code>Function</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Data types are like <strong>types of containers</strong> — each designed
+        to hold a specific kind of value:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">Primitive</span>
+          <span class="op-arrow">→</span>
+          <span>One simple value — a number, text, true/false</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Object</span>
+          <span class="op-arrow">→</span>
+          <span>A labelled collection of values — <code>{ name: "Aman", age: 22 }</code></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Array</span>
+          <span class="op-arrow">→</span>
+          <span>An ordered list of values — <code>["red", "green", "blue"]</code></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Primitive Types -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Primitive Data Types</span>
+        </div>
+        <pre><code class="language-javascript">let name       = "Aman";        // String
+let age        = 22;            // Number
+let isStudent  = true;          // Boolean
+let emptyValue = null;          // Null
+let notAssigned;                // Undefined
+let uniqueId   = Symbol("id");  // Symbol
+
+console.log(typeof name);
+console.log(typeof age);
+console.log(typeof isStudent);
+console.log(typeof emptyValue);
+console.log(typeof notAssigned);
+console.log(typeof uniqueId);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>String</code> → text wrapped in quotes</li>
+            <li><code>Number</code> → any numeric value (integer or decimal)</li>
+            <li><code>Boolean</code> → only <code>true</code> or <code>false</code></li>
+            <li><code>null</code> → intentionally empty — you set this on purpose</li>
+            <li><code>undefined</code> → declared but never assigned a value</li>
+            <li><code>Symbol</code> → a guaranteed unique identifier</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Non-Primitive Types -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Non-Primitive Data Types</span>
+        </div>
+        <pre><code class="language-javascript">let person = {
+  name: "Aman",
+  age: 22
+}; // Object
+
+let colors = ["red", "green", "blue"]; // Array
+
+console.log(typeof person);
+console.log(typeof colors);
+console.log(Array.isArray(colors)); // better Array check</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>Object</code> → stores key-value pairs — the most flexible data structure</li>
+            <li><code>Array</code> → an ordered list; <code>typeof</code> calls it <code>"object"</code> too</li>
+            <li>Use <code>Array.isArray()</code> to reliably distinguish an array from a plain object</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Value vs Reference -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Copy by Value vs Copy by Reference</span>
+        </div>
+        <pre><code class="language-javascript">// Primitives → copied by VALUE
+let a = 10;
+let b = a;
+b = 20;
+console.log(a); // 10 — unaffected
+console.log(b); // 20
+
+// Objects → copied by REFERENCE
+let obj1 = { value: 10 };
+let obj2 = obj1;     // both point to the same object
+obj2.value = 20;
+console.log(obj1.value); // 20 — obj1 changed too!</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — spot the difference!</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><strong>Primitives</strong> are copied by value — <code>b = a</code> makes an independent copy</li>
+            <li><strong>Objects</strong> are copied by reference — <code>obj2 = obj1</code> makes both variables point to the <em>same</em> object in memory</li>
+            <li>Changing <code>obj2</code> therefore also changes <code>obj1</code></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think about the difference between a single item and a collection:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">String</div>
+          <div class="analogy-desc">A name tag — "Aman" — a single piece of text</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Number</div>
+          <div class="analogy-desc">A price tag — ₹100 — a single numeric value</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Boolean</div>
+          <div class="analogy-desc">A light switch — only on or off, true or false</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">null</div>
+          <div class="analogy-desc">An empty box — you deliberately left nothing inside</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Object</div>
+          <div class="analogy-desc">A wallet — holds money, cards, and ID all together</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Array</div>
+          <div class="analogy-desc">A shopping list — ordered items you can loop through</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, then press the button inside to check the
+        <code>typeof</code> each variable and display the results live on the page.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Data Type Checker</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Data Types&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Check Data Types&lt;/h2&gt;
+  &lt;button onclick="checkTypes()"
+    style="padding:8px 20px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Click
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2.2;font-size:0.95rem"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function checkTypes() {
+      let name      = "Aman";
+      let age       = 22;
+      let isStudent = true;
+      let empty     = null;
+      let colors    = ["red", "green", "blue"];
+      let person    = { name: "Aman", age: 22 };
+
+      const row = (label, val) =>
+        `&lt;b&gt;${label}&lt;/b&gt; → &lt;code&gt;typeof&lt;/code&gt; = &lt;b style="color:#e07b00"&gt;${typeof val}&lt;/b&gt;&lt;br&gt;`;
+
+      document.getElementById("output").innerHTML =
+        row("name",      name)      +
+        row("age",       age)       +
+        row("isStudent", isStudent) +
+        row("null",      empty)     +
+        row("colors []", colors)    +
+        row("person {}", person);
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Identify your types</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let name      = "Your Name";
+let age       = 0;
+let isLearning = true;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Replace the values with your own name, age, and learning status</li>
+              <li>Print each variable's type using <code>typeof</code></li>
+              <li>Confirm: name → string, age → number, isLearning → boolean</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Student object &amp; subjects array</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">const student = { name: "Priya", marks: 88 };
+const subjects = ["Maths", "Science", "English"];</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Log <code>typeof student</code> and <code>typeof subjects</code> — notice both say <code>"object"</code></li>
+              <li>Use <code>Array.isArray(subjects)</code> to correctly detect the array</li>
+              <li>Print <code>student.name</code> and <code>subjects[0]</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which of these is <strong>not</strong> a primitive data type?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> String</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Number</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Object</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Boolean</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> Object is a non-primitive (reference) type. String, Number, and Boolean are all primitives — they hold a single immutable value.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What does <code>typeof null</code> return?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(typeof null);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> "null"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> "undefined"</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> "object"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> "number"</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>typeof null === "object"</code> is a well-known JavaScript bug that has existed since its first version and was never fixed to preserve backwards compatibility.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What does <code>typeof []</code> return?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(typeof []);
+console.log(Array.isArray([]));</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> "array"</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> "object"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> "list"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> "undefined"</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Arrays are technically objects in JavaScript, so <code>typeof []</code> returns <code>"object"</code>. Use <code>Array.isArray()</code> whenever you need to tell them apart.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p><code>typeof null</code> returns <code>"object"</code> — a historic JavaScript bug. To check for null, always compare directly:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Correct null check</span>
+              </div>
+              <pre><code class="language-javascript">let val = null;
+
+console.log(typeof val);     // "object" — misleading!
+console.log(val === null);   // true  — correct check</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use <code>Array.isArray()</code> instead of <code>typeof</code> to reliably detect arrays:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Detecting arrays correctly</span>
+              </div>
+              <pre><code class="language-javascript">let arr = [1, 2, 3];
+
+console.log(typeof arr);          // "object" — not helpful
+console.log(Array.isArray(arr));  // true  — reliable</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Know the difference between <code>undefined</code> and <code>null</code> — they look similar but mean different things:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">undefined vs null</span>
+              </div>
+              <pre><code class="language-javascript">let x;          // undefined — declared, never assigned
+let y = null;   // null — deliberately set to empty
+
+console.log(x); // undefined
+console.log(y); // null
+console.log(x == y);  // true  (loose equality)
+console.log(x === y); // false (strict equality)</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>You can mutate the <em>properties</em> of a <code>const</code> object — you just can't replace the object itself:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">const object mutation</span>
+              </div>
+              <pre><code class="language-javascript">const user = { name: "Aman" };
+user.name = "Raj";  // allowed — property changed
+console.log(user.name);
+
+// user = {};  // Error — cannot reassign the binding</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Predict both outputs before running — remember the <code>typeof null</code> quirk!
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let x = null;
+let y;
+
+console.log(typeof x);
+console.log(typeof y);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Step 1: let x = null
+//         x holds the value null (intentionally empty)
+
+// Step 2: typeof x
+//         Expected: "null" — Actual: "object"
+//         This is a historic JavaScript bug (since 1995).
+//         null is NOT an object, but typeof reports it as one.
+//         Output → "object"
+
+// Step 3: let y;
+//         y is declared but never assigned — its value is undefined
+
+// Step 4: typeof y
+//         typeof undefined === "undefined"
+//         Output → "undefined"
+
+// Final output:
+//   "object"     ← the typeof null bug
+//   "undefined"  ← declared but unassigned
+
+// Key takeaway:
+//   To check for null → use (x === null), not typeof
+//   To check for undefined → typeof y === "undefined" works fine</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="2-1.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      2.1 Variables
+    </a>
+    <a href="2-3.html" class="nav-btn next">
+      2.3 Type Conversion
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
