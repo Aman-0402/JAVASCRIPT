@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.3 Output to HTML — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 4</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">4.3 Output to HTML</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">4.3</span>
+      <span class="module-tag">Module 4 · Document Object Model (DOM)</span>
+    </div>
+    <h1>Output to <span class="highlight">HTML</span></h1>
+    <p class="subtitle">
+      Learn how to display and update content on a web page using
+      <code>innerHTML</code>, <code>textContent</code>, and dynamic content
+      techniques — the core of every interactive user interface.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Output to HTML</strong> refers to the process of updating or displaying
+        content inside HTML elements using JavaScript, primarily through properties like
+        <code>innerHTML</code> and <code>textContent</code>.
+      </p>
+      <p>
+        These properties let you change what a user sees on the page without reloading
+        it — updating a heading after a button click, showing a result after a
+        calculation, or building an entire list dynamically from data.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        JavaScript can change what is displayed on the page — choose the right tool
+        based on whether you need formatting or just plain text:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">innerHTML</span>
+          <span class="op-arrow">→</span>
+          <span>Injects HTML — tags like <code>&lt;b&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;img&gt;</code> are <strong>rendered</strong></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">textContent</span>
+          <span class="op-arrow">→</span>
+          <span>Injects plain text — any HTML tags are shown as <strong>literal characters</strong>, not rendered</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">innerText</span>
+          <span class="op-arrow">→</span>
+          <span>Similar to <code>textContent</code> but respects CSS visibility — hidden text is excluded</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">value</span>
+          <span class="op-arrow">→</span>
+          <span>Reads or sets the content of form inputs — <code>input.value</code>, <code>textarea.value</code></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — innerHTML -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — innerHTML (Renders HTML Tags)</span>
+        </div>
+        <pre><code class="language-html">&lt;p id="box1"&gt;Original text&lt;/p&gt;
+
+&lt;script&gt;
+  let el = document.getElementById("box1");
+  el.innerHTML = "&lt;b&gt;Hello &lt;em&gt;Aman&lt;/em&gt;!&lt;/b&gt;";
+  // The &lt;b&gt; and &lt;em&gt; tags ARE rendered — text appears bold + italic
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>innerHTML</code> replaces the element's content with a new HTML string</li>
+            <li>Any HTML tags inside the string are parsed and rendered by the browser</li>
+            <li>You can inject entire structures — lists, tables, images — with a single assignment</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — textContent -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — textContent (Plain Text Only)</span>
+        </div>
+        <pre><code class="language-html">&lt;p id="box2"&gt;Original text&lt;/p&gt;
+
+&lt;script&gt;
+  let el = document.getElementById("box2");
+  el.textContent = "&lt;b&gt;Hello Aman&lt;/b&gt;";
+  // The tags are NOT rendered — they appear as literal text: &lt;b&gt;Hello Aman&lt;/b&gt;
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>textContent</code> treats the value as raw text — HTML tags are escaped and displayed literally</li>
+            <li>This makes it <strong>safe for user-provided data</strong> — no risk of injecting malicious scripts</li>
+            <li>It is also faster than <code>innerHTML</code> because no HTML parsing is required</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Dynamic content from data -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Dynamic Content from an Array</span>
+        </div>
+        <pre><code class="language-html">&lt;ul id="list"&gt;&lt;/ul&gt;
+
+&lt;script&gt;
+  let fruits = ["Apple", "Banana", "Mango"];
+  let html   = "";
+
+  fruits.forEach(function(fruit) {
+    html += "&lt;li&gt;" + fruit + "&lt;/li&gt;";
+  });
+
+  document.getElementById("list").innerHTML = html;
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Build an HTML string by looping through data, then inject it all at once with <code>innerHTML</code></li>
+            <li>This is how real apps render lists, tables, and cards from API data</li>
+            <li>Assigning once at the end is more efficient than calling <code>innerHTML +=</code> inside the loop</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Reading vs writing, and value -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Reading Content &amp; Input Value</span>
+        </div>
+        <pre><code class="language-html">&lt;p id="msg"&gt;Hello World&lt;/p&gt;
+&lt;input id="nameIn" type="text" value="Aman"&gt;
+
+&lt;script&gt;
+  // Reading existing content
+  let para  = document.getElementById("msg");
+  console.log(para.textContent);   // "Hello World"
+  console.log(para.innerHTML);     // "Hello World" (same if no inner tags)
+
+  // Reading an input's value
+  let input = document.getElementById("nameIn");
+  console.log(input.value);        // "Aman"
+
+  // Writing — update the paragraph dynamically
+  para.innerHTML = "&lt;strong&gt;Updated: " + input.value + "&lt;/strong&gt;";
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>textContent</code> and <code>innerHTML</code> can both <em>read</em> existing content — not just write it</li>
+            <li><code>input.value</code> reads (or sets) what's currently in an input field — not the HTML attribute, the live value</li>
+            <li>Combining reading and writing lets you build interactive feedback loops</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a notice board at a school:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">innerHTML</div>
+          <div class="analogy-desc">Pasting a formatted poster — bold headings, colours, and images all render</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">textContent</div>
+          <div class="analogy-desc">Writing with a marker — plain text only, no formatting possible</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">value</div>
+          <div class="analogy-desc">Reading what a student wrote on the answer sheet — the live input content</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Dynamic</div>
+          <div class="analogy-desc">Auto-printing a new notice for each student from a list — one template, many results</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong> and try all three buttons — each demonstrates
+        a different way to update content: plain text, HTML, and a dynamically generated
+        list.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Dynamic Content Update</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Output to HTML&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2 id="title"&gt;Original Title&lt;/h2&gt;
+  &lt;p id="content"&gt;Original content paragraph.&lt;/p&gt;
+  &lt;ul id="list"&gt;&lt;/ul&gt;
+
+  &lt;div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"&gt;
+    &lt;button onclick="changeText()"
+      style="padding:8px 14px;background:#f7df1e;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700"&gt;
+      Change Text
+    &lt;/button&gt;
+    &lt;button onclick="changeHTML()"
+      style="padding:8px 14px;background:#82aaff;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;color:#111"&gt;
+      Inject HTML
+    &lt;/button&gt;
+    &lt;button onclick="buildList()"
+      style="padding:8px 14px;background:#4ade80;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;color:#111"&gt;
+      Build List
+    &lt;/button&gt;
+    &lt;button onclick="resetAll()"
+      style="padding:8px 14px;background:#f87171;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;color:#fff"&gt;
+      Reset
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    function changeText() {
+      // textContent — safe, no HTML rendering
+      document.getElementById("title").textContent = "Updated with textContent";
+      document.getElementById("content").textContent =
+        "&lt;b&gt;This tag is NOT rendered&lt;/b&gt; — shown as plain text.";
+    }
+
+    function changeHTML() {
+      // innerHTML — HTML is parsed and rendered
+      document.getElementById("title").innerHTML =
+        "Updated with &lt;span style='color:#e07b00'&gt;innerHTML&lt;/span&gt;";
+      document.getElementById("content").innerHTML =
+        "&lt;b&gt;This tag IS rendered&lt;/b&gt; — text is bold!";
+    }
+
+    function buildList() {
+      let items = ["JavaScript", "HTML", "CSS", "DOM"];
+      let html  = "";
+      items.forEach(item =&gt; html += "&lt;li&gt;" + item + "&lt;/li&gt;");
+      document.getElementById("list").innerHTML = html;
+    }
+
+    function resetAll() {
+      document.getElementById("title").textContent   = "Original Title";
+      document.getElementById("content").textContent = "Original content paragraph.";
+      document.getElementById("list").innerHTML      = "";
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Update a paragraph</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;p id="para"&gt;Click the button to change me.&lt;/p&gt;
+&lt;button onclick="updatePara()"&gt;Update&lt;/button&gt;
+
+&lt;script&gt;
+  function updatePara() {
+    // use textContent to change the paragraph text
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>textContent</code> to change the paragraph to <em>"Text updated successfully!"</em></li>
+              <li>Run it a second time using <code>innerHTML</code> with a <code>&lt;b&gt;</code> tag — observe the difference</li>
+              <li>Set the paragraph back to empty using <code>textContent = ""</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Bold welcome message on click</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;div id="output"&gt;&lt;/div&gt;
+&lt;button onclick="showWelcome()"&gt;Show Welcome&lt;/button&gt;
+
+&lt;script&gt;
+  function showWelcome() {
+    // Use innerHTML to inject bold welcome text
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>innerHTML</code> to display <em>"&lt;b&gt;Welcome Aman&lt;/b&gt;"</em> — confirm the bold renders</li>
+              <li>Build a list of 3 subjects using a loop and set it with one <code>innerHTML</code> assignment</li>
+              <li>Add a second button that clears the output using <code>textContent = ""</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which property renders HTML tags inside an element?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;p id="t"&gt;&lt;/p&gt;
+&lt;script&gt;
+  document.getElementById("t").innerHTML = "&lt;b&gt;Bold!&lt;/b&gt;";
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> textContent</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> innerText</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> innerHTML</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> value</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>innerHTML</code> parses the assigned string as HTML, so <code>&lt;b&gt;Bold!&lt;/b&gt;</code> renders as bold text. <code>textContent</code> would show the literal string <code>&lt;b&gt;Bold!&lt;/b&gt;</code> as plain characters.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Which property shows raw text without rendering any tags?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;p id="u"&gt;&lt;/p&gt;
+&lt;script&gt;
+  document.getElementById("u").textContent = "&lt;b&gt;Bold?&lt;/b&gt;";
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> innerHTML</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> textContent</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> style</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> className</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>textContent</code> treats the value as raw text and escapes any HTML characters. The output is the literal string <code>&lt;b&gt;Bold?&lt;/b&gt;</code> — tags visible, nothing bold.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What will this display on the page?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;div id="v"&gt;&lt;/div&gt;
+&lt;script&gt;
+  document.getElementById("v").textContent = "&lt;h1&gt;Hello&lt;/h1&gt;";
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> A large heading: Hello</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Error</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> The literal text: &lt;h1&gt;Hello&lt;/h1&gt;</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Nothing</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>textContent</code> escapes angle brackets, so <code>&lt;</code> becomes <code>&amp;lt;</code> and <code>&gt;</code> becomes <code>&amp;gt;</code> in the DOM. The browser shows the raw tag text — not a rendered heading.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Never use <code>innerHTML</code> with user-provided input — it opens an <strong>XSS (Cross-Site Scripting)</strong> vulnerability. Always use <code>textContent</code> for user data:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">innerHTML XSS risk — use textContent instead</span>
+              </div>
+              <pre><code class="language-html">&lt;input id="userInput" type="text" value="&lt;img onerror=alert(1) src=x&gt;"&gt;
+&lt;p id="safe"&gt;&lt;/p&gt;
+&lt;p id="unsafe"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  let data = document.getElementById("userInput").value;
+
+  // ✓ Safe — tag is treated as text, no script runs
+  document.getElementById("safe").textContent = data;
+
+  // ✗ Risky — if data contains a script tag, it executes
+  document.getElementById("unsafe").innerHTML = data;
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Build the entire HTML string in a variable <em>first</em>, then assign it once — this is far more efficient than appending to <code>innerHTML</code> inside a loop:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Build once, inject once</span>
+              </div>
+              <pre><code class="language-html">&lt;ul id="items"&gt;&lt;/ul&gt;
+&lt;script&gt;
+  let names = ["Alice", "Bob", "Carol", "Dave"];
+
+  // ✗ Slow — reads and rewrites innerHTML on every iteration
+  // names.forEach(n =&gt; document.getElementById("items").innerHTML += "&lt;li&gt;" + n + "&lt;/li&gt;");
+
+  // ✓ Fast — builds string first, one DOM write at the end
+  let html = names.map(n =&gt; "&lt;li&gt;" + n + "&lt;/li&gt;").join("");
+  document.getElementById("items").innerHTML = html;
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>To clear an element's content, set <code>textContent = ""</code> — it is faster and safer than <code>innerHTML = ""</code> because it removes all nodes without HTML parsing:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Clearing content safely</span>
+              </div>
+              <pre><code class="language-javascript">let el = document.getElementById("output");
+
+// ✓ Preferred — no HTML parsing overhead
+el.textContent = "";
+
+// Also works but slightly slower:
+el.innerHTML = "";</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use template literals for clean multi-part HTML strings — they are far more readable than concatenating with <code>+</code>:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Template literals for HTML strings</span>
+              </div>
+              <pre><code class="language-javascript">let name  = "Aman";
+let score = 95;
+let grade = "A+";
+
+// Old way — messy
+let html1 = "&lt;h3&gt;" + name + "&lt;/h3&gt;&lt;p&gt;Score: " + score + " | Grade: " + grade + "&lt;/p&gt;";
+
+// Modern way — clean and readable
+let html2 = `&lt;h3&gt;${name}&lt;/h3&gt;&lt;p&gt;Score: ${score} | Grade: ${grade}&lt;/p&gt;`;
+
+console.log(html2);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      One uses <code>innerHTML</code>, one uses <code>textContent</code> — predict
+      exactly what the user sees for each, then check in the preview.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What appears on screen?</span>
+      </div>
+      <pre><code class="language-html">&lt;p id="a"&gt;&lt;/p&gt;
+&lt;p id="b"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  document.getElementById("a").innerHTML    = "&lt;b&gt;Hello&lt;/b&gt;";
+  document.getElementById("b").textContent = "&lt;b&gt;Hello&lt;/b&gt;";
+&lt;/script&gt;</code></pre>
+      <div class="output-panel preview-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+          <button type="button" class="preview-btn">▶ Preview</button>
+        </div>
+        <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Both elements receive the same string: "&lt;b&gt;Hello&lt;/b&gt;"
+
+// Element #a — innerHTML
+//   The browser PARSES the string as HTML
+//   &lt;b&gt; is a valid tag → it is rendered
+//   User sees: Hello   ← bold text
+
+// Element #b — textContent
+//   The browser treats the string as RAW TEXT
+//   &lt;b&gt; and &lt;/b&gt; are escaped to &amp;lt;b&amp;gt; and &amp;lt;/b&amp;gt;
+//   User sees: &lt;b&gt;Hello&lt;/b&gt;   ← literal characters, not bold
+
+// Final visual output:
+//   #a: Hello        ← BOLD (HTML rendered)
+//   #b: &lt;b&gt;Hello&lt;/b&gt; ← PLAIN TEXT (tags shown as characters)
+
+// Key rule to remember:
+//   innerHTML → interpret as HTML markup
+//   textContent → interpret as safe plain text</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="4-2.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      4.2 Events Handling
+    </a>
+    <a href="4-4.html" class="nav-btn next">
+      4.4 DOM Manipulation
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>

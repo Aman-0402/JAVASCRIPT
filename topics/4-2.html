@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.2 Events Handling — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 4</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">4.2 Events Handling</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">4.2</span>
+      <span class="module-tag">Module 4 · Document Object Model (DOM)</span>
+    </div>
+    <h1>Events <span class="highlight">Handling</span></h1>
+    <p class="subtitle">
+      Learn how JavaScript listens for user interactions — mouse clicks, keyboard
+      input, form submissions — and executes code in response to make pages truly
+      interactive.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Event handling</strong> in JavaScript is the process of detecting
+        user interactions — such as clicks, keystrokes, or form submissions — and
+        executing specific code in response. The code that runs is called an
+        <em>event handler</em> or <em>event listener</em>.
+      </p>
+      <p>
+        Events are the bridge between the user and your JavaScript logic. Without event
+        handling, a web page is a static document. With it, every button press, every
+        keystroke, and every form submission can trigger a response.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Events are actions the user performs — JavaScript <strong>listens</strong> for
+        them and <strong>reacts</strong>:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">onclick</span>
+          <span class="op-arrow">→</span>
+          <span>User clicks a button, link, or any element</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">onkeydown</span>
+          <span class="op-arrow">→</span>
+          <span>User presses a key — fires the moment the key goes down</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">onkeyup</span>
+          <span class="op-arrow">→</span>
+          <span>User releases a key — fires after the key is let go</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">onsubmit</span>
+          <span class="op-arrow">→</span>
+          <span>User submits a form — use <code>event.preventDefault()</code> to stop the page reload</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">oninput</span>
+          <span class="op-arrow">→</span>
+          <span>The value of an input changes — fires on every character typed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Mouse event -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Mouse Event (onclick)</span>
+        </div>
+        <pre><code class="language-html">&lt;button onclick="handleClick()"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  function handleClick() {
+    console.log("Button was clicked!");
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>onclick</code> is an <em>inline event attribute</em> — the simplest way to attach a handler</li>
+            <li>When the button is clicked, the browser calls <code>handleClick()</code> automatically</li>
+            <li>The function can do anything — update the page, call an API, show an alert</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Keyboard event -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Keyboard Event (onkeyup)</span>
+        </div>
+        <pre><code class="language-html">&lt;input type="text" onkeyup="handleKey(event)"
+       placeholder="Start typing..."&gt;
+
+&lt;script&gt;
+  function handleKey(event) {
+    console.log("Key released:", event.key);
+    console.log("Current value:", event.target.value);
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>The <code>event</code> object is passed automatically — it contains details about what happened</li>
+            <li><code>event.key</code> tells you which key was pressed (<code>"Enter"</code>, <code>"a"</code>, <code>"Backspace"</code> etc.)</li>
+            <li><code>event.target</code> is the element that triggered the event — here the input field</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Form event with preventDefault -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Form Event &amp; event.preventDefault()</span>
+        </div>
+        <pre><code class="language-html">&lt;form onsubmit="handleSubmit(event)"&gt;
+  &lt;input id="nameField" type="text" placeholder="Your name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;p id="msg"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  function handleSubmit(event) {
+    event.preventDefault(); // stops the page from reloading
+
+    let name = document.getElementById("nameField").value;
+    document.getElementById("msg").textContent =
+      "Hello, " + name + "!";
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>By default a form submission reloads the page — <code>event.preventDefault()</code> stops this</li>
+            <li>The <code>event</code> parameter must be passed from the HTML attribute: <code>onsubmit="handleSubmit(event)"</code></li>
+            <li>After preventing the default, you can handle the data yourself with JavaScript</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — oninput live feedback -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — oninput for Real-Time Feedback</span>
+        </div>
+        <pre><code class="language-html">&lt;input id="search" type="text" oninput="liveSearch(this)"
+       placeholder="Type to search..."&gt;
+&lt;p id="result"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  let items = ["Apple", "Banana", "Mango", "Grapes", "Orange"];
+
+  function liveSearch(input) {
+    let query = input.value.toLowerCase();
+    let match = items.filter(i =&gt; i.toLowerCase().includes(query));
+    document.getElementById("result").textContent =
+      query ? "Found: " + match.join(", ") : "";
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>oninput</code> fires on every character change — faster and more responsive than <code>onkeyup</code></li>
+            <li><code>this</code> refers to the element that fired the event — a shortcut to avoid <code>getElementById</code></li>
+            <li>This pattern powers every live search and filter interface on the web</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a doorbell system — the event model maps perfectly:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">onclick</div>
+          <div class="analogy-desc">Someone presses the doorbell — the press is the event</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Handler</div>
+          <div class="analogy-desc">The bell rings — the function that responds to the event</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">onkeydown</div>
+          <div class="analogy-desc">Typing a PIN digit on a keypad — detected the moment the key goes down</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">onsubmit</div>
+          <div class="analogy-desc">Pressing "Confirm" on an order — triggers the form submission logic</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">preventDefault</div>
+          <div class="analogy-desc">Intercepting the doorbell signal before it reaches the speaker</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">event.key</div>
+          <div class="analogy-desc">Identifying which button was pressed — "which key on the keypad?"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong> to see all three event types — mouse, keyboard,
+        and form — working together in a single page.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — All Three Event Types</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Events Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Event Handling Demo&lt;/h2&gt;
+
+  &lt;!-- Mouse event --&gt;
+  &lt;button onclick="handleClick()"
+    style="padding:8px 18px;background:#f7df1e;border:none;border-radius:6px;
+           cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Click Me
+  &lt;/button&gt;
+
+  &lt;!-- Keyboard event --&gt;
+  &lt;input type="text" onkeyup="handleKey(event)"
+    placeholder="Type something..."
+    style="display:block;margin:12px 0;padding:8px 12px;
+           border:1px solid #ccc;border-radius:6px;font-size:1rem;width:240px"&gt;
+
+  &lt;!-- Form event --&gt;
+  &lt;form onsubmit="handleSubmit(event)"
+    style="display:flex;gap:8px;align-items:center"&gt;
+    &lt;input id="nameIn" type="text" placeholder="Enter name"
+      style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+             font-size:1rem;width:180px"&gt;
+    &lt;button type="submit"
+      style="padding:8px 18px;background:#4ade80;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;font-size:1rem"&gt;
+      Submit
+    &lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;div id="log"
+    style="margin-top:16px;font-family:monospace;font-size:0.9rem;
+           background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:14px;
+           min-height:60px;line-height:2"&gt;
+    Waiting for events...
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    let logEl = document.getElementById("log");
+
+    function addLog(msg) {
+      logEl.innerHTML = msg + "&lt;br&gt;" + logEl.innerHTML;
+    }
+
+    function handleClick() {
+      addLog("🖱 Mouse: button clicked");
+    }
+
+    function handleKey(event) {
+      addLog("⌨ Key up: [" + event.key + "]  value: "" + event.target.value + """);
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      let name = document.getElementById("nameIn").value.trim();
+      addLog("📋 Form submitted: " + (name || "(empty)"));
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Welcome alert button</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;button onclick="greet()"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  function greet() {
+    // show alert "Welcome Aman"
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Complete the <code>greet()</code> function to show <em>"Welcome Aman"</em></li>
+              <li>Update it to show the current time using <code>new Date().toLocaleTimeString()</code></li>
+              <li>Change the button text to <em>"Clicked!"</em> after the first click using <code>event.target.textContent</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Live typing logger &amp; form guard</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;input type="text" oninput="logTyping(event)"
+       placeholder="Type here..."&gt;
+
+&lt;form onsubmit="submitForm(event)"&gt;
+  &lt;input id="email" type="text" placeholder="Email"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>In <code>logTyping()</code>, print <em>"Typing: [value]"</em> using <code>event.target.value</code></li>
+              <li>In <code>submitForm()</code>, call <code>event.preventDefault()</code> first — then log the email</li>
+              <li>Add a check: if the email is empty, show <em>"Email required"</em> instead</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which event fires when a button is clicked?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;button onclick="console.log('clicked')"&gt;Go&lt;/button&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> onhover</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> onclick</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> onpress</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> onchange</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>onclick</code> handles mouse click events on any element. <code>onhover</code> and <code>onpress</code> do not exist in standard HTML. <code>onchange</code> fires when an input's value changes and focus is lost.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Which event fires when a key is pressed down on an input?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> onsubmit</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> onclick</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> onkeydown</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> onchange</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>onkeydown</code> fires the moment a key is pressed. <code>onkeyup</code> fires when it is released. <code>oninput</code> fires when the value actually changes — the most common choice for real-time text detection.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What does <code>event.preventDefault()</code> do on a form submission?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;form onsubmit="handle(event)"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+&lt;script&gt;
+  function handle(e) {
+    e.preventDefault();
+    console.log("Handled in JS — no reload!");
+  }
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Stops JavaScript from running</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Prevents the browser's default action (page reload)</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Forces a page reload</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Adds a new event listener</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>event.preventDefault()</code> cancels the browser's built-in default behaviour for that event. For forms, the default is to reload the page and send data to a server — calling this lets you handle the data entirely in JavaScript.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Know the difference between <code>keydown</code>, <code>keyup</code>, and <code>input</code> — each fires at a different moment:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">keydown vs keyup vs input</span>
+              </div>
+              <pre><code class="language-html">&lt;input id="demo" type="text" placeholder="Watch the console"
+  onkeydown="console.log('DOWN:', event.key)"
+  onkeyup="console.log('UP:  ', event.key)"
+  oninput="console.log('INPUT value:', this.value)"&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Prefer <code>addEventListener()</code> over inline <code>onclick=""</code> attributes — it keeps HTML and JavaScript separate and allows multiple handlers on the same element:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">addEventListener — the modern approach</span>
+              </div>
+              <pre><code class="language-html">&lt;button id="myBtn"&gt;Click me&lt;/button&gt;
+&lt;script&gt;
+  // Inline (avoid) → ties logic to HTML
+  // &lt;button onclick="..."&gt;
+
+  // addEventListener (preferred) → separates concerns
+  document.getElementById("myBtn").addEventListener("click", function() {
+    console.log("Clicked via addEventListener!");
+  });
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>The <code>event</code> object gives you rich information about any event — always pass it to your handler when you need context:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Useful event object properties</span>
+              </div>
+              <pre><code class="language-javascript">// event.type     — "click", "keyup", "submit"…
+// event.target   — the element that fired the event
+// event.key      — which key was pressed (keyboard events)
+// event.clientX  — mouse X position on screen (mouse events)
+
+document.addEventListener("click", function(e) {
+  console.log("Type:", e.type);
+  console.log("Target:", e.target.tagName);
+  console.log("Position:", e.clientX, e.clientY);
+});</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run — then click anywhere on the page</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Never forget <code>event.preventDefault()</code> on form submit handlers — without it the page reloads and your JavaScript never gets to process the data.</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Will the page reload after the alert shows? Why or why not?
+      Think before clicking Submit in the preview.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What happens when you submit this form?</span>
+      </div>
+      <pre><code class="language-html">&lt;form onsubmit="handleIt(event)"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  function handleIt(event) {
+    event.preventDefault();
+    alert("Form submitted!");
+  }
+&lt;/script&gt;</code></pre>
+      <div class="output-panel preview-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+          <button type="button" class="preview-btn">▶ Preview</button>
+        </div>
+        <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Step 1: User clicks the Submit button
+//         The browser fires the "submit" event on the form
+//         onsubmit calls handleIt(event)
+
+// Step 2: event.preventDefault() is called FIRST
+//         This cancels the browser's default action:
+//         the page will NOT reload
+
+// Step 3: alert("Form submitted!") runs
+//         The alert appears — and since the page did NOT reload,
+//         when the user clicks OK everything stays as it was
+
+// Answer: NO — the page will NOT reload.
+//         event.preventDefault() stopped it.
+
+// What if you removed event.preventDefault()?
+//   The page WOULD reload immediately after the alert
+//   because the browser resumes its default submit behaviour.
+
+// Key rule:
+//   Default form behaviour → reload / navigate to action URL
+//   With event.preventDefault() → you handle everything in JS</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="4-1.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      4.1 DOM Structure
+    </a>
+    <a href="4-3.html" class="nav-btn next">
+      4.3 Output to HTML
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>

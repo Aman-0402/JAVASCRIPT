@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.4 DOM Manipulation — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 4</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">4.4 DOM Manipulation</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">4.4</span>
+      <span class="module-tag">Module 4 · Document Object Model (DOM)</span>
+    </div>
+    <h1>DOM <span class="highlight">Manipulation</span></h1>
+    <p class="subtitle">
+      Select, modify, create, and delete HTML elements entirely through JavaScript —
+      the techniques that power every interactive page on the web.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>DOM Manipulation</strong> refers to the process of selecting HTML
+        elements and dynamically modifying their content, attributes, styles, or
+        structure using JavaScript.
+      </p>
+      <p>
+        With DOM manipulation you can change text after a button click, apply styles
+        in response to user input, build new elements from data, and remove elements
+        that are no longer needed — all without touching the HTML file or reloading
+        the page.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        DOM Manipulation means <strong>"control your webpage using JavaScript"</strong>.
+        Four operations cover everything:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">Select</span>
+          <span class="op-arrow">→</span>
+          <span>Find the element you want — by ID, class, tag, or CSS selector</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Modify</span>
+          <span class="op-arrow">→</span>
+          <span>Change its text, HTML, attributes, or styles</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Create</span>
+          <span class="op-arrow">→</span>
+          <span>Build a brand new element and insert it into the page</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Remove</span>
+          <span class="op-arrow">→</span>
+          <span>Delete an element from the DOM entirely</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Selecting elements -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Selecting Elements</span>
+        </div>
+        <pre><code class="language-html">&lt;h1 id="title"&gt;Hello&lt;/h1&gt;
+&lt;p class="note"&gt;First note&lt;/p&gt;
+&lt;p class="note"&gt;Second note&lt;/p&gt;
+
+&lt;script&gt;
+  // By ID — returns one element
+  let h = document.getElementById("title");
+  console.log(h.textContent); // "Hello"
+
+  // querySelector — returns FIRST match (CSS selector)
+  let first = document.querySelector(".note");
+  console.log(first.textContent); // "First note"
+
+  // querySelectorAll — returns ALL matches (NodeList)
+  let all = document.querySelectorAll(".note");
+  console.log(all.length); // 2
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>getElementById(id)</code> — fastest selector, returns one element by its <code>id</code></li>
+            <li><code>querySelector(css)</code> — flexible, returns the <strong>first</strong> element matching any CSS selector</li>
+            <li><code>querySelectorAll(css)</code> — returns a <strong>NodeList</strong> of all matches, iterable with <code>forEach</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Modifying content and styles -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Modifying Content, Attributes &amp; Styles</span>
+        </div>
+        <pre><code class="language-html">&lt;h2 id="heading"&gt;Original Heading&lt;/h2&gt;
+&lt;img id="logo" src="old.png" alt="Logo"&gt;
+
+&lt;script&gt;
+  let el = document.getElementById("heading");
+
+  // Change text
+  el.textContent = "Updated Heading";
+
+  // Change inline style
+  el.style.color      = "#f7df1e";
+  el.style.background = "#111";
+  el.style.padding    = "8px 16px";
+
+  // Change attribute
+  document.getElementById("logo").setAttribute("src", "new.png");
+  document.getElementById("logo").setAttribute("alt", "New Logo");
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>element.style.propertyName</code> sets inline CSS — camelCase (<code>backgroundColor</code>, not <code>background-color</code>)</li>
+            <li><code>setAttribute(name, value)</code> sets any HTML attribute — <code>src</code>, <code>href</code>, <code>class</code>, <code>alt</code></li>
+            <li><code>getAttribute(name)</code> reads an attribute's current value</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Creating and adding elements -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Creating &amp; Adding New Elements</span>
+        </div>
+        <pre><code class="language-html">&lt;ul id="myList"&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+  let list = document.getElementById("myList");
+
+  // 1. Create the element
+  let newItem = document.createElement("li");
+
+  // 2. Set its content
+  newItem.textContent = "Item 2 — added by JavaScript";
+
+  // 3. Append it to the parent
+  list.appendChild(newItem);
+
+  // Modern alternative: insertAdjacentHTML
+  list.insertAdjacentHTML("beforeend", "&lt;li&gt;Item 3 — via insertAdjacentHTML&lt;/li&gt;");
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>createElement(tag)</code> creates a new detached element — it is not visible until you insert it</li>
+            <li><code>appendChild(element)</code> inserts it as the last child of the parent</li>
+            <li><code>insertAdjacentHTML(position, html)</code> is a faster shortcut when you have an HTML string ready</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Removing elements -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Removing Elements</span>
+        </div>
+        <pre><code class="language-html">&lt;ul id="items"&gt;
+  &lt;li id="a"&gt;Keep me&lt;/li&gt;
+  &lt;li id="b"&gt;Delete me&lt;/li&gt;
+  &lt;li id="c"&gt;Keep me too&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+  // Modern way — element removes itself
+  document.getElementById("b").remove();
+
+  // Classic way — parent removes child
+  // let list   = document.getElementById("items");
+  // let target = document.getElementById("b");
+  // list.removeChild(target);
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>element.remove()</code> is the modern, clean way — the element removes itself from the DOM</li>
+            <li><code>parent.removeChild(child)</code> is the older equivalent — requires a reference to both parent and child</li>
+            <li>After removal, the element no longer exists in the DOM — it cannot be clicked, styled, or accessed</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a remote control for your TV — every button maps to a DOM operation:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">Select</div>
+          <div class="analogy-desc">Selecting a channel — pointing the remote at a specific element</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Modify</div>
+          <div class="analogy-desc">Changing the volume — updating an element's style or content</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Create</div>
+          <div class="analogy-desc">Adding a new channel to the guide — inserting a new element</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Remove</div>
+          <div class="analogy-desc">Deleting a channel from the guide — removing an element permanently</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong> to see all four DOM operations — select,
+        modify, add, and remove — working live in one demo.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Full DOM Manipulation Demo</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;DOM Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2 id="heading"&gt;Hello Aman&lt;/h2&gt;
+
+  &lt;div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"&gt;
+    &lt;button onclick="changeText()"
+      style="padding:7px 14px;background:#f7df1e;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700"&gt;Change Text&lt;/button&gt;
+    &lt;button onclick="addItem()"
+      style="padding:7px 14px;background:#4ade80;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700"&gt;Add Item&lt;/button&gt;
+    &lt;button onclick="removeItem()"
+      style="padding:7px 14px;background:#f87171;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;color:#fff"&gt;Remove Item&lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;ul id="myList" style="padding-left:20px;line-height:2"&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;script&gt;
+    let count = 1;
+
+    function changeText() {
+      let h = document.getElementById("heading");
+      h.textContent = "Text Changed by JavaScript!";
+      h.style.color = "#e07b00";
+    }
+
+    function addItem() {
+      count++;
+      let li = document.createElement("li");
+      li.textContent = "Item " + count;
+      document.getElementById("myList").appendChild(li);
+    }
+
+    function removeItem() {
+      let list = document.getElementById("myList");
+      if (list.lastElementChild) {
+        list.lastElementChild.remove();
+        if (count &gt; 1) count--;
+      }
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Select and update a heading</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;h2 id="myHeading"&gt;Original Heading&lt;/h2&gt;
+&lt;button onclick="updateIt()"&gt;Update&lt;/button&gt;
+
+&lt;script&gt;
+  function updateIt() {
+    // select #myHeading and change its text
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>getElementById("myHeading")</code> to select the heading</li>
+              <li>Change its <code>textContent</code> to <em>"Updated by JS!"</em></li>
+              <li>Also change its <code>style.color</code> to <code>"blue"</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Add and remove list items</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;ul id="taskList"&gt;&lt;/ul&gt;
+&lt;button onclick="addTask()"&gt;Add Task&lt;/button&gt;
+&lt;button onclick="removeTask()"&gt;Remove Last&lt;/button&gt;
+
+&lt;script&gt;
+  let n = 0;
+  function addTask() {
+    // create &lt;li&gt;, set text, append to #taskList
+  }
+  function removeTask() {
+    // remove the last &lt;li&gt; from #taskList
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>In <code>addTask()</code>: increment <code>n</code>, create a <code>&lt;li&gt;</code>, set text to <em>"Task N"</em>, append it</li>
+              <li>In <code>removeTask()</code>: call <code>list.lastElementChild?.remove()</code></li>
+              <li>Add a guard — if the list is empty, print a message instead of trying to remove</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which method selects an element directly by its <code>id</code>?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> querySelector</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> getElementById</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> getElementsByClassName</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> select</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>getElementById()</code> is the fastest selector — it looks up a single unique element by its <code>id</code> attribute. <code>querySelector("#id")</code> does the same thing but is slightly slower due to CSS selector parsing.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What does <code>querySelector(".card")</code> return?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;p class="card"&gt;First&lt;/p&gt;
+&lt;p class="card"&gt;Second&lt;/p&gt;
+&lt;script&gt;
+  let el = document.querySelector(".card");
+  console.log(el.textContent);
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> All elements with class "card"</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> The first element with class "card"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> The last element with class "card"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> An array of all matches</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>querySelector()</code> returns only the <em>first</em> matching element in document order. To get all matches use <code>querySelectorAll()</code>, which returns a NodeList you can loop through.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            Which method creates a new HTML element?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let li = document.createElement("li");
+li.textContent = "New item";
+document.querySelector("ul").appendChild(li);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> appendChild</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> createElement</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> removeChild</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> innerHTML</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>createElement(tag)</code> creates a new detached element that doesn't appear on the page yet. <code>appendChild()</code> then inserts it. You always need both — create first, then attach.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Prefer <code>querySelector</code> and <code>querySelectorAll</code> over the older selection methods — they accept any CSS selector and work consistently:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">querySelector vs older methods</span>
+              </div>
+              <pre><code class="language-javascript">// Old API — limited and inconsistent
+document.getElementById("title");
+document.getElementsByClassName("card"); // live HTMLCollection
+document.getElementsByTagName("p");      // live HTMLCollection
+
+// Modern API — flexible, consistent, preferred
+document.querySelector("#title");        // by ID
+document.querySelector(".card");         // by class (first match)
+document.querySelectorAll("p.note");     // all &lt;p&gt; with class "note"
+document.querySelector("ul li:last-child"); // any CSS selector!</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use <code>element.remove()</code> — the modern self-removal method. The old <code>parent.removeChild(child)</code> requires an extra reference to the parent:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Modern remove() vs old removeChild()</span>
+              </div>
+              <pre><code class="language-javascript">// Modern — element removes itself (clean)
+document.querySelector("#item2")?.remove();
+
+// Old — must go through the parent
+let parent = document.querySelector("#myList");
+let child  = document.querySelector("#item2");
+if (child) parent.removeChild(child);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use <strong>classList</strong> to add, remove, and toggle CSS classes — far cleaner than manually editing <code>style</code> properties:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">classList — the clean way to handle classes</span>
+              </div>
+              <pre><code class="language-javascript">let el = document.querySelector("#heading");
+
+el.classList.add("highlight");       // add class
+el.classList.remove("highlight");    // remove class
+el.classList.toggle("active");       // add if absent, remove if present
+console.log(el.classList.contains("active")); // true or false</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Batch DOM writes — every direct DOM change can trigger a browser repaint. Build your elements in memory first, then insert the whole structure at once:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Batch with DocumentFragment</span>
+              </div>
+              <pre><code class="language-javascript">let list     = document.querySelector("#output");
+let fragment = document.createDocumentFragment(); // off-screen container
+
+["Alpha", "Beta", "Gamma"].forEach(name =&gt; {
+  let li = document.createElement("li");
+  li.textContent = name;
+  fragment.appendChild(li); // no repaint yet
+});
+
+list.appendChild(fragment); // one repaint, three items inserted</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      A list item is created and given text — but will it ever appear on the page?
+      Think about what's missing before checking in the preview.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">Will "New Item" appear on screen?</span>
+      </div>
+      <pre><code class="language-html">&lt;ul id="list"&gt;
+  &lt;li&gt;Existing item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+  let li = document.createElement("li");
+  li.textContent = "New Item";
+  // Nothing else...
+&lt;/script&gt;</code></pre>
+      <div class="output-panel preview-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+          <button type="button" class="preview-btn">▶ Preview</button>
+        </div>
+        <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Step 1: document.createElement("li")
+//   Creates a new &lt;li&gt; element in memory
+//   It exists as a JavaScript object — but NOT in the DOM yet
+//   It is completely detached from the page
+
+// Step 2: li.textContent = "New Item"
+//   Sets the text of the in-memory element
+//   Still NOT attached to the page
+
+// Step 3: Nothing else...
+//   The element is created and configured but NEVER inserted
+//   The browser only renders elements that are IN the DOM
+
+// Answer: NO — "New Item" will NOT appear on screen.
+//   Only "Existing item" is visible because it was in the HTML.
+
+// Fix: you must append the element to the DOM
+//   document.getElementById("list").appendChild(li);
+//   ← After this line, "New Item" appears on the page
+
+// Key rule:
+//   createElement() → creates in memory (invisible)
+//   appendChild() / insertAdjacentHTML() → puts it in the DOM (visible)</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="4-3.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      4.3 Output to HTML
+    </a>
+    <a href="4-5.html" class="nav-btn next">
+      4.5 Event Listeners
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
