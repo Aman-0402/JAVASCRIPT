@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.9 Arrays — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 2</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">2.9 Arrays</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">2.9</span>
+      <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
+    </div>
+    <h1><span class="highlight">Arrays</span></h1>
+    <p class="subtitle">
+      Learn how to store, access, and manipulate ordered collections of values — the
+      most essential data structure in JavaScript for handling lists of any kind.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        An <strong>array</strong> in JavaScript is a special type of object used to
+        store multiple values in a single variable, where each value is stored at a
+        specific <em>index</em> starting from <code>0</code>. Arrays can hold elements
+        of any data type — numbers, strings, booleans, objects, or even other arrays.
+      </p>
+      <p>
+        Arrays are ordered, meaning the position of each element is meaningful and
+        preserved. They come with a rich set of built-in methods for adding, removing,
+        searching, and transforming their contents.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        An array is like a <strong>numbered list</strong> — instead of creating a
+        separate variable for each value, you put them all in one place:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">[]</span>
+          <span class="op-arrow">→</span>
+          <span>Square brackets create an array — <code>["red", "blue", "green"]</code></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">index</span>
+          <span class="op-arrow">→</span>
+          <span>Each item has a position — first element is always at index <code>0</code></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">.length</span>
+          <span class="op-arrow">→</span>
+          <span>The number of elements — last index is always <code>length - 1</code></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">methods</span>
+          <span class="op-arrow">→</span>
+          <span>Built-in tools to add, remove, search, and loop through items</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Creating an Array -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Creating &amp; Accessing an Array</span>
+        </div>
+        <pre><code class="language-javascript">let fruits = ["apple", "banana", "mango"];
+
+console.log(fruits);      // full array
+console.log(fruits[0]);   // "apple"  — first element
+console.log(fruits[2]);   // "mango"  — last element
+console.log(fruits.length); // 3</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Indices start at <code>0</code> — the first element is <code>fruits[0]</code>, the last is <code>fruits[length - 1]</code></li>
+            <li><code>length</code> is always one more than the last valid index</li>
+            <li>Accessing an index that doesn't exist returns <code>undefined</code> — no error</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Array Methods -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — push(), pop(), shift(), unshift()</span>
+        </div>
+        <pre><code class="language-javascript">let numbers = [1, 2, 3];
+
+numbers.push(4);      // add at END   → [1, 2, 3, 4]
+console.log(numbers);
+
+numbers.pop();        // remove from END → [1, 2, 3]
+console.log(numbers);
+
+numbers.unshift(0);   // add at START → [0, 1, 2, 3]
+console.log(numbers);
+
+numbers.shift();      // remove from START → [1, 2, 3]
+console.log(numbers);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>push()</code> / <code>pop()</code> — add and remove at the <strong>end</strong></li>
+            <li><code>unshift()</code> / <code>shift()</code> — add and remove at the <strong>start</strong></li>
+            <li>All four methods <em>mutate</em> the original array — they change it in place</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Looping -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Looping Through an Array</span>
+        </div>
+        <pre><code class="language-javascript">let colors = ["red", "green", "blue"];
+
+// Classic for loop
+for (let i = 0; i &lt; colors.length; i++) {
+  console.log(i + ": " + colors[i]);
+}
+
+// Modern for...of loop
+for (let color of colors) {
+  console.log(color.toUpperCase());
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>The classic <code>for</code> loop uses an index — useful when you need the position</li>
+            <li><code>for...of</code> gives each element directly — cleaner when you only need the value</li>
+            <li>Always use <code>array.length</code> as the loop boundary — never hardcode the count</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Useful Methods -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — includes(), indexOf(), join()</span>
+        </div>
+        <pre><code class="language-javascript">let fruits = ["apple", "banana", "mango"];
+
+console.log(fruits.includes("banana")); // true
+console.log(fruits.includes("grape"));  // false
+
+console.log(fruits.indexOf("mango"));   // 2
+console.log(fruits.indexOf("grape"));   // -1 (not found)
+
+console.log(fruits.join(", ")); // "apple, banana, mango"</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>includes()</code> → returns <code>true</code>/<code>false</code> — great for existence checks</li>
+            <li><code>indexOf()</code> → returns the position, or <code>-1</code> if not found</li>
+            <li><code>join(separator)</code> → converts the array to a single string with each element separated by the given character</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 5 — Multi-Dimensional Array -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 5 — Multi-Dimensional Array</span>
+        </div>
+        <pre><code class="language-javascript">let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+console.log(matrix[0][1]); // row 0, col 1 → 2
+console.log(matrix[1][2]); // row 1, col 2 → 6
+console.log(matrix[2][0]); // row 2, col 0 → 7</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>An array of arrays — the outer index selects the row, the inner index selects the column</li>
+            <li>Used for grids, tables, game boards, and matrix-style data</li>
+            <li>Access pattern: <code>array[row][column]</code></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of an array like a shopping list — one place to hold all related items:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">[ ]</div>
+          <div class="analogy-desc">The list itself — one container holding all your items</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">index</div>
+          <div class="analogy-desc">Item number on the list — Milk is item 0, Bread is item 1</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">push()</div>
+          <div class="analogy-desc">Adding a new item at the bottom of the list</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">pop()</div>
+          <div class="analogy-desc">Crossing off the last item once you've picked it up</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">includes()</div>
+          <div class="analogy-desc">Checking whether "Eggs" is already on the list</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">join()</div>
+          <div class="analogy-desc">Reading the whole list aloud as one sentence</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, then press the button to render an array of
+        fruits as a live list on the page — using <code>join()</code> and a loop.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Fruits List</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Arrays Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Fruits List&lt;/h2&gt;
+  &lt;button onclick="showFruits()"
+    style="padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Show Fruits
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2;font-size:0.95rem"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function showFruits() {
+      let fruits = ["Apple", "Banana", "Mango", "Grapes"];
+
+      let listHtml = "&lt;b&gt;Fruits array:&lt;/b&gt; [" + fruits.join(", ") + "]&lt;br&gt;&lt;br&gt;";
+      listHtml += "&lt;b&gt;Each fruit:&lt;/b&gt;&lt;ul style='margin:6px 0 0 20px'&gt;";
+
+      for (let i = 0; i &lt; fruits.length; i++) {
+        listHtml += `&lt;li&gt;[${i}] ${fruits[i]}&lt;/li&gt;`;
+      }
+
+      listHtml += "&lt;/ul&gt;";
+      listHtml += `&lt;br&gt;&lt;b&gt;Total items:&lt;/b&gt; ${fruits.length}`;
+
+      document.getElementById("output").innerHTML = listHtml;
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Colors array</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let colors = ["red", "green", "blue"];</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Print the <strong>first</strong> element using index <code>0</code></li>
+              <li>Print the <strong>last</strong> element using <code>colors.length - 1</code></li>
+              <li>Print the total count using <code>colors.length</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Modify an array</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let nums = [10, 20, 30];</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Add <code>40</code> to the end using <code>push()</code> — print the array</li>
+              <li>Remove the last element using <code>pop()</code> — print the array again</li>
+              <li>Print the final length and confirm it is back to <code>3</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            What is the index of the <strong>first</strong> element in an array?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let arr = ["a", "b", "c"];
+console.log(arr[0]);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 1</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 0</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> -1</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> undefined</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Array indexing in JavaScript starts at <code>0</code>. The first element is always at index <code>0</code>, the last at <code>length - 1</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What does <code>push()</code> do?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let arr = [1, 2, 3];
+arr.push(4);
+console.log(arr);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Removes an element</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Adds an element at the start</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Adds an element at the end</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Sorts the array</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>push()</code> appends one or more elements to the <em>end</em> of the array and returns the new length. To add at the start, use <code>unshift()</code> instead.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What is the output?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let arr = [1, 2, 3];
+console.log(arr[1]);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 1</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 2</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> 3</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Error</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Index <code>1</code> refers to the <em>second</em> element — <code>2</code>. Index <code>0</code> is <code>1</code>, index <code>2</code> is <code>3</code>.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Arrays can store <strong>mixed data types</strong> — numbers, strings, booleans, objects, or even other arrays all in one:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Mixed type array</span>
+              </div>
+              <pre><code class="language-javascript">let data = [1, "Aman", true, null, { score: 95 }];
+
+console.log(data[0]);         // 1
+console.log(data[1]);         // "Aman"
+console.log(data[4].score);  // 95</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use the <strong>spread operator</strong> (<code>...</code>) to copy an array without mutation — never use <code>arr2 = arr1</code> if you want an independent copy:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Safe array copy with spread</span>
+              </div>
+              <pre><code class="language-javascript">let original = [1, 2, 3];
+let copy = [...original]; // independent copy
+
+copy.push(4);
+
+console.log(original); // [1, 2, 3] — unchanged
+console.log(copy);     // [1, 2, 3, 4]</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Avoid assigning values to arbitrary high indices — it creates <em>sparse arrays</em> with empty slots that cause unexpected <code>undefined</code> values:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Sparse array warning</span>
+              </div>
+              <pre><code class="language-javascript">let arr = [1, 2, 3];
+arr[9] = "value"; // creates slots 3–8 as empty
+
+console.log(arr.length); // 10 — not 4!
+console.log(arr[5]);     // undefined — empty slot</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use <code>Array.isArray()</code> — not <code>typeof</code> — to correctly detect arrays in your validation logic:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Detecting arrays reliably</span>
+              </div>
+              <pre><code class="language-javascript">let arr = [1, 2, 3];
+let obj = { a: 1 };
+
+console.log(typeof arr);          // "object" — not helpful!
+console.log(Array.isArray(arr));  // true  — correct
+console.log(Array.isArray(obj));  // false — correct</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      An element is added then removed — trace the array at each step before running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let arr = [10, 20, 30];
+
+arr.push(40);
+arr.pop();
+
+console.log(arr.length);
+console.log(arr[2]);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Start:  arr = [10, 20, 30]   length = 3
+//          idx:   0   1   2
+
+// Step 1: arr.push(40)
+//         Adds 40 at the end
+//         arr = [10, 20, 30, 40]   length = 4
+
+// Step 2: arr.pop()
+//         Removes the last element (40)
+//         arr = [10, 20, 30]   length = 3
+
+// Step 3: console.log(arr.length)
+//         push added one, pop removed one — net change: zero
+//         Output → 3
+
+// Step 4: console.log(arr[2])
+//         Index 2 holds the value 30
+//         Output → 30
+
+// Final output:
+//   3    ← length is back to its original value
+//   30   ← arr[2] is the third element, unchanged
+
+// Key takeaway:
+//   push() and pop() are mirror operations —
+//   performing both in sequence leaves the array unchanged.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="2-8.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      2.8 String Operations
+    </a>
+    <a href="2-10.html" class="nav-btn next">
+      2.10 Objects
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
