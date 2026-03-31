@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.10 Objects — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 2</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">2.10 Objects</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">2.10</span>
+      <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
+    </div>
+    <h1><span class="highlight">Objects</span></h1>
+    <p class="subtitle">
+      Learn how to group related data and behaviour into a single structure using
+      key-value pairs — the most versatile and widely used data type in JavaScript.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        An <strong>object</strong> in JavaScript is a collection of
+        <em>key-value pairs</em>, where each key (also called a <em>property</em>) is
+        associated with a value. Objects are used to represent real-world entities and
+        can also contain functions — known as <strong>methods</strong> — that describe
+        the behaviour of that entity.
+      </p>
+      <p>
+        Objects are the foundation of JavaScript: arrays, dates, functions, and almost
+        everything else you interact with is an object under the hood. Mastering objects
+        means mastering the language itself.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        An object is like a <strong>profile card</strong> — instead of separate
+        variables for each detail, everything about one entity lives together:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">{ }</span>
+          <span class="op-arrow">→</span>
+          <span>Curly braces create an object — <code>{ name: "Aman", age: 22 }</code></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">key</span>
+          <span class="op-arrow">→</span>
+          <span>The label for a piece of data — <code>name</code>, <code>age</code>, <code>city</code></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">value</span>
+          <span class="op-arrow">→</span>
+          <span>The data itself — any type: string, number, boolean, array, or function</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">method</span>
+          <span class="op-arrow">→</span>
+          <span>A function stored as a property — describes what the object can <em>do</em></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Creating an Object -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Creating &amp; Accessing an Object</span>
+        </div>
+        <pre><code class="language-javascript">let person = {
+  name: "Aman",
+  age:  22,
+  city: "Vadodara"
+};
+
+// Dot notation — most common
+console.log(person.name);
+
+// Bracket notation — useful for dynamic keys
+console.log(person["age"]);
+
+// Access a key that doesn't exist → undefined (no error)
+console.log(person.country);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><strong>Dot notation</strong> (<code>person.name</code>) — clean and most commonly used</li>
+            <li><strong>Bracket notation</strong> (<code>person["age"]</code>) — required when the key is a variable or contains special characters</li>
+            <li>Accessing a non-existent property returns <code>undefined</code> — not an error</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Adding & Updating -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Adding &amp; Updating Properties</span>
+        </div>
+        <pre><code class="language-javascript">let user = {
+  name: "Aman"
+};
+
+user.age  = 22;       // add a new property
+user.name = "Raj";    // update an existing property
+
+console.log(user.name);
+console.log(user.age);
+console.log(user);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>New properties can be added at any time by assigning to a key that doesn't yet exist</li>
+            <li>Assigning to an existing key updates its value in place</li>
+            <li>Even <code>const</code> objects allow property changes — only re-assigning the whole object is forbidden</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Methods -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Object with Methods</span>
+        </div>
+        <pre><code class="language-javascript">let calculator = {
+  add: function(a, b) {
+    return a + b;
+  },
+  // Shorthand method syntax (modern)
+  multiply(a, b) {
+    return a * b;
+  }
+};
+
+console.log(calculator.add(5, 3));
+console.log(calculator.multiply(4, 6));</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>A function stored as an object property is called a <strong>method</strong></li>
+            <li>Methods are called with dot notation followed by parentheses: <code>calculator.add(5, 3)</code></li>
+            <li>Modern shorthand syntax (<code>multiply(a, b) {}</code>) drops the <code>function</code> keyword</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Nested & Looping -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Nested Objects &amp; for...in Loop</span>
+        </div>
+        <pre><code class="language-javascript">let student = {
+  name: "Priya",
+  marks: {
+    maths:   95,
+    science: 88,
+    english: 91
+  }
+};
+
+// Access nested property
+console.log(student.marks.maths);
+
+// Loop through all keys
+for (let key in student.marks) {
+  console.log(key + ": " + student.marks[key]);
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Objects can be nested — a value can itself be another object</li>
+            <li>Access nested properties by chaining dot notation: <code>student.marks.maths</code></li>
+            <li><code>for...in</code> loops over every key in an object — ideal for dynamic key access</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 5 — Date Object -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 5 — The Built-in Date Object</span>
+        </div>
+        <pre><code class="language-javascript">let now = new Date();
+
+console.log(now.getFullYear());   // current year
+console.log(now.getMonth() + 1);  // month (0-based, so +1)
+console.log(now.getDate());       // day of the month</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>new Date()</code> creates a built-in Date object with the current timestamp</li>
+            <li>Methods like <code>getFullYear()</code>, <code>getMonth()</code>, and <code>getDate()</code> extract parts of the date</li>
+            <li><code>getMonth()</code> is zero-based — January is <code>0</code>, so always add <code>1</code> for display</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a student ID card — all related details grouped in one place:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">Object</div>
+          <div class="analogy-desc">The ID card itself — one container holding all student details</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Property</div>
+          <div class="analogy-desc">A field on the card — Name, Age, Course, Roll Number</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Method</div>
+          <div class="analogy-desc">An action the student can do — getGrade(), calculateAverage()</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Nested</div>
+          <div class="analogy-desc">Marks section inside the card — an object within an object</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, then press the button to render a student
+        object as a formatted profile card on the page — looping through its properties
+        dynamically.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Student Info Card</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Objects Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Student Info&lt;/h2&gt;
+  &lt;button onclick="showInfo()"
+    style="padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Show
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;font-size:0.95rem"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function showInfo() {
+      const student = {
+        name:   "Priya Sharma",
+        age:    20,
+        course: "Computer Science",
+        city:   "Vadodara",
+        grade:  "A+"
+      };
+
+      let html =
+        "&lt;div style='background:#fff;border:1px solid #ddd;border-radius:10px;" +
+        "padding:18px 22px;max-width:340px;line-height:2.2'&gt;";
+
+      for (let key in student) {
+        html += `&lt;b style="text-transform:capitalize"&gt;${key}:&lt;/b&gt; ${student[key]}&lt;br&gt;`;
+      }
+
+      html += "&lt;/div&gt;";
+      document.getElementById("output").innerHTML = html;
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Your profile object</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let profile = {
+  name: "Your Name",
+  age:  0
+};</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Replace the values with your own name and age</li>
+              <li>Print <code>profile.name</code> using dot notation</li>
+              <li>Print <code>profile["age"]</code> using bracket notation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Product with new property</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">const product = {
+  name:  "Laptop",
+  price: 45000
+};</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Add a new property <code>quantity</code> with value <code>3</code></li>
+              <li>Update <code>price</code> to <code>42000</code></li>
+              <li>Print the full object and confirm all three properties are present</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            How do you correctly access an object property?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let obj = { name: "Aman", age: 22 };
+
+console.log(obj.name);
+console.log(obj["age"]);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> obj:name</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> obj.name</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> obj-&gt;name</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> obj[name] without quotes</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Dot notation <code>obj.name</code> is the standard way. Bracket notation <code>obj["name"]</code> also works — note the key must be a string inside quotes when used directly.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What best describes a JavaScript object?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> A single value</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> An ordered list</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> A collection of key-value pairs</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> A function</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> An object is a collection of key-value pairs. Each key is a string (or Symbol) and its value can be any data type — including other objects or functions (methods).</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What is the output?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let obj = { a: 10 };
+console.log(obj.a);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">A</span> 10</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> undefined</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Error</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> null</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>A is correct.</strong> <code>obj.a</code> accesses the value stored under the key <code>"a"</code>, which is <code>10</code>. If the key didn't exist, it would return <code>undefined</code> — not an error.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Use <code>const</code> for objects — you can still add or change properties freely; <code>const</code> only prevents reassigning the variable to a different object:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">const object — properties are mutable</span>
+              </div>
+              <pre><code class="language-javascript">const user = { name: "Aman" };
+user.name = "Raj";  // ✓ allowed — property updated
+user.age  = 22;     // ✓ allowed — new property added
+console.log(user);
+
+// user = {};  // ✗ Error — cannot reassign the binding</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use the <code>in</code> operator to check if a property exists — more reliable than comparing with <code>undefined</code>:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Checking property existence</span>
+              </div>
+              <pre><code class="language-javascript">const person = { name: "Aman", age: 22 };
+
+console.log("name" in person);    // true
+console.log("salary" in person);  // false
+
+// Avoid this — a property can exist AND equal undefined
+console.log(person.salary === undefined); // true — ambiguous!</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use <strong>destructuring</strong> to extract multiple properties from an object into individual variables in one line:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Object destructuring</span>
+              </div>
+              <pre><code class="language-javascript">const person = { name: "Aman", age: 22, city: "Vadodara" };
+
+// Old way
+let name = person.name;
+let age  = person.age;
+
+// Modern destructuring — one line
+const { name: n, age: a, city } = person;
+
+console.log(n, a, city);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use <code>Object.keys()</code>, <code>Object.values()</code>, and <code>Object.entries()</code> to get arrays of an object's keys, values, or both:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Object utility methods</span>
+              </div>
+              <pre><code class="language-javascript">const scores = { maths: 95, science: 88, english: 91 };
+
+console.log(Object.keys(scores));    // ["maths", "science", "english"]
+console.log(Object.values(scores));  // [95, 88, 91]
+console.log(Object.entries(scores)); // [["maths",95],["science",88],...]</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      A property is updated and a new one is added — what does each
+      <code>console.log</code> print? Think before running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let obj = {
+  name: "Aman",
+  age:  22
+};
+
+obj.age  = 25;
+obj.city = "Delhi";
+
+console.log(obj.age);
+console.log(obj.city);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Initial object:
+//   obj = { name: "Aman", age: 22 }
+
+// Step 1: obj.age = 25
+//   The key "age" already exists → its value is UPDATED
+//   obj = { name: "Aman", age: 25 }
+
+// Step 2: obj.city = "Delhi"
+//   The key "city" does not yet exist → a NEW property is ADDED
+//   obj = { name: "Aman", age: 25, city: "Delhi" }
+
+// Step 3: console.log(obj.age)
+//   age was updated from 22 to 25
+//   Output → 25
+
+// Step 4: console.log(obj.city)
+//   city was just added
+//   Output → "Delhi"
+
+// Final output:
+//   25       ← updated value
+//   "Delhi"  ← newly added property
+
+// Key takeaway:
+//   Assigning to an existing key → UPDATES it
+//   Assigning to a new key      → ADDS it
+//   Both work identically — no special syntax needed.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="2-9.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      2.9 Arrays
+    </a>
+    <a href="2-11.html" class="nav-btn next">
+      2.11 Math Functions
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
