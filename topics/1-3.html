@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.3 Internal vs External Scripts — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 1</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">1.3 Internal vs External Scripts</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">1.3</span>
+      <span class="module-tag">Module 1 · Operators, Methods &amp; Keywords</span>
+    </div>
+    <h1>Internal vs <span class="highlight">External Scripts</span></h1>
+    <p class="subtitle">
+      Understand the two ways to include JavaScript in a web page and learn
+      when to use each approach for clean, scalable projects.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Internal JavaScript</strong> — code written directly inside the HTML file
+        using <code>&lt;script&gt;</code> tags. Everything lives in one file.
+      </p>
+      <p>
+        <strong>External JavaScript</strong> — code written in a separate <code>.js</code>
+        file and linked to the HTML using the <code>src</code> attribute. The logic lives
+        outside the HTML, keeping each file focused on one responsibility.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">Think of it like note-taking:</p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">Internal</span>
+          <span class="op-arrow">→</span>
+          <span>Writing notes <em>inside</em> your notebook — quick, but messy for large projects</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">External</span>
+          <span class="op-arrow">→</span>
+          <span>Writing notes in a <em>separate</em> book and referring to it — cleaner and reusable</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Internal JavaScript -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Internal JavaScript (Live Preview)</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Internal JS&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:16px"&gt;
+
+  &lt;h2 id="text"&gt;&lt;/h2&gt;
+
+  &lt;script&gt;
+    document.getElementById("text").innerText = "Hello from Internal JS";
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Internal JS preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>JavaScript sits inside the <code>&lt;script&gt;</code> tag within the HTML file</li>
+            <li>Runs directly — no extra files needed</li>
+            <li>Fine for small demos; becomes hard to manage in real projects</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — External JavaScript -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — External JavaScript</span>
+        </div>
+      </div>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Step 1 — script.js</span>
+        </div>
+        <pre><code class="language-javascript">// script.js
+document.getElementById("text").innerText = "Hello from External JS";</code></pre>
+      </div>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Step 2 — index.html</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;External JS&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h2 id="text"&gt;&lt;/h2&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>JS logic lives in <code>script.js</code> — the HTML stays clean</li>
+            <li>The <code>src</code> attribute tells the browser where to find the file</li>
+            <li>The same <code>script.js</code> can be linked by multiple HTML pages</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Script Placement -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Script Placement (Important)</span>
+        </div>
+        <pre><code class="language-html">&lt;body&gt;
+
+  &lt;h2 id="text"&gt;&lt;/h2&gt;
+
+  &lt;!-- Script at the BOTTOM of body --&gt;
+  &lt;script&gt;
+    document.getElementById("text").innerText = "Works fine";
+  &lt;/script&gt;
+
+&lt;/body&gt;</code></pre>
+        <div class="explanation">
+          <div class="explanation-title">Why place the script at the bottom?</div>
+          <ul>
+            <li>The browser reads HTML top-to-bottom — elements must exist before JS can target them</li>
+            <li>Placing <code>&lt;script&gt;</code> at the bottom ensures the HTML loads first</li>
+            <li>Prevents <code>null</code> errors from targeting elements that don't exist yet</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">Imagine building a project:</p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">📄</div>
+          <div class="analogy-desc">Small project → one file is fine (internal JS)</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">🗂️</div>
+          <div class="analogy-desc">Big project → separate files for HTML, CSS, JS</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">♻️</div>
+          <div class="analogy-desc">External JS can be shared across many HTML pages</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">👥</div>
+          <div class="analogy-desc">Teams work on separate files without conflicts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + CSS + JS EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + CSS + JS Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        In a real project these would be three separate files. Below they are shown
+        individually, then combined into a live preview so you can see the result.
+      </p>
+
+      <!-- index.html -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">index.html</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;External JS Demo&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1 id="heading"&gt;Welcome&lt;/h1&gt;
+  &lt;button onclick="changeText()"&gt;Click Me&lt;/button&gt;
+
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <!-- style.css -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">style.css</span>
+        </div>
+        <pre><code class="language-css">body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+}</code></pre>
+      </div>
+
+      <!-- script.js -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">script.js</span>
+        </div>
+        <pre><code class="language-javascript">function changeText() {
+  document.getElementById("heading").innerText = "Text Changed!";
+}</code></pre>
+      </div>
+
+      <!-- Combined live preview -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Combined — Live in Browser</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    button { padding: 10px 20px; cursor: pointer; font-size: 1rem; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1 id="heading"&gt;Welcome&lt;/h1&gt;
+  &lt;button onclick="changeText()"&gt;Click Me&lt;/button&gt;
+
+  &lt;script&gt;
+    function changeText() {
+      document.getElementById("heading").innerText = "Text Changed!";
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Combined live preview"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Internal JS heading</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;h2 id="title"&gt;&lt;/h2&gt;
+
+&lt;script&gt;
+  // your code here
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>document.getElementById("title")</code> to select the heading</li>
+              <li>Set its <code>innerText</code> to <code>"My First Page"</code> using internal JS</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Background color button (External JS)</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Files to create</span>
+              </div>
+              <pre><code class="language-html">&lt;!-- index.html --&gt;
+&lt;button onclick="changeBackground()"&gt;Change Color&lt;/button&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Create <code>index.html</code> with a button linked to <code>script.js</code></li>
+              <li>In <code>script.js</code>, write a <code>changeBackground()</code> function</li>
+              <li>The function should set <code>document.body.style.background</code> to any color</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Where is internal JavaScript written?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> In a .js file</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Inside the HTML &lt;script&gt; tag</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> In a CSS file</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> In a database</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Internal JS is written directly inside <code>&lt;script&gt;&lt;/script&gt;</code> tags within the HTML file.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            How do you correctly link an external JS file?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> &lt;script link="file.js"&gt;</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> &lt;script src="file.js"&gt;&lt;/script&gt;</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> &lt;js file="file.js"&gt;</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> &lt;script href="file.js"&gt;</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> The <code>src</code> attribute points to the external file path. <code>link</code> and <code>href</code> are not valid for <code>&lt;script&gt;</code> tags.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            Why is external JavaScript preferred in large projects?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Faster execution speed</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Cleaner code and reusability across pages</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Required by the browser</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> No particular reason</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> A single <code>.js</code> file can be linked to multiple HTML pages, and keeping logic separate makes maintenance and team collaboration much easier.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Always place <code>&lt;script&gt;</code> at the end of <code>&lt;body&gt;</code> — this ensures all HTML elements exist before JS tries to access them.</p>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use the <code>defer</code> attribute for even better performance — the script downloads in parallel but executes only after the HTML is fully parsed:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">defer attribute</span>
+              </div>
+              <pre><code class="language-html">&lt;script src="script.js" defer&gt;&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>External JS enables three major benefits in professional projects:</p>
+            <div class="warn-box example-block">
+              <div class="example-header">
+                <span class="example-label">Why external JS matters</span>
+              </div>
+              <pre><code class="language-javascript">// Reusability   — one script.js linked by 10 pages
+// Maintenance   — fix a bug in one place, fixed everywhere
+// Collaboration — designers touch HTML, devs touch JS</code></pre>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Avoid inline event handlers like <code>onclick="..."</code> in HTML — they mix behavior with structure. Prefer event listeners in your JS file (covered later):</p>
+            <div class="warn-box example-block">
+              <div class="example-header">
+                <span class="example-label">Avoid inline JS</span>
+              </div>
+              <pre><code class="language-html">&lt;!-- Avoid this --&gt;
+&lt;button onclick="doSomething()"&gt;Click&lt;/button&gt;
+
+&lt;!-- Prefer this (in your .js file) --&gt;
+&lt;!-- button.addEventListener('click', doSomething); --&gt;</code></pre>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Will this code work? Predict what happens before revealing the answer.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What happens here?</span>
+      </div>
+      <pre><code class="language-html">&lt;head&gt;
+  &lt;script&gt;
+    document.getElementById("demo").innerText = "Hello";
+  &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;h2 id="demo"&gt;&lt;/h2&gt;
+&lt;/body&gt;</code></pre>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Why It Fails &amp; How to Fix It</div>
+      <pre><code class="language-javascript">// It will NOT work.
+
+// The script runs inside &lt;head&gt; — before the browser has
+// created the &lt;h2 id="demo"&gt; element in &lt;body&gt;.
+// Result: getElementById("demo") returns null → TypeError.
+
+// Fix 1 — move the script to the bottom of &lt;body&gt;:
+//
+//   &lt;body&gt;
+//     &lt;h2 id="demo"&gt;&lt;/h2&gt;
+//     &lt;script&gt;
+//       document.getElementById("demo").innerText = "Hello"; // works
+//     &lt;/script&gt;
+//   &lt;/body&gt;
+
+// Fix 2 — keep it in &lt;head&gt; but use defer:
+//
+//   &lt;script src="script.js" defer&gt;&lt;/script&gt;
+// defer waits for the full HTML to load before executing.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="1-2.html" class="nav-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7-7-7"/></svg>
+      1.2 Best Practices
+    </a>
+    <a href="1-4.html" class="nav-btn next">
+      1.4 Next Topic
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
