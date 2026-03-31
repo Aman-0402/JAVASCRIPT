@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.2 JavaScript Best Practices — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 1</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">1.2 JavaScript Best Practices</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">1.2</span>
+      <span class="module-tag">Module 1 · Operators, Methods &amp; Keywords</span>
+    </div>
+    <h1>JavaScript <span class="highlight">Best Practices</span></h1>
+    <p class="subtitle">
+      Learn the recommended coding standards and techniques that separate clean,
+      maintainable code from code that creates future headaches.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>JavaScript Best Practices</strong> are recommended coding standards and
+        techniques used to write clean, efficient, maintainable, and error-free code.
+      </p>
+      <p>
+        They are not enforced by the language itself — but following them makes your code
+        easier to read, debug, and scale over time.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Best practices mean: <strong>"Write code in a way that future you (and others) won't hate you."</strong>
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">Read</span>
+          <span class="op-arrow">→</span>
+          <span>Easy to read — clear names, tidy structure</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Debug</span>
+          <span class="op-arrow">→</span>
+          <span>Easy to debug — isolated logic, no global side-effects</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Scale</span>
+          <span class="op-arrow">→</span>
+          <span>Easy to scale — reusable functions, no repeated code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Clean vs Messy -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Clean vs Messy Code</span>
+        </div>
+        <div class="problem-box">
+          <div class="box-label">Bad Code</div>
+          <p>Single-letter names tell you nothing about what the code does.</p>
+        </div>
+        <pre><code class="language-javascript">let a = 10;
+let b = 20;
+let c = a + b;
+console.log(c);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="solution-box">
+          <div class="solution-box-label">Good Code — meaningful variable names</div>
+          <pre><code class="language-javascript">let firstNumber = 10;
+let secondNumber = 20;
+let totalSum = firstNumber + secondNumber;
+
+console.log(totalSum);</code></pre>
+          <div class="output-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Output</span>
+              <button type="button" class="run-btn">▶ Run good code</button>
+            </div>
+            <div class="output-body">
+              <span class="output-placeholder">Click ▶ Run good code</span>
+            </div>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Meaningful variable names improve readability instantly</li>
+            <li>Code becomes self-explanatory — no comments needed</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Avoid Global Variables -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Avoid Global Variables</span>
+        </div>
+        <div class="problem-box">
+          <div class="box-label">Bad Practice</div>
+          <p><code>count</code> lives globally — any part of the program can accidentally change it.</p>
+        </div>
+        <pre><code class="language-javascript">var count = 0;
+
+function increment() {
+    count++;
+}
+
+increment();
+console.log(count);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="solution-box">
+          <div class="solution-box-label">Good Practice — keep variables in local scope</div>
+          <pre><code class="language-javascript">function increment() {
+    let count = 0;
+    count++;
+    console.log(count);
+}
+
+increment();</code></pre>
+          <div class="output-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Output</span>
+              <button type="button" class="run-btn">▶ Run good code</button>
+            </div>
+            <div class="output-body">
+              <span class="output-placeholder">Click ▶ Run good code</span>
+            </div>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Global variables can be modified from anywhere — a source of hard-to-trace bugs</li>
+            <li>Use local scope (<code>let</code> / <code>const</code> inside a function) for safety</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Code Optimization -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Code Optimization</span>
+        </div>
+        <div class="problem-box">
+          <div class="box-label">Inefficient</div>
+          <p>The string <code>"Hello"</code> is re-evaluated as a literal on every iteration.</p>
+        </div>
+        <pre><code class="language-javascript">for (let i = 0; i < 5; i++) {
+    console.log("Hello");
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="solution-box">
+          <div class="solution-box-label">Better — store the value once, reuse it</div>
+          <pre><code class="language-javascript">let message = "Hello";
+
+for (let i = 0; i < 5; i++) {
+    console.log(message);
+}</code></pre>
+          <div class="output-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Output</span>
+              <button type="button" class="run-btn">▶ Run better code</button>
+            </div>
+            <div class="output-body">
+              <span class="output-placeholder">Click ▶ Run better code</span>
+            </div>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Store repeated values in a variable — avoids redundant work</li>
+            <li>More important when the value is computed (e.g. a function call)</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">Imagine writing notes for exams:</p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">📝</div>
+          <div class="analogy-desc">Messy notes → you struggle to revise later</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">✅</div>
+          <div class="analogy-desc">Clean notes → easy to understand and review</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">🔁</div>
+          <div class="analogy-desc">Repeated info → waste of time and space</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">💡</div>
+          <div class="analogy-desc">Clean code today = less headache tomorrow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JS EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Best practices shine in real HTML pages too. Notice the function, clear naming,
+        and input validation below. Click <strong>▶ Preview</strong> to run it live.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Best Practices&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:20px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;User Greeting&lt;/h2&gt;
+  &lt;p id="output"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function greetUser(userName) {
+        if (!userName) {
+            return "Hello, Guest";
+        }
+        return "Hello, " + userName;
+    }
+
+    let name = "Aman";
+    document.getElementById("output").innerText = greetUser(name);
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">What's good here</div>
+          <ul>
+            <li>Function used instead of repeated inline code</li>
+            <li>Clear, descriptive naming (<code>greetUser</code>, <code>userName</code>)</li>
+            <li>Input validation — handles missing name gracefully</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Rename for clarity</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let x = 5;
+let y = 10;
+let z = x * y;
+console.log(z);</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Rewrite using meaningful variable names</li>
+              <li>The variables represent a width, height, and area</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Remove global variable</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code — needs fixing</span>
+              </div>
+              <pre><code class="language-javascript">var total = 0;
+
+function add() {
+    total += 10;
+}</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Remove the global <code>total</code> variable</li>
+              <li>Make <code>add()</code> self-contained and return the result</li>
+              <li>Print the return value with <code>console.log()</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which is a good variable name?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> x</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> data</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> totalPrice</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> a1</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> Descriptive names like <code>totalPrice</code> make the purpose immediately obvious — no guessing required.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Why should we avoid global variables?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> They are faster</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> They cause bugs and conflicts</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> They reduce code size</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> No reason</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Global variables can be modified from anywhere in the program, making bugs very hard to trace.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What is clean code?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Short code</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Fast code</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Readable and maintainable code</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Complex code</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> Clean code focuses on clarity and structure — it should be easy for anyone (including future you) to read and change.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Use <code>let</code> and <code>const</code> instead of <code>var</code>. <code>var</code> has function scope and hoisting quirks that cause subtle bugs.</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Prefer let / const</span>
+              </div>
+              <pre><code class="language-javascript">const MAX_SCORE = 100;   // value never changes
+let currentScore = 0;    // value will change
+
+console.log(MAX_SCORE, currentScore);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Follow <strong>camelCase</strong> naming conventions for variables and functions:</p>
+            <div class="warn-box example-block">
+              <div class="example-header">
+                <span class="example-label">Naming conventions</span>
+              </div>
+              <pre><code class="language-javascript">// camelCase — variables and functions
+let userName = "Aman";
+function calculateTotal() {}
+
+// UPPER_SNAKE_CASE — constants
+const MAX_RETRIES = 3;</code></pre>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Keep functions <strong>small and focused</strong> — each function should do one thing only. This makes testing and debugging dramatically easier.</p>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Follow the <strong>DRY principle</strong> — Don't Repeat Yourself. If you copy-paste code more than once, put it in a function.</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">DRY in action</span>
+              </div>
+              <pre><code class="language-javascript">function greet(name) {
+    console.log("Hello, " + name + "!");
+}
+
+greet("Aman");
+greet("Sara");
+greet("Ali");</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Spot the best-practice violation — then think about how you'd improve it before revealing the answer.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What's wrong with this code?</span>
+      </div>
+      <pre><code class="language-javascript">let a = 10;
+
+function test() {
+    a = 20;
+}
+
+test();
+console.log(a);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">What's Wrong &amp; How to Fix It</div>
+      <pre><code class="language-javascript">// Problem:
+// 'a' is a global variable — test() silently mutates it.
+// This is hard to track in larger codebases.
+
+// Output of original: 20  (a was changed globally)
+
+// Improved version — no global mutation:
+function test() {
+    let a = 20;       // local to this function
+    console.log(a);   // prints 20
+}
+
+test();
+// The outer 'a' is untouched — safe and predictable.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="1-1.html" class="nav-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7-7-7"/></svg>
+      1.1 Operators &amp; Debugging
+    </a>
+    <a href="1-3.html" class="nav-btn next">
+      1.3 Next Topic
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
