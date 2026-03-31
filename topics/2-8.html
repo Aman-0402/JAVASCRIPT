@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.8 String Operations — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 2</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">2.8 String Operations</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">2.8</span>
+      <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
+    </div>
+    <h1>String <span class="highlight">Operations</span></h1>
+    <p class="subtitle">
+      Learn how to measure, slice, replace, and format text using JavaScript's rich
+      set of built-in string methods — and write cleaner code with template literals.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>String operations</strong> in JavaScript refer to the manipulation and
+        handling of text data using built-in properties and methods such as
+        <code>length</code>, <code>slice()</code>, <code>replace()</code>,
+        <code>toUpperCase()</code>, and modern features like
+        <strong>template literals</strong>.
+      </p>
+      <p>
+        Strings are one of the most frequently used data types in any program — they
+        hold names, messages, URLs, and more. Mastering string methods lets you
+        transform and query text data with precision and minimal code.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Strings are just text, and string operations help you work with that text:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">.length</span>
+          <span class="op-arrow">→</span>
+          <span>Measure the text — how many characters does it contain?</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">.slice()</span>
+          <span class="op-arrow">→</span>
+          <span>Cut a portion out — extract characters between two positions</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">.replace()</span>
+          <span class="op-arrow">→</span>
+          <span>Swap one word or pattern for another — non-destructive</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">`${}`</span>
+          <span class="op-arrow">→</span>
+          <span>Template literals — embed variables directly into strings with backticks</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — length -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — .length</span>
+        </div>
+        <pre><code class="language-javascript">let text = "JavaScript";
+
+console.log(text.length);        // 10 characters
+console.log("Hello".length);     // 5
+console.log("".length);          // 0 — empty string</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>length</code> is a property (not a method) — no parentheses needed</li>
+            <li>It counts every character including spaces and punctuation</li>
+            <li>Useful for validation — e.g. checking a password meets a minimum length</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — slice() -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — .slice()</span>
+        </div>
+        <pre><code class="language-javascript">let text = "JavaScript";
+
+console.log(text.slice(0, 4));  // "Java"   → indices 0–3
+console.log(text.slice(4));     // "Script" → from index 4 to end
+console.log(text.slice(-6));    // "Script" → last 6 characters</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>slice(start, end)</code> extracts from <code>start</code> up to but <em>not including</em> <code>end</code></li>
+            <li>Omitting <code>end</code> extracts from <code>start</code> all the way to the end of the string</li>
+            <li>Negative indices count backwards from the end — <code>-6</code> means "start 6 from the end"</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — replace() -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — .replace()</span>
+        </div>
+        <pre><code class="language-javascript">let text = "Hello World";
+
+let newText = text.replace("World", "Aman");
+console.log(newText); // "Hello Aman"
+console.log(text);    // "Hello World" — original unchanged!
+
+// replace() only changes the FIRST occurrence
+let repeated = "cat and cat";
+console.log(repeated.replace("cat", "dog")); // "dog and cat"</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>replace()</code> returns a new string — the original is never modified (strings are immutable)</li>
+            <li>It only replaces the <em>first</em> occurrence of the search term</li>
+            <li>To replace all occurrences use <code>replaceAll()</code> or a regex with the <code>g</code> flag</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Template Literals -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Template Literals</span>
+        </div>
+        <pre><code class="language-javascript">let name = "Aman";
+let age  = 22;
+
+// Old way — concatenation
+console.log("My name is " + name + " and I am " + age + " years old.");
+
+// Modern way — template literal with backticks
+console.log(`My name is ${name} and I am ${age} years old.`);
+
+// Expressions work inside ${}
+console.log(`Next year I will be ${age + 1}.`);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Template literals use <strong>backticks</strong> (<code>` `</code>), not quotes</li>
+            <li><code>${}</code> embeds any JavaScript expression directly inside the string</li>
+            <li>Much cleaner than string concatenation with <code>+</code> — especially for long sentences</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 5 — More useful methods -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 5 — More Useful String Methods</span>
+        </div>
+        <pre><code class="language-javascript">let str = "  Hello JavaScript  ";
+
+console.log(str.toUpperCase());   // ALL CAPS
+console.log(str.toLowerCase());   // all lowercase
+console.log(str.trim());          // removes leading/trailing spaces
+console.log(str.trim().length);   // length after trimming
+console.log(str.includes("Java")); // true — does it contain this?
+console.log(str.indexOf("Java"));  // 8 — position of first match</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>toUpperCase()</code> / <code>toLowerCase()</code> — change the case of every character</li>
+            <li><code>trim()</code> — removes whitespace from both ends, essential when handling form input</li>
+            <li><code>includes()</code> — returns <code>true</code>/<code>false</code>, great for search/filter logic</li>
+            <li><code>indexOf()</code> — returns the starting position of a substring, or <code>-1</code> if not found</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a text editor like WhatsApp — every feature maps to a string method:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">.length</div>
+          <div class="analogy-desc">The character counter below a message box — "42 / 160"</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">.slice()</div>
+          <div class="analogy-desc">Selecting and copying part of a message to quote it</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">.replace()</div>
+          <div class="analogy-desc">Find &amp; Replace in a document — swap one word for another</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">`${}`</div>
+          <div class="analogy-desc">A notification template — "Hello Aman, your order is ready!"</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">.trim()</div>
+          <div class="analogy-desc">Auto-removing accidental spaces the user typed before or after</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">.includes()</div>
+          <div class="analogy-desc">The search bar — does this message contain your keyword?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, type your name, and watch multiple string
+        methods run on your input simultaneously — all at once on a real page.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — String Methods on Your Input</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;String Operations&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;String Operations Demo&lt;/h2&gt;
+  &lt;input id="nameInput" type="text" placeholder="Enter your name"
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:220px"&gt;
+  &lt;button onclick="runOps()"
+    style="margin-left:8px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Submit
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2.4;font-size:0.95rem"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function runOps() {
+      let raw  = document.getElementById("nameInput").value;
+      let name = raw.trim();
+
+      if (!name) {
+        document.getElementById("output").innerHTML =
+          "&lt;b style='color:red'&gt;Please enter a name.&lt;/b&gt;";
+        return;
+      }
+
+      document.getElementById("output").innerHTML =
+        `&lt;b&gt;Input (trimmed):&lt;/b&gt; ${name}&lt;br&gt;` +
+        `&lt;b&gt;.length:&lt;/b&gt; ${name.length}&lt;br&gt;` +
+        `&lt;b&gt;.toUpperCase():&lt;/b&gt; ${name.toUpperCase()}&lt;br&gt;` +
+        `&lt;b&gt;.toLowerCase():&lt;/b&gt; ${name.toLowerCase()}&lt;br&gt;` +
+        `&lt;b&gt;.slice(0, 3):&lt;/b&gt; ${name.slice(0, 3)}&lt;br&gt;` +
+        `&lt;b&gt;Template literal:&lt;/b&gt; Hello, ${name}! Welcome to JS Mastery.`;
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — String length &amp; case</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let message = "Hello JavaScript";</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Print the length of <code>message</code></li>
+              <li>Print it in all uppercase and all lowercase</li>
+              <li>Use a template literal to print: <em>"The message has X characters"</em></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Find and replace</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let sentence = "I love Python";</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Replace <code>"Python"</code> with <code>"JavaScript"</code> using <code>replace()</code></li>
+              <li>Print both the original and the new string to confirm the original is unchanged</li>
+              <li>Use <code>includes()</code> to check if the new string contains <code>"JavaScript"</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            What is the output?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let str = "Hello";
+console.log(str.length);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 4</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 5</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> 6</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Error</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>"Hello"</code> contains exactly 5 characters: H-e-l-l-o. <code>length</code> counts every character including spaces — none here.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What does <code>slice()</code> do?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let text = "JavaScript";
+console.log(text.slice(0, 4));</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Deletes part of the string</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Extracts part of the string</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Replaces part of the string</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Converts the string to an array</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>slice(0, 4)</code> returns a new string with characters from index 0 up to (but not including) index 4 — giving <code>"Java"</code>. The original string is untouched.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            Which syntax correctly uses a template literal?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let name = "Aman";
+
+// Which one outputs: "Hello Aman" ?
+console.log(`Hello ${name}`);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> "Hello ${name}"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> 'Hello ${name}'</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> `Hello ${name}`</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Hello ${name}</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> Template literals <em>must</em> use backticks (<code>` `</code>). Inside double or single quotes, <code>${name}</code> is treated as literal text — not evaluated as a variable.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Strings are <strong>immutable</strong> — every string method returns a new string. The original is never changed. Always store the result in a variable:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Strings are immutable</span>
+              </div>
+              <pre><code class="language-javascript">let original = "hello";
+let upper    = original.toUpperCase();
+
+console.log(original); // "hello"  — unchanged
+console.log(upper);    // "HELLO"  — new string returned</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Always <code>trim()</code> user input before processing it — leading or trailing spaces silently break comparisons and length checks:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Trim before using input</span>
+              </div>
+              <pre><code class="language-javascript">let input = "  Aman  "; // spaces from user typing
+
+console.log(input.length);        // 8 — includes spaces!
+console.log(input.trim().length); // 4 — correct length
+
+console.log(input === "Aman");        // false — spaces break it
+console.log(input.trim() === "Aman"); // true  — safe comparison</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use <code>replaceAll()</code> when you need to replace every occurrence — <code>replace()</code> only handles the first match:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">replace() vs replaceAll()</span>
+              </div>
+              <pre><code class="language-javascript">let text = "cat and cat and cat";
+
+console.log(text.replace("cat", "dog"));    // "dog and cat and cat"
+console.log(text.replaceAll("cat", "dog")); // "dog and dog and dog"</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Prefer template literals over <code>+</code> concatenation — they are easier to read, support multi-line strings, and allow any expression inside <code>${}</code>:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Template literals vs concatenation</span>
+              </div>
+              <pre><code class="language-javascript">let item  = "Laptop";
+let price = 45000;
+let qty   = 2;
+
+// Old way — hard to read
+console.log("Item: " + item + " | Price: ₹" + (price * qty));
+
+// Modern way — clean and expressive
+console.log(`Item: ${item} | Price: ₹${price * qty}`);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Two operations on the same string — predict each output before running.
+      Pay attention to indices.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let str = "JavaScript";
+
+console.log(str.slice(4));
+console.log(str.replace("Script", "Code"));</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// str = "JavaScript"
+//        J a v a S c r i p t
+//        0 1 2 3 4 5 6 7 8 9  ← indices
+
+// Line 1: str.slice(4)
+//   Starts at index 4, goes to the end
+//   Characters from index 4 onwards: S c r i p t = "Script"
+//   Output → "Script"
+
+// Line 2: str.replace("Script", "Code")
+//   Finds "Script" in "JavaScript" → replaces with "Code"
+//   "Java" + "Code" = "JavaCode"
+//   Output → "JavaCode"
+
+// Final output:
+//   "Script"    ← slice(4) extracts from index 4 to end
+//   "JavaCode"  ← replace() swaps the matched substring
+
+// Note: str itself is still "JavaScript" after both operations —
+// strings are immutable; methods return NEW strings.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="2-7.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      2.7 Type Checking
+    </a>
+    <a href="2-9.html" class="nav-btn next">
+      2.9 Arrays
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
