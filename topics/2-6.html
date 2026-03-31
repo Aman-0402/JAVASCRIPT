@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.6 Scope — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 2</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">2.6 Scope</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">2.6</span>
+      <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
+    </div>
+    <h1>Variable <span class="highlight">Scope</span></h1>
+    <p class="subtitle">
+      Understand where variables live and where they can be accessed — the rules that
+      govern visibility across global scope, function scope, and block scope.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Scope</strong> in JavaScript refers to the accessibility (visibility)
+        of variables in different parts of the program. It determines where a variable
+        can be read or modified.
+      </p>
+      <p>
+        There are three main types of scope in JavaScript: <strong>Global Scope</strong>
+        — accessible everywhere; <strong>Function Scope</strong> — accessible only
+        inside the function where it was declared; and <strong>Block Scope</strong>
+        — accessible only inside the <code>{}</code> block where it was declared
+        (applies to <code>let</code> and <code>const</code>).
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Scope answers one question: <strong>"Where can I use this variable?"</strong>
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">Global</span>
+          <span class="op-arrow">→</span>
+          <span>Declared outside everything — accessible from <em>anywhere</em> in the file</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Function</span>
+          <span class="op-arrow">→</span>
+          <span>Declared inside a function — only accessible <em>within that function</em></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Block</span>
+          <span class="op-arrow">→</span>
+          <span>Declared inside <code>{}</code> — only accessible <em>within that block</em> (<code>let</code> / <code>const</code>)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Global Scope -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Global Scope</span>
+        </div>
+        <pre><code class="language-javascript">let name = "Aman"; // global — declared outside everything
+
+function showName() {
+  console.log(name); // accessible inside function
+}
+
+showName();
+console.log(name); // accessible outside too</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>name</code> is declared at the top level — it belongs to the global scope</li>
+            <li>Global variables are readable from any function or block in the same file</li>
+            <li>Use global scope sparingly — too many globals make code hard to manage</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Function Scope -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Function Scope</span>
+        </div>
+        <pre><code class="language-javascript">function test() {
+  let message = "Hello"; // function-scoped
+  console.log(message);  // works fine inside
+}
+
+test();
+
+// Trying to access outside the function:
+try {
+  console.log(message); // ReferenceError
+} catch (e) {
+  console.log("Error:", e.message);
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>message</code> is created when <code>test()</code> runs and destroyed when it ends</li>
+            <li>Accessing it outside its function throws a <code>ReferenceError</code></li>
+            <li>Function scope is one of JavaScript's core privacy mechanisms</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Block Scope -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Block Scope (let &amp; const)</span>
+        </div>
+        <pre><code class="language-javascript">if (true) {
+  let x = 10;
+  const y = 20;
+  console.log(x, y); // works inside the block
+}
+
+// Trying to access outside the block:
+try {
+  console.log(x);
+} catch (e) {
+  console.log("Error:", e.message);
+}
+
+try {
+  console.log(y);
+} catch (e) {
+  console.log("Error:", e.message);
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>let</code> and <code>const</code> are block-scoped — they only exist within the <code>{}</code> they were declared in</li>
+            <li>A block is any pair of curly braces: <code>if</code>, <code>for</code>, <code>while</code>, or a standalone <code>{}</code></li>
+            <li>Accessing them outside throws a <code>ReferenceError</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — var vs let -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — var vs let (Block Scope Difference)</span>
+        </div>
+        <pre><code class="language-javascript">if (true) {
+  var a = 5;  // var IGNORES block scope
+  let b = 10; // let respects block scope
+}
+
+console.log(a); // 5 — leaks out of the block!
+
+try {
+  console.log(b); // ReferenceError
+} catch (e) {
+  console.log("Error:", e.message);
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — spot the difference!</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>var</code> is function-scoped, not block-scoped — it leaks out of <code>if</code>, <code>for</code>, and <code>while</code> blocks</li>
+            <li>This is a common source of hard-to-find bugs — which is why <code>var</code> is avoided in modern JavaScript</li>
+            <li><code>let</code> and <code>const</code> stay contained to their block — use them instead</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of scope like rooms in a house — each has different levels of access:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">Global</div>
+          <div class="analogy-desc">The living room — open to everyone in the house at any time</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Function</div>
+          <div class="analogy-desc">A private bedroom — only accessible to whoever is inside it</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Block</div>
+          <div class="analogy-desc">A locked cupboard inside the bedroom — even more restricted</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">var</div>
+          <div class="analogy-desc">A door left wide open — the variable escapes its room unexpectedly</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, then press the button to see global and
+        local variables behave differently — the global is always reachable, the local
+        disappears after the function ends.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Scope Demo</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Scope Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Scope Demo&lt;/h2&gt;
+  &lt;button onclick="checkScope()"
+    style="padding:8px 20px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Check
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2.2;font-size:0.95rem"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    let globalVar = "I am global"; // global scope
+
+    function checkScope() {
+      let localVar = "I am local"; // function scope
+
+      let html =
+        "&lt;b&gt;Inside function:&lt;/b&gt;&lt;br&gt;" +
+        "globalVar → " + globalVar + "&lt;br&gt;" +
+        "localVar  → " + localVar  + "&lt;br&gt;&lt;br&gt;" +
+        "&lt;b&gt;Outside function:&lt;/b&gt;&lt;br&gt;" +
+        "globalVar → " + globalVar + "&lt;br&gt;" +
+        "localVar  → &lt;b style='color:red'&gt;ReferenceError (not accessible)&lt;/b&gt;";
+
+      document.getElementById("output").innerHTML = html;
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Global vs local access</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let city = "Mumbai"; // global
+
+function showCity() {
+  // your code here
+}</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Inside <code>showCity()</code>, print the global variable <code>city</code></li>
+              <li>Call the function and also print <code>city</code> outside it</li>
+              <li>Confirm both print the same value — global scope at work</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Observe a scope error</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">function secretRoom() {
+  let secret = "hidden value";
+  console.log(secret); // works
+}
+
+secretRoom();</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>After calling <code>secretRoom()</code>, try to <code>console.log(secret)</code> outside it</li>
+              <li>Wrap it in a <code>try/catch</code> to see the <code>ReferenceError</code> message</li>
+              <li>Try replacing <code>let</code> with <code>var</code> — observe how the behaviour changes</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which keyword creates a block-scoped variable?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> var</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> let</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Both</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Neither</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>let</code> (and <code>const</code>) are block-scoped — they stay inside the <code>{}</code> they are declared in. <code>var</code> is function-scoped and leaks out of blocks like <code>if</code> and <code>for</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            What happens when you run this code?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">function test() {
+  let x = 10;
+}
+test();
+console.log(x);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 10</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> undefined</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> ReferenceError</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> null</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>x</code> is declared with <code>let</code> inside <code>test()</code> — it is function-scoped and cannot be accessed outside. JavaScript throws a <code>ReferenceError</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            Where must a variable be declared to have global scope?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Inside a function</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Inside an if block</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Outside all functions and blocks</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Inside a loop</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> A variable declared at the top level of a script — outside any function, block, or loop — belongs to the global scope and is accessible from everywhere in that file.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Keep variables as <strong>local as possible</strong> — declare them in the smallest scope where they are needed. This avoids accidental overwrites and makes code easier to reason about:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Prefer local over global</span>
+              </div>
+              <pre><code class="language-javascript">// ✗ Unnecessary global
+let result;
+function calculate() {
+  result = 5 + 3;
+}
+calculate();
+console.log(result);
+
+// ✓ Keep it local, return the value
+function calculateClean() {
+  let result = 5 + 3;
+  return result;
+}
+console.log(calculateClean());</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p><strong>Variable shadowing</strong> — a local variable can have the same name as a global one. Inside the function, the local version takes priority:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Shadowing example</span>
+              </div>
+              <pre><code class="language-javascript">let x = 10; // global x
+
+function test() {
+  let x = 20; // local x — shadows the global
+  console.log(x); // 20 — sees the local one
+}
+
+test();
+console.log(x); // 10 — global is unchanged</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Never use <code>var</code> in modern JavaScript — its function-only scoping leaks variables out of loops and <code>if</code> blocks in ways that cause subtle bugs:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">var leaking out of a loop</span>
+              </div>
+              <pre><code class="language-javascript">// var leaks — i survives after the loop
+for (var i = 0; i &lt; 3; i++) {}
+console.log(i); // 3 — leaked!
+
+// let is contained — i does not survive
+for (let j = 0; j &lt; 3; j++) {}
+try {
+  console.log(j);
+} catch (e) {
+  console.log("Error:", e.message); // ReferenceError
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Proper scoping improves <strong>memory management</strong> — local variables are garbage-collected when their function ends, whereas globals persist for the entire lifetime of the page.</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      There are two variables named <code>x</code> — one global, one local. Which one
+      does each <code>console.log</code> see? Predict both outputs before running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let x = 10;
+
+function test() {
+  let x = 20;
+  console.log(x);
+}
+
+test();
+console.log(x);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Two variables — same name, different scopes:
+//   Global x = 10   (line 1)
+//   Local  x = 20   (inside test())
+
+// Step 1: test() is called
+//         JavaScript enters the function scope
+//         A new local x = 20 is created — it SHADOWS the global x
+//         console.log(x) inside sees the LOCAL x
+//         Output line 1 → 20
+
+// Step 2: test() ends
+//         The local x is destroyed — it no longer exists
+//         We are back in the global scope
+
+// Step 3: console.log(x) outside
+//         Only the global x = 10 is visible here
+//         Output line 2 → 10
+
+// Final output:
+//   20   ← local x inside test()
+//   10   ← global x, unchanged
+
+// Key takeaway:
+//   Shadowing lets inner scopes reuse a name without
+//   affecting the outer variable. The two x values
+//   are completely independent of each other.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="2-5.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      2.5 Parameters &amp; Return Values
+    </a>
+    <a href="2-7.html" class="nav-btn next">
+      2.7 Type Checking
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>

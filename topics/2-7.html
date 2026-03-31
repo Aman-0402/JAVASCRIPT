@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.7 Type Checking — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 2</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">2.7 Type Checking</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">2.7</span>
+      <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
+    </div>
+    <h1>Type <span class="highlight">Checking</span></h1>
+    <p class="subtitle">
+      Learn how to identify what kind of data you are working with at runtime — using
+      <code>typeof</code>, <code>instanceof</code>, and <code>Array.isArray()</code>
+      — and how to validate inputs before operating on them.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Type Checking</strong> in JavaScript is the process of identifying the
+        data type of a variable or value during runtime. It is commonly done using
+        operators like <code>typeof</code> and <code>instanceof</code>, along with
+        validation techniques to ensure correct data handling before performing
+        operations.
+      </p>
+      <p>
+        Because JavaScript is dynamically typed — variables can hold any type at any
+        time — type checking is an essential defensive practice that prevents silent
+        bugs caused by operating on unexpected data.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Type checking asks: <strong>"What type of data is this?"</strong> — and uses
+        the right tool depending on what you need to verify:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">typeof</span>
+          <span class="op-arrow">→</span>
+          <span>Returns a string describing the primitive type — <code>"number"</code>, <code>"string"</code>, <code>"boolean"</code>…</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">instanceof</span>
+          <span class="op-arrow">→</span>
+          <span>Checks if an object was created from a specific constructor — e.g. <code>Array</code>, <code>Object</code></span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Array.isArray</span>
+          <span class="op-arrow">→</span>
+          <span>The most reliable way to confirm a value is an array (returns <code>true</code> / <code>false</code>)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — typeof basics -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Using typeof</span>
+        </div>
+        <pre><code class="language-javascript">let name      = "Aman";
+let age       = 22;
+let isStudent = true;
+
+console.log(typeof name);       // "string"
+console.log(typeof age);        // "number"
+console.log(typeof isStudent);  // "boolean"</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>typeof</code> is an operator — it returns a lowercase string naming the type</li>
+            <li>Works well for all primitives: <code>"string"</code>, <code>"number"</code>, <code>"boolean"</code>, <code>"undefined"</code>, <code>"symbol"</code>, <code>"bigint"</code></li>
+            <li>Use <code>=== "number"</code> (strict) when comparing — never <code>==</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Special cases -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Special typeof Cases</span>
+        </div>
+        <pre><code class="language-javascript">console.log(typeof null);       // "object" — historic JS bug
+console.log(typeof undefined);  // "undefined"
+console.log(typeof []);         // "object" — arrays are objects
+console.log(typeof {});         // "object"
+console.log(typeof function(){}); // "function"</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — some of these will surprise you!</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>typeof null === "object"</code> is a well-known JavaScript bug — use <code>value === null</code> to check for null</li>
+            <li><code>typeof []</code> and <code>typeof {}</code> both return <code>"object"</code> — use <code>Array.isArray()</code> to tell them apart</li>
+            <li><code>typeof function(){}</code> uniquely returns <code>"function"</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — instanceof -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Using instanceof</span>
+        </div>
+        <pre><code class="language-javascript">let arr = [1, 2, 3];
+let obj = { name: "Aman" };
+let now = new Date();
+
+console.log(arr instanceof Array);   // true
+console.log(obj instanceof Object);  // true
+console.log(arr instanceof Object);  // true — arrays are objects too
+console.log(now instanceof Date);    // true</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>instanceof</code> checks the prototype chain — it confirms what constructor created the value</li>
+            <li>Arrays are also objects, so <code>arr instanceof Object</code> is <code>true</code></li>
+            <li>Useful for built-in types like <code>Date</code>, <code>Map</code>, <code>Set</code> that <code>typeof</code> cannot distinguish</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Array.isArray -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Array.isArray() (Best Practice)</span>
+        </div>
+        <pre><code class="language-javascript">let arr  = [1, 2, 3];
+let obj  = { a: 1 };
+let num  = 42;
+
+console.log(Array.isArray(arr));  // true
+console.log(Array.isArray(obj));  // false
+console.log(Array.isArray(num));  // false</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>Array.isArray()</code> is the only reliable way to detect an array — both <code>typeof</code> and <code>instanceof</code> have edge cases</li>
+            <li>Returns a clean <code>true</code> or <code>false</code> — no string parsing needed</li>
+            <li>Works correctly even across different frames or environments where <code>instanceof Array</code> can fail</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 5 — Data validation -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 5 — Input Validation with Type Checking</span>
+        </div>
+        <pre><code class="language-javascript">function checkNumber(value) {
+  if (typeof value === "number" && !isNaN(value)) {
+    console.log(value + " is a valid number");
+  } else {
+    console.log("Invalid input: " + typeof value + " given");
+  }
+}
+
+checkNumber(10);    // valid
+checkNumber("10");  // string — invalid
+checkNumber(NaN);   // NaN — invalid</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Combining <code>typeof</code> with <code>isNaN()</code> gives a robust number check — <code>NaN</code> has type <code>"number"</code> but is not a valid number</li>
+            <li>Type checking before operations prevents unexpected <code>NaN</code> results or string concatenation bugs</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a security check at an airport — the system verifies the type of every
+        document before allowing entry:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">typeof</div>
+          <div class="analogy-desc">The officer glances at the document — passport, ticket, or ID card?</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">instanceof</div>
+          <div class="analogy-desc">Scans the barcode — confirms it was issued by the right authority</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Array.isArray</div>
+          <div class="analogy-desc">Dedicated luggage scanner — specifically built to detect one thing reliably</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">isNaN</div>
+          <div class="analogy-desc">Verifies the age field is actually a number, not a scribbled word</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong>, type any value into the box, and see all
+        three type-checking methods report on it simultaneously.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Type Checker</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Type Checking&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Type Checker&lt;/h2&gt;
+  &lt;input id="val" type="text" placeholder="Enter a value"
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:200px"&gt;
+  &lt;button onclick="checkType()"
+    style="margin-left:8px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Check
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2.2;font-size:0.95rem"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function checkType() {
+      let raw = document.getElementById("val").value;
+
+      // Try to convert to a number to test both string and number checks
+      let asNum = Number(raw);
+
+      document.getElementById("output").innerHTML =
+        "&lt;b&gt;Raw input:&lt;/b&gt; " + raw + "&lt;br&gt;" +
+        "&lt;b&gt;typeof:&lt;/b&gt; " + typeof raw + "&lt;br&gt;" +
+        "&lt;b&gt;Array.isArray():&lt;/b&gt; " + Array.isArray(raw) + "&lt;br&gt;" +
+        "&lt;b&gt;isNaN(Number(input)):&lt;/b&gt; " + isNaN(asNum) + "&lt;br&gt;" +
+        "&lt;b&gt;Looks like a number?&lt;/b&gt; " +
+          (!isNaN(asNum) &amp;&amp; raw !== "" ? "✅ Yes" : "❌ No");
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Check a variable's type</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let score = 95;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Print <code>typeof score</code> — confirm it returns <code>"number"</code></li>
+              <li>Change the value to a string and run again — watch the type change</li>
+              <li>Try <code>typeof null</code> and <code>typeof undefined</code> — note the quirks</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Array detector function</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">function isItAnArray(input) {
+  // your code here
+}
+
+isItAnArray([1, 2, 3]);
+isItAnArray({ a: 1 });
+isItAnArray("hello");</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>Array.isArray()</code> inside the function to check the input</li>
+              <li>Print <em>"Array detected"</em> if true, <em>"Not an array: [type]"</em> if false</li>
+              <li>Test with an array, a plain object, and a string</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            What does <code>typeof []</code> return?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(typeof []);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> "array"</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> "object"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> "list"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> "undefined"</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Arrays are a subtype of objects in JavaScript, so <code>typeof []</code> returns <code>"object"</code>. Use <code>Array.isArray()</code> to correctly identify arrays.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Which method is the best way to check if a value is an array?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let arr = [1, 2, 3];
+
+console.log(typeof arr);           // not reliable for arrays
+console.log(Array.isArray(arr));   // best practice</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> typeof</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> instanceof</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Array.isArray()</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> checkType()</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>Array.isArray()</code> is the most reliable method — it correctly returns <code>true</code> for arrays and <code>false</code> for everything else, including plain objects and <code>null</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What does <code>typeof undefined</code> return?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(typeof undefined);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> "null"</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> "undefined"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> "object"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> "number"</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>typeof undefined</code> correctly returns the string <code>"undefined"</code> — unlike <code>typeof null</code> which incorrectly returns <code>"object"</code> due to a historic JS bug.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Always use <strong>strict equality</strong> (<code>===</code>) when comparing <code>typeof</code> results — the returned value is always a lowercase string:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Strict typeof comparison</span>
+              </div>
+              <pre><code class="language-javascript">let value = 42;
+
+// ✓ Correct — strict string comparison
+console.log(typeof value === "number"); // true
+
+// ✗ Wrong — typeof never returns "Number" (capital N)
+console.log(typeof value === "Number"); // false
+
+// ✗ Wrong — typeof [] is "object", not "array"
+console.log(typeof [] === "array");     // false</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use <code>isNaN()</code> to validate numeric input — but always convert to a number first, since <code>isNaN("abc")</code> coerces and can give misleading results:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Safe number validation</span>
+              </div>
+              <pre><code class="language-javascript">function isValidNumber(val) {
+  return typeof val === "number" && !isNaN(val);
+}
+
+console.log(isValidNumber(42));    // true
+console.log(isValidNumber(NaN));   // false — NaN is typeof "number" but invalid
+console.log(isValidNumber("42"));  // false — it's a string</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use <code>instanceof</code> for built-in constructors like <code>Date</code>, <code>Map</code>, and <code>Set</code> that <code>typeof</code> cannot tell apart from plain objects:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">instanceof for built-in types</span>
+              </div>
+              <pre><code class="language-javascript">let today = new Date();
+let scores = new Map();
+
+console.log(typeof today);           // "object" — not helpful
+console.log(today instanceof Date);  // true  — helpful
+
+console.log(typeof scores);          // "object"
+console.log(scores instanceof Map);  // true</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Build a <strong>type guard</strong> helper to reuse consistent type checks across your code instead of repeating <code>typeof</code> expressions everywhere:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Reusable type guards</span>
+              </div>
+              <pre><code class="language-javascript">const isString  = v => typeof v === "string";
+const isNumber  = v => typeof v === "number" && !isNaN(v);
+const isArray   = v => Array.isArray(v);
+
+console.log(isString("hello")); // true
+console.log(isNumber(42));      // true
+console.log(isNumber(NaN));     // false
+console.log(isArray([1, 2]));   // true</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Two different checks on the same array — predict what each one returns before
+      running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let arr = [1, 2, 3];
+
+console.log(typeof arr);
+console.log(arr instanceof Array);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// arr = [1, 2, 3] — an array literal
+
+// Line 1: typeof arr
+//   typeof sees arr as a generic object — all non-primitive
+//   reference types return "object" with typeof
+//   Output → "object"
+
+// Line 2: arr instanceof Array
+//   instanceof checks the prototype chain
+//   arr was created from the Array constructor → true
+//   Output → true
+
+// Final output:
+//   "object"   ← typeof is not specific enough for arrays
+//   true       ← instanceof correctly identifies it as an Array
+
+// Key takeaway:
+//   typeof and instanceof give different information.
+//   For arrays, use Array.isArray() — it is the clearest:
+//
+//   console.log(Array.isArray(arr)); // true — unambiguous</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="2-6.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      2.6 Scope
+    </a>
+    <a href="2-8.html" class="nav-btn next">
+      2.8 String Operations
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
