@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.5 Browser Object Model (BOM) — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 1</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">1.5 Browser Object Model (BOM)</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">1.5</span>
+      <span class="module-tag">Module 1 · Operators, Methods &amp; Keywords</span>
+    </div>
+    <h1>Browser Object <span class="highlight">Model</span> (BOM)</h1>
+    <p class="subtitle">
+      Learn how JavaScript talks directly to the browser — showing alerts, capturing
+      user input, and controlling the window through the BOM.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        The <strong>Browser Object Model (BOM)</strong> allows JavaScript to interact
+        with the browser window and its components — such as tabs, alerts, navigation,
+        and user dialogs — through objects like <code>window</code>.
+      </p>
+      <p>
+        Unlike the DOM (which deals with page content), the BOM deals with the
+        <em>browser itself</em>: its size, its location bar, its popups, and the
+        environment your script is running in.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        BOM means: <strong>"JavaScript talking directly to the browser."</strong>
+        It lets you:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">alert()</span>
+          <span class="op-arrow">→</span>
+          <span>Show a popup message to the user</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">confirm()</span>
+          <span class="op-arrow">→</span>
+          <span>Ask the user a yes/no question</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">prompt()</span>
+          <span class="op-arrow">→</span>
+          <span>Take text input directly from the user</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — window object -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — The window Object</span>
+        </div>
+        <pre><code class="language-javascript">console.log(typeof window);
+console.log(typeof window.alert);
+console.log(typeof window.location);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>window</code> is the global object in every browser tab</li>
+            <li>All browser-related functions — <code>alert</code>, <code>location</code>, <code>history</code> — live on it</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — alert() -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — alert()</span>
+        </div>
+        <pre><code class="language-javascript">console.log("Before alert");
+// alert("Welcome to JavaScript"); // shows popup — commented for runner
+console.log("After alert");</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>alert()</code> shows a popup message — it blocks all code until the user clicks OK</li>
+            <li>It has no return value; use it only to display information</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — confirm() -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — confirm()</span>
+        </div>
+        <pre><code class="language-javascript">// Simulating confirm() — returns boolean
+let result = true; // true = user clicked OK, false = Cancel
+console.log(result);
+console.log(typeof result);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>confirm()</code> returns <code>true</code> when the user clicks OK, <code>false</code> when they click Cancel</li>
+            <li>Always returns a <strong>boolean</strong> — perfect for conditional checks</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — prompt() -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — prompt()</span>
+        </div>
+        <pre><code class="language-javascript">// Simulating prompt() — always returns a string
+let name = "Arjun"; // what the user would type
+console.log(name);
+console.log(typeof name);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>prompt()</code> always returns a <strong>string</strong> — even if the user types a number</li>
+            <li>If the user clicks Cancel, it returns <code>null</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 5 — Debugging BOM -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 5 — Debugging a BOM Type Issue</span>
+        </div>
+        <pre><code class="language-javascript">// Simulating prompt() input
+let age = "15"; // prompt always returns a string
+
+if (age &lt; 18) {
+  console.log("Underage");
+} else {
+  console.log("Allowed");
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — spot the bug!</span>
+          </div>
+        </div>
+        <div class="problem-box">
+          <div class="box-label">Problem</div>
+          <p><code>prompt()</code> returns a string, so <code>age</code> is <code>"15"</code> (string), not <code>15</code> (number). JavaScript coerces it here, but strict comparisons (<code>===</code>) or arithmetic will break.</p>
+        </div>
+        <div class="solution-box">
+          <div class="solution-box-label">Solution — convert with Number() first</div>
+          <pre><code class="language-javascript">let age = Number("15"); // convert before comparing
+console.log(age);
+console.log(typeof age);
+
+if (age &lt; 18) {
+  console.log("Underage");
+} else {
+  console.log("Allowed");
+}</code></pre>
+          <div class="output-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Output</span>
+              <button type="button" class="run-btn">▶ Run fix</button>
+            </div>
+            <div class="output-body">
+              <span class="output-placeholder">Click ▶ Run fix</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a website asking you questions or giving you information:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">alert()</div>
+          <div class="analogy-desc">"Action successful!" — a notification you must dismiss</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">confirm()</div>
+          <div class="analogy-desc">"Are you sure you want to delete?" — a yes/no decision</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">prompt()</div>
+          <div class="analogy-desc">"Enter your name" — a quick text field in a popup</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">window</div>
+          <div class="analogy-desc">The entire browser tab — your script's home environment</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        BOM dialogs work inside real HTML pages. Click <strong>▶ Preview</strong> to
+        run this live — interact with the buttons to trigger each dialog type.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — BOM Demo</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;BOM Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;BOM Dialog Demo&lt;/h2&gt;
+  &lt;p id="output" style="margin:12px 0;color:#333;min-height:24px"&gt;&lt;/p&gt;
+
+  &lt;button onclick="runAlert()"
+    style="margin:6px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700"&gt;
+    alert()
+  &lt;/button&gt;
+
+  &lt;button onclick="runConfirm()"
+    style="margin:6px;padding:8px 18px;background:#4ade80;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700"&gt;
+    confirm()
+  &lt;/button&gt;
+
+  &lt;button onclick="runPrompt()"
+    style="margin:6px;padding:8px 18px;background:#82aaff;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700"&gt;
+    prompt()
+  &lt;/button&gt;
+
+  &lt;script&gt;
+    const out = document.getElementById("output");
+
+    function runAlert() {
+      alert("Hello from BOM!");
+      out.textContent = "alert() fired — you clicked OK.";
+    }
+
+    function runConfirm() {
+      let result = confirm("Do you want to continue?");
+      out.textContent = "confirm() returned: " + result;
+    }
+
+    function runPrompt() {
+      let name = prompt("Enter your name:");
+      if (name) {
+        out.textContent = "prompt() got: " + name;
+      } else {
+        out.textContent = "prompt() returned null (Cancel clicked).";
+      }
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Greeting with prompt</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">// Simulate prompt input
+let userName = "Riya";</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>prompt()</code> to ask the user for their name</li>
+              <li>Show a personalised greeting using <code>alert()</code> — e.g. <em>"Hello, Riya!"</em></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Age gate with confirm</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">// Simulate prompt + confirm
+let age = Number("20");
+let confirmed = true;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>prompt()</code> to ask the user's age — convert with <code>Number()</code></li>
+              <li>Use <code>confirm()</code> to double-check before showing result</li>
+              <li>If age &lt; 18 → show <em>"Access Denied"</em>, else → show <em>"Access Granted"</em></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            What does <code>confirm()</code> return?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> String</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Number</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Boolean</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Object</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>confirm()</code> returns <code>true</code> when the user clicks OK and <code>false</code> when they click Cancel — always a boolean.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Which function takes user input from a browser popup?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> alert()</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> confirm()</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> prompt()</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> window()</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>prompt()</code> opens an input field dialog — <code>alert()</code> shows a message and <code>confirm()</code> asks a yes/no question, but neither accepts typed input.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What is <code>window</code> in the browser?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(typeof window);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> An HTML tag</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> A CSS property</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> The global browser object</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> A built-in function</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>window</code> is the top-level global object in the browser environment. Every variable you declare at the top level and every BOM function lives on it.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>All BOM functions are properties of <code>window</code> — you can call them with or without the prefix:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Equivalent calls</span>
+              </div>
+              <pre><code class="language-javascript">alert("Hello");         // short form
+window.alert("Hello");  // full form — identical result
+console.log(typeof window.alert);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Always convert <code>prompt()</code> output with <code>Number()</code> when you expect a numeric value:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Safe number conversion</span>
+              </div>
+              <pre><code class="language-javascript">let raw = "42";           // what prompt() would return
+let value = Number(raw);
+console.log(value);
+console.log(typeof value);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Avoid excessive <code>alert()</code> calls — they block the browser and frustrate users. Modern apps prefer HTML-based modals and toast notifications instead.</p>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>BOM dialogs are most useful for <strong>testing</strong>, <strong>small interactions</strong>, and <strong>debugging</strong>. For anything production-grade, build a proper UI component instead.</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Read the code carefully — will "Equal" ever appear? Think before you run.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">// Simulating prompt() input
+let value = "10"; // prompt() always returns a string
+
+if (value === 10) {
+  console.log("Equal");
+} else {
+  console.log("Not Equal");
+}</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Step 1: prompt() always returns a STRING
+//         value = "10"  (type: string)
+
+// Step 2: === checks value AND type
+//         "10" === 10   → false  (string !== number)
+
+// Step 3: "Not Equal" is always printed
+
+// Fix: convert the input before comparing
+let value = Number("10"); // value = 10 (type: number)
+if (value === 10) {
+  console.log("Equal"); // ✓ now this works
+}</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="1-4.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      1.4 Exception Handling
+    </a>
+    <a href="../content.html" class="nav-btn next">
+      Module 1 Complete
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
