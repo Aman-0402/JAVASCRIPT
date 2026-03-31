@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.11 Math Functions — JS Mastery</title>
+  <title>2.12 Advanced Functions — JS Mastery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
@@ -33,19 +33,19 @@
     <span class="breadcrumb-sep">/</span>
     <a href="../content.html">Module 2</a>
     <span class="breadcrumb-sep">/</span>
-    <span class="breadcrumb-current">2.11 Math Functions</span>
+    <span class="breadcrumb-current">2.12 Advanced Functions</span>
   </div>
 
   <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
   <div class="topic-hero">
     <div class="topic-tag-row">
-      <span class="topic-badge">2.11</span>
+      <span class="topic-badge">2.12</span>
       <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
     </div>
-    <h1>Math <span class="highlight">Functions</span></h1>
+    <h1>Advanced <span class="highlight">Functions</span></h1>
     <p class="subtitle">
-      Explore the built-in <code>Math</code> object — JavaScript's built-in calculator
-      for rounding, random numbers, powers, roots, and more.
+      Level up your function writing with reusability, composition, and clean design
+      principles — the habits that separate maintainable code from tangled spaghetti.
     </p>
   </div>
 
@@ -59,15 +59,15 @@
     </div>
     <div class="section-body">
       <p>
-        The <strong>Math object</strong> in JavaScript is a built-in object that
-        provides mathematical constants and functions for performing calculations such
-        as rounding numbers, generating random values, finding maximums and minimums,
-        and computing powers and square roots.
+        <strong>Advanced functions</strong> in JavaScript refer to techniques and
+        practices that enhance function usability — including <em>reusability</em>,
+        <em>function composition</em>, and clean coding principles — allowing developers
+        to write modular, maintainable, and scalable code.
       </p>
       <p>
-        Unlike most objects, <code>Math</code> is not a constructor — you never write
-        <code>new Math()</code>. All its properties and methods are accessed directly
-        as <code>Math.random()</code>, <code>Math.PI</code>, and so on.
+        The core idea is simple: write each function to do <strong>one thing well</strong>,
+        then combine those small focused functions to build complex behaviour. This
+        approach makes code easier to read, test, and reuse across projects.
       </p>
     </div>
   </section>
@@ -82,29 +82,23 @@
     </div>
     <div class="section-body">
       <p class="intro-text">
-        The <code>Math</code> object is like a <strong>calculator built into
-        JavaScript</strong> — call its methods whenever you need number operations:
+        Advanced functions are about three habits that make every codebase better:
       </p>
       <div class="simple-ops">
         <div class="simple-op-row">
-          <span class="op-badge">Math.random()</span>
+          <span class="op-badge">Reuse</span>
           <span class="op-arrow">→</span>
-          <span>Generate a random decimal between <code>0</code> (inclusive) and <code>1</code> (exclusive)</span>
+          <span>Write logic once — call it as many times as needed, anywhere</span>
         </div>
         <div class="simple-op-row">
-          <span class="op-badge">Math.floor()</span>
+          <span class="op-badge">Compose</span>
           <span class="op-arrow">→</span>
-          <span>Round <strong>down</strong> to the nearest whole number — <code>4.9 → 4</code></span>
+          <span>Pass the output of one function as the input of another — chain small steps</span>
         </div>
         <div class="simple-op-row">
-          <span class="op-badge">Math.ceil()</span>
+          <span class="op-badge">Single task</span>
           <span class="op-arrow">→</span>
-          <span>Round <strong>up</strong> to the nearest whole number — <code>4.1 → 5</code></span>
-        </div>
-        <div class="simple-op-row">
-          <span class="op-badge">Math.round()</span>
-          <span class="op-arrow">→</span>
-          <span>Round to the <strong>nearest</strong> integer — <code>4.5 → 5</code>, <code>4.4 → 4</code></span>
+          <span>Each function does exactly one thing — easy to name, test, and debug</span>
         </div>
       </div>
     </div>
@@ -120,118 +114,19 @@
     </div>
     <div class="section-body">
 
-      <!-- Example 1 — Math.random() -->
+      <!-- Example 1 — Reusability -->
       <div class="example-block">
         <div class="example-header">
-          <span class="example-label">Example 1 — Math.random()</span>
+          <span class="example-label">Example 1 — Reusability</span>
         </div>
-        <pre><code class="language-javascript">let value = Math.random();
-console.log(value); // e.g. 0.7342...
-
-// Run multiple times — you get a different number each time
-console.log(Math.random());
-console.log(Math.random());</code></pre>
-        <div class="output-panel">
-          <div class="output-header">
-            <span class="output-label"><span class="output-dot"></span>Output</span>
-            <button type="button" class="run-btn">▶ Run</button>
-          </div>
-          <div class="output-body">
-            <span class="output-placeholder">Click ▶ Run — the result changes each time!</span>
-          </div>
-        </div>
-        <div class="explanation">
-          <div class="explanation-title">Explanation</div>
-          <ul>
-            <li>Returns a floating-point number ≥ <code>0</code> and &lt; <code>1</code> — never exactly <code>1</code></li>
-            <li>Every call produces a different number — useful for games, shuffles, and simulations</li>
-            <li>On its own it is rarely useful — combine with <code>Math.floor()</code> to get integers</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Example 2 — Rounding methods -->
-      <div class="example-block">
-        <div class="example-header">
-          <span class="example-label">Example 2 — floor(), ceil(), round()</span>
-        </div>
-        <pre><code class="language-javascript">let num = 4.6;
-
-console.log(Math.floor(num));  // 4  — always rounds DOWN
-console.log(Math.ceil(num));   // 5  — always rounds UP
-console.log(Math.round(num));  // 5  — rounds to nearest
-
-console.log(Math.floor(4.1));  // 4
-console.log(Math.ceil(4.1));   // 5
-console.log(Math.round(4.4));  // 4
-console.log(Math.round(4.5));  // 5</code></pre>
-        <div class="output-panel">
-          <div class="output-header">
-            <span class="output-label"><span class="output-dot"></span>Output</span>
-            <button type="button" class="run-btn">▶ Run</button>
-          </div>
-          <div class="output-body">
-            <span class="output-placeholder">Click ▶ Run to execute</span>
-          </div>
-        </div>
-        <div class="explanation">
-          <div class="explanation-title">Explanation</div>
-          <ul>
-            <li><code>floor()</code> — always goes to the lower integer, regardless of decimal</li>
-            <li><code>ceil()</code> — always goes to the higher integer, regardless of decimal</li>
-            <li><code>round()</code> — follows standard rounding: <code>.5</code> and above rounds up, below rounds down</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Example 3 — Random number in range -->
-      <div class="example-block">
-        <div class="example-header">
-          <span class="example-label">Example 3 — Random Integer in a Range</span>
-        </div>
-        <pre><code class="language-javascript">// 0 to 9 (10 possible values)
-let zeroToNine = Math.floor(Math.random() * 10);
-console.log(zeroToNine);
-
-// 1 to 6 — simulating a dice roll
-let dice = Math.floor(Math.random() * 6) + 1;
-console.log("Dice rolled:", dice);
-
-// General formula: min to max (inclusive)
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+        <pre><code class="language-javascript">function calculateArea(length, width) {
+  return length * width;
 }
-console.log(randomInt(10, 20)); // between 10 and 20</code></pre>
-        <div class="output-panel">
-          <div class="output-header">
-            <span class="output-label"><span class="output-dot"></span>Output</span>
-            <button type="button" class="run-btn">▶ Run</button>
-          </div>
-          <div class="output-body">
-            <span class="output-placeholder">Click ▶ Run — each result will be different!</span>
-          </div>
-        </div>
-        <div class="explanation">
-          <div class="explanation-title">Explanation</div>
-          <ul>
-            <li><code>Math.random() * N</code> produces a decimal from <code>0</code> to just below <code>N</code></li>
-            <li><code>Math.floor()</code> converts it to a whole number in the range <code>0</code> to <code>N-1</code></li>
-            <li>Adding <code>+ min</code> shifts the range upward — the general formula works for any bounds</li>
-          </ul>
-        </div>
-      </div>
 
-      <!-- Example 4 — max, min, abs, pow, sqrt -->
-      <div class="example-block">
-        <div class="example-header">
-          <span class="example-label">Example 4 — max(), min(), abs(), pow(), sqrt()</span>
-        </div>
-        <pre><code class="language-javascript">console.log(Math.max(10, 20, 5));   // 20 — largest value
-console.log(Math.min(10, 20, 5));   // 5  — smallest value
-
-console.log(Math.abs(-15));         // 15 — absolute (positive) value
-console.log(Math.pow(2, 8));        // 256 — 2 to the power of 8
-console.log(Math.sqrt(144));        // 12  — square root of 144</code></pre>
+// Use the same function with different data — no code duplication
+console.log(calculateArea(5, 4));   // 20
+console.log(calculateArea(10, 2));  // 20
+console.log(calculateArea(7, 3));   // 21</code></pre>
         <div class="output-panel">
           <div class="output-header">
             <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -244,26 +139,37 @@ console.log(Math.sqrt(144));        // 12  — square root of 144</code></pre>
         <div class="explanation">
           <div class="explanation-title">Explanation</div>
           <ul>
-            <li><code>Math.max()</code> / <code>Math.min()</code> accept any number of arguments and return the largest or smallest</li>
-            <li><code>Math.abs()</code> removes the sign — negative becomes positive</li>
-            <li><code>Math.pow(base, exp)</code> raises a number to a power — same as the <code>**</code> operator</li>
-            <li><code>Math.sqrt()</code> returns the principal square root</li>
+            <li>One function definition — unlimited uses with different inputs</li>
+            <li>If the logic needs to change (e.g. add rounding), you update one place and all callers benefit</li>
+            <li>This is the DRY principle: <strong>Don't Repeat Yourself</strong></li>
           </ul>
         </div>
       </div>
 
-      <!-- Example 5 — Math constants -->
+      <!-- Example 2 — Function Composition -->
       <div class="example-block">
         <div class="example-header">
-          <span class="example-label">Example 5 — Math Constants</span>
+          <span class="example-label">Example 2 — Function Composition</span>
         </div>
-        <pre><code class="language-javascript">console.log(Math.PI);    // 3.14159... — pi
-console.log(Math.E);     // 2.71828... — Euler's number
+        <pre><code class="language-javascript">function double(x) {
+  return x * 2;
+}
 
-// Practical use — area of a circle
-let radius = 7;
-let area   = Math.PI * Math.pow(radius, 2);
-console.log("Area:", area.toFixed(2)); // rounded to 2 decimal places</code></pre>
+function square(x) {
+  return x * x;
+}
+
+// Compose: output of double() becomes input of square()
+let result = square(double(3));
+// double(3) → 6
+// square(6) → 36
+
+console.log(result); // 36
+
+// You can also store intermediate results
+let doubled  = double(4);  // 8
+let squaredD = square(doubled); // 64
+console.log(squaredD);</code></pre>
         <div class="output-panel">
           <div class="output-header">
             <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -276,9 +182,122 @@ console.log("Area:", area.toFixed(2)); // rounded to 2 decimal places</code></pr
         <div class="explanation">
           <div class="explanation-title">Explanation</div>
           <ul>
-            <li><code>Math.PI</code> gives the most precise value of π available in JavaScript</li>
-            <li><code>toFixed(n)</code> is a number method (not part of <code>Math</code>) that formats to <em>n</em> decimal places</li>
-            <li>Constants are all-caps properties — no parentheses, no arguments</li>
+            <li>Each function is small and focused — <code>double</code> only doubles, <code>square</code> only squares</li>
+            <li>Composing them builds complex behaviour without rewriting logic</li>
+            <li>JavaScript evaluates from the <em>inside out</em> — the innermost call runs first</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Single Responsibility -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Single Responsibility (Clean Design)</span>
+        </div>
+        <pre><code class="language-javascript">// Each function does exactly one thing
+function isEven(num) {
+  return num % 2 === 0;
+}
+
+function isPositive(num) {
+  return num > 0;
+}
+
+function isEvenAndPositive(num) {
+  return isEven(num) && isPositive(num);
+}
+
+console.log(isEven(4));                // true
+console.log(isEven(7));                // false
+console.log(isEvenAndPositive(6));     // true
+console.log(isEvenAndPositive(-4));    // false — negative</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Each function is independently testable — you can verify <code>isEven</code> without caring about positivity</li>
+            <li>Combining them is clean and readable — the composed function reads like plain English</li>
+            <li>Single-responsibility functions are far easier to debug when something goes wrong</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Bad vs Good -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Bad Code vs Good Code</span>
+        </div>
+        <pre><code class="language-javascript">// ✗ Bad — repeated magic number, no reuse
+let total1 = 5 * 10;
+let total2 = 8 * 10;
+let total3 = 3 * 10;
+console.log(total1, total2, total3);
+
+// ✓ Good — single function, zero repetition
+function calculateTotal(price, quantity) {
+  return price * quantity;
+}
+
+console.log(calculateTotal(5, 10));
+console.log(calculateTotal(8, 10));
+console.log(calculateTotal(3, 10));</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — both produce the same result</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>The bad version repeats the same pattern — if the formula changes you must update every line</li>
+            <li>The good version centralises the logic — one change fixes everything</li>
+            <li>This makes testing trivial and bugs easier to isolate</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 5 — Higher-order functions -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 5 — Functions as Arguments (Higher-Order)</span>
+        </div>
+        <pre><code class="language-javascript">// A function that accepts another function as input
+function applyTwice(fn, value) {
+  return fn(fn(value));
+}
+
+const addFive  = x => x + 5;
+const triple   = x => x * 3;
+
+console.log(applyTwice(addFive, 10));  // addFive(addFive(10)) = 20
+console.log(applyTwice(triple, 2));    // triple(triple(2))    = 18</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>In JavaScript, functions are <em>first-class values</em> — they can be passed as arguments</li>
+            <li>A function that receives or returns another function is called a <strong>higher-order function</strong></li>
+            <li>This pattern powers <code>array.map()</code>, <code>array.filter()</code>, and many modern APIs</li>
           </ul>
         </div>
       </div>
@@ -296,32 +315,25 @@ console.log("Area:", area.toFixed(2)); // rounded to 2 decimal places</code></pr
     </div>
     <div class="section-body">
       <p class="analogy-intro">
-        Think of different everyday situations that map directly to Math methods:
+        Think of a factory assembly line — each machine does one job, and the output
+        of each becomes the input of the next:
       </p>
       <div class="analogy-grid">
         <div class="analogy-card">
-          <div class="analogy-op">Math.random()</div>
-          <div class="analogy-desc">Rolling a dice — a different result every time you call it</div>
+          <div class="analogy-op">Reuse</div>
+          <div class="analogy-desc">The same cutting machine shapes every piece — not a new machine per piece</div>
         </div>
         <div class="analogy-card">
-          <div class="analogy-op">Math.floor()</div>
-          <div class="analogy-desc">Price rounding at a shop — ₹49.9 → ₹49 (always go lower)</div>
+          <div class="analogy-op">Compose</div>
+          <div class="analogy-desc">Cut → Paint → Assemble — each station feeds the next</div>
         </div>
         <div class="analogy-card">
-          <div class="analogy-op">Math.ceil()</div>
-          <div class="analogy-desc">Taxi fare rounding — ₹43.1 → ₹44 (always go higher)</div>
+          <div class="analogy-op">Single task</div>
+          <div class="analogy-desc">The paint station only paints — it doesn't also cut or assemble</div>
         </div>
         <div class="analogy-card">
-          <div class="analogy-op">Math.max()</div>
-          <div class="analogy-desc">Leaderboard — find the highest scorer from all players</div>
-        </div>
-        <div class="analogy-card">
-          <div class="analogy-op">Math.abs()</div>
-          <div class="analogy-desc">Distance — it is always positive, regardless of direction</div>
-        </div>
-        <div class="analogy-card">
-          <div class="analogy-op">Math.PI</div>
-          <div class="analogy-desc">Circle calculations — area, circumference, anywhere π is needed</div>
+          <div class="analogy-op">Higher-order</div>
+          <div class="analogy-desc">A manager who tells different machines what process to run — flexible control</div>
         </div>
       </div>
     </div>
@@ -337,48 +349,61 @@ console.log("Area:", area.toFixed(2)); // rounded to 2 decimal places</code></pr
     </div>
     <div class="section-body">
       <p class="section-intro-p">
-        Click <strong>▶ Preview</strong>, then press Roll to simulate a dice — watch
-        <code>Math.floor(Math.random() * 6) + 1</code> produce a new result every time.
+        Click <strong>▶ Preview</strong>, enter a price, and watch two small composed
+        functions — <code>calculateTax()</code> and <code>applyDiscount()</code> —
+        each do their single job and combine to produce the final result.
       </p>
       <div class="example-block">
         <div class="example-header">
-          <span class="example-label">Live in Browser — Dice Roller</span>
+          <span class="example-label">Live in Browser — Composed Price Calculator</span>
         </div>
         <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-&lt;head&gt;&lt;title&gt;Dice Roller&lt;/title&gt;&lt;/head&gt;
-&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa;text-align:center"&gt;
+&lt;head&gt;&lt;title&gt;Advanced Functions&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
 
-  &lt;h2&gt;Dice Roller&lt;/h2&gt;
-  &lt;div id="dice"
-    style="font-size:5rem;margin:16px 0;min-height:80px;line-height:1"&gt;
-    🎲
-  &lt;/div&gt;
-  &lt;p id="label" style="color:#555;font-size:1rem;margin-bottom:16px"&gt;
-    Press Roll to start
-  &lt;/p&gt;
-  &lt;button onclick="rollDice()"
-    style="padding:10px 28px;background:#f7df1e;border:none;border-radius:6px;
-           cursor:pointer;font-weight:700;font-size:1rem"&gt;
-    Roll
+  &lt;h2&gt;Discount Calculator&lt;/h2&gt;
+  &lt;input id="priceInput" type="number" placeholder="Enter price (₹)"
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:200px"&gt;
+  &lt;button onclick="calculate()"
+    style="margin-left:8px;padding:8px 18px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Apply 10% Discount
   &lt;/button&gt;
-  &lt;div id="history"
-    style="margin-top:20px;font-size:0.9rem;color:#555;line-height:1.8"&gt;
-  &lt;/div&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2.4;font-size:0.95rem"&gt;&lt;/div&gt;
 
   &lt;script&gt;
-    const faces = ["⚀","⚁","⚂","⚃","⚄","⚅"];
-    let rolls = [];
+    // Each function does ONE thing
+    function applyDiscount(price) {
+      return price * 0.9; // 10% off
+    }
 
-    function rollDice() {
-      let result = Math.floor(Math.random() * 6) + 1; // 1–6
-      rolls.push(result);
+    function calculateTax(price) {
+      return price * 1.18; // 18% GST
+    }
 
-      document.getElementById("dice").textContent  = faces[result - 1];
-      document.getElementById("label").textContent =
-        `Rolled: ${result}  |  Max so far: ${Math.max(...rolls)}  |  Min: ${Math.min(...rolls)}`;
-      document.getElementById("history").textContent =
-        "History: " + rolls.join(", ");
+    function formatPrice(amount) {
+      return "₹" + amount.toFixed(2);
+    }
+
+    function calculate() {
+      let raw = Number(document.getElementById("priceInput").value);
+
+      if (!raw || raw &lt;= 0) {
+        document.getElementById("output").innerHTML =
+          "&lt;b style='color:red'&gt;Please enter a valid price.&lt;/b&gt;";
+        return;
+      }
+
+      // Compose: discount first, then tax on discounted price
+      let discounted = applyDiscount(raw);
+      let withTax    = calculateTax(discounted);
+
+      document.getElementById("output").innerHTML =
+        "&lt;b&gt;Original price:&lt;/b&gt; " + formatPrice(raw) + "&lt;br&gt;" +
+        "&lt;b&gt;After 10% discount:&lt;/b&gt; " + formatPrice(discounted) + "&lt;br&gt;" +
+        "&lt;b&gt;After 18% GST:&lt;/b&gt; " + formatPrice(withTax);
     }
   &lt;/script&gt;
 
@@ -409,21 +434,24 @@ console.log("Area:", area.toFixed(2)); // rounded to 2 decimal places</code></pr
         <div class="task-card">
           <div class="task-card-header">
             <span class="task-difficulty easy">Easy</span>
-            <span class="task-title">Task 1 — Random 0 to 5</span>
+            <span class="task-title">Task 1 — Square function</span>
           </div>
           <div class="task-card-body">
             <div class="example-block">
               <div class="example-header">
                 <span class="example-label">Starter code</span>
               </div>
-              <pre><code class="language-javascript">// Generate a random integer from 0 to 5
-let value = Math.floor(Math.random() * 6);
-console.log(value);</code></pre>
+              <pre><code class="language-javascript">function square(n) {
+  // return n squared
+}
+
+console.log(square(5));   // 25
+console.log(square(12));  // 144</code></pre>
             </div>
             <ul class="task-steps">
-              <li>Run the code multiple times — confirm the output is always <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, or <code>5</code></li>
-              <li>Explain in a comment why multiplying by <code>6</code> gives the range <code>0–5</code></li>
-              <li>Change it to produce <code>0–9</code> by adjusting the multiplier</li>
+              <li>Complete the function so it returns <code>n * n</code></li>
+              <li>Call it with three different numbers and verify the outputs</li>
+              <li>Rewrite it as a one-line arrow function: <code>const square = n =&gt; n * n</code></li>
             </ul>
           </div>
         </div>
@@ -431,24 +459,27 @@ console.log(value);</code></pre>
         <div class="task-card">
           <div class="task-card-header">
             <span class="task-difficulty medium">Medium</span>
-            <span class="task-title">Task 2 — Random 1 to 100</span>
+            <span class="task-title">Task 2 — Composed tax calculator</span>
           </div>
           <div class="task-card-body">
             <div class="example-block">
               <div class="example-header">
                 <span class="example-label">Starter code</span>
               </div>
-              <pre><code class="language-javascript">// Use the general formula
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+              <pre><code class="language-javascript">function calculateTax(price) {
+  return price * 0.10; // 10% tax
 }
 
-console.log(randomInt(1, 100));</code></pre>
+function addTax(price) {
+  return price + calculateTax(price);
+}
+
+console.log(addTax(500));</code></pre>
             </div>
             <ul class="task-steps">
-              <li>Run the function several times — confirm results are always between <code>1</code> and <code>100</code></li>
-              <li>Use <code>randomInt()</code> to simulate rolling two dice and print their sum</li>
-              <li>Print <code>Math.max()</code> and <code>Math.min()</code> on the two dice values</li>
+              <li>Run the code — confirm the output is <code>550</code></li>
+              <li>Create a third function <code>formatBill(price)</code> that returns a string like <em>"Total: ₹550.00"</em></li>
+              <li>Compose all three: <code>formatBill(addTax(500))</code></li>
             </ul>
           </div>
         </div>
@@ -472,32 +503,17 @@ console.log(randomInt(1, 100));</code></pre>
         <div class="mcq-card">
           <div class="mcq-question">
             <div class="mcq-q-num">Q1</div>
-            What is the range of values <code>Math.random()</code> can return?
-            <div class="mcq-question-code">
-              <pre><code class="language-javascript">// Run many times and observe
-for (let i = 0; i &lt; 5; i++) {
-  console.log(Math.random());
-}</code></pre>
-              <div class="output-panel">
-                <div class="output-header">
-                  <span class="output-label"><span class="output-dot"></span>Output</span>
-                  <button type="button" class="run-btn">▶ Run</button>
-                </div>
-                <div class="output-body">
-                  <span class="output-placeholder">Run it to observe</span>
-                </div>
-              </div>
-            </div>
+            What is function composition?
           </div>
           <ul class="mcq-options">
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 0 to 10</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> 1 to 10</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> 0 (inclusive) to 1 (exclusive)</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> -1 to 1</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Writing multiple unrelated functions</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Passing the output of one function as the input of another</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Deleting functions after use</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Looping through functions</li>
           </ul>
           <div class="mcq-explanation">
             <span class="mcq-explanation-icon">💡</span>
-            <span><strong>C is correct.</strong> <code>Math.random()</code> returns a decimal ≥ <code>0</code> and strictly &lt; <code>1</code> — it will never return exactly <code>1</code>. Multiply and floor to get integers in any range.</span>
+            <span><strong>B is correct.</strong> Function composition means chaining functions so that the output of one becomes the input of the next — e.g. <code>square(double(3))</code> where <code>double(3)</code> produces the input for <code>square</code>.</span>
           </div>
         </div>
 
@@ -505,9 +521,30 @@ for (let i = 0; i &lt; 5; i++) {
         <div class="mcq-card">
           <div class="mcq-question">
             <div class="mcq-q-num">Q2</div>
+            Which is the better function design practice?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> One large function that does everything</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Small, focused, reusable functions</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> No functions — write everything inline</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Random naming so it's harder to copy</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Small, single-purpose functions are easier to read, test, and reuse. A large function that does everything becomes a maintenance nightmare — hard to debug and impossible to reuse parts of.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
             What is the output?
             <div class="mcq-question-code">
-              <pre><code class="language-javascript">console.log(Math.floor(4.9));</code></pre>
+              <pre><code class="language-javascript">function double(x) {
+  return x * 2;
+}
+console.log(double(5));</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -521,43 +558,13 @@ for (let i = 0; i &lt; 5; i++) {
           </div>
           <ul class="mcq-options">
             <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 5</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 4</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> 4.9</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 10</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> 25</li>
             <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Error</li>
           </ul>
           <div class="mcq-explanation">
             <span class="mcq-explanation-icon">💡</span>
-            <span><strong>B is correct.</strong> <code>Math.floor()</code> always rounds <em>down</em> — even <code>4.9</code> becomes <code>4</code>, not <code>5</code>. Use <code>Math.round()</code> if you want standard rounding.</span>
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="mcq-card">
-          <div class="mcq-question">
-            <div class="mcq-q-num">Q3</div>
-            What is the output?
-            <div class="mcq-question-code">
-              <pre><code class="language-javascript">console.log(Math.ceil(3.1));</code></pre>
-              <div class="output-panel">
-                <div class="output-header">
-                  <span class="output-label"><span class="output-dot"></span>Output</span>
-                  <button type="button" class="run-btn">▶ Run</button>
-                </div>
-                <div class="output-body">
-                  <span class="output-placeholder">Run it to verify</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <ul class="mcq-options">
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> 3</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> 4</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> 3.1</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Error</li>
-          </ul>
-          <div class="mcq-explanation">
-            <span class="mcq-explanation-icon">💡</span>
-            <span><strong>B is correct.</strong> <code>Math.ceil()</code> always rounds <em>up</em> — even <code>3.1</code> becomes <code>4</code>, not <code>3</code>. Think of it as "ceiling" — you always go to the next floor above.</span>
+            <span><strong>B is correct.</strong> <code>double(5)</code> returns <code>5 * 2 = 10</code>. The parameter <code>x</code> receives the argument <code>5</code>, and the function returns the doubled value.</span>
           </div>
         </div>
 
@@ -579,18 +586,21 @@ for (let i = 0; i &lt; 5; i++) {
         <li class="pro-tip">
           <span class="tip-icon">01</span>
           <div class="tip-content">
-            <p>The universal formula for a random integer between any <code>min</code> and <code>max</code> (both inclusive) — memorise this pattern:</p>
+            <p>Name functions by what they <strong>do</strong>, not what they are — a clear name eliminates the need for a comment:</p>
             <div class="example-block">
               <div class="example-header">
-                <span class="example-label">Universal random range formula</span>
+                <span class="example-label">Naming that communicates intent</span>
               </div>
-              <pre><code class="language-javascript">function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+              <pre><code class="language-javascript">// ✗ Vague names — what do these do?
+function doStuff(x)   { return x * 1.18; }
+function fn2(a, b)    { return a + b; }
 
-console.log(randomInt(1, 6));   // dice: 1–6
-console.log(randomInt(0, 100)); // percentage: 0–100
-console.log(randomInt(50, 99)); // custom range: 50–99</code></pre>
+// ✓ Clear names — self-documenting
+function applyGST(price)       { return price * 1.18; }
+function calculateTotal(a, b)  { return a + b; }
+
+console.log(applyGST(500));
+console.log(calculateTotal(300, 200));</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -607,17 +617,19 @@ console.log(randomInt(50, 99)); // custom range: 50–99</code></pre>
         <li class="pro-tip">
           <span class="tip-icon">02</span>
           <div class="tip-content">
-            <p>Use <code>toFixed(n)</code> on numbers — not part of <code>Math</code>, but essential for displaying calculations cleanly:</p>
+            <p>Prefer <code>return</code> over <code>console.log</code> inside functions — returning a value makes the function reusable in expressions; printing locks it to console output only:</p>
             <div class="example-block">
               <div class="example-header">
-                <span class="example-label">Formatting decimal results</span>
+                <span class="example-label">return makes functions composable</span>
               </div>
-              <pre><code class="language-javascript">let price    = 199.9;
-let discount = 0.15; // 15%
-let final    = price - price * discount;
+              <pre><code class="language-javascript">// ✗ Printing inside — cannot reuse the result
+function badDouble(x) { console.log(x * 2); }
 
-console.log(final);           // 169.915 — too many decimals
-console.log(final.toFixed(2)); // "169.92" — clean display</code></pre>
+// ✓ Returning — result can be used anywhere
+const goodDouble = x => x * 2;
+
+let result = goodDouble(5) + goodDouble(10); // composable!
+console.log(result); // 30</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -634,15 +646,21 @@ console.log(final.toFixed(2)); // "169.92" — clean display</code></pre>
         <li class="pro-tip">
           <span class="tip-icon">03</span>
           <div class="tip-content">
-            <p>Use the spread operator (<code>...</code>) to pass an array into <code>Math.max()</code> or <code>Math.min()</code> — they don't accept arrays directly:</p>
+            <p>Avoid <strong>side effects</strong> — a pure function always returns the same output for the same input and changes nothing outside itself:</p>
             <div class="example-block">
               <div class="example-header">
-                <span class="example-label">max/min from an array</span>
+                <span class="example-label">Pure vs impure functions</span>
               </div>
-              <pre><code class="language-javascript">let scores = [88, 95, 72, 100, 61];
+              <pre><code class="language-javascript">let total = 0;
 
-console.log(Math.max(...scores)); // 100 — spread unpacks the array
-console.log(Math.min(...scores)); // 61</code></pre>
+// ✗ Impure — modifies external state
+function addToTotal(n) { total += n; }
+
+// ✓ Pure — no side effects, predictable
+function add(a, b) { return a + b; }
+
+console.log(add(3, 4)); // always 7
+console.log(add(3, 4)); // still 7 — no surprises</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -659,16 +677,20 @@ console.log(Math.min(...scores)); // 61</code></pre>
         <li class="pro-tip">
           <span class="tip-icon">04</span>
           <div class="tip-content">
-            <p>The <code>**</code> exponentiation operator is a clean shorthand for <code>Math.pow()</code> — prefer it for simple power calculations:</p>
+            <p>Use <code>Array.map()</code> and <code>Array.filter()</code> — these are the most common higher-order functions and apply a function to every element of an array:</p>
             <div class="example-block">
               <div class="example-header">
-                <span class="example-label">** vs Math.pow()</span>
+                <span class="example-label">map() and filter() — higher-order in action</span>
               </div>
-              <pre><code class="language-javascript">console.log(2 ** 10);          // 1024  — clean syntax
-console.log(Math.pow(2, 10));  // 1024  — identical result
+              <pre><code class="language-javascript">const prices  = [100, 250, 80, 400, 60];
 
-console.log(3 ** 3);           // 27
-console.log(Math.sqrt(256));   // 16 — sqrt still uses Math</code></pre>
+// map() — apply a function to every item
+const discounted = prices.map(p => p * 0.9);
+console.log(discounted);
+
+// filter() — keep only items that pass a test
+const expensive = prices.filter(p => p > 100);
+console.log(expensive);</code></pre>
               <div class="output-panel">
                 <div class="output-header">
                   <span class="output-label"><span class="output-dot"></span>Output</span>
@@ -694,58 +716,70 @@ console.log(Math.sqrt(256));   // 16 — sqrt still uses Math</code></pre>
       <span class="challenge-title">Mini Challenge</span>
     </div>
     <p class="challenge-subtitle">
-      What is the possible output range of this expression? Work it out before running
-      — then run several times to confirm.
+      Two small functions are composed together — trace each step from the inside out
+      before running.
     </p>
     <div class="challenge-code-wrap example-block">
       <div class="example-header">
-        <span class="example-label">What values can this print?</span>
+        <span class="example-label">What does this print?</span>
       </div>
-      <pre><code class="language-javascript">let value = Math.floor(Math.random() * 5);
+      <pre><code class="language-javascript">function add(x) {
+  return x + 2;
+}
 
-console.log(value);</code></pre>
+function multiply(x) {
+  return x * 3;
+}
+
+let result = multiply(add(2));
+
+console.log(result);</code></pre>
       <div class="output-panel">
         <div class="output-header">
           <span class="output-label"><span class="output-dot"></span>Output</span>
           <button type="button" class="run-btn">▶ Run</button>
         </div>
         <div class="output-body">
-          <span class="output-placeholder">Run multiple times to see all possible values!</span>
+          <span class="output-placeholder">Think first, then run!</span>
         </div>
       </div>
     </div>
     <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
     <div class="challenge-answer">
       <div class="challenge-answer-header">Step-by-Step Explanation</div>
-      <pre><code class="language-javascript">// Step 1: Math.random()
-//   Returns a decimal in [0, 1) — e.g. 0.0, 0.3, 0.7, 0.9999...
-//   It will NEVER be exactly 1
+      <pre><code class="language-javascript">// JavaScript evaluates composed calls from the INSIDE OUT
 
-// Step 2: Math.random() * 5
-//   Scales the range to [0, 5) — e.g. 0.0, 1.5, 3.5, 4.9999...
-//   It will NEVER be exactly 5
+// Step 1: Innermost call — add(2)
+//         x = 2 → return 2 + 2 = 4
+//         add(2) resolves to 4
 
-// Step 3: Math.floor(...)
-//   Drops the decimal, always rounds DOWN
-//   Possible results: 0, 1, 2, 3, 4
+// Step 2: Outer call — multiply(4)
+//         x = 4 → return 4 * 3 = 12
+//         multiply(4) resolves to 12
 
-// Output range: 0 to 4 (5 possible values)
-// NOT 0 to 5 — because Math.random() never reaches 1,
-// the product never reaches 5, so Math.floor() never gives 5.
+// Step 3: result = 12
 
-// To get 0 to 5 (6 values):  Math.floor(Math.random() * 6)
-// To get 1 to 5 (5 values):  Math.floor(Math.random() * 5) + 1</code></pre>
+// Output → 12
+
+// Key takeaway:
+//   multiply(add(2))
+//   = multiply(4)     ← add(2) runs first, returns 4
+//   = 12              ← multiply receives 4
+
+// This is function composition — small, focused functions
+// chained together to build more complex behaviour.
+// Neither add() nor multiply() needed to know about the other.</code></pre>
     </div>
   </div>
 
   <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
   <div class="topic-nav">
-    <a href="2-10.html" class="nav-btn prev">
+    <a href="2-11.html" class="nav-btn prev">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      2.10 Objects
+      2.11 Math Functions
     </a>
-    <a href="2-12.html" class="nav-btn next">
-      2.12 Advanced Functions
+    <a href="../content.html" class="nav-btn next">
+      Module 2 Complete
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
   </div>
