@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.1 Variables — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 2</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">2.1 Variables</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">2.1</span>
+      <span class="module-tag">Module 2 · Variables, Data Types &amp; Functions</span>
+    </div>
+    <h1>Variables <span class="highlight">&amp;</span> Declarations</h1>
+    <p class="subtitle">
+      Learn how to store, update, and manage data in JavaScript using
+      <code>var</code>, <code>let</code>, and <code>const</code> — the building
+      blocks of every program you'll ever write.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        In JavaScript, a <strong>variable</strong> is a named container used to store
+        data values that can be referenced and manipulated during program execution.
+        Variables are declared using <code>var</code>, <code>let</code>, or
+        <code>const</code>.
+      </p>
+      <p>
+        Every piece of data your program works with — a user's name, a score, a price —
+        lives inside a variable. Naming it clearly makes your code readable and
+        maintainable.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Think of a variable like a <strong>labelled box</strong>:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">label</span>
+          <span class="op-arrow">→</span>
+          <span>The variable name — what you call it</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">box</span>
+          <span class="op-arrow">→</span>
+          <span>Memory — where JavaScript stores the value</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">content</span>
+          <span class="op-arrow">→</span>
+          <span>The value — a number, string, boolean, etc.</span>
+        </div>
+      </div>
+      <p class="intro-text" style="margin-top:16px">
+        You can <strong>store</strong>, <strong>update</strong>, and <strong>use</strong>
+        data inside this box at any point in your program.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — var, let, const -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — var, let, and const</span>
+        </div>
+        <pre><code class="language-javascript">var name = "Aman";
+let age = 22;
+const country = "India";
+
+console.log(name);
+console.log(age);
+console.log(country);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>var</code> → old way of declaring variables (function-scoped, avoid in modern code)</li>
+            <li><code>let</code> → modern declaration whose value <em>can</em> be changed later</li>
+            <li><code>const</code> → fixed value that <em>cannot</em> be reassigned after declaration</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Declaration, Initialization, Reassignment -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Declaration, Initialization &amp; Reassignment</span>
+        </div>
+        <pre><code class="language-javascript">let score;       // Declaration — variable created, value is undefined
+score = 10;      // Initialization — first value assigned
+score = 20;      // Reassignment — value updated
+
+console.log(score);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><strong>Declaration</strong> → creates the named container in memory</li>
+            <li><strong>Initialization</strong> → stores a value in it for the first time</li>
+            <li><strong>Reassignment</strong> → replaces the value with a new one (only works with <code>let</code> / <code>var</code>)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — const cannot be reassigned -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — const Cannot Be Reassigned</span>
+        </div>
+        <pre><code class="language-javascript">const pi = 3.14;
+console.log(pi);
+
+// Trying to reassign const — this throws an error:
+try {
+  pi = 3.14159;
+} catch (e) {
+  console.log("Error:", e.message);
+}</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to see the error</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>const</code> locks the binding — once assigned, the variable cannot point to a new value</li>
+            <li>Attempting to reassign throws a <code>TypeError</code> at runtime</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Imagine managing your wallet and identity documents:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">let</div>
+          <div class="analogy-desc">Your wallet balance — it changes every time you spend or earn</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">const</div>
+          <div class="analogy-desc">Your Aadhaar number — fixed for life, never reassigned</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">var</div>
+          <div class="analogy-desc">An old-style notebook — works but causes confusion in large codebases</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">name</div>
+          <div class="analogy-desc">The label on the box — clear names make code readable instantly</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Variables power everything on a real page. Click <strong>▶ Preview</strong>,
+        then press the button inside to see variables displayed live in the browser.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Variables Demo</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Variables Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;JavaScript Variables&lt;/h2&gt;
+  &lt;button onclick="showVars()"
+    style="padding:8px 20px;background:#f7df1e;border:none;
+           border-radius:6px;cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Click Me
+  &lt;/button&gt;
+  &lt;div id="output" style="margin-top:16px;line-height:2"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function showVars() {
+      const userName = "Aman";
+      let age = 22;
+      let wallet = 1000;
+
+      wallet -= 300; // spent ₹300
+
+      document.getElementById("output").innerHTML =
+        "&lt;b&gt;Name:&lt;/b&gt; "   + userName + "&lt;br&gt;" +
+        "&lt;b&gt;Age:&lt;/b&gt; "    + age      + "&lt;br&gt;" +
+        "&lt;b&gt;Wallet:&lt;/b&gt; ₹" + wallet;
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Your identity variables</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">// Replace values with your own
+let name = "Your Name";
+let city = "Your City";</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Declare <code>name</code> and <code>city</code> using <code>let</code></li>
+              <li>Print both with <code>console.log()</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Marks tracker</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-javascript">let marks = 50;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Increase <code>marks</code> by <code>20</code> using <code>+=</code></li>
+              <li>Print the final marks with a label — e.g. <em>"Final marks: 70"</em></li>
+              <li>Try changing <code>let</code> to <code>const</code> — what happens?</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which keyword is used to declare a constant variable?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> var</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> let</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> const</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> static</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>const</code> declares a variable whose binding cannot be reassigned. Use it whenever you know the value should never change.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Which variable declaration allows reassignment?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> const</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> let</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Both</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Neither</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>let</code> allows the value to be updated at any time. <code>const</code> locks the binding after the first assignment.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What happens when you run this code?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">const x = 10;
+x = 20;</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Works fine — x becomes 20</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Error — cannot reassign const</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> undefined</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> null</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> Reassigning a <code>const</code> throws a <code>TypeError</code> at runtime. The first assignment is the only one allowed.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Prefer <code>const</code> by default — only switch to <code>let</code> when you know the value will change. This prevents accidental reassignment bugs.</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">const first, let when needed</span>
+              </div>
+              <pre><code class="language-javascript">const taxRate = 0.18;   // never changes
+let cartTotal = 500;    // will be updated
+
+cartTotal += 200;
+console.log(cartTotal);
+console.log(taxRate);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use meaningful variable names — code is read far more often than it is written:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Good vs bad naming</span>
+              </div>
+              <pre><code class="language-javascript">let userAge = 25;   // ✓ clear intent
+let x = 25;         // ✗ what is x?
+
+const maxRetries = 3;   // ✓ self-documenting
+const n = 3;            // ✗ meaningless
+
+console.log(userAge, maxRetries);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Avoid <code>var</code> in modern JavaScript. It is function-scoped (not block-scoped), which causes subtle bugs in loops and conditionals that <code>let</code> and <code>const</code> prevent entirely.</p>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use <strong>camelCase</strong> for variable names — it is the JavaScript convention:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">camelCase convention</span>
+              </div>
+              <pre><code class="language-javascript">let firstName  = "Priya";   // ✓ camelCase
+let first_name = "Priya";   // ✗ snake_case (Python style)
+let FirstName  = "Priya";   // ✗ PascalCase (reserved for classes)
+
+console.log(firstName);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Predict both outputs before running — think about how values are copied between variables.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let a = 10;
+let b = a;
+
+b = 20;
+
+console.log(a);
+console.log(b);</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// Step 1: a = 10
+//         a → [10]
+
+// Step 2: b = a
+//         b gets a COPY of the value — not a reference
+//         b → [10]   (a is still [10])
+
+// Step 3: b = 20
+//         only b changes — a is unaffected
+//         b → [20]   a → [10]
+
+// Output:
+//   10   ← a is unchanged
+//   20   ← b was updated independently
+
+// Key takeaway: primitive values (numbers, strings, booleans)
+// are copied by VALUE — changing b never affects a.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="../topics/1-5.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      1.5 Browser Object Model
+    </a>
+    <a href="2-2.html" class="nav-btn next">
+      2.2 Data Types
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
