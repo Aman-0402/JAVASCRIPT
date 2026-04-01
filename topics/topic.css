@@ -196,6 +196,18 @@ pre {
   display: flex; align-items: center;
 }
 .example-label { font-size: 0.8rem; font-weight: 600; color: var(--text-2); }
+.copy-btn {
+  margin-left: auto;
+  display: inline-flex; align-items: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border2);
+  color: var(--text-3); border-radius: 6px;
+  padding: 3px 11px; font-size: 0.75rem; font-weight: 600; cursor: pointer;
+  font-family: 'Inter', sans-serif; transition: all 0.15s;
+  -webkit-user-select: none; user-select: none;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+.copy-btn.copied { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.3); color: var(--green); }
 
 /* ── OUTPUT PANEL ─────────────────────────────────────────── */
 .output-panel {
