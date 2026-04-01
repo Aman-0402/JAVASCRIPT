@@ -119,6 +119,60 @@
       transition: color 0.18s;
     }
     .topic-link:hover .topic-arrow { color: var(--yellow); }
+
+    /* ── EXTRA RESOURCES GRID ── */
+    .extra-section {
+      max-width: 900px; margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .extra-section-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    }
+    .extra-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--yellow); background: rgba(247,223,30,0.1);
+      border: 1px solid rgba(247,223,30,0.2);
+      padding: 4px 10px; border-radius: 6px; flex-shrink: 0;
+    }
+    .extra-title { font-size: 1.1rem; font-weight: 700; }
+
+    .extra-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 560px) {
+      .extra-grid { grid-template-columns: 1fr; }
+    }
+
+    .extra-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px;
+      transition: all 0.18s; cursor: pointer;
+    }
+    .extra-card:hover {
+      border-color: rgba(247,223,30,0.3);
+      background: rgba(247,223,30,0.04);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .extra-card-danger:hover {
+      border-color: rgba(239,68,68,0.4) !important;
+      background: rgba(239,68,68,0.04) !important;
+    }
+    .extra-card-icon {
+      width: 44px; height: 44px; border-radius: 10px; border: 1px solid;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; flex-shrink: 0;
+    }
+    .extra-card-body { flex: 1; min-width: 0; }
+    .extra-card-title { font-size: 0.95rem; font-weight: 700; }
+    .extra-card-desc  { font-size: 0.8rem; color: var(--text-3); margin-top: 2px; }
+    .extra-card-arrow { color: var(--text-3); flex-shrink: 0; transition: color 0.18s; }
+    .extra-card:hover .extra-card-arrow { color: var(--yellow); }
+    .extra-card-danger:hover .extra-card-arrow { color: #f87171 !important; }
   </style>
 </head>
 <body>
@@ -337,6 +391,59 @@
     </div>
   </div>
 
+</div><!-- /modules -->
+
+<!-- ══════════════════════════════════════
+     EXTRA RESOURCES SECTION
+     ══════════════════════════════════════ -->
+<div class="extra-section">
+
+  <div class="extra-section-header">
+    <span class="extra-label">Extra</span>
+    <span class="extra-title">More Resources</span>
+    <span class="module-divider"></span>
+  </div>
+
+  <div class="extra-grid">
+
+    <a class="extra-card" href="mcq/index.html">
+      <div class="extra-card-icon" style="background:rgba(247,223,30,0.1);border-color:rgba(247,223,30,0.25);">📝</div>
+      <div class="extra-card-body">
+        <div class="extra-card-title">Test Your Knowledge</div>
+        <div class="extra-card-desc">MCQ questions by topic</div>
+      </div>
+      <svg class="extra-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <a class="extra-card" href="projects/index.html">
+      <div class="extra-card-icon" style="background:rgba(99,202,183,0.1);border-color:rgba(99,202,183,0.25);">🚀</div>
+      <div class="extra-card-body">
+        <div class="extra-card-title">Hands-On Projects</div>
+        <div class="extra-card-desc">Build real JS projects</div>
+      </div>
+      <svg class="extra-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <a class="extra-card" href="follow.html">
+      <div class="extra-card-icon" style="background:rgba(147,112,219,0.1);border-color:rgba(147,112,219,0.25);">🌐</div>
+      <div class="extra-card-body">
+        <div class="extra-card-title">Follow Us</div>
+        <div class="extra-card-desc">All our social platforms</div>
+      </div>
+      <svg class="extra-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <a class="extra-card extra-card-danger" href="important.html">
+      <div class="extra-card-icon" style="background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);">⚠️</div>
+      <div class="extra-card-body">
+        <div class="extra-card-title" style="color:#f87171;">Very Important</div>
+        <div class="extra-card-desc">Must read before you begin</div>
+      </div>
+      <svg class="extra-card-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+  </div>
 </div>
+
 </body>
 </html>
