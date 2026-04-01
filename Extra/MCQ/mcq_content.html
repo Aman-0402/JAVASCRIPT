@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCQ Practice — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="mcq.css" />
+</head>
+<body>
+
+<!-- Floating background particles -->
+<div class="particles" aria-hidden="true">
+  <span class="particle p1">?</span>
+  <span class="particle p2">✓</span>
+  <span class="particle p3">?</span>
+  <span class="particle p4">✗</span>
+  <span class="particle p5">?</span>
+  <span class="particle p6">✓</span>
+  <span class="particle p7">?</span>
+  <span class="particle p8">✗</span>
+</div>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">MCQ Practice</span>
+    <a href="../../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Roadmap
+    </a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="header-inner">
+    <span class="page-tag">Test Your Knowledge</span>
+    <h1>MCQ <span class="highlight">Practice Hub</span></h1>
+    <p>Chapter-wise tests, full mock exams, and high-priority questions — all in one place.</p>
+  </div>
+</header>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num" id="stat-chapters">5</span>
+      <span class="stat-label">Chapters</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" id="stat-mocks">—</span>
+      <span class="stat-label">Mock Tests</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" id="stat-important">—</span>
+      <span class="stat-label">Important Qs</span>
+    </div>
+  </div>
+</div>
+
+<!-- MCQ GRID -->
+<main class="mcq-main">
+
+  <!-- ── SECTION 1: CHAPTER WISE MCQ ── -->
+  <section class="mcq-section" id="chapter-mcq">
+    <div class="section-label">
+      <span class="section-icon">📚</span>
+      <div>
+        <h2 class="section-title">Chapter Wise MCQ</h2>
+        <p class="section-desc">Practice topic-by-topic — master each concept before moving on.</p>
+      </div>
+      <span class="section-badge coming">Coming Soon</span>
+    </div>
+
+    <div class="card-grid" id="chapter-grid">
+      <!-- Chapter cards will be populated here -->
+      <div class="mcq-card placeholder">
+        <div class="card-top">
+          <span class="card-num">01</span>
+          <span class="card-status locked">🔒</span>
+        </div>
+        <h3 class="card-title">Variables &amp; Data Types</h3>
+        <p class="card-sub">var, let, const · primitives · type coercion</p>
+        <div class="card-meta">
+          <span class="meta-tag">~20 questions</span>
+          <span class="meta-tag">Module 1</span>
+        </div>
+        <button type="button" class="card-btn" disabled>Coming Soon</button>
+      </div>
+
+      <div class="mcq-card placeholder">
+        <div class="card-top">
+          <span class="card-num">02</span>
+          <span class="card-status locked">🔒</span>
+        </div>
+        <h3 class="card-title">Functions &amp; Scope</h3>
+        <p class="card-sub">declarations · closures · hoisting · IIFE</p>
+        <div class="card-meta">
+          <span class="meta-tag">~20 questions</span>
+          <span class="meta-tag">Module 2</span>
+        </div>
+        <button type="button" class="card-btn" disabled>Coming Soon</button>
+      </div>
+
+      <div class="mcq-card placeholder">
+        <div class="card-top">
+          <span class="card-num">03</span>
+          <span class="card-status locked">🔒</span>
+        </div>
+        <h3 class="card-title">Objects &amp; Arrays</h3>
+        <p class="card-sub">prototypes · methods · destructuring · spread</p>
+        <div class="card-meta">
+          <span class="meta-tag">~20 questions</span>
+          <span class="meta-tag">Module 3</span>
+        </div>
+        <button type="button" class="card-btn" disabled>Coming Soon</button>
+      </div>
+
+      <div class="mcq-card placeholder">
+        <div class="card-top">
+          <span class="card-num">04</span>
+          <span class="card-status locked">🔒</span>
+        </div>
+        <h3 class="card-title">DOM &amp; Events</h3>
+        <p class="card-sub">selectors · event listeners · bubbling · delegation</p>
+        <div class="card-meta">
+          <span class="meta-tag">~20 questions</span>
+          <span class="meta-tag">Module 4</span>
+        </div>
+        <button type="button" class="card-btn" disabled>Coming Soon</button>
+      </div>
+
+      <div class="mcq-card placeholder">
+        <div class="card-top">
+          <span class="card-num">05</span>
+          <span class="card-status locked">🔒</span>
+        </div>
+        <h3 class="card-title">Async JavaScript</h3>
+        <p class="card-sub">callbacks · promises · async/await · event loop</p>
+        <div class="card-meta">
+          <span class="meta-tag">~20 questions</span>
+          <span class="meta-tag">Module 5</span>
+        </div>
+        <button type="button" class="card-btn" disabled>Coming Soon</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2: FINAL MOCK MCQ ── -->
+  <section class="mcq-section" id="mock-mcq">
+    <div class="section-label">
+      <span class="section-icon">🎯</span>
+      <div>
+        <h2 class="section-title">Final Mock MCQ</h2>
+        <p class="section-desc">Full-length timed tests simulating the real exam — attempt after completing all modules.</p>
+      </div>
+      <span class="section-badge coming">Coming Soon</span>
+    </div>
+
+    <div class="card-grid mock-grid" id="mock-grid">
+      <div class="mcq-card placeholder mock-card">
+        <div class="card-top">
+          <span class="card-num mock-num">M1</span>
+          <span class="card-status locked">🔒</span>
+        </div>
+        <h3 class="card-title">Mock Test — 1</h3>
+        <p class="card-sub">Full syllabus · All modules covered</p>
+        <div class="card-meta">
+          <span class="meta-tag">50 questions</span>
+          <span class="meta-tag">60 min</span>
+        </div>
+        <button type="button" class="card-btn mock-btn" disabled>Coming Soon</button>
+      </div>
+
+      <div class="mcq-card placeholder mock-card">
+        <div class="card-top">
+          <span class="card-num mock-num">M2</span>
+          <span class="card-status locked">🔒</span>
+        </div>
+        <h3 class="card-title">Mock Test — 2</h3>
+        <p class="card-sub">Full syllabus · Harder difficulty</p>
+        <div class="card-meta">
+          <span class="meta-tag">50 questions</span>
+          <span class="meta-tag">60 min</span>
+        </div>
+        <button type="button" class="card-btn mock-btn" disabled>Coming Soon</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3: IMPORTANT MCQ ── -->
+  <section class="mcq-section" id="important-mcq">
+    <div class="section-label">
+      <span class="section-icon">⚡</span>
+      <div>
+        <h2 class="section-title">Important MCQ</h2>
+        <p class="section-desc">High-priority questions — the ones most likely to appear in exams.</p>
+      </div>
+      <span class="section-badge coming">Coming Soon</span>
+    </div>
+
+    <div class="card-grid important-grid" id="important-grid">
+      <div class="mcq-card placeholder important-card">
+        <div class="card-top">
+          <span class="card-num imp-num">⚡</span>
+          <span class="card-status locked">🔒</span>
+        </div>
+        <h3 class="card-title">Must-Know Questions</h3>
+        <p class="card-sub">Curated from previous years · Exam-focused</p>
+        <div class="card-meta">
+          <span class="meta-tag">Top 30 Qs</span>
+          <span class="meta-tag">All Modules</span>
+        </div>
+        <button type="button" class="card-btn imp-btn" disabled>Coming Soon</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <div class="footer-inner">
+    <span class="logo">{JS}</span>
+    <span>JavaScript Mastery — MCQ Hub</span>
+    <a href="../../content.html" class="footer-link">← Back to Roadmap</a>
+  </div>
+</footer>
+
+<script src="mcq.js"></script>
+</body>
+</html>
