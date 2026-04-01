@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.3 Form Submission — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 5</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">5.3 Form Submission</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">5.3</span>
+      <span class="module-tag">Module 5 · Forms &amp; Input Handling</span>
+    </div>
+    <h1>Form <span class="highlight">Submission</span></h1>
+    <p class="subtitle">
+      Learn how to intercept form submission, prevent the default page reload,
+      validate before sending, and build the complete submit flow that powers
+      every login, registration, and contact form on the web.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Form Submission</strong> in JavaScript refers to the process of
+        handling form data when a user submits a form — including controlling the
+        default browser behaviour, validating inputs, displaying feedback, and
+        optionally sending data to a server.
+      </p>
+      <p>
+        By default, submitting an HTML form causes the page to reload and sends data
+        to the URL specified in the form's <code>action</code> attribute. In modern
+        web apps we almost always intercept this with <code>event.preventDefault()</code>
+        so JavaScript can validate and process the data first.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Form submission means <strong>"when the user clicks Submit → JavaScript
+        decides what should happen"</strong>. The typical flow:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">onsubmit</span>
+          <span class="op-arrow">→</span>
+          <span>The event fired when any submit button inside a <code>&lt;form&gt;</code> is clicked</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">preventDefault</span>
+          <span class="op-arrow">→</span>
+          <span>Stop the browser from reloading the page — handle everything in JavaScript</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">validate</span>
+          <span class="op-arrow">→</span>
+          <span>Check all fields are correct before doing anything with the data</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">process</span>
+          <span class="op-arrow">→</span>
+          <span>Update the UI, show a success message, or send data to a server with <code>fetch()</code></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Without preventDefault (shows the reload problem) -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Without preventDefault (Page Reloads)</span>
+        </div>
+        <pre><code class="language-html">&lt;form onsubmit="handleSubmit()"&gt;
+  &lt;input type="text" placeholder="Your name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  function handleSubmit() {
+    console.log("Form submitted — but the page will reload!");
+    // Without event.preventDefault(), the browser reloads the page
+    // and your console.log disappears before you can see it
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Without <code>event.preventDefault()</code>, the browser submits the form and reloads the page</li>
+            <li>Any changes made by your JavaScript handler are wiped out by the reload</li>
+            <li>In this preview the reload is contained to the iframe — in a real page your entire app state would be lost</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — With preventDefault -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — With preventDefault (No Reload)</span>
+        </div>
+        <pre><code class="language-html">&lt;form id="myForm"&gt;
+  &lt;input id="nameIn" type="text" placeholder="Your name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+&lt;p id="result"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  document.getElementById("myForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // stop the reload
+
+    let name = document.getElementById("nameIn").value.trim();
+    document.getElementById("result").textContent =
+      name ? "Hello, " + name + "!" : "Please enter your name.";
+  });
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>addEventListener("submit", handler)</code> — the preferred modern approach over inline <code>onsubmit=""</code></li>
+            <li><code>event.preventDefault()</code> must be called first, before any other logic</li>
+            <li>The page stays intact, the result is displayed without any reload</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Full validate-then-process flow -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Validate → Then Process</span>
+        </div>
+        <pre><code class="language-html">&lt;form id="sendForm"&gt;
+  &lt;input id="emailIn" type="text" placeholder="Email address"&gt;
+  &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;
+&lt;p id="sendResult"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  document.getElementById("sendForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let email = document.getElementById("emailIn").value.trim();
+    let msg   = document.getElementById("sendResult");
+
+    // Step 1: validate
+    if (email === "") {
+      msg.textContent  = "❌ Email is required.";
+      msg.style.color  = "red";
+      return; // stop — do not proceed
+    }
+
+    if (!email.includes("@")) {
+      msg.textContent  = "❌ Enter a valid email address.";
+      msg.style.color  = "red";
+      return;
+    }
+
+    // Step 2: process (simulated)
+    msg.textContent = "✓ Data received: " + email;
+    msg.style.color = "green";
+  });
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Use <code>return</code> after each error to exit early — no code below runs if validation fails</li>
+            <li><code>string.includes("@")</code> is a simple email format check — production apps use regex</li>
+            <li>Only reach the processing step if every validation passes</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Simulated fetch send -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Simulating a Data Send (fetch pattern)</span>
+        </div>
+        <pre><code class="language-javascript">// In real apps data is sent to a server with fetch()
+// This example shows the pattern without a live server
+
+function simulateSend(data) {
+  return new Promise(function(resolve) {
+    setTimeout(() => resolve({ ok: true, message: "Saved!" }), 800);
+  });
+}
+
+async function handleFormSubmit(event) {
+  event.preventDefault();
+
+  let name = "Aman"; // would come from input.value in a real form
+
+  let response = await simulateSend({ name: name });
+
+  if (response.ok) {
+    console.log("Server response:", response.message);
+  }
+}
+
+// Simulate calling it
+handleFormSubmit({ preventDefault: () => {} });</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run — output appears after ~800ms</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Real form submissions use <code>fetch(url, { method: "POST", body: JSON.stringify(data) })</code></li>
+            <li><code>async/await</code> keeps the code readable while waiting for the server response</li>
+            <li>Always check <code>response.ok</code> before treating the submission as successful</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of placing an order online — every step maps to the form submission flow:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">onsubmit</div>
+          <div class="analogy-desc">You click "Place Order" — the submit event fires</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">preventDefault</div>
+          <div class="analogy-desc">"Wait — don't ship yet, let me verify the details first"</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">validate</div>
+          <div class="analogy-desc">System checks: address filled? card valid? quantity correct?</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">fetch / send</div>
+          <div class="analogy-desc">Order confirmed — the system sends data to the warehouse server</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong> — try submitting empty, with a wrong password,
+        and with correct credentials to see the full validate-then-process flow.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Login Form with Full Submission Flow</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Form Submission&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Login Form&lt;/h2&gt;
+
+  &lt;form id="loginForm"
+    style="display:flex;flex-direction:column;gap:10px;max-width:300px"&gt;
+
+    &lt;input id="userIn" type="text" placeholder="Username"
+      style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:1rem"&gt;
+
+    &lt;input id="passIn" type="password" placeholder="Password"
+      style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:1rem"&gt;
+
+    &lt;button type="submit"
+      style="padding:9px;background:#f7df1e;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;font-size:1rem"&gt;
+      Login
+    &lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;p id="loginMsg" style="margin-top:14px;font-size:0.95rem"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let user = document.getElementById("userIn").value.trim();
+      let pass = document.getElementById("passIn").value.trim();
+      let msg  = document.getElementById("loginMsg");
+
+      // Validate
+      if (user === "" || pass === "") {
+        msg.textContent = "❌ Both fields are required.";
+        msg.style.color = "red";
+        return;
+      }
+
+      // Simulate authentication check
+      if (user === "admin" &amp;&amp; pass === "1234") {
+        msg.textContent = "✓ Login successful! Welcome, " + user + ".";
+        msg.style.color = "green";
+      } else {
+        msg.textContent = "❌ Invalid username or password.";
+        msg.style.color = "red";
+      }
+    });
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Name submit with preventDefault</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;form id="nameForm"&gt;
+  &lt;input id="nameIn" type="text" placeholder="Your name"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  document.getElementById("nameForm").addEventListener("submit", function(e) {
+    // your code here
+  });
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Call <code>e.preventDefault()</code> to stop the reload</li>
+              <li>Read the name input and print it with <code>console.log()</code></li>
+              <li>Clear the input field after printing by setting <code>input.value = ""</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Login form with validation</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;form id="loginForm"&gt;
+  &lt;input id="user" type="text" placeholder="Username"&gt;
+  &lt;input id="pass" type="password" placeholder="Password"&gt;
+  &lt;button type="submit"&gt;Login&lt;/button&gt;
+&lt;/form&gt;
+&lt;p id="lMsg"&gt;&lt;/p&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Prevent default, then check both fields are not empty</li>
+              <li>If either is empty → show <em>"❌ All fields required"</em> in red</li>
+              <li>Otherwise → show <em>"✓ Login Successful"</em> in green and clear both inputs</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            What does <code>event.preventDefault()</code> do on a form submit?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;form id="f"&gt;&lt;button type="submit"&gt;Go&lt;/button&gt;&lt;/form&gt;
+&lt;script&gt;
+  document.getElementById("f").addEventListener("submit", function(e) {
+    e.preventDefault();
+    console.log("Handled — no reload!");
+  });
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Submits the form to a server</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Reloads the page</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Stops the browser's default action (page reload)</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Deletes the form</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>event.preventDefault()</code> cancels whatever the browser would have done by default. For a form submit that is reloading (or navigating to the <code>action</code> URL). After calling it, your JavaScript is fully in control.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Which event is triggered when a form is submitted?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> onclick</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> submit</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> onchange</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> onload</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> The <code>submit</code> event fires on the <code>&lt;form&gt;</code> element when any <code>type="submit"</code> button inside it is clicked, or when Enter is pressed in an input field. Listen for it with <code>form.addEventListener("submit", handler)</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What happens if you do NOT call <code>event.preventDefault()</code> in a submit handler?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;form id="g"&gt;&lt;button type="submit"&gt;Submit&lt;/button&gt;&lt;/form&gt;
+&lt;script&gt;
+  document.getElementById("g").addEventListener("submit", function() {
+    // no preventDefault here
+    console.log("Runs... then page reloads");
+  });
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Nothing changes — same as with preventDefault</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> The form stops working</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> The page reloads after the handler runs</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> The form data is deleted</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> Without <code>preventDefault()</code>, the browser runs your handler and <em>then</em> continues with its default behaviour — reloading the page. Any DOM changes or messages you set get wiped out by the reload.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Always use <code>addEventListener("submit", ...)</code> on the <strong>form element</strong> — not <code>onclick</code> on the button — so that Enter key submission also triggers your handler:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Attach to form, not the button</span>
+              </div>
+              <pre><code class="language-javascript">// ✗ Misses Enter key — only fires on button click
+document.querySelector("button").addEventListener("click", handler);
+
+// ✓ Catches all submission paths — button click AND Enter key
+document.querySelector("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  handler();
+});</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Always validate <em>before</em> sending data — a failed API call is more costly (server round-trip) than catching the error client-side first:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Validate → send pattern</span>
+              </div>
+              <pre><code class="language-javascript">function handleSubmit(e) {
+  e.preventDefault();
+
+  let name = document.querySelector("#name").value.trim();
+
+  // Step 1: validate first
+  if (name === "") {
+    console.log("Error: name is required");
+    return; // stop — don't reach the send step
+  }
+
+  // Step 2: only send if valid
+  console.log("Valid — sending:", name);
+  // fetch("/api/submit", { method: "POST", body: JSON.stringify({ name }) });
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Reset the form after a successful submission using <code>form.reset()</code> — it clears all inputs and checkboxes back to their default state:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">form.reset() after success</span>
+              </div>
+              <pre><code class="language-javascript">let form = document.querySelector("form");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  let name = document.querySelector("#nameIn").value.trim();
+  if (!name) return;
+
+  console.log("Submitted:", name);
+  form.reset(); // clears all fields — user sees a blank form
+  console.log("Form reset — ready for next entry");
+});</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>In production always pair client-side validation with <strong>server-side validation</strong> — JavaScript runs in the browser and can be disabled or bypassed. Never trust only frontend checks for security-sensitive data.</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      A <code>type="submit"</code> button is inside a <code>&lt;form&gt;</code> with
+      no handler — will the page reload when you click it?
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">Will clicking this button reload the page?</span>
+      </div>
+      <pre><code class="language-html">&lt;form&gt;
+  &lt;button type="submit"&gt;Click&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      <div class="output-panel preview-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+          <button type="button" class="preview-btn">▶ Preview</button>
+        </div>
+        <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// The form has no action attribute and no JavaScript handler
+
+// When the button is clicked:
+//   1. The browser fires the "submit" event on the form
+//   2. No JavaScript handler intercepts it (no addEventListener, no onsubmit)
+//   3. The browser falls through to its DEFAULT behaviour
+
+// Default form behaviour:
+//   → Submit the form to the current URL (same page, GET request)
+//   → The page RELOADS
+
+// In the preview iframe you will see it reload — watch the content blink.
+// In a real full-page app this means losing all JavaScript state.
+
+// Answer: YES — the page will reload.
+
+// Fix: add a submit handler with preventDefault():
+//
+//   document.querySelector("form").addEventListener("submit", function(e) {
+//     e.preventDefault();
+//     console.log("Handled — no reload!");
+//   });</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="5-2.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      5.2 Input Validation
+    </a>
+    <a href="../content.html" class="nav-btn next">
+      All Topics Complete 🎉
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>

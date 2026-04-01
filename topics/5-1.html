@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.1 Form Data Handling — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 5</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">5.1 Form Data Handling</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">5.1</span>
+      <span class="module-tag">Module 5 · Forms &amp; Input Handling</span>
+    </div>
+    <h1>Form Data <span class="highlight">Handling</span></h1>
+    <p class="subtitle">
+      Learn how to read values from inputs, set them programmatically, and work with
+      text areas, select boxes, and checkboxes — the foundation of every interactive
+      form on the web.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Form Data Handling</strong> in JavaScript refers to the process of
+        accessing, reading, and modifying user input values from HTML form elements
+        such as text inputs, textareas, checkboxes, radio buttons, and select boxes
+        using the DOM.
+      </p>
+      <p>
+        Every interactive form on the web — login, registration, checkout, search —
+        relies on this: JavaScript reads what the user typed or selected, processes
+        it, and responds accordingly.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Form data handling means <strong>"taking input from the user and using it in
+        JavaScript"</strong>. Three fundamental operations:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">.value</span>
+          <span class="op-arrow">→</span>
+          <span><strong>Read</strong> what the user typed — works on any input, textarea, or select</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">.value =</span>
+          <span class="op-arrow">→</span>
+          <span><strong>Write</strong> a value into the input — autofill, defaults, or edit-form pre-population</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">.checked</span>
+          <span class="op-arrow">→</span>
+          <span>Read or set whether a checkbox or radio button is selected</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">.trim()</span>
+          <span class="op-arrow">→</span>
+          <span>Remove accidental leading/trailing spaces from the user's input before using it</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Reading a value -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Reading Input Value (.value)</span>
+        </div>
+        <pre><code class="language-html">&lt;input id="username" type="text" value="Aman"&gt;
+&lt;button onclick="readValue()"&gt;Get Value&lt;/button&gt;
+&lt;p id="out1"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  function readValue() {
+    let input = document.getElementById("username");
+    let name  = input.value.trim(); // trim removes extra spaces
+    document.getElementById("out1").textContent = "You entered: " + name;
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>.value</code> is a property — not a method — that returns whatever the user has typed</li>
+            <li>It always returns a <strong>string</strong>, even if the user typed a number</li>
+            <li><code>.trim()</code> removes leading/trailing whitespace — always call it before validation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Setting a value -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Setting Input Value Programmatically</span>
+        </div>
+        <pre><code class="language-html">&lt;input id="nameField" type="text" placeholder="Your name..."&gt;
+&lt;button onclick="setDefault()"&gt;Auto Fill&lt;/button&gt;
+&lt;button onclick="clearField()"&gt;Clear&lt;/button&gt;
+
+&lt;script&gt;
+  function setDefault() {
+    document.getElementById("nameField").value = "Aman Raj";
+  }
+
+  function clearField() {
+    document.getElementById("nameField").value = "";
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Assigning to <code>.value</code> sets the input's content — the user sees the change immediately</li>
+            <li>Assigning an empty string <code>""</code> clears the field</li>
+            <li>Common uses: autofill from saved data, populating edit forms, resetting after submit</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Textarea and select -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Textarea &amp; Select Box</span>
+        </div>
+        <pre><code class="language-html">&lt;textarea id="bio" rows="3" placeholder="Write your bio..."&gt;&lt;/textarea&gt;
+&lt;select id="country"&gt;
+  &lt;option value="in"&gt;India&lt;/option&gt;
+  &lt;option value="us"&gt;USA&lt;/option&gt;
+  &lt;option value="uk"&gt;UK&lt;/option&gt;
+&lt;/select&gt;
+&lt;button onclick="readForm()"&gt;Read&lt;/button&gt;
+&lt;p id="out3"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  function readForm() {
+    let bio     = document.getElementById("bio").value.trim();
+    let country = document.getElementById("country").value;
+    document.getElementById("out3").textContent =
+      "Bio: " + (bio || "(empty)") + " | Country: " + country;
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>textarea.value</code> works exactly like <code>input.value</code> — reads multi-line text</li>
+            <li><code>select.value</code> returns the <code>value</code> attribute of the currently selected option</li>
+            <li>All form elements share the <code>.value</code> interface — the same pattern works everywhere</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Checkbox and radio -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Checkbox &amp; Radio Button</span>
+        </div>
+        <pre><code class="language-html">&lt;label&gt;
+  &lt;input id="agree" type="checkbox"&gt; I agree to terms
+&lt;/label&gt;&lt;br&gt;
+&lt;label&gt;&lt;input name="plan" type="radio" value="free"&gt; Free&lt;/label&gt;
+&lt;label&gt;&lt;input name="plan" type="radio" value="pro"&gt; Pro&lt;/label&gt;
+&lt;button onclick="readChoices()"&gt;Check&lt;/button&gt;
+&lt;p id="out4"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  function readChoices() {
+    let agreed = document.getElementById("agree").checked;
+    let plan   = document.querySelector('input[name="plan"]:checked');
+    document.getElementById("out4").textContent =
+      "Agreed: " + agreed + " | Plan: " + (plan ? plan.value : "none");
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>checkbox.checked</code> returns <code>true</code> or <code>false</code></li>
+            <li>For radio buttons, use <code>querySelector('input[name="plan"]:checked')</code> to find whichever is selected</li>
+            <li>Radio and checkbox inputs do not use <code>.value</code> for their selected state — <code>.checked</code> is the correct property</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a hotel check-in desk — the receptionist handles data exactly like
+        JavaScript handles form data:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">.value (read)</div>
+          <div class="analogy-desc">Guest writes their name — receptionist reads and records it</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">.value = (write)</div>
+          <div class="analogy-desc">Receptionist pre-fills the form with details from the booking system</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">.trim()</div>
+          <div class="analogy-desc">Receptionist ignores extra spaces the guest typed at the start or end</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">.checked</div>
+          <div class="analogy-desc">Checking whether the "Breakfast included?" box is ticked or not</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong> — type a name, click Show Name to read it,
+        or click Auto Fill to write a default value programmatically.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Read &amp; Write Form Data</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Form Data Handling&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Enter Your Name&lt;/h2&gt;
+
+  &lt;input id="nameInput" type="text" placeholder="Type your name..."
+    style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;
+           font-size:1rem;width:220px"&gt;
+
+  &lt;div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"&gt;
+    &lt;button onclick="showName()"
+      style="padding:8px 16px;background:#f7df1e;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700"&gt;
+      Show Name
+    &lt;/button&gt;
+    &lt;button onclick="autoFill()"
+      style="padding:8px 16px;background:#4ade80;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700"&gt;
+      Auto Fill
+    &lt;/button&gt;
+    &lt;button onclick="clearInput()"
+      style="padding:8px 16px;background:#f87171;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;color:#fff"&gt;
+      Clear
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div id="output" style="margin-top:16px;font-size:0.95rem;line-height:2"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function showName() {
+      let raw  = document.getElementById("nameInput").value;
+      let name = raw.trim();
+      let out  = document.getElementById("output");
+
+      if (!name) {
+        out.innerHTML = "&lt;b style='color:red'&gt;Please enter a name.&lt;/b&gt;";
+        return;
+      }
+      out.innerHTML =
+        "&lt;b&gt;Raw value:&lt;/b&gt; "" + raw + ""&lt;br&gt;" +
+        "&lt;b&gt;Trimmed:&lt;/b&gt; "" + name + ""&lt;br&gt;" +
+        "&lt;b&gt;Length:&lt;/b&gt; " + name.length + " characters";
+    }
+
+    function autoFill() {
+      document.getElementById("nameInput").value = "Aman Raj";
+      document.getElementById("output").textContent = "Auto-filled with: Aman Raj";
+    }
+
+    function clearInput() {
+      document.getElementById("nameInput").value = "";
+      document.getElementById("output").textContent = "Field cleared.";
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Read email input</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;input id="emailField" type="text" placeholder="Enter email"&gt;
+&lt;button onclick="readEmail()"&gt;Get Email&lt;/button&gt;
+
+&lt;script&gt;
+  function readEmail() {
+    // read the value and print it to the console
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>getElementById("emailField").value</code> to read the input</li>
+              <li>Call <code>.trim()</code> before using the value</li>
+              <li>Print the email using <code>console.log()</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Auto-fill default username</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;input id="usernameField" type="text" placeholder="Username"&gt;
+&lt;button onclick="fillDefault()"&gt;Fill Default Name&lt;/button&gt;
+
+&lt;script&gt;
+  function fillDefault() {
+    // set the value to "Guest User"
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Set <code>usernameField.value = "Guest User"</code> when the button is clicked</li>
+              <li>Add a second button that clears the field</li>
+              <li>Display a confirmation message below the input using a <code>&lt;p&gt;</code> element</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            How do you read the current value of an input field?
+            <div class="mcq-question-code">
+              <pre><code class="language-html">&lt;input id="test" type="text" value="Hello"&gt;
+&lt;script&gt;
+  let el = document.getElementById("test");
+  console.log(el.value);
+&lt;/script&gt;</code></pre>
+              <div class="output-panel preview-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+                  <button type="button" class="preview-btn">▶ Preview</button>
+                </div>
+                <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> .text</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> .value</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> .innerHTML</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> .getValue()</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>.value</code> is the standard property for reading and writing the content of any form input. <code>.innerHTML</code> is for element content, not input values — it does not work on inputs.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Which method is the fastest way to select an element by its <code>id</code>?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> querySelectorAll()</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> getElementById()</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> getElementsByClass()</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> selectById()</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>getElementById()</code> is optimised specifically for ID lookup — it is the fastest DOM selector. <code>getElementsByClass()</code> is not a real method; the correct name is <code>getElementsByClassName()</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What does this line do?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">document.getElementById("myInput").value = "Hello";</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Gets the current value of the input</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> Deletes the input's value</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Sets the input's value to "Hello"</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Logs the value to the console</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> Assigning to <code>.value</code> sets the displayed content of the input field. The user will see <em>"Hello"</em> in the input immediately — the same as if they had typed it.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Always call <code>.trim()</code> before using input data — users commonly type extra spaces and your validation logic will fail silently without it:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">trim() prevents hidden space bugs</span>
+              </div>
+              <pre><code class="language-javascript">let raw  = "  Aman  "; // user typed with spaces
+let name = raw.trim(); // "Aman"
+
+console.log(raw  === "Aman"); // false — spaces break the comparison
+console.log(name === "Aman"); // true  — safe to use</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Always check that the element exists before reading its <code>.value</code> — accessing a property on <code>null</code> throws an error:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Null check before access</span>
+              </div>
+              <pre><code class="language-javascript">let el = document.getElementById("mayNotExist");
+
+// ✗ Dangerous — throws TypeError if el is null
+// console.log(el.value);
+
+// ✓ Safe — check first
+if (el) {
+  console.log(el.value);
+} else {
+  console.log("Element not found");
+}
+
+// Modern shorthand (optional chaining)
+console.log(el?.value ?? "Element not found");</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Remember that <code>.value</code> always returns a <strong>string</strong> — convert it before doing any arithmetic:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">.value is always a string</span>
+              </div>
+              <pre><code class="language-javascript">// Simulating input.value from a number field
+let raw = "25"; // .value always returns string
+
+console.log(raw + 5);           // "255" — string concatenation!
+console.log(Number(raw) + 5);   // 30   — correct arithmetic</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use <code>querySelector()</code> for flexible selection — it accepts any CSS selector and is consistent across all element types:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">querySelector for flexible selection</span>
+              </div>
+              <pre><code class="language-javascript">// Both select the same element — querySelector is more flexible
+let byId  = document.getElementById("username");
+let byQS  = document.querySelector("#username");
+
+// querySelector can do things getElementById cannot:
+let firstInput     = document.querySelector("input[type='text']");
+let checkedRadio   = document.querySelector("input[name='plan']:checked");
+let lastListItem   = document.querySelector("ul li:last-child");
+
+console.log(typeof byId);   // "object"
+console.log(typeof byQS);   // "object" — same result</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      The input has a pre-set value — what does each log print, and what type is it?
+      Think before running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-html">&lt;input id="ageInput" type="number" value="25"&gt;
+
+&lt;script&gt;
+  let input = document.getElementById("ageInput");
+  let raw   = input.value;
+
+  console.log(raw);
+  console.log(typeof raw);
+  console.log(raw + 5);
+  console.log(Number(raw) + 5);
+&lt;/script&gt;</code></pre>
+      <div class="output-panel preview-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+          <button type="button" class="preview-btn">▶ Preview</button>
+        </div>
+        <iframe class="preview-frame" sandbox="allow-scripts allow-modals" title="Live preview"></iframe>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// input.value always returns a STRING — even for type="number"
+
+// Line 1: console.log(raw)
+//   raw = "25"  (string)
+//   Output → "25"
+
+// Line 2: console.log(typeof raw)
+//   typeof "25" === "string"
+//   Output → "string"
+
+// Line 3: console.log(raw + 5)
+//   "25" + 5 → string concatenation (+ with a string)
+//   Output → "255"   ← NOT 30!
+
+// Line 4: console.log(Number(raw) + 5)
+//   Number("25") = 25 (number)
+//   25 + 5 = 30
+//   Output → 30   ← correct arithmetic
+
+// Final output:
+//   "25"
+//   "string"
+//   "255"
+//   30
+
+// Key takeaway:
+//   ALWAYS convert with Number() before arithmetic on form values
+//   even when the input type is "number"</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="../topics/4-5.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      4.5 Event Listeners
+    </a>
+    <a href="5-2.html" class="nav-btn next">
+      5.2 Input Validation
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>

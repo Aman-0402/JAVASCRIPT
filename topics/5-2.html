@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.2 Input Validation — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 5</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">5.2 Input Validation</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">5.2</span>
+      <span class="module-tag">Module 5 · Forms &amp; Input Handling</span>
+    </div>
+    <h1>Input <span class="highlight">Validation</span></h1>
+    <p class="subtitle">
+      Learn how to check user data before acting on it — catching empty fields,
+      invalid types, wrong formats, and out-of-range values to keep your application
+      safe and reliable.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>Input Validation</strong> in JavaScript is the process of checking
+        whether user-provided data is correct, complete, and in the expected format
+        <em>before</em> processing or submitting it.
+      </p>
+      <p>
+        Validation protects your application from bad data — an empty required field,
+        letters where a number is expected, or an age of 999. It also gives users
+        helpful feedback so they can correct mistakes before submitting.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Input validation asks <strong>"is this data actually usable?"</strong> — three
+        fundamental questions cover most cases:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">Empty?</span>
+          <span class="op-arrow">→</span>
+          <span><code>value.trim() === ""</code> — did the user leave a required field blank?</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Number?</span>
+          <span class="op-arrow">→</span>
+          <span><code>isNaN(value)</code> — did the user type letters in a numeric field?</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Range?</span>
+          <span class="op-arrow">→</span>
+          <span><code>num &lt; 1 || num &gt; 120</code> — is the number within acceptable bounds?</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">Format?</span>
+          <span class="op-arrow">→</span>
+          <span>Does it match an expected pattern — email, phone, password length?</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Empty field check -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Empty Field Check</span>
+        </div>
+        <pre><code class="language-html">&lt;input id="nameField" type="text" placeholder="Your name"&gt;
+&lt;button onclick="validate()"&gt;Submit&lt;/button&gt;
+&lt;p id="msg1"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  function validate() {
+    let name = document.getElementById("nameField").value.trim();
+    let msg  = document.getElementById("msg1");
+
+    if (name === "") {
+      msg.textContent = "❌ Name is required.";
+      msg.style.color = "red";
+    } else {
+      msg.textContent = "✓ Hello, " + name + "!";
+      msg.style.color = "green";
+    }
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Always call <code>.trim()</code> first — a field with only spaces passes <code>=== ""</code> without trim</li>
+            <li>Comparing to <code>""</code> is the simplest and most reliable empty check for string inputs</li>
+            <li>Show the error message <em>inline</em> near the field — never rely on alerts for validation feedback</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Case-insensitive comparison -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Case-Insensitive Comparison</span>
+        </div>
+        <pre><code class="language-html">&lt;input id="langField" type="text" placeholder="Enter a language"&gt;
+&lt;button onclick="checkLang()"&gt;Check&lt;/button&gt;
+&lt;p id="msg2"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  function checkLang() {
+    let input = document.getElementById("langField").value.trim();
+    let msg   = document.getElementById("msg2");
+
+    // toLowerCase normalises: "JavaScript", "JAVASCRIPT", "javascript" all match
+    if (input.toLowerCase() === "javascript") {
+      msg.textContent = "✓ Correct! That's what we're learning.";
+      msg.style.color = "green";
+    } else {
+      msg.textContent = "✗ Try: JavaScript";
+      msg.style.color = "red";
+    }
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>.toLowerCase()</code> normalises the input before comparing — <code>"JavaScript"</code>, <code>"JAVASCRIPT"</code>, and <code>"javascript"</code> all match</li>
+            <li>Always lowercase <em>both</em> sides if you want truly case-insensitive comparison</li>
+            <li>Alternatively <code>.toUpperCase()</code> works the same way — pick one and be consistent</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — NaN and range validation -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Number &amp; Range Validation</span>
+        </div>
+        <pre><code class="language-html">&lt;input id="ageField" type="text" placeholder="Enter age"&gt;
+&lt;button onclick="checkAge()"&gt;Check Age&lt;/button&gt;
+&lt;p id="msg3"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  function checkAge() {
+    let raw = document.getElementById("ageField").value.trim();
+    let age = Number(raw);
+    let msg = document.getElementById("msg3");
+
+    if (raw === "") {
+      msg.textContent = "❌ Age is required.";
+    } else if (isNaN(age)) {
+      msg.textContent = "❌ Age must be a number, not text.";
+    } else if (age &lt; 1 || age &gt; 120) {
+      msg.textContent = "❌ Age must be between 1 and 120.";
+    } else {
+      msg.textContent = "✓ Valid age: " + age;
+    }
+    msg.style.color = msg.textContent.startsWith("✓") ? "green" : "red";
+  }
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>isNaN()</code> returns <code>true</code> when the value cannot be interpreted as a number — try typing <em>"abc"</em></li>
+            <li>Check empty first, then <code>isNaN</code>, then range — each guard is more specific than the last</li>
+            <li>This layered validation gives the user precise feedback for every failure case</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Multiple field validation -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Validating Multiple Fields Together</span>
+        </div>
+        <pre><code class="language-javascript">function validateForm(name, age, password) {
+  let errors = [];
+
+  if (name.trim() === "") {
+    errors.push("Name is required");
+  }
+
+  let n = Number(age);
+  if (isNaN(n) || n &lt; 1 || n &gt; 120) {
+    errors.push("Age must be a number between 1 and 120");
+  }
+
+  if (password.length &lt; 6) {
+    errors.push("Password must be at least 6 characters");
+  }
+
+  return errors; // empty array = all valid
+}
+
+let result = validateForm("Aman", "25", "pass");
+console.log(result.length === 0 ? "All valid!" : result);</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Collect all errors into an array — show every problem at once rather than one at a time</li>
+            <li>Return an empty array when everything passes — an empty array is falsy-friendly for checks</li>
+            <li>A dedicated validation function is reusable and keeps the submit handler clean</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a job application form — the HR officer rejects invalid entries
+        exactly like JavaScript validation does:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">Empty check</div>
+          <div class="analogy-desc">Name field blank → "Please enter your full name"</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">isNaN</div>
+          <div class="analogy-desc">Age field has "twenty" → "Age must be a number"</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Range check</div>
+          <div class="analogy-desc">Age is 200 → "Age must be between 18 and 65"</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Format check</div>
+          <div class="analogy-desc">Email missing "@" → "Enter a valid email address"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong> — try submitting with empty fields, a
+        non-numeric age, or a short password to see each validation rule fire.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Registration Form with Validation</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Input Validation&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;h2&gt;Register&lt;/h2&gt;
+
+  &lt;div style="display:flex;flex-direction:column;gap:10px;max-width:320px"&gt;
+
+    &lt;input id="regName" type="text" placeholder="Full name"
+      style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:1rem"&gt;
+
+    &lt;input id="regAge" type="text" placeholder="Age"
+      style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:1rem"&gt;
+
+    &lt;input id="regPass" type="password" placeholder="Password (min 6 chars)"
+      style="padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:1rem"&gt;
+
+    &lt;button onclick="register()"
+      style="padding:9px;background:#f7df1e;border:none;border-radius:6px;
+             cursor:pointer;font-weight:700;font-size:1rem"&gt;
+      Submit
+    &lt;/button&gt;
+  &lt;/div&gt;
+
+  &lt;div id="errors"
+    style="margin-top:14px;font-size:0.9rem;line-height:2;color:red"&gt;
+  &lt;/div&gt;
+  &lt;p id="success" style="color:green;margin-top:8px;font-weight:600"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function register() {
+      let name = document.getElementById("regName").value.trim();
+      let age  = document.getElementById("regAge").value.trim();
+      let pass = document.getElementById("regPass").value;
+      let errs = [];
+
+      if (name === "")          errs.push("Name is required.");
+      if (age  === "")          errs.push("Age is required.");
+      else if (isNaN(Number(age))) errs.push("Age must be a number.");
+      else if (Number(age) &lt; 1 || Number(age) &gt; 120) errs.push("Age must be 1–120.");
+      if (pass.length &lt; 6)     errs.push("Password must be at least 6 characters.");
+
+      let errBox = document.getElementById("errors");
+      let ok     = document.getElementById("success");
+
+      if (errs.length &gt; 0) {
+        errBox.innerHTML = errs.map(e =&gt; "❌ " + e).join("&lt;br&gt;");
+        ok.textContent   = "";
+      } else {
+        errBox.innerHTML = "";
+        ok.textContent   = "✓ Registered successfully, " + name + "!";
+      }
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Password required check</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;input id="pwd" type="password" placeholder="Password"&gt;
+&lt;button onclick="checkPwd()"&gt;Submit&lt;/button&gt;
+&lt;p id="pwdMsg"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  function checkPwd() {
+    // show "Password required" if empty
+  }
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Read <code>document.getElementById("pwd").value</code> and call <code>.trim()</code></li>
+              <li>If empty, set the message to <em>"❌ Password required"</em> in red</li>
+              <li>Otherwise display <em>"✓ Password accepted"</em> in green</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Name &amp; age multi-field validator</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;input id="vName" type="text" placeholder="Name"&gt;
+&lt;input id="vAge"  type="text" placeholder="Age"&gt;
+&lt;button onclick="validate()"&gt;Check&lt;/button&gt;
+&lt;p id="vMsg"&gt;&lt;/p&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Check name is not empty (use <code>.trim()</code>)</li>
+              <li>Check age is a valid number (use <code>isNaN(Number(age))</code>)</li>
+              <li>Show all error messages in one <code>&lt;p&gt;</code> — use an array and <code>.join()</code></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which function returns <code>true</code> when a value cannot be parsed as a number?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">console.log(isNaN("hello")); // ?
+console.log(isNaN("42"));    // ?
+console.log(isNaN(42));      // ?</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> checkNumber()</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> isNaN()</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> parseInt()</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Number()</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>isNaN()</code> coerces its argument and returns <code>true</code> if the result is <code>NaN</code>. <code>isNaN("hello")</code> → <code>true</code>; <code>isNaN("42")</code> → <code>false</code> (it converts "42" to 42 first).</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            How do you make a string comparison case-insensitive?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let input = "JavaScript";
+
+console.log(input.toLowerCase() === "javascript"); // ?
+console.log(input.toUpperCase() === "JAVASCRIPT"); // ?</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> .toUpperCase() only</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> .toLowerCase() only</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> Either .toLowerCase() or .toUpperCase() (normalise both sides)</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Neither — JavaScript is always case-sensitive</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> Both work — the key is to normalise <em>both</em> the input and the target string to the same case before comparing. The conventional choice is <code>.toLowerCase()</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What does this condition check?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let input = "  ";
+
+if (input.trim() === "") {
+  console.log("Empty!");
+} else {
+  console.log("Has content");
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to verify</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Number validation</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Empty or whitespace-only field check</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> String type conversion</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Boolean check</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>.trim()</code> removes all leading and trailing whitespace. A string of only spaces (<code>"  "</code>) becomes <code>""</code> after trim — so this check catches both genuinely empty fields <em>and</em> ones filled with spaces.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Always chain <code>.trim()</code> before any comparison — a field containing only spaces will pass <code>=== ""</code> without it:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">trim() catches space-only input</span>
+              </div>
+              <pre><code class="language-javascript">let input = "   "; // looks like spaces, user thinks it's empty
+
+// ✗ Wrong — passes because the string is truthy
+if (input === "") console.log("empty"); // does NOT print
+
+// ✓ Correct — trim first
+if (input.trim() === "") console.log("empty (after trim)"); // prints</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Combine multiple checks with <code>||</code> for concise validation — show one clear error message:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Combined validation</span>
+              </div>
+              <pre><code class="language-javascript">let name = "  ";
+let age  = "abc";
+
+if (name.trim() === "" || isNaN(Number(age))) {
+  console.log("Invalid: name is empty or age is not a number");
+} else {
+  console.log("Valid inputs");
+}</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use <code>Number()</code> — not <code>parseInt()</code> — for strict number validation. <code>parseInt("25abc")</code> returns <code>25</code> silently, which is not what you want:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Number() vs parseInt() for validation</span>
+              </div>
+              <pre><code class="language-javascript">let input = "25abc";
+
+console.log(parseInt(input));  // 25   — parses partial! not safe for validation
+console.log(Number(input));    // NaN  — strict, fails on mixed input
+console.log(isNaN(Number(input))); // true — correctly detected as invalid</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Frontend validation is for <strong>user experience</strong> — never rely on it alone. Always validate on the backend too, since JavaScript can be bypassed in the browser.</p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      <code>"123abc"</code> is a mixed string — will <code>isNaN</code> treat it as a
+      number or not? Think before running.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What does this print?</span>
+      </div>
+      <pre><code class="language-javascript">let value = "123abc";
+
+console.log(isNaN(value));
+console.log(Number(value));
+console.log(isNaN(Number(value)));</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// value = "123abc"
+
+// Line 1: isNaN(value)
+//   isNaN() coerces its argument to a number first: Number("123abc") = NaN
+//   isNaN(NaN) = true
+//   Output → true
+
+// Line 2: Number(value)
+//   Number("123abc") — cannot fully parse, returns NaN
+//   Output → NaN
+
+// Line 3: isNaN(Number(value))
+//   Number("123abc") = NaN
+//   isNaN(NaN) = true
+//   Output → true
+
+// Final output:
+//   true
+//   NaN
+//   true
+
+// Key takeaway:
+//   isNaN("123abc") and isNaN(Number("123abc")) both return true
+//   because the string contains non-numeric characters.
+//   Compare: Number("123") = 123 (valid), Number("123abc") = NaN (invalid)
+//
+//   For strict validation, prefer: isNaN(Number(input))
+//   because it is explicit about what conversion is being applied.</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="5-1.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      5.1 Form Data Handling
+    </a>
+    <a href="5-3.html" class="nav-btn next">
+      5.3 Form Submission
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
