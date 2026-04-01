@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.5 Event Listeners — JS Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <link rel="stylesheet" href="topic.css" />
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <span class="logo">{JS}</span>
+    <span class="nav-title">JS Mastery</span>
+    <a href="../content.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      All Topics
+    </a>
+  </div>
+</nav>
+
+<div class="topic-container">
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">JavaScript</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="../content.html">Module 4</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">4.5 Event Listeners</span>
+  </div>
+
+  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+  <div class="topic-hero">
+    <div class="topic-tag-row">
+      <span class="topic-badge">4.5</span>
+      <span class="module-tag">Module 4 · Document Object Model (DOM)</span>
+    </div>
+    <h1>Event <span class="highlight">Listeners</span></h1>
+    <p class="subtitle">
+      Master <code>addEventListener</code> — the modern, flexible way to attach
+      event handlers — and go beyond built-in events with custom events you create
+      and dispatch yourself.
+    </p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       1 · DEFINITION
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="definition">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Definition</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        An <strong>Event Listener</strong> is a method in JavaScript —
+        <code>addEventListener()</code> — that attaches an event handler to an
+        element, allowing it to listen for a specific event and execute a function
+        when that event occurs.
+      </p>
+      <p>
+        Unlike inline event attributes (<code>onclick="..."</code>), event listeners
+        keep your HTML and JavaScript completely separate, allow multiple handlers on
+        the same element, and can be removed when no longer needed.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       2 · SIMPLE WAY
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="simple-way">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Simple Way</h2>
+    </div>
+    <div class="section-body">
+      <p class="intro-text">
+        Instead of writing events <em>inside HTML</em>, <code>addEventListener</code>
+        lets you <strong>listen and react entirely in JavaScript</strong>:
+      </p>
+      <div class="simple-ops">
+        <div class="simple-op-row">
+          <span class="op-badge">element</span>
+          <span class="op-arrow">→</span>
+          <span>The DOM element you want to listen on — button, input, document…</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">"event"</span>
+          <span class="op-arrow">→</span>
+          <span>The event type as a string — <code>"click"</code>, <code>"keyup"</code>, <code>"submit"</code>…</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">handler</span>
+          <span class="op-arrow">→</span>
+          <span>The function that runs when the event fires — receives the <code>event</code> object</span>
+        </div>
+        <div class="simple-op-row">
+          <span class="op-badge">remove</span>
+          <span class="op-arrow">→</span>
+          <span><code>removeEventListener()</code> detaches the handler when it is no longer needed</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       3 · CODE EXAMPLES
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="code-examples">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Code Examples</h2>
+    </div>
+    <div class="section-body">
+
+      <!-- Example 1 — Basic addEventListener -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 1 — Basic addEventListener()</span>
+        </div>
+        <pre><code class="language-html">&lt;button id="btn"&gt;Click Me&lt;/button&gt;
+&lt;p id="msg"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  let btn = document.getElementById("btn");
+
+  btn.addEventListener("click", function() {
+    document.getElementById("msg").textContent = "Button was clicked!";
+  });
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>Syntax: <code>element.addEventListener("eventType", handlerFunction)</code></li>
+            <li>The HTML is clean — no <code>onclick=""</code> in the markup at all</li>
+            <li>The handler function receives the <code>event</code> object automatically — add a parameter to use it</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 2 — Multiple events on same element -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 2 — Multiple Listeners on One Element</span>
+        </div>
+        <pre><code class="language-html">&lt;button id="btn2"&gt;Hover or Click Me&lt;/button&gt;
+&lt;p id="log"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  let btn = document.getElementById("btn2");
+  let log = document.getElementById("log");
+
+  btn.addEventListener("click", () => {
+    log.textContent = "Clicked!";
+    log.style.color = "#e07b00";
+  });
+
+  btn.addEventListener("mouseover", () => {
+    log.textContent = "Hovering...";
+    log.style.color = "#3b82f6";
+  });
+
+  btn.addEventListener("mouseout", () => {
+    log.textContent = "Mouse left.";
+    log.style.color = "#64748b";
+  });
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>One element can have as many listeners as you need — impossible cleanly with inline <code>onclick</code></li>
+            <li>Each listener is independent — adding a new one never overwrites an existing one</li>
+            <li><code>mouseover</code> fires when the cursor enters; <code>mouseout</code> fires when it leaves</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 3 — Named function for removal -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 3 — Named Function &amp; removeEventListener()</span>
+        </div>
+        <pre><code class="language-html">&lt;button id="once"&gt;Click once only&lt;/button&gt;
+&lt;p id="status"&gt;Waiting...&lt;/p&gt;
+
+&lt;script&gt;
+  let btn    = document.getElementById("once");
+  let status = document.getElementById("status");
+
+  function handleOnce() {
+    status.textContent = "Clicked! Listener removed — won't fire again.";
+    btn.removeEventListener("click", handleOnce); // detach after first click
+  }
+
+  btn.addEventListener("click", handleOnce);
+&lt;/script&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live preview"></iframe>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li>To remove a listener, pass the same named function reference — anonymous functions cannot be removed</li>
+            <li>The built-in <code>{ once: true }</code> option does this automatically: <code>addEventListener("click", fn, { once: true })</code></li>
+            <li>Always remove listeners you no longer need to avoid memory leaks</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Example 4 — Custom Events -->
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Example 4 — Custom Events</span>
+        </div>
+        <pre><code class="language-javascript">// Create a custom event named "greet"
+let greetEvent = new CustomEvent("greet", {
+  detail: { name: "Aman" } // pass custom data
+});
+
+// Listen for it
+document.addEventListener("greet", function(e) {
+  console.log("Hello,", e.detail.name + "!");
+});
+
+// Fire it manually
+document.dispatchEvent(greetEvent);
+
+// Custom events let different parts of your code communicate
+// without direct function calls — a powerful decoupling pattern</code></pre>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Click ▶ Run to execute</span>
+          </div>
+        </div>
+        <div class="explanation">
+          <div class="explanation-title">Explanation</div>
+          <ul>
+            <li><code>new CustomEvent(name, { detail: data })</code> — creates an event with any payload you want</li>
+            <li><code>element.dispatchEvent(event)</code> — fires the event, triggering all matching listeners</li>
+            <li>Custom events let different modules of your application communicate without tight coupling</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       4 · REAL-LIFE EXAMPLE
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="real-life">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Real-Life Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="analogy-intro">
+        Think of a security guard assigned to a building entrance:
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="analogy-op">element</div>
+          <div class="analogy-desc">The door — the thing being watched and listened to</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">addEventListener</div>
+          <div class="analogy-desc">Assigning a guard to the door — "start watching for events"</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Multiple listeners</div>
+          <div class="analogy-desc">Multiple guards assigned to the same door — each reacts differently</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">removeEventListener</div>
+          <div class="analogy-desc">Reassigning the guard elsewhere — "stop watching this door"</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">Custom event</div>
+          <div class="analogy-desc">A walkie-talkie message — one part of the system signals another</div>
+        </div>
+        <div class="analogy-card">
+          <div class="analogy-op">dispatchEvent</div>
+          <div class="analogy-desc">Pressing the send button on the walkie-talkie — triggering the custom signal</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="html-js-example">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>HTML + JavaScript Example</h2>
+    </div>
+    <div class="section-body">
+      <p class="section-intro-p">
+        Click <strong>▶ Preview</strong> to see named functions, multiple listeners,
+        and a remove-on-first-click pattern all working together in one clean page.
+      </p>
+      <div class="example-block">
+        <div class="example-header">
+          <span class="example-label">Live in Browser — Professional Event Handling</span>
+        </div>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Event Listeners&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
+
+  &lt;button id="mainBtn"
+    style="padding:10px 22px;background:#f7df1e;border:none;border-radius:8px;
+           cursor:pointer;font-weight:700;font-size:1rem"&gt;
+    Click Me
+  &lt;/button&gt;
+
+  &lt;button id="onceBtn"
+    style="margin-left:10px;padding:10px 22px;background:#82aaff;border:none;
+           border-radius:8px;cursor:pointer;font-weight:700;font-size:1rem;color:#111"&gt;
+    Click Once Only
+  &lt;/button&gt;
+
+  &lt;div id="log"
+    style="margin-top:16px;font-family:monospace;font-size:0.9rem;background:#1e1e2e;
+           color:#cdd6f4;border-radius:8px;padding:14px;min-height:60px;line-height:2"&gt;
+    Waiting for events...
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    let log   = document.getElementById("log");
+    let count = 0;
+
+    function addLog(msg) {
+      log.innerHTML = msg + "&lt;br&gt;" + log.innerHTML;
+    }
+
+    // Named functions — reusable and removable
+    function onClick()     { addLog("🖱 Click #" + (++count)); }
+    function onMouseOver() { addLog("👀 Mouse entered button"); }
+    function onMouseOut()  { addLog("👋 Mouse left button"); }
+
+    let mainBtn = document.getElementById("mainBtn");
+    mainBtn.addEventListener("click",     onClick);
+    mainBtn.addEventListener("mouseover", onMouseOver);
+    mainBtn.addEventListener("mouseout",  onMouseOut);
+
+    // One-shot listener
+    let onceBtn = document.getElementById("onceBtn");
+    function handleOnce() {
+      addLog("⚡ Fired once — listener removed");
+      onceBtn.textContent    = "Already clicked";
+      onceBtn.style.opacity  = "0.5";
+      onceBtn.removeEventListener("click", handleOnce);
+    }
+    onceBtn.addEventListener("click", handleOnce);
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        <div class="output-panel preview-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+            <button type="button" class="preview-btn">▶ Preview</button>
+          </div>
+          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       6 · TASKS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="tasks">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Tasks (Practice)</h2>
+    </div>
+    <div class="section-body">
+      <div class="task-cards">
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty easy">Easy</span>
+            <span class="task-title">Task 1 — Alert on click via addEventListener</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;button id="myBtn"&gt;Click Me&lt;/button&gt;
+
+&lt;script&gt;
+  let btn = document.getElementById("myBtn");
+  // attach listener here
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Use <code>addEventListener("click", ...)</code> to show an alert on click</li>
+              <li>Move the handler into a named function — not an anonymous one</li>
+              <li>After the alert, use <code>removeEventListener</code> so the button only works once</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="task-card-header">
+            <span class="task-difficulty medium">Medium</span>
+            <span class="task-title">Task 2 — Multi-event hover + click tracker</span>
+          </div>
+          <div class="task-card-body">
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Starter code</span>
+              </div>
+              <pre><code class="language-html">&lt;button id="trackBtn"&gt;Interact with me&lt;/button&gt;
+&lt;p id="status"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+  let btn    = document.getElementById("trackBtn");
+  let status = document.getElementById("status");
+  // add click, mouseover, mouseout listeners
+&lt;/script&gt;</code></pre>
+            </div>
+            <ul class="task-steps">
+              <li>Add a <code>click</code> listener that increments a counter and updates <code>status</code></li>
+              <li>Add <code>mouseover</code> → change button background to yellow</li>
+              <li>Add <code>mouseout</code> → reset button background to its original colour</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       7 · MCQs
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="mcqs">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>MCQs</h2>
+    </div>
+    <div class="section-body">
+      <div class="mcq-list">
+
+        <!-- Q1 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q1</div>
+            Which method is the modern standard for attaching event handlers?
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> onclick=""</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> addEvent()</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> addEventListener()</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> attachHandler()</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>C is correct.</strong> <code>addEventListener()</code> is the standard DOM method for attaching event handlers. It separates JavaScript from HTML, allows multiple handlers on one element, and supports removal via <code>removeEventListener()</code>.</span>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q2</div>
+            Can you attach multiple listeners of the same event type to one element?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">let btn = document.querySelector("button");
+
+btn.addEventListener("click", () => console.log("First"));
+btn.addEventListener("click", () => console.log("Second"));</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it — then click the button!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> No — the second replaces the first</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Yes — both handlers run in order</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Only the last one runs</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> It throws an error</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>addEventListener()</code> <em>adds</em> a listener to the element's list — it never removes existing ones. Both handlers run when the button is clicked, in the order they were added.</span>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="mcq-card">
+          <div class="mcq-question">
+            <div class="mcq-q-num">Q3</div>
+            What is wrong with this code?
+            <div class="mcq-question-code">
+              <pre><code class="language-javascript">function showAlert() {
+  console.log("Clicked!");
+}
+
+// Which line is correct?
+// A:
+document.querySelector("button").addEventListener("click", showAlert());
+// B:
+document.querySelector("button").addEventListener("click", showAlert);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Run it to see the difference</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="mcq-options">
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> Line A is correct — parentheses are needed</li>
+            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> Line B is correct — no parentheses when passing the function</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> Both are correct</li>
+            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> Neither works</li>
+          </ul>
+          <div class="mcq-explanation">
+            <span class="mcq-explanation-icon">💡</span>
+            <span><strong>B is correct.</strong> <code>showAlert()</code> with parentheses <em>calls</em> the function immediately and passes its return value (<code>undefined</code>) as the handler. <code>showAlert</code> without parentheses passes the function <em>reference</em> — which is what you want.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       8 · PRO TIPS
+  ═════════════════════════════════════════════════════════ -->
+  <section class="section" id="pro-tips">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Pro Tips &amp; Extra Knowledge</h2>
+    </div>
+    <div class="section-body">
+      <ul class="pro-tips-list">
+
+        <li class="pro-tip">
+          <span class="tip-icon">01</span>
+          <div class="tip-content">
+            <p>Always pass a <strong>function reference</strong> to <code>addEventListener</code> — never call it with parentheses:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Function reference vs function call</span>
+              </div>
+              <pre><code class="language-javascript">function greet() { console.log("Hello!"); }
+
+// ✗ Wrong — executes immediately, passes undefined as handler
+document.querySelector("button").addEventListener("click", greet());
+
+// ✓ Correct — passes the function itself as the handler
+document.querySelector("button").addEventListener("click", greet);
+
+// ✓ Also correct — arrow function is already a reference
+document.querySelector("button").addEventListener("click", () =&gt; greet());</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">02</span>
+          <div class="tip-content">
+            <p>Use the <code>{ once: true }</code> option as a clean shortcut for one-time listeners — the browser removes it automatically after the first fire:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">{ once: true } option</span>
+              </div>
+              <pre><code class="language-javascript">let btn = document.querySelector("button");
+
+// Fires only once — auto-removed after first click
+btn.addEventListener("click", function handler() {
+  console.log("This fires only once!");
+}, { once: true });
+
+// Equivalent to calling removeEventListener inside the handler
+// but shorter and cleaner</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run — then click the button</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">03</span>
+          <div class="tip-content">
+            <p>Use <strong>event delegation</strong> — attach one listener to a parent element instead of many listeners on individual children. This works for dynamically added elements too:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">Event delegation on a parent</span>
+              </div>
+              <pre><code class="language-javascript">// One listener on the parent handles clicks on ALL children
+document.querySelector("ul").addEventListener("click", function(e) {
+  if (e.target.tagName === "LI") {
+    console.log("You clicked:", e.target.textContent);
+  }
+});
+// Works even for &lt;li&gt; elements added AFTER this listener is set up</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run — then click a list item</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="pro-tip">
+          <span class="tip-icon">04</span>
+          <div class="tip-content">
+            <p>Use <code>CustomEvent</code> with a <code>detail</code> payload to pass data between loosely coupled parts of your application:</p>
+            <div class="example-block">
+              <div class="example-header">
+                <span class="example-label">CustomEvent with detail data</span>
+              </div>
+              <pre><code class="language-javascript">// Dispatch a custom event with payload
+let event = new CustomEvent("userLogin", {
+  detail: { username: "Aman", role: "admin" }
+});
+
+// Any module can listen for it
+document.addEventListener("userLogin", function(e) {
+  console.log("User logged in:", e.detail.username);
+  console.log("Role:", e.detail.role);
+});
+
+// Trigger it from anywhere
+document.dispatchEvent(event);</code></pre>
+              <div class="output-panel">
+                <div class="output-header">
+                  <span class="output-label"><span class="output-dot"></span>Output</span>
+                  <button type="button" class="run-btn">▶ Run</button>
+                </div>
+                <div class="output-body">
+                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       MINI CHALLENGE
+  ═════════════════════════════════════════════════════════ -->
+  <div class="challenge-card" id="challenge">
+    <div class="challenge-header">
+      <span class="challenge-title">Mini Challenge</span>
+    </div>
+    <p class="challenge-subtitle">
+      Two listeners are attached to the same button for the same event — predict
+      exactly what prints when you click, then verify.
+    </p>
+    <div class="challenge-code-wrap example-block">
+      <div class="example-header">
+        <span class="example-label">What gets printed when the button is clicked?</span>
+      </div>
+      <pre><code class="language-javascript">let btn = document.querySelector("button");
+
+btn.addEventListener("click", () => {
+  console.log("First");
+});
+
+btn.addEventListener("click", () => {
+  console.log("Second");
+});</code></pre>
+      <div class="output-panel">
+        <div class="output-header">
+          <span class="output-label"><span class="output-dot"></span>Output</span>
+          <button type="button" class="run-btn">▶ Run</button>
+        </div>
+        <div class="output-body">
+          <span class="output-placeholder">Think first, then run!</span>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+    <div class="challenge-answer">
+      <div class="challenge-answer-header">Step-by-Step Explanation</div>
+      <pre><code class="language-javascript">// addEventListener ADDS to the element's listener list
+// It never overwrites or replaces an existing listener
+
+// After the two calls, the button has TWO click listeners:
+//   1. () => console.log("First")
+//   2. () => console.log("Second")
+
+// When the button is clicked, both run in the ORDER they were added:
+
+// Output:
+//   First
+//   Second
+
+// Compare to onclick (inline or property):
+//   btn.onclick = () => console.log("First");
+//   btn.onclick = () => console.log("Second");
+//   ← Only "Second" would run — the second assignment overwrites the first!
+
+// Key takeaway:
+//   addEventListener → ADDS (both run)
+//   onclick = ...   → REPLACES (only last one runs)</code></pre>
+    </div>
+  </div>
+
+  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+  <div class="topic-nav">
+    <a href="4-4.html" class="nav-btn prev">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      4.4 DOM Manipulation
+    </a>
+    <a href="../content.html" class="nav-btn next">
+      Module 4 Complete
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+
+</div><!-- /topic-container -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+<script src="topic.js"></script>
+</body>
+</html>
