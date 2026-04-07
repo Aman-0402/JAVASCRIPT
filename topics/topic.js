@@ -50,41 +50,7 @@ function executeJS(code) {
   return { lines, isError };
 }
 
-// ── Copy buttons ───────────────────────────────────────────────
-document.querySelectorAll('.example-header').forEach(header => {
-  const block  = header.closest('.example-block');
-  const codeEl = block && block.querySelector('pre code');
-  if (!codeEl) return;
 
-  const btn = document.createElement('button');
-  btn.className   = 'copy-btn';
-  btn.textContent = 'Copy';
-  btn.setAttribute('aria-label', 'Copy code to clipboard');
-  header.appendChild(btn);
-
-  btn.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(codeEl.textContent);
-      btn.textContent = '✓ Copied!';
-      btn.classList.add('copied');
-    } catch {
-      // Fallback for older browsers / HTTP contexts
-      const ta = document.createElement('textarea');
-      ta.value = codeEl.textContent;
-      ta.style.cssText = 'position:fixed;opacity:0;';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-      btn.textContent = '✓ Copied!';
-      btn.classList.add('copied');
-    }
-    setTimeout(() => {
-      btn.textContent = 'Copy';
-      btn.classList.remove('copied');
-    }, 2000);
-  });
-});
 
 // ── Run buttons ────────────────────────────────────────────────
 document.querySelectorAll('.run-btn').forEach(btn => {
