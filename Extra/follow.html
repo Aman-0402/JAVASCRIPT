@@ -120,20 +120,38 @@
       margin-bottom: 24px;
     }
 
-    .avatar {
+.avatar {
       width: 96px;
       height: 96px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent-y), var(--accent-r));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.6rem;
-      color: var(--bg);
-      letter-spacing: 0.02em;
       position: relative;
+      overflow: hidden;
       z-index: 1;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      animation: float 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite alternate;
+      transition: transform 0.3s ease;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(2deg); }
+    }
+
+    @keyframes glowPulse {
+      0% { filter: drop-shadow(0 0 8px rgba(247, 201, 72, 0.5)); }
+      100% { filter: drop-shadow(0 0 16px rgba(247, 201, 72, 0.8)); }
+    }
+
+    .avatar:hover .profile-img {
+      animation-play-state: paused;
+      transform: scale(1.05);
     }
 
     .avatar-ring {
@@ -380,7 +398,7 @@
     <div class="hero">
       <div class="avatar-wrap">
         <div class="avatar-ring"></div>
-        <div class="avatar">A</div>
+<div class="avatar"><img src="../Extra/amannn.jpg" alt="Aman" class="profile-img"></div>
       </div>
       <h1 class="hero-name">Aman</h1>
       <div class="hero-tag">
