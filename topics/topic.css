@@ -60,6 +60,9 @@ nav {
   transition: all 0.2s; flex-shrink: 0;
 }
 .back-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.quant-btn { display: flex; align-items: center; padding: 2px; border-radius: 6px; transition: opacity 0.2s, transform 0.2s; opacity: 0.85; }
+.quant-btn:hover { opacity: 1; transform: scale(1.08); }
+.quant-btn img { height: 32px; width: auto; display: block; border-radius: 4px; }
 
 /* ── CONTAINER ────────────────────────────────────────────── */
 .topic-container {

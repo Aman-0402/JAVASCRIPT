@@ -85,6 +85,9 @@ body {
   white-space: nowrap;
 }
 .back-btn:hover { color: var(--accent); border-color: var(--accent); }
+.quant-btn { display: flex; align-items: center; padding: 2px; border-radius: 6px; transition: opacity 0.2s, transform 0.2s; opacity: 0.85; }
+.quant-btn:hover { opacity: 1; transform: scale(1.08); }
+.quant-btn img { height: 32px; width: auto; display: block; border-radius: 4px; }
 
 .header-center {
   display: flex;
