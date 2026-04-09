@@ -114,6 +114,32 @@ document.querySelectorAll('.preview-btn').forEach(btn => {
   });
 });
 
+// ── Shuffle MCQ options ───────────────────────────────────────
+document.querySelectorAll('.mcq-card').forEach(card => {
+  const options = Array.from(card.querySelectorAll('.mcq-option'));
+
+  // Fisher-Yates shuffle
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = options[i];
+    options[i] = options[j];
+    options[j] = temp;
+  }
+
+  // Reorder DOM elements
+  const optionsList = card.querySelector('.mcq-options');
+  options.forEach(opt => {
+    optionsList.appendChild(opt);
+  });
+
+  // Update option keys (A, B, C, D)
+  const keys = ['A', 'B', 'C', 'D'];
+  options.forEach((opt, idx) => {
+    const keyEl = opt.querySelector('.mcq-option-key');
+    if (keyEl) keyEl.textContent = keys[idx];
+  });
+});
+
 // ── MCQ interaction ────────────────────────────────────────────
 document.querySelectorAll('.mcq-card').forEach(card => {
   const options     = card.querySelectorAll('.mcq-option');
