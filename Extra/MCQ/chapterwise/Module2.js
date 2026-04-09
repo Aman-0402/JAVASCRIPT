@@ -1,7 +1,26 @@
 // ── Module 2: Variables, Data Types & Functions ──
 // All 50 questions with options, answer, and explanation
 
-const questions = [
+// Shuffle options and update answer index
+function shuffleOptions(question) {
+  const { options, answer } = question;
+  const correctOption = options[answer];
+  const optionsCopy = [...options];
+
+  // Fisher-Yates shuffle
+  for (let i = optionsCopy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [optionsCopy[i], optionsCopy[j]] = [optionsCopy[j], optionsCopy[i]];
+  }
+
+  return {
+    ...question,
+    options: optionsCopy,
+    answer: optionsCopy.indexOf(correctOption)
+  };
+}
+
+const questionsRaw = [
   {
     id: 1,
     text: "Which keyword is used to declare a block-scoped variable?",
@@ -403,6 +422,9 @@ const questions = [
     explanation: "Reusable functions make code easier to maintain."
   }
 ];
+
+// Apply randomization to all questions
+const questions = questionsRaw.map(shuffleOptions);
 
 // ── State ──
 let current = 0;

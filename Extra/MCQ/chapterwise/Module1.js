@@ -1,7 +1,26 @@
 // ── Module 1: JS Operators, Methods & Keywords ──
 // All 30 questions with options, answer, and explanation
 
-const questions = [
+// Shuffle options and update answer index
+function shuffleOptions(question) {
+  const { options, answer } = question;
+  const correctOption = options[answer];
+  const optionsCopy = [...options];
+
+  // Fisher-Yates shuffle
+  for (let i = optionsCopy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [optionsCopy[i], optionsCopy[j]] = [optionsCopy[j], optionsCopy[i]];
+  }
+
+  return {
+    ...question,
+    options: optionsCopy,
+    answer: optionsCopy.indexOf(correctOption)
+  };
+}
+
+const questionsRaw = [
   {
     id: 1,
     text: "What does the assignment operator = do in JavaScript?",
@@ -318,6 +337,9 @@ const questions = [
     explanation: "External JS improves code organization and allows reuse across pages."
   }
 ];
+
+// Apply randomization to all questions
+const questions = questionsRaw.map(shuffleOptions);
 
 // ── State ──
 let current = 0;
