@@ -1,5 +1,24 @@
 // mcq.js — MCQ Practice Hub
 
+// ── Theme Toggle ──
+function initTheme() {
+  const html = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('js-mcq-theme') || 'dark';
+
+  if (savedTheme === 'light') {
+    html.classList.add('light-theme');
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    html.classList.toggle('light-theme');
+    const isDark = !html.classList.contains('light-theme');
+    localStorage.setItem('js-mcq-theme', isDark ? 'dark' : 'light');
+  });
+}
+
+initTheme();
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ── Scroll reveal for sections ──
