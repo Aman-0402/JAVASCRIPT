@@ -136,6 +136,7 @@ document.querySelectorAll('.mcq-card').forEach(card => {
   // Reorder DOM elements
   const optionsList = card.querySelector('.mcq-options');
   const keys = ['A', 'B', 'C', 'D'];
+  let newCorrectKey = '';
   options.forEach((opt, idx) => {
     optionsList.appendChild(opt);
 
@@ -145,7 +146,20 @@ document.querySelectorAll('.mcq-card').forEach(card => {
 
     // Update data-correct attribute based on shuffled position
     opt.dataset.correct = (idx === correctIndex) ? 'true' : 'false';
+    if (idx === correctIndex) newCorrectKey = keys[idx];
   });
+
+  // Update explanation text to show correct answer letter
+  const explanation = card.querySelector('.mcq-explanation');
+  if (explanation && newCorrectKey) {
+    const explanationText = explanation.querySelector('span:last-child');
+    if (explanationText) {
+      explanationText.innerHTML = explanationText.innerHTML.replace(
+        /<strong>[A-D] is correct\./,
+        `<strong>${newCorrectKey} is correct.`
+      );
+    }
+  }
 });
 
 // ── MCQ interaction ────────────────────────────────────────────
