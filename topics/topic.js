@@ -122,8 +122,8 @@ document.querySelectorAll('.preview-btn').forEach(btn => {
 document.querySelectorAll('.mcq-card').forEach(card => {
   const options = Array.from(card.querySelectorAll('.mcq-option'));
 
-  // Store correct answer before shuffling
-  const correctIndex = options.findIndex(opt => opt.dataset.correct === 'true');
+  // Store reference to the ELEMENT that is correct (not the position)
+  const correctElement = options.find(opt => opt.dataset.correct === 'true');
 
   // Fisher-Yates shuffle
   for (let i = options.length - 1; i > 0; i--) {
@@ -144,9 +144,10 @@ document.querySelectorAll('.mcq-card').forEach(card => {
     const keyEl = opt.querySelector('.mcq-option-key');
     if (keyEl) keyEl.textContent = keys[idx];
 
-    // Update data-correct attribute based on shuffled position
-    opt.dataset.correct = (idx === correctIndex) ? 'true' : 'false';
-    if (idx === correctIndex) newCorrectKey = keys[idx];
+    // Update data-correct: mark as true if this ELEMENT was originally correct
+    const isCorrect = (opt === correctElement);
+    opt.dataset.correct = isCorrect ? 'true' : 'false';
+    if (isCorrect) newCorrectKey = keys[idx];
   });
 
   // Update explanation text to show correct answer letter
