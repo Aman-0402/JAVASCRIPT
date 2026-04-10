@@ -152,12 +152,9 @@ document.querySelectorAll('.mcq-card').forEach(card => {
   // Update explanation text to show correct answer letter
   const explanation = card.querySelector('.mcq-explanation');
   if (explanation && newCorrectKey) {
-    const explanationText = explanation.querySelector('span:last-child');
-    if (explanationText) {
-      explanationText.innerHTML = explanationText.innerHTML.replace(
-        /<strong>[A-D] is correct\./,
-        `<strong>${newCorrectKey} is correct.`
-      );
+    const strongEl = explanation.querySelector('strong');
+    if (strongEl) {
+      strongEl.textContent = `${newCorrectKey} is correct.`;
     }
   }
 });
