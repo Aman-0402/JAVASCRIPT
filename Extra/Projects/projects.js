@@ -26,8 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cards.forEach(card => observer.observe(card));
 
-    // Add smooth transition for flip animation
+    // Add flip animation on click
     cards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Don't flip if clicking the link
+            if (e.target.closest('.start-btn')) {
+                return;
+            }
+            this.classList.toggle('flipped');
+        });
+
         card.addEventListener('mouseenter', function() {
             this.style.cursor = 'pointer';
         });
