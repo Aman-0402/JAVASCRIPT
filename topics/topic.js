@@ -55,6 +55,8 @@ function executeJS(code) {
 // ── Run buttons ────────────────────────────────────────────────
 document.querySelectorAll('.run-btn').forEach(btn => {
   const panel  = btn.closest('.output-panel');
+  if (!panel) return; // Skip if no output-panel found
+
   const output = panel.querySelector('.output-body');
   // The code lives in the nearest ancestor that holds both pre and output-panel
   const host   = panel.parentElement;
@@ -93,6 +95,8 @@ document.querySelectorAll('.run-btn').forEach(btn => {
 document.querySelectorAll('.preview-btn').forEach(btn => {
   const panel  = btn.closest('.output-panel, .preview-panel');
   const block  = btn.closest('.example-block');
+  if (!block || !panel) return; // Skip if elements not found
+
   const codeEl = block.querySelector('pre code');
   const iframe = block.querySelector('.preview-frame');
   const dot    = panel.querySelector('.output-dot');
@@ -118,6 +122,9 @@ document.querySelectorAll('.preview-btn').forEach(btn => {
 document.querySelectorAll('.mcq-card').forEach(card => {
   const options = Array.from(card.querySelectorAll('.mcq-option'));
 
+  // Store correct answer before shuffling
+  const correctIndex = options.findIndex(opt => opt.dataset.correct === 'true');
+
   // Fisher-Yates shuffle
   for (let i = options.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -128,15 +135,16 @@ document.querySelectorAll('.mcq-card').forEach(card => {
 
   // Reorder DOM elements
   const optionsList = card.querySelector('.mcq-options');
-  options.forEach(opt => {
-    optionsList.appendChild(opt);
-  });
-
-  // Update option keys (A, B, C, D)
   const keys = ['A', 'B', 'C', 'D'];
   options.forEach((opt, idx) => {
+    optionsList.appendChild(opt);
+
+    // Update option keys (A, B, C, D)
     const keyEl = opt.querySelector('.mcq-option-key');
     if (keyEl) keyEl.textContent = keys[idx];
+
+    // Update data-correct attribute based on shuffled position
+    opt.dataset.correct = (idx === correctIndex) ? 'true' : 'false';
   });
 });
 
