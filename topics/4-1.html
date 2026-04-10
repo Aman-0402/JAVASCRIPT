@@ -1,135 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4.1 DOM Structure — JS Mastery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
   <link rel="stylesheet" href="topic.css" />
 </head>
+
 <body>
 
-<!-- ── NAV ─────────────────────────────────────────────────── -->
-<nav>
-  <div class="nav-inner">
-    <span class="logo">{JS}</span>
-    <span class="nav-title">JS Mastery</span>
-    <a href="../content.html" class="back-link">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      All Topics
-    </a>
-    <a href="../Extra/Quant.html" class="quant-btn" title="Share your Files" target="_blank" rel="noopener noreferrer">
-      <img src="../Extra/Quant.png" alt="Quant" />
-    </a>
-  </div>
-</nav>
-
-<div class="topic-container">
-
-  <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
-  <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
-    <a href="../index.html">Home</a>
-    <span class="breadcrumb-sep">/</span>
-    <a href="../content.html">JavaScript</a>
-    <span class="breadcrumb-sep">/</span>
-    <a href="../content.html">Module 4</a>
-    <span class="breadcrumb-sep">/</span>
-    <span class="breadcrumb-current">4.1 DOM Structure</span>
-  </div>
-
-  <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
-  <div class="topic-hero">
-    <div class="topic-tag-row">
-      <span class="topic-badge">4.1</span>
-      <span class="module-tag">Module 4 · Document Object Model (DOM)</span>
+  <!-- ── NAV ─────────────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <span class="logo">{JS}</span>
+      <span class="nav-title">JS Mastery</span>
+      <a href="../content.html" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M19 12H5M12 5l-7 7 7 7" />
+        </svg>
+        All Topics
+      </a>
+      <a href="../Extra/Quant.html" class="quant-btn" title="Share your Files" target="_blank"
+        rel="noopener noreferrer">
+        <img src="../Extra/Quant.png" alt="Quant" />
+      </a>
     </div>
-    <h1>DOM <span class="highlight">Structure</span></h1>
-    <p class="subtitle">
-      Understand how browsers turn your HTML into a navigable tree of objects —
-      and how JavaScript uses the <code>document</code> entry point to read and
-      manipulate every part of a live web page.
-    </p>
-  </div>
+  </nav>
 
-  <!-- ════════════════════════════════════════════════════════
+  <div class="topic-container">
+
+    <!-- ── BREADCRUMB ─────────────────────────────────────────── -->
+    <div class="breadcrumb" role="navigation" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="../content.html">JavaScript</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="../content.html">Module 4</a>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current">4.1 DOM Structure</span>
+    </div>
+
+    <!-- ── TOPIC HERO ─────────────────────────────────────────── -->
+    <div class="topic-hero">
+      <div class="topic-tag-row">
+        <span class="topic-badge">4.1</span>
+        <span class="module-tag">Module 4 · Document Object Model (DOM)</span>
+      </div>
+      <h1>DOM <span class="highlight">Structure</span></h1>
+      <p class="subtitle">
+        Understand how browsers turn your HTML into a navigable tree of objects —
+        and how JavaScript uses the <code>document</code> entry point to read and
+        manipulate every part of a live web page.
+      </p>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════
        1 · DEFINITION
   ═════════════════════════════════════════════════════════ -->
-  <section class="section" id="definition">
-    <div class="section-header">
-      <span class="section-num">1</span>
-      <h2>Definition</h2>
-    </div>
-    <div class="section-body">
-      <p>
-        The <strong>Document Object Model (DOM)</strong> is a programming interface
-        for web documents. When a browser loads an HTML page it parses the markup and
-        builds a <em>tree of objects</em> — one object for every element, attribute,
-        and piece of text. JavaScript can then use this tree to read, change, add, or
-        remove anything on the page without reloading it.
-      </p>
-      <p>
-        The DOM is <strong>live</strong> — any change made through JavaScript is
-        immediately reflected in what the user sees. This is what makes modern
-        interactive web applications possible.
-      </p>
-    </div>
-  </section>
+    <section class="section" id="definition">
+      <div class="section-header">
+        <span class="section-num">1</span>
+        <h2>Definition</h2>
+      </div>
+      <div class="section-body">
+        <p>
+          The <strong>Document Object Model (DOM)</strong> is a programming interface
+          for web documents. When a browser loads an HTML page it parses the markup and
+          builds a <em>tree of objects</em> — one object for every element, attribute,
+          and piece of text. JavaScript can then use this tree to read, change, add, or
+          remove anything on the page without reloading it.
+        </p>
+        <p>
+          The DOM is <strong>live</strong> — any change made through JavaScript is
+          immediately reflected in what the user sees. This is what makes modern
+          interactive web applications possible.
+        </p>
+      </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════
        2 · SIMPLE WAY
   ═════════════════════════════════════════════════════════ -->
-  <section class="section" id="simple-way">
-    <div class="section-header">
-      <span class="section-num">2</span>
-      <h2>Simple Way</h2>
-    </div>
-    <div class="section-body">
-      <p class="intro-text">
-        Think of the DOM as a <strong>family tree for your webpage</strong>:
-      </p>
-      <div class="simple-ops">
-        <div class="simple-op-row">
-          <span class="op-badge">document</span>
-          <span class="op-arrow">→</span>
-          <span>The root of the entire tree — your entry point into any page</span>
-        </div>
-        <div class="simple-op-row">
-          <span class="op-badge">node</span>
-          <span class="op-arrow">→</span>
-          <span>Any single item in the tree — an element, text, comment, or attribute</span>
-        </div>
-        <div class="simple-op-row">
-          <span class="op-badge">element</span>
-          <span class="op-arrow">→</span>
-          <span>A node that represents an HTML tag — <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code></span>
-        </div>
-        <div class="simple-op-row">
-          <span class="op-badge">parent / child</span>
-          <span class="op-arrow">→</span>
-          <span>Elements that contain others are parents — elements inside are their children</span>
+    <section class="section" id="simple-way">
+      <div class="section-header">
+        <span class="section-num">2</span>
+        <h2>Simple Way</h2>
+      </div>
+      <div class="section-body">
+        <p class="intro-text">
+          Think of the DOM as a <strong>family tree for your webpage</strong>:
+        </p>
+        <div class="simple-ops">
+          <div class="simple-op-row">
+            <span class="op-badge">document</span>
+            <span class="op-arrow">→</span>
+            <span>The root of the entire tree — your entry point into any page</span>
+          </div>
+          <div class="simple-op-row">
+            <span class="op-badge">node</span>
+            <span class="op-arrow">→</span>
+            <span>Any single item in the tree — an element, text, comment, or attribute</span>
+          </div>
+          <div class="simple-op-row">
+            <span class="op-badge">element</span>
+            <span class="op-arrow">→</span>
+            <span>A node that represents an HTML tag — <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>,
+              <code>&lt;div&gt;</code></span>
+          </div>
+          <div class="simple-op-row">
+            <span class="op-badge">parent / child</span>
+            <span class="op-arrow">→</span>
+            <span>Elements that contain others are parents — elements inside are their children</span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════
        3 · CODE EXAMPLES
   ═════════════════════════════════════════════════════════ -->
-  <section class="section" id="code-examples">
-    <div class="section-header">
-      <span class="section-num">3</span>
-      <h2>Code Examples</h2>
-    </div>
-    <div class="section-body">
+    <section class="section" id="code-examples">
+      <div class="section-header">
+        <span class="section-num">3</span>
+        <h2>Code Examples</h2>
+      </div>
+      <div class="section-body">
 
-      <!-- Example 1 — DOM tree as HTML -->
-      <div class="example-block">
-        <div class="example-header">
-          <span class="example-label">Example 1 — HTML That Becomes the DOM Tree</span>
-        </div>
-        <pre><code class="language-html">&lt;!-- This HTML produces the tree shown below --&gt;
+        <!-- Example 1 — DOM tree as HTML -->
+        <div class="example-block">
+          <div class="example-header">
+            <span class="example-label">Example 1 — HTML That Becomes the DOM Tree</span>
+          </div>
+          <pre><code class="language-html">&lt;!-- This HTML produces the tree shown below --&gt;
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -150,22 +158,23 @@
              ├── h1  ("Hello")
              └── p   ("Welcome")
 */</code></pre>
-        <div class="explanation">
-          <div class="explanation-title">Explanation</div>
-          <ul>
-            <li><code>document</code> is the invisible root that holds everything</li>
-            <li><code>html</code> is the child of <code>document</code> and the parent of <code>head</code> and <code>body</code></li>
-            <li><code>h1</code> and <code>p</code> are <em>siblings</em> — both children of <code>body</code></li>
-          </ul>
+          <div class="explanation">
+            <div class="explanation-title">Explanation</div>
+            <ul>
+              <li><code>document</code> is the invisible root that holds everything</li>
+              <li><code>html</code> is the child of <code>document</code> and the parent of <code>head</code> and
+                <code>body</code></li>
+              <li><code>h1</code> and <code>p</code> are <em>siblings</em> — both children of <code>body</code></li>
+            </ul>
+          </div>
         </div>
-      </div>
 
-      <!-- Example 2 — Accessing DOM nodes -->
-      <div class="example-block">
-        <div class="example-header">
-          <span class="example-label">Example 2 — Accessing DOM Nodes in JavaScript</span>
-        </div>
-        <pre><code class="language-javascript">// document is always available in the browser
+        <!-- Example 2 — Accessing DOM nodes -->
+        <div class="example-block">
+          <div class="example-header">
+            <span class="example-label">Example 2 — Accessing DOM Nodes in JavaScript</span>
+          </div>
+          <pre><code class="language-javascript">// document is always available in the browser
 console.log(typeof document);          // "object"
 console.log(document.title);           // page title
 
@@ -177,31 +186,31 @@ console.log(document.body.childNodes); // NodeList
 
 // children — only element nodes (recommended)
 console.log(document.body.children);   // HTMLCollection</code></pre>
-        <div class="output-panel">
-          <div class="output-header">
-            <span class="output-label"><span class="output-dot"></span>Output</span>
-            <button type="button" class="run-btn">▶ Run</button>
+          <div class="output-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Output</span>
+              <button type="button" class="run-btn">▶ Run</button>
+            </div>
+            <div class="output-body">
+              <span class="output-placeholder">Click ▶ Run to execute</span>
+            </div>
           </div>
-          <div class="output-body">
-            <span class="output-placeholder">Click ▶ Run to execute</span>
+          <div class="explanation">
+            <div class="explanation-title">Explanation</div>
+            <ul>
+              <li><code>document.body</code> is a direct shortcut to the <code>&lt;body&gt;</code> element</li>
+              <li><code>childNodes</code> returns <em>all</em> nodes including whitespace text nodes between tags</li>
+              <li><code>children</code> returns only element nodes — much cleaner for most tasks</li>
+            </ul>
           </div>
         </div>
-        <div class="explanation">
-          <div class="explanation-title">Explanation</div>
-          <ul>
-            <li><code>document.body</code> is a direct shortcut to the <code>&lt;body&gt;</code> element</li>
-            <li><code>childNodes</code> returns <em>all</em> nodes including whitespace text nodes between tags</li>
-            <li><code>children</code> returns only element nodes — much cleaner for most tasks</li>
-          </ul>
-        </div>
-      </div>
 
-      <!-- Example 3 — Node types -->
-      <div class="example-block">
-        <div class="example-header">
-          <span class="example-label">Example 3 — Node Types</span>
-        </div>
-        <pre><code class="language-javascript">// Every node has a nodeType property:
+        <!-- Example 3 — Node types -->
+        <div class="example-block">
+          <div class="example-header">
+            <span class="example-label">Example 3 — Node Types</span>
+          </div>
+          <pre><code class="language-javascript">// Every node has a nodeType property:
 //   1 → Element node  (e.g. &lt;div&gt;, &lt;p&gt;)
 //   3 → Text node     (the actual text content)
 //   8 → Comment node  (&lt;!-- ... --&gt;)
@@ -212,31 +221,32 @@ console.log(document.body.nodeType);  // 1 (Element)
 
 // nodeName tells you what kind of element it is
 console.log(document.body.nodeName); // "BODY"</code></pre>
-        <div class="output-panel">
-          <div class="output-header">
-            <span class="output-label"><span class="output-dot"></span>Output</span>
-            <button type="button" class="run-btn">▶ Run</button>
+          <div class="output-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Output</span>
+              <button type="button" class="run-btn">▶ Run</button>
+            </div>
+            <div class="output-body">
+              <span class="output-placeholder">Click ▶ Run to execute</span>
+            </div>
           </div>
-          <div class="output-body">
-            <span class="output-placeholder">Click ▶ Run to execute</span>
+          <div class="explanation">
+            <div class="explanation-title">Explanation</div>
+            <ul>
+              <li>Every node in the DOM has a <code>nodeType</code> number — element nodes are <code>1</code>, text
+                nodes are <code>3</code></li>
+              <li><code>nodeName</code> returns the tag name in uppercase for element nodes</li>
+              <li>This is how you can tell whether you're looking at an element or a text node when iterating</li>
+            </ul>
           </div>
         </div>
-        <div class="explanation">
-          <div class="explanation-title">Explanation</div>
-          <ul>
-            <li>Every node in the DOM has a <code>nodeType</code> number — element nodes are <code>1</code>, text nodes are <code>3</code></li>
-            <li><code>nodeName</code> returns the tag name in uppercase for element nodes</li>
-            <li>This is how you can tell whether you're looking at an element or a text node when iterating</li>
-          </ul>
-        </div>
-      </div>
 
-      <!-- Example 4 — Tree navigation properties -->
-      <div class="example-block">
-        <div class="example-header">
-          <span class="example-label">Example 4 — Navigating the Tree</span>
-        </div>
-        <pre><code class="language-javascript">// Navigate up, down, and sideways through the tree
+        <!-- Example 4 — Tree navigation properties -->
+        <div class="example-block">
+          <div class="example-header">
+            <span class="example-label">Example 4 — Navigating the Tree</span>
+          </div>
+          <pre><code class="language-javascript">// Navigate up, down, and sideways through the tree
 let body = document.body;
 
 console.log(body.parentNode);          // html element (parent)
@@ -246,88 +256,90 @@ console.log(body.children.length);     // number of element children
 
 // parentElement is the cleaner version of parentNode for elements
 console.log(body.parentElement);       // html element</code></pre>
-        <div class="output-panel">
-          <div class="output-header">
-            <span class="output-label"><span class="output-dot"></span>Output</span>
-            <button type="button" class="run-btn">▶ Run</button>
+          <div class="output-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Output</span>
+              <button type="button" class="run-btn">▶ Run</button>
+            </div>
+            <div class="output-body">
+              <span class="output-placeholder">Click ▶ Run to execute</span>
+            </div>
           </div>
-          <div class="output-body">
-            <span class="output-placeholder">Click ▶ Run to execute</span>
+          <div class="explanation">
+            <div class="explanation-title">Explanation</div>
+            <ul>
+              <li><code>parentNode</code> / <code>parentElement</code> — move up one level</li>
+              <li><code>firstElementChild</code> / <code>lastElementChild</code> — access first or last child element
+                directly</li>
+              <li><code>children.length</code> — count how many direct element children a node has</li>
+            </ul>
           </div>
         </div>
-        <div class="explanation">
-          <div class="explanation-title">Explanation</div>
-          <ul>
-            <li><code>parentNode</code> / <code>parentElement</code> — move up one level</li>
-            <li><code>firstElementChild</code> / <code>lastElementChild</code> — access first or last child element directly</li>
-            <li><code>children.length</code> — count how many direct element children a node has</li>
-          </ul>
-        </div>
+
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════
        4 · REAL-LIFE EXAMPLE
   ═════════════════════════════════════════════════════════ -->
-  <section class="section" id="real-life">
-    <div class="section-header">
-      <span class="section-num">4</span>
-      <h2>Real-Life Example</h2>
-    </div>
-    <div class="section-body">
-      <p class="analogy-intro">
-        Think of the DOM like a <strong>company org chart</strong>:
-      </p>
-      <div class="analogy-grid">
-        <div class="analogy-card">
-          <div class="analogy-op">document</div>
-          <div class="analogy-desc">The CEO — the top of the entire organisation, entry point for everything</div>
-        </div>
-        <div class="analogy-card">
-          <div class="analogy-op">&lt;html&gt;</div>
-          <div class="analogy-desc">The COO — directly under the CEO, manages all departments</div>
-        </div>
-        <div class="analogy-card">
-          <div class="analogy-op">&lt;body&gt;</div>
-          <div class="analogy-desc">The department manager — oversees all visible page content</div>
-        </div>
-        <div class="analogy-card">
-          <div class="analogy-op">&lt;h1&gt;, &lt;p&gt;</div>
-          <div class="analogy-desc">Individual employees — each has a specific role on the page</div>
-        </div>
-        <div class="analogy-card">
-          <div class="analogy-op">Text node</div>
-          <div class="analogy-desc">The actual work being done — the words the user reads</div>
-        </div>
-        <div class="analogy-card">
-          <div class="analogy-op">Live DOM</div>
-          <div class="analogy-desc">Org chart updates in real time — promote someone and the chart changes instantly</div>
+    <section class="section" id="real-life">
+      <div class="section-header">
+        <span class="section-num">4</span>
+        <h2>Real-Life Example</h2>
+      </div>
+      <div class="section-body">
+        <p class="analogy-intro">
+          Think of the DOM like a <strong>company org chart</strong>:
+        </p>
+        <div class="analogy-grid">
+          <div class="analogy-card">
+            <div class="analogy-op">document</div>
+            <div class="analogy-desc">The CEO — the top of the entire organisation, entry point for everything</div>
+          </div>
+          <div class="analogy-card">
+            <div class="analogy-op">&lt;html&gt;</div>
+            <div class="analogy-desc">The COO — directly under the CEO, manages all departments</div>
+          </div>
+          <div class="analogy-card">
+            <div class="analogy-op">&lt;body&gt;</div>
+            <div class="analogy-desc">The department manager — oversees all visible page content</div>
+          </div>
+          <div class="analogy-card">
+            <div class="analogy-op">&lt;h1&gt;, &lt;p&gt;</div>
+            <div class="analogy-desc">Individual employees — each has a specific role on the page</div>
+          </div>
+          <div class="analogy-card">
+            <div class="analogy-op">Text node</div>
+            <div class="analogy-desc">The actual work being done — the words the user reads</div>
+          </div>
+          <div class="analogy-card">
+            <div class="analogy-op">Live DOM</div>
+            <div class="analogy-desc">Org chart updates in real time — promote someone and the chart changes instantly
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════
        5 · HTML + JAVASCRIPT EXAMPLE (LIVE PREVIEW)
   ═════════════════════════════════════════════════════════ -->
-  <section class="section" id="html-js-example">
-    <div class="section-header">
-      <span class="section-num">5</span>
-      <h2>HTML + JavaScript Example</h2>
-    </div>
-    <div class="section-body">
-      <p class="section-intro-p">
-        Click <strong>▶ Preview</strong>, then press the button to inspect the DOM
-        tree live — printing the tag name, node type, and child count of every direct
-        child of <code>&lt;body&gt;</code>.
-      </p>
-      <div class="example-block">
-        <div class="example-header">
-          <span class="example-label">Live in Browser — DOM Tree Inspector</span>
-        </div>
-        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+    <section class="section" id="html-js-example">
+      <div class="section-header">
+        <span class="section-num">5</span>
+        <h2>HTML + JavaScript Example</h2>
+      </div>
+      <div class="section-body">
+        <p class="section-intro-p">
+          Click <strong>▶ Preview</strong>, then press the button to inspect the DOM
+          tree live — printing the tag name, node type, and child count of every direct
+          child of <code>&lt;body&gt;</code>.
+        </p>
+        <div class="example-block">
+          <div class="example-header">
+            <span class="example-label">Live in Browser — DOM Tree Inspector</span>
+          </div>
+          <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;&lt;title&gt;DOM Structure&lt;/title&gt;&lt;/head&gt;
 &lt;body style="font-family:sans-serif;padding:24px;background:#f8f9fa"&gt;
@@ -369,63 +381,64 @@ console.log(body.parentElement);       // html element</code></pre>
 
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-        <div class="output-panel preview-panel">
-          <div class="output-header">
-            <span class="output-label"><span class="output-dot"></span>Live Preview</span>
-            <button type="button" class="preview-btn">▶ Preview</button>
+          <div class="output-panel preview-panel">
+            <div class="output-header">
+              <span class="output-label"><span class="output-dot"></span>Live Preview</span>
+              <button type="button" class="preview-btn">▶ Preview</button>
+            </div>
+            <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
           </div>
-          <iframe class="preview-frame" sandbox="allow-scripts" title="Live HTML preview"></iframe>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════
        6 · TASKS
   ═════════════════════════════════════════════════════════ -->
-  <section class="section" id="tasks">
-    <div class="section-header">
-      <span class="section-num">6</span>
-      <h2>Tasks (Practice)</h2>
-    </div>
-    <div class="section-body">
-      <div class="task-cards">
+    <section class="section" id="tasks">
+      <div class="section-header">
+        <span class="section-num">6</span>
+        <h2>Tasks (Practice)</h2>
+      </div>
+      <div class="section-body">
+        <div class="task-cards">
 
-        <div class="task-card">
-          <div class="task-card-header">
-            <span class="task-difficulty easy">Easy</span>
-            <span class="task-title">Task 1 — Inspect document.body</span>
-          </div>
-          <div class="task-card-body">
-            <div class="example-block">
-              <div class="example-header">
-                <span class="example-label">Starter code (run in browser console)</span>
-              </div>
-              <pre><code class="language-javascript">// Open any web page and run these in DevTools console
+          <div class="task-card">
+            <div class="task-card-header">
+              <span class="task-difficulty easy">Easy</span>
+              <span class="task-title">Task 1 — Inspect document.body</span>
+            </div>
+            <div class="task-card-body">
+              <div class="example-block">
+                <div class="example-header">
+                  <span class="example-label">Starter code (run in browser console)</span>
+                </div>
+                <pre><code class="language-javascript">// Open any web page and run these in DevTools console
 console.log(document.body);
 console.log(document.body.nodeType);
 console.log(document.body.nodeName);
 console.log(document.title);</code></pre>
-            </div>
-            <ul class="task-steps">
-              <li>Open DevTools (F12) on any page and run the code above in the Console tab</li>
-              <li>Confirm <code>nodeType</code> is <code>1</code> (Element) and <code>nodeName</code> is <code>"BODY"</code></li>
-              <li>Navigate upward: <code>document.body.parentElement</code> — what does it return?</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="task-card">
-          <div class="task-card-header">
-            <span class="task-difficulty medium">Medium</span>
-            <span class="task-title">Task 2 — childNodes vs children</span>
-          </div>
-          <div class="task-card-body">
-            <div class="example-block">
-              <div class="example-header">
-                <span class="example-label">Starter code</span>
               </div>
-              <pre><code class="language-javascript">// Compare the two collections
+              <ul class="task-steps">
+                <li>Open DevTools (F12) on any page and run the code above in the Console tab</li>
+                <li>Confirm <code>nodeType</code> is <code>1</code> (Element) and <code>nodeName</code> is
+                  <code>"BODY"</code></li>
+                <li>Navigate upward: <code>document.body.parentElement</code> — what does it return?</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="task-card">
+            <div class="task-card-header">
+              <span class="task-difficulty medium">Medium</span>
+              <span class="task-title">Task 2 — childNodes vs children</span>
+            </div>
+            <div class="task-card-body">
+              <div class="example-block">
+                <div class="example-header">
+                  <span class="example-label">Starter code</span>
+                </div>
+                <pre><code class="language-javascript">// Compare the two collections
 console.log("childNodes:", document.body.childNodes.length);
 console.log("children:",   document.body.children.length);
 
@@ -433,134 +446,145 @@ console.log("children:",   document.body.children.length);
 for (let el of document.body.children) {
   console.log(el.tagName);
 }</code></pre>
+              </div>
+              <ul class="task-steps">
+                <li>Run the code — observe that <code>childNodes</code> is larger (includes text/whitespace nodes)</li>
+                <li>Use <code>children</code> instead and loop through — confirm only element tags are listed</li>
+                <li>Print the <code>firstElementChild</code> and <code>lastElementChild</code> of
+                  <code>document.body</code></li>
+              </ul>
             </div>
-            <ul class="task-steps">
-              <li>Run the code — observe that <code>childNodes</code> is larger (includes text/whitespace nodes)</li>
-              <li>Use <code>children</code> instead and loop through — confirm only element tags are listed</li>
-              <li>Print the <code>firstElementChild</code> and <code>lastElementChild</code> of <code>document.body</code></li>
-            </ul>
           </div>
+
         </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════
        7 · MCQs
   ═════════════════════════════════════════════════════════ -->
-  <section class="section" id="mcqs">
-    <div class="section-header">
-      <span class="section-num">7</span>
-      <h2>MCQs</h2>
-    </div>
-    <div class="section-body">
-      <div class="mcq-list">
-
-        <!-- Q1 -->
-        <div class="mcq-card">
-          <div class="mcq-question">
-            <div class="mcq-q-num">Q1</div>
-            What does the DOM represent?
-          </div>
-          <ul class="mcq-options">
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> CSS styles of a page</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> HTML as a live tree of objects</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> A database for web data</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> A server-side rendering engine</li>
-          </ul>
-          <div class="mcq-explanation">
-            <span class="mcq-explanation-icon">💡</span>
-            <span><strong>B is correct.</strong> The DOM is a live, tree-structured representation of the HTML document. JavaScript uses it to read and modify any part of the page without reloading.</span>
-          </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="mcq-card">
-          <div class="mcq-question">
-            <div class="mcq-q-num">Q2</div>
-            What is the root / entry point of the DOM?
-            <div class="mcq-question-code">
-              <pre><code class="language-javascript">console.log(typeof document);
-console.log(document.nodeType);</code></pre>
-              <div class="output-panel">
-                <div class="output-header">
-                  <span class="output-label"><span class="output-dot"></span>Output</span>
-                  <button type="button" class="run-btn">▶ Run</button>
-                </div>
-                <div class="output-body">
-                  <span class="output-placeholder">Run it to verify</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <ul class="mcq-options">
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> &lt;body&gt;</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> &lt;html&gt;</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">C</span> document</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> window</li>
-          </ul>
-          <div class="mcq-explanation">
-            <span class="mcq-explanation-icon">💡</span>
-            <span><strong>C is correct.</strong> <code>document</code> is the top-level object representing the entire HTML page. It has <code>nodeType === 9</code> (Document node) and is the starting point for all DOM traversal and selection.</span>
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="mcq-card">
-          <div class="mcq-question">
-            <div class="mcq-q-num">Q3</div>
-            Which property returns all child nodes including text and whitespace?
-            <div class="mcq-question-code">
-              <pre><code class="language-javascript">console.log(document.body.childNodes.length);
-console.log(document.body.children.length);</code></pre>
-              <div class="output-panel">
-                <div class="output-header">
-                  <span class="output-label"><span class="output-dot"></span>Output</span>
-                  <button type="button" class="run-btn">▶ Run</button>
-                </div>
-                <div class="output-body">
-                  <span class="output-placeholder">Run it to verify</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <ul class="mcq-options">
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> children</li>
-            <li class="mcq-option" data-correct="true" ><span class="mcq-option-key">B</span> childNodes</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> getElementById</li>
-            <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> querySelector</li>
-          </ul>
-          <div class="mcq-explanation">
-            <span class="mcq-explanation-icon">💡</span>
-            <span><strong>B is correct.</strong> <code>childNodes</code> returns every node including text nodes (whitespace, line breaks, comments). <code>children</code> returns only element nodes — the one you should reach for in most situations.</span>
-          </div>
-        </div>
-
+    <section class="section" id="mcqs">
+      <div class="section-header">
+        <span class="section-num">7</span>
+        <h2>MCQs</h2>
       </div>
-    </div>
-  </section>
+      <div class="section-body">
+        <div class="mcq-list">
 
-  <!-- ════════════════════════════════════════════════════════
+          <!-- Q1 -->
+          <div class="mcq-card">
+            <div class="mcq-question">
+              <div class="mcq-q-num">Q1</div>
+              What does the DOM represent?
+            </div>
+            <ul class="mcq-options">
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> CSS styles of a page
+              </li>
+              <li class="mcq-option" data-correct="true"><span class="mcq-option-key">B</span> HTML as a live tree of
+                objects</li>
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> A database for web data
+              </li>
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> A server-side rendering
+                engine</li>
+            </ul>
+            <div class="mcq-explanation">
+              <span class="mcq-explanation-icon">💡</span>
+              <span><strong>B is correct.</strong> The DOM is a live, tree-structured representation of the HTML
+                document. JavaScript uses it to read and modify any part of the page without reloading.</span>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="mcq-card">
+            <div class="mcq-question">
+              <div class="mcq-q-num">Q2</div>
+              What is the root / entry point of the DOM?
+              <div class="mcq-question-code">
+                <pre><code class="language-javascript">console.log(typeof document);
+console.log(document.nodeType);</code></pre>
+                <div class="output-panel">
+                  <div class="output-header">
+                    <span class="output-label"><span class="output-dot"></span>Output</span>
+                    <button type="button" class="run-btn">▶ Run</button>
+                  </div>
+                  <div class="output-body">
+                    <span class="output-placeholder">Run it to verify</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul class="mcq-options">
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> &lt;body&gt;</li>
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">B</span> &lt;html&gt;</li>
+              <li class="mcq-option" data-correct="true"><span class="mcq-option-key">C</span> document</li>
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> window</li>
+            </ul>
+            <div class="mcq-explanation">
+              <span class="mcq-explanation-icon">💡</span>
+              <span><strong>C is correct.</strong> <code>document</code> is the top-level object representing the entire
+                HTML page. It has <code>nodeType === 9</code> (Document node) and is the starting point for all DOM
+                traversal and selection.</span>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="mcq-card">
+            <div class="mcq-question">
+              <div class="mcq-q-num">Q3</div>
+              Which property returns all child nodes including text and whitespace?
+              <div class="mcq-question-code">
+                <pre><code class="language-javascript">console.log(document.body.childNodes.length);
+console.log(document.body.children.length);</code></pre>
+                <div class="output-panel">
+                  <div class="output-header">
+                    <span class="output-label"><span class="output-dot"></span>Output</span>
+                    <button type="button" class="run-btn">▶ Run</button>
+                  </div>
+                  <div class="output-body">
+                    <span class="output-placeholder">Run it to verify</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ul class="mcq-options">
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">A</span> children</li>
+              <li class="mcq-option" data-correct="true"><span class="mcq-option-key">B</span> childNodes</li>
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">C</span> getElementById</li>
+              <li class="mcq-option" data-correct="false"><span class="mcq-option-key">D</span> querySelector</li>
+            </ul>
+            <div class="mcq-explanation">
+              <span class="mcq-explanation-icon">💡</span>
+              <span><strong>B is correct.</strong> <code>childNodes</code> returns every node including text nodes
+                (whitespace, line breaks, comments). <code>children</code> returns only element nodes — the one you
+                should reach for in most situations.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
        8 · PRO TIPS
   ═════════════════════════════════════════════════════════ -->
-  <section class="section" id="pro-tips">
-    <div class="section-header">
-      <span class="section-num">8</span>
-      <h2>Pro Tips &amp; Extra Knowledge</h2>
-    </div>
-    <div class="section-body">
-      <ul class="pro-tips-list">
+    <section class="section" id="pro-tips">
+      <div class="section-header">
+        <span class="section-num">8</span>
+        <h2>Pro Tips &amp; Extra Knowledge</h2>
+      </div>
+      <div class="section-body">
+        <ul class="pro-tips-list">
 
-        <li class="pro-tip">
-          <span class="tip-icon">01</span>
-          <div class="tip-content">
-            <p>Always use <code>children</code> instead of <code>childNodes</code> unless you specifically need text nodes — whitespace between tags creates unexpected text nodes:</p>
-            <div class="example-block">
-              <div class="example-header">
-                <span class="example-label">childNodes vs children</span>
-              </div>
-              <pre><code class="language-javascript">// childNodes includes whitespace text nodes between tags
+          <li class="pro-tip">
+            <span class="tip-icon">01</span>
+            <div class="tip-content">
+              <p>Always use <code>children</code> instead of <code>childNodes</code> unless you specifically need text
+                nodes — whitespace between tags creates unexpected text nodes:</p>
+              <div class="example-block">
+                <div class="example-header">
+                  <span class="example-label">childNodes vs children</span>
+                </div>
+                <pre><code class="language-javascript">// childNodes includes whitespace text nodes between tags
 let allNodes = document.body.childNodes;
 console.log("childNodes length:", allNodes.length);
 
@@ -572,28 +596,29 @@ console.log("children length:", elements.length);
 for (let el of document.body.children) {
   console.log(el.tagName); // always a real tag, never a text node
 }</code></pre>
-              <div class="output-panel">
-                <div class="output-header">
-                  <span class="output-label"><span class="output-dot"></span>Output</span>
-                  <button type="button" class="run-btn">▶ Run</button>
-                </div>
-                <div class="output-body">
-                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                <div class="output-panel">
+                  <div class="output-header">
+                    <span class="output-label"><span class="output-dot"></span>Output</span>
+                    <button type="button" class="run-btn">▶ Run</button>
+                  </div>
+                  <div class="output-body">
+                    <span class="output-placeholder">Click ▶ Run to execute</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="pro-tip">
-          <span class="tip-icon">02</span>
-          <div class="tip-content">
-            <p>The DOM is <strong>live</strong> — collections like <code>children</code> automatically update when you add or remove elements, which can cause bugs if you're looping while modifying:</p>
-            <div class="example-block">
-              <div class="example-header">
-                <span class="example-label">DOM is live — changes instantly</span>
-              </div>
-              <pre><code class="language-javascript">// Check child count before and after a DOM change
+          <li class="pro-tip">
+            <span class="tip-icon">02</span>
+            <div class="tip-content">
+              <p>The DOM is <strong>live</strong> — collections like <code>children</code> automatically update when you
+                add or remove elements, which can cause bugs if you're looping while modifying:</p>
+              <div class="example-block">
+                <div class="example-header">
+                  <span class="example-label">DOM is live — changes instantly</span>
+                </div>
+                <pre><code class="language-javascript">// Check child count before and after a DOM change
 console.log("Before:", document.body.children.length);
 
 let p = document.createElement("p");
@@ -602,91 +627,93 @@ document.body.appendChild(p);
 
 // The live collection updates immediately
 console.log("After:", document.body.children.length);</code></pre>
-              <div class="output-panel">
-                <div class="output-header">
-                  <span class="output-label"><span class="output-dot"></span>Output</span>
-                  <button type="button" class="run-btn">▶ Run</button>
-                </div>
-                <div class="output-body">
-                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                <div class="output-panel">
+                  <div class="output-header">
+                    <span class="output-label"><span class="output-dot"></span>Output</span>
+                    <button type="button" class="run-btn">▶ Run</button>
+                  </div>
+                  <div class="output-body">
+                    <span class="output-placeholder">Click ▶ Run to execute</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="pro-tip">
-          <span class="tip-icon">03</span>
-          <div class="tip-content">
-            <p>Use <code>document.documentElement</code> to access the <code>&lt;html&gt;</code> root element — distinct from <code>document.body</code>:</p>
-            <div class="example-block">
-              <div class="example-header">
-                <span class="example-label">document shortcuts</span>
-              </div>
-              <pre><code class="language-javascript">console.log(document.documentElement.nodeName); // "HTML"
+          <li class="pro-tip">
+            <span class="tip-icon">03</span>
+            <div class="tip-content">
+              <p>Use <code>document.documentElement</code> to access the <code>&lt;html&gt;</code> root element —
+                distinct from <code>document.body</code>:</p>
+              <div class="example-block">
+                <div class="example-header">
+                  <span class="example-label">document shortcuts</span>
+                </div>
+                <pre><code class="language-javascript">console.log(document.documentElement.nodeName); // "HTML"
 console.log(document.head.nodeName);            // "HEAD"
 console.log(document.body.nodeName);            // "BODY"
 console.log(document.title);                    // page title string</code></pre>
-              <div class="output-panel">
-                <div class="output-header">
-                  <span class="output-label"><span class="output-dot"></span>Output</span>
-                  <button type="button" class="run-btn">▶ Run</button>
-                </div>
-                <div class="output-body">
-                  <span class="output-placeholder">Click ▶ Run to execute</span>
+                <div class="output-panel">
+                  <div class="output-header">
+                    <span class="output-label"><span class="output-dot"></span>Output</span>
+                    <button type="button" class="run-btn">▶ Run</button>
+                  </div>
+                  <div class="output-body">
+                    <span class="output-placeholder">Click ▶ Run to execute</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <li class="pro-tip">
-          <span class="tip-icon">04</span>
-          <div class="tip-content">
-            <p>Use browser DevTools to explore the DOM visually — the Elements panel is the live DOM tree. Right-click any element on a page and choose <em>Inspect</em> to navigate to it instantly.</p>
-          </div>
-        </li>
+          <li class="pro-tip">
+            <span class="tip-icon">04</span>
+            <div class="tip-content">
+              <p>Use browser DevTools to explore the DOM visually — the Elements panel is the live DOM tree. Right-click
+                any element on a page and choose <em>Inspect</em> to navigate to it instantly.</p>
+            </div>
+          </li>
 
-      </ul>
-    </div>
-  </section>
+        </ul>
+      </div>
+    </section>
 
-  <!-- ════════════════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════════════════
        MINI CHALLENGE
   ═════════════════════════════════════════════════════════ -->
-  <div class="challenge-card" id="challenge">
-    <div class="challenge-header">
-      <span class="challenge-title">Mini Challenge</span>
-    </div>
-    <p class="challenge-subtitle">
-      How many child nodes does this <code>&lt;body&gt;</code> have — and how many
-      are <em>element</em> nodes? Think carefully before running.
-    </p>
-    <div class="challenge-code-wrap example-block">
-      <div class="example-header">
-        <span class="example-label">What does this print?</span>
+    <div class="challenge-card" id="challenge">
+      <div class="challenge-header">
+        <span class="challenge-title">Mini Challenge</span>
       </div>
-      <pre><code class="language-javascript">// Imagine a page whose body looks like:
+      <p class="challenge-subtitle">
+        How many child nodes does this <code>&lt;body&gt;</code> have — and how many
+        are <em>element</em> nodes? Think carefully before running.
+      </p>
+      <div class="challenge-code-wrap example-block">
+        <div class="example-header">
+          <span class="example-label">What does this print?</span>
+        </div>
+        <pre><code class="language-javascript">// Imagine a page whose body looks like:
 // &lt;body&gt;\n  &lt;h1&gt;Hello&lt;/h1&gt;\n&lt;/body&gt;
 
 // In the runner here, document.body has its own children:
 console.log("childNodes:", document.body.childNodes.length);
 console.log("children:",   document.body.children.length);
 console.log("first child nodeType:", document.body.childNodes[0]?.nodeType);</code></pre>
-      <div class="output-panel">
-        <div class="output-header">
-          <span class="output-label"><span class="output-dot"></span>Output</span>
-          <button type="button" class="run-btn">▶ Run</button>
-        </div>
-        <div class="output-body">
-          <span class="output-placeholder">Think first, then run!</span>
+        <div class="output-panel">
+          <div class="output-header">
+            <span class="output-label"><span class="output-dot"></span>Output</span>
+            <button type="button" class="run-btn">▶ Run</button>
+          </div>
+          <div class="output-body">
+            <span class="output-placeholder">Think first, then run!</span>
+          </div>
         </div>
       </div>
-    </div>
-    <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
-    <div class="challenge-answer">
-      <div class="challenge-answer-header">Step-by-Step Explanation</div>
-      <pre><code class="language-javascript">// Consider a body written as:
+      <button type="button" class="reveal-btn">Reveal Step-by-Step Answer</button>
+      <div class="challenge-answer">
+        <div class="challenge-answer-header">Step-by-Step Explanation</div>
+        <pre><code class="language-javascript">// Consider a body written as:
 //   &lt;body&gt;
 //     &lt;h1&gt;Hello&lt;/h1&gt;
 //   &lt;/body&gt;
@@ -710,26 +737,31 @@ console.log("first child nodeType:", document.body.childNodes[0]?.nodeType);</co
 //   The actual count varies depending on the page you run it on.
 //   In this runner, document.body contains the page's own elements.
 //   Always prefer .children when you want predictable results.</code></pre>
+      </div>
     </div>
-  </div>
 
-  <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
-  <div class="topic-nav">
-    <a href="../topics/3-3.html" class="nav-btn prev">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      3.3 Loops
-    </a>
-    <a href="4-2.html" class="nav-btn next">
-      4.2 Events Handling
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
+    <!-- ── TOPIC NAV ───────────────────────────────────────────── -->
+    <div class="topic-nav">
+      <a href="../topics/3-3.html" class="nav-btn prev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 5l-7 7 7 7" />
+        </svg>
+        3.3 Loops
+      </a>
+      <a href="4-2.html" class="nav-btn next">
+        4.2 Events Handling
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
 
-</div><!-- /topic-container -->
+  </div><!-- /topic-container -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-<script src="topic.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="topic.js"></script>
 </body>
+
 </html>
