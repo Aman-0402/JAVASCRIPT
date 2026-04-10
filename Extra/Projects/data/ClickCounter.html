@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click Counter — Interactive Project</title>
+    <style>
+        /* ────────────────────────────────────────────────────── */
+        /* RESET & ROOT VARIABLES                                 */
+        /* ────────────────────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #0f0f1a;
+            --bg-dark: #0d1117;
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #e2e8f0;
+            --text-2: #94a3b8;
+            --text-3: #64748b;
+            --green: #4ade80;
+            --yellow: #f7df1e;
+            --radius: 12px;
+            /* Syntax highlighting colors */
+            --token-tag: #f07178;
+            --token-attr: #ffcb6b;
+            --token-string: #c3e88d;
+            --token-keyword: #c792ea;
+            --token-function: #82aaff;
+            --token-number: #f78c6c;
+            --token-comment: #546e7a;
+            --token-bracket: #a0aec0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0f 0%, #0f0f1a 50%, #13131f 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ────────────────────────────────────────────────────── */
+        /* NAVBAR                                                 */
+        /* ────────────────────────────────────────────────────── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 26, 0.85);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            height: 60px;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Fira Code', monospace;
+            background: var(--yellow);
+            color: #111;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .back-link {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-2);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .back-link:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* ────────────────────────────────────────────────────── */
+        /* MAIN LAYOUT                                            */
+        /* ────────────────────────────────────────────────────── */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+            height: calc(100vh - 60px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        /* ────────────────────────────────────────────────────── */
+        /* PANELS                                                 */
+        /* ────────────────────────────────────────────────────── */
+        .panel {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: fadeUp 0.6s ease-out 0.1s both;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .panel-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-3);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 2px;
+        }
+
+        /* ────────────────────────────────────────────────────── */
+        /* BUTTONS                                                */
+        /* ────────────────────────────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-run {
+            background: rgba(74, 222, 128, 0.1);
+            border-color: rgba(74, 222, 128, 0.22);
+            color: var(--green);
+        }
+
+        .btn-run:hover {
+            background: rgba(74, 222, 128, 0.18);
+            box-shadow: 0 0 12px rgba(74, 222, 128, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .btn-run:active {
+            transform: translateY(0);
+        }
+
+        /* ────────────────────────────────────────────────────── */
+        /* CODE PANEL                                             */
+        /* ────────────────────────────────────────────────────── */
+        #code-panel {
+            grid-column: 1;
+            border-right: 2px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .file-label {
+            padding: 10px 20px;
+            font-size: 12px;
+            color: #94a3b8;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.01);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .code-wrapper {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #code-display {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.65;
+            padding: 20px;
+            background: var(--bg-dark);
+            color: #c9d1d9;
+            margin: 0;
+            /* Prevent text selection */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            white-space: pre;
+            word-wrap: normal;
+            cursor: default;
+        }
+
+        #code-display::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        #code-display::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #code-display::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        #code-display::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ────────────────────────────────────────────────────── */
+        /* SYNTAX HIGHLIGHTING TOKENS                             */
+        /* ────────────────────────────────────────────────────── */
+        .token {
+            position: relative;
+        }
+
+        .token.tag {
+            color: var(--token-tag);
+            font-weight: 600;
+        }
+
+        .token.attr-name {
+            color: var(--token-attr);
+        }
+
+        .token.attr-value {
+            color: var(--token-string);
+        }
+
+        .token.string {
+            color: var(--token-string);
+        }
+
+        .token.keyword {
+            color: var(--token-keyword);
+            font-weight: 600;
+        }
+
+        .token.function {
+            color: var(--token-function);
+        }
+
+        .token.number {
+            color: var(--token-number);
+        }
+
+        .token.comment {
+            color: var(--token-comment);
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .token.bracket {
+            color: var(--token-bracket);
+        }
+
+        /* ────────────────────────────────────────────────────── */
+        /* PREVIEW PANEL                                          */
+        /* ────────────────────────────────────────────────────── */
+        #preview-panel {
+            grid-column: 2;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .preview-wrapper {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        #preview-placeholder {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--text-3);
+            font-size: 0.95rem;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        #preview-placeholder.hidden {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .placeholder-icon {
+            font-size: 3rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        #preview-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #ffffff;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        #preview-iframe.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ────────────────────────────────────────────────────── */
+        /* RESPONSIVE                                             */
+        /* ────────────────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                height: auto;
+                padding: 16px;
+                gap: 16px;
+            }
+
+            #code-panel {
+                border-right: none;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+                max-height: 50vh;
+            }
+
+            #code-display {
+                max-height: 50vh;
+                font-size: 0.8rem;
+            }
+
+            .nav-inner {
+                height: 50px;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 0.75rem;
+                padding: 2px 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── NAVBAR ───────────────────────────────────────────── -->
+    <nav>
+        <div class="nav-inner">
+            <span class="logo">{JS}</span>
+            <span class="nav-title">Click Counter</span>
+            <a href="../projects.html" class="back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.5">
+                    <path d="M19 12H5M12 5l-7 7 7 7" />
+                </svg>
+                All Projects
+            </a>
+        </div>
+    </nav>
+
+    <!-- ── MAIN CONTAINER ───────────────────────────────────── -->
+    <div class="main-container">
+
+        <!-- CODE PANEL (LEFT) -->
+        <div class="panel" id="code-panel">
+            <div class="panel-header">
+                <div>
+                    <div class="panel-title">Project Code</div>
+                    <div class="panel-subtitle">Click Counter</div>
+                </div>
+                <button type="button" class="btn btn-run" id="run-btn">▶ Run Code</button>
+            </div>
+            <div class="file-label">index.html</div>
+            <div class="code-wrapper">
+                <pre id="code-display"></pre>
+            </div>
+        </div>
+
+        <!-- PREVIEW PANEL (RIGHT) -->
+        <div class="panel" id="preview-panel">
+            <div class="panel-header">
+                <div>
+                    <div class="panel-title">Live Preview</div>
+                    <div class="panel-subtitle">Click Counter Output</div>
+                </div>
+            </div>
+            <div class="preview-wrapper">
+                <div id="preview-placeholder">
+                    <div class="placeholder-icon">▶</div>
+                    <div>Click <strong>Run Code</strong> to Preview</div>
+                </div>
+                <iframe id="preview-iframe" sandbox="allow-scripts" title="Click Counter Preview"></iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ────────────────────────────────────────────────────────
+        // COUNTER SOURCE CODE (STORED SEPARATELY FOR EXECUTION)
+        // ────────────────────────────────────────────────────────
+        const COUNTER_SOURCE = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Click Counter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      max-width: 400px;
+      width: 100%;
+      animation: slideIn 0.5s ease-out;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    h1 {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .count-display {
+      font-size: 5rem;
+      font-weight: 800;
+      margin: 30px 0;
+      font-variant-numeric: tabular-nums;
+      transition: all 0.2s ease;
+    }
+    .buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    #increment {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+    #increment:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    #increment:active {
+      animation: clickPulse 0.3s ease;
+    }
+    @keyframes clickPulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.95);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    #reset {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    #reset:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    #reset:active {
+      animation: shake 0.4s ease;
+    }
+    @keyframes shake {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-5px);
+      }
+      75% {
+        transform: translateX(5px);
+      }
+    }
+  <\/style>
+<\/head>
+<body>
+  <div class="container">
+    <h1>Click Counter</h1>
+    <div class="count-display" id="count">0</div>
+    <div class="buttons">
+      <button id="increment">Click Me!</button>
+      <button id="reset">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+    const countDisplay = document.getElementById('count');
+    const incrementBtn = document.getElementById('increment');
+    const resetBtn = document.getElementById('reset');
+
+    function updateDisplay() {
+      countDisplay.textContent = count;
+      if (count === 0) {
+        countDisplay.style.color = '#4ade80';
+      } else if (count < 10) {
+        countDisplay.style.color = '#82aaff';
+      } else if (count < 20) {
+        countDisplay.style.color = '#fbbf24';
+      } else {
+        countDisplay.style.color = '#f87171';
+      }
+    }
+
+    incrementBtn.addEventListener('click', () => {
+      count++;
+      updateDisplay();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      updateDisplay();
+    });
+
+    updateDisplay();
+  <\/script>
+<\/body>
+<\/html>`;
+
+        // ────────────────────────────────────────────────────────
+        // SYNTAX HIGHLIGHTER FUNCTION
+        // ────────────────────────────────────────────────────────
+        function highlightCode(code) {
+            // Step 1: Escape HTML to prevent injection
+            let escaped = code
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+
+            // Step 2: Apply syntax highlighting with token classes
+            // HTML tags: &lt;tagname&gt;
+            escaped = escaped.replace(
+                /&lt;(\/?[\w]+)&gt;/g,
+                '<span class="token bracket">&lt;</span><span class="token tag">$1</span><span class="token bracket">&gt;</span>'
+            );
+
+            // Attributes: name="value"
+            escaped = escaped.replace(
+                /(\w+)=(&quot;[^&]*&quot;|&#39;[^&]*&#39;)/g,
+                '<span class="token attr-name">$1</span>=<span class="token attr-value">$2</span>'
+            );
+
+            // Quoted strings
+            escaped = escaped.replace(
+                /(&quot;[^&]*&quot;|&#39;[^&]*&#39;)/g,
+                '<span class="token string">$1</span>'
+            );
+
+            // JavaScript keywords
+            const jsKeywords = /\b(function|let|const|var|if|else|return|for|while|do|switch|case|break|continue|try|catch|finally|throw|new|this|class|extends|import|export|default|async|await|yield)\b/g;
+            escaped = escaped.replace(jsKeywords, '<span class="token keyword">$1</span>');
+
+            // Built-in functions
+            const jsFunctions = /\b(addEventListener|getElementById|textContent|innerHTML|appendChild|createElement|style|setAttribute|getElementById|querySelector|console|log|document|window)\b/g;
+            escaped = escaped.replace(jsFunctions, '<span class="token function">$1</span>');
+
+            // Numbers
+            escaped = escaped.replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="token number">$1</span>');
+
+            // Comments
+            escaped = escaped.replace(
+                /\/\/.*$/gm,
+                '<span class="token comment">$&</span>'
+            );
+
+            escaped = escaped.replace(
+                /\/\*[\s\S]*?\*\//g,
+                '<span class="token comment">$&</span>'
+            );
+
+            return escaped;
+        }
+
+        // ────────────────────────────────────────────────────────
+        // DOM REFERENCES
+        // ────────────────────────────────────────────────────────
+        const codeDisplay = document.getElementById('code-display');
+        const runBtn = document.getElementById('run-btn');
+        const previewIframe = document.getElementById('preview-iframe');
+        const previewPlaceholder = document.getElementById('preview-placeholder');
+
+        // ────────────────────────────────────────────────────────
+        // PREVENT COPY AND CONTEXT MENU
+        // ────────────────────────────────────────────────────────
+        codeDisplay.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+
+        codeDisplay.addEventListener('copy', (e) => {
+            e.preventDefault();
+            return false;
+        });
+
+        codeDisplay.addEventListener('cut', (e) => {
+            e.preventDefault();
+            return false;
+        });
+
+        // Prevent Ctrl+C / Cmd+C / Ctrl+X on code display
+        codeDisplay.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C' || e.key === 'x' || e.key === 'X')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // ────────────────────────────────────────────────────────
+        // APPLY SYNTAX HIGHLIGHTING AND DISPLAY CODE
+        // ────────────────────────────────────────────────────────
+        const highlightedCode = highlightCode(COUNTER_SOURCE);
+        codeDisplay.innerHTML = highlightedCode;
+
+        // ────────────────────────────────────────────────────────
+        // RUN CODE HANDLER
+        // ────────────────────────────────────────────────────────
+        runBtn.addEventListener('click', () => {
+            // Use the original source code (not the highlighted version)
+            previewIframe.srcdoc = COUNTER_SOURCE;
+
+            // Show iframe, hide placeholder
+            previewIframe.classList.add('visible');
+            previewPlaceholder.classList.add('hidden');
+
+            // Button feedback
+            runBtn.textContent = '✓ Running...';
+            setTimeout(() => {
+                runBtn.textContent = '▶ Run Code';
+            }, 500);
+        });
+    </script>
+
+</body>
+
+</html>
