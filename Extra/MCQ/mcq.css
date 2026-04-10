@@ -481,6 +481,67 @@ a { text-decoration: none; color: inherit; }
   border-color: rgba(247,223,30,0.35) !important;
 }
 
+/* SET Cards - Different Hover Colors */
+.set1-card { border-color: rgba(34,197,94,0.15); }
+.set1-card:hover {
+  border-color: rgba(34,197,94,0.35) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(34,197,94,0.1) !important;
+}
+.set1-card:hover::after {
+  background: linear-gradient(90deg, transparent, var(--green), transparent) !important;
+}
+.set1-card:hover .card-title { color: var(--green) !important; }
+.set1-card:hover .card-num {
+  color: var(--green) !important;
+  background: var(--green-dim) !important;
+}
+.set1-card:hover .card-btn:not(:disabled) {
+  background: var(--green-dim) !important;
+  border-color: rgba(34,197,94,0.4) !important;
+  color: var(--green) !important;
+  box-shadow: 0 4px 16px rgba(34,197,94,0.12) !important;
+}
+
+.set2-card { border-color: rgba(59,130,246,0.15); }
+.set2-card:hover {
+  border-color: rgba(59,130,246,0.35) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(59,130,246,0.1) !important;
+}
+.set2-card:hover::after {
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent) !important;
+}
+.set2-card:hover .card-title { color: #3b82f6 !important; }
+.set2-card:hover .card-num {
+  color: #3b82f6 !important;
+  background: rgba(59,130,246,0.12) !important;
+}
+.set2-card:hover .card-btn:not(:disabled) {
+  background: rgba(59,130,246,0.12) !important;
+  border-color: rgba(59,130,246,0.4) !important;
+  color: #3b82f6 !important;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.12) !important;
+}
+
+.set3-card { border-color: rgba(239,68,68,0.15); }
+.set3-card:hover {
+  border-color: rgba(239,68,68,0.35) !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(239,68,68,0.1) !important;
+}
+.set3-card:hover::after {
+  background: linear-gradient(90deg, transparent, #ef4444, transparent) !important;
+}
+.set3-card:hover .card-title { color: #ef4444 !important; }
+.set3-card:hover .card-num {
+  color: #ef4444 !important;
+  background: rgba(239,68,68,0.12) !important;
+}
+.set3-card:hover .card-btn:not(:disabled) {
+  background: rgba(239,68,68,0.12) !important;
+  border-color: rgba(239,68,68,0.4) !important;
+  color: #ef4444 !important;
+  box-shadow: 0 4px 16px rgba(239,68,68,0.12) !important;
+}
+
 /* ── CARD TOP ── */
 .card-top {
   display: flex; align-items: center; justify-content: space-between;
