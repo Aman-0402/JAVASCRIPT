@@ -777,6 +777,8 @@ body.preview-fullscreen .tabs-container {
 
 body.preview-fullscreen .workspace {
     grid-template-columns: 1fr;
+    top: 0;
+    height: 100vh;
 }
 
 body.preview-fullscreen .main-area {
@@ -791,6 +793,8 @@ body.preview-fullscreen #preview-panel {
     height: 100vh;
     z-index: 9999;
     border: none;
-    background: #fff;
+    margin: 0;
     border-radius: 0;
+    background: #050505;
+    animation: fadeIn 0.3s ease;
 }
