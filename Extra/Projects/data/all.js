@@ -164,8 +164,7 @@
         const codePanel = document.getElementById('code-panel');
         const previewPanel = document.getElementById('preview-panel');
         const fullscreenBtn = document.getElementById('fullscreen-btn');
-        const fullscreenExitBtn = document.getElementById('fullscreen-exit-btn');
-        const fullscreenOverlay = document.getElementById('fullscreen-overlay');
+        const fullscreenExitBtn = document.getElementById('exit-fullscreen');
 
         let openTabs = [];
         let currentTab = null;
@@ -301,8 +300,6 @@
             }
         });
 
-        // ════════════════════════════════════════════════════════
-        // FULLSCREEN MODE
         // ════════════════════════════════════════════════════════
         // FULLSCREEN MODE
         // ════════════════════════════════════════════════════════
