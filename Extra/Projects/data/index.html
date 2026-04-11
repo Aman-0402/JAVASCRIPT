@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Playground — All Projects</title>
+    <link rel="stylesheet" href="all.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <span class="logo">{JS}</span>
+            <span class="nav-title">Coding Playground</span>
+            <a href="../projects.html" class="back-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 12H5M12 5l-7 7 7 7" />
+                </svg>
+                Back
+            </a>
+        </div>
+    </nav>
+
+    <div class="workspace">
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-header">Categories</div>
+            <div class="categories-list" id="categories-list"></div>
+        </div>
+
+        <!-- MAIN AREA -->
+        <div class="main-area">
+            <!-- TABS -->
+            <div class="tabs-container" id="tabs-container"></div>
+
+            <!-- CONTENT AREA (CODE + PREVIEW) -->
+            <div class="content-area" id="content-area">
+                <!-- CODE PANEL -->
+                <div class="code-panel" id="code-panel">
+                    <div class="panel-header">
+                        <div class="panel-title" id="project-title">Select a Project</div>
+                        <div class="panel-controls">
+                            <button type="button" class="btn btn-run" id="run-btn">▶ Run Code</button>
+                        </div>
+                    </div>
+                    <div class="code-wrapper">
+                        <div class="code-container">
+                            <div id="line-numbers" class="line-numbers"></div>
+                            <pre id="code-display"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESIZER -->
+                <div class="resizer" id="resizer"></div>
+
+                <!-- PREVIEW PANEL -->
+                <div class="preview-panel" id="preview-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Live Preview</div>
+                        <div class="panel-controls">
+                            <button type="button" class="fullscreen-btn" id="fullscreen-btn" title="Toggle fullscreen">
+                                <span>⛶</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="preview-wrapper">
+                        <div id="preview-placeholder">
+                            <div class="placeholder-icon">▶</div>
+                            <div>Click "Run Code" to see output</div>
+                        </div>
+                        <iframe id="preview-iframe" sandbox="allow-scripts allow-same-origin"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN OVERLAY & EXIT BUTTON -->
+    <div id="fullscreen-overlay" class="fullscreen-overlay"></div>
+    <button type="button" class="fullscreen-exit-btn" id="fullscreen-exit-btn" title="Exit fullscreen">✕ Exit Fullscreen</button>
+
+    <script src="all.js"></script>
+</body>
+
+</html>
