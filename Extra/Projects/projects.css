@@ -538,6 +538,90 @@ body {
     color: white;
 }
 
+/* ── Featured Section ── */
+.featured-section {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+    margin-bottom: 4rem;
+}
+
+.featured-content {
+    text-align: center;
+    width: 100%;
+}
+
+.featured-box {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    border: 1px solid var(--accent);
+    border-radius: 0.75rem;
+    padding: 2.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-md), 0 0 30px rgba(6, 182, 212, 0.15);
+    transition: all var(--transition-base);
+}
+
+.featured-box:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(6, 182, 212, 0.25);
+    border-color: var(--accent-hover);
+}
+
+.featured-text {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.featured-btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, var(--accent) 0%, #0891b2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all var(--transition-base);
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+}
+
+.featured-btn:hover {
+    background: linear-gradient(135deg, var(--accent-hover) 0%, #0e7490 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(6, 182, 212, 0.4);
+}
+
+.featured-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .featured-section {
+        padding: 2rem 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .featured-box {
+        padding: 1.5rem;
+    }
+
+    .featured-text {
+        font-size: 1rem;
+    }
+
+    .featured-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
 /* ── Accessibility ── */
 @media (prefers-reduced-motion: reduce) {
     *,
