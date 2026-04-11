@@ -419,6 +419,13 @@ nav {
     flex-shrink: 0;
     overflow: hidden;
     min-width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.line-numbers span {
+    display: block;
 }
 
 #code-display {
@@ -717,4 +724,34 @@ body.dragging {
         padding: 5px 10px;
         font-size: 0.7rem;
     }
+}
+
+/* Fullscreen Mode */
+body.preview-fullscreen .sidebar,
+body.preview-fullscreen #code-panel,
+body.preview-fullscreen .resizer,
+body.preview-fullscreen .tabs-container {
+    display: none !important;
+}
+
+body.preview-fullscreen .workspace {
+    grid-template-columns: 1fr;
+}
+
+body.preview-fullscreen .main-area {
+    width: 100vw;
+    height: 100vh;
+}
+
+body.preview-fullscreen #preview-panel {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    z-index: 9999;
+    border: none;
+    background: #fff;
 }

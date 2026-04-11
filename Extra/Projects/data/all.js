@@ -224,9 +224,9 @@
             const lineCount = code.split('\n').length;
             let lineNumbersHtml = '';
             for (let i = 1; i <= lineCount; i++) {
-                lineNumbersHtml += i + '\n';
+                lineNumbersHtml += `<span>${i}</span>`;
             }
-            document.getElementById('line-numbers').textContent = lineNumbersHtml;
+            document.getElementById('line-numbers').innerHTML = lineNumbersHtml;
         }
 
         function switchTab(tabId) {
@@ -304,25 +304,19 @@
         // ════════════════════════════════════════════════════════
         // FULLSCREEN MODE
         // ════════════════════════════════════════════════════════
+        // FULLSCREEN MODE
+        // ════════════════════════════════════════════════════════
         fullscreenBtn.addEventListener('click', () => {
-            previewPanel.classList.add('fullscreen');
-            fullscreenOverlay.classList.add('active');
-            fullscreenExitBtn.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            document.body.classList.toggle('preview-fullscreen');
         });
 
         fullscreenExitBtn.addEventListener('click', () => {
-            previewPanel.classList.remove('fullscreen');
-            fullscreenOverlay.classList.remove('active');
-            fullscreenExitBtn.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            document.body.classList.remove('preview-fullscreen');
         });
 
-        fullscreenOverlay.addEventListener('click', () => fullscreenExitBtn.click());
-
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && previewPanel.classList.contains('fullscreen')) {
-                fullscreenExitBtn.click();
+            if (e.key === 'Escape' && document.body.classList.contains('preview-fullscreen')) {
+                document.body.classList.remove('preview-fullscreen');
             }
         });
 
