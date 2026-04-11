@@ -651,54 +651,130 @@
         // SYNTAX HIGHLIGHTER FUNCTION
         // ────────────────────────────────────────────────────────
         function highlightCode(code) {
-            // Step 1: Escape HTML to prevent injection
-            let escaped = code
+            // Escape HTML once, at the start
+            const escaped = code
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
 
-            // Step 2: Apply syntax highlighting with token classes
-            // HTML tags: &lt;tagname&gt;
-            escaped = escaped.replace(
-                /&lt;(\/?[\w]+)&gt;/g,
-                '<span class="token bracket">&lt;</span><span class="token tag">$1</span><span class="token bracket">&gt;</span>'
-            );
+            let result = '';
+            let i = 0;
 
-            // Attributes: name="value"
-            escaped = escaped.replace(
-                /(\w+)=(&quot;[^&]*&quot;|&#39;[^&]*&#39;)/g,
-                '<span class="token attr-name">$1</span>=<span class="token attr-value">$2</span>'
-            );
+            // Token type definitions
+            const keywords = new Set(['function', 'let', 'const', 'var', 'if', 'else', 'return', 'for', 'while', 'do', 'switch', 'case', 'break', 'continue', 'try', 'catch', 'finally', 'throw', 'new', 'this', 'class', 'extends', 'import', 'export', 'default', 'async', 'await', 'yield']);
+            const functions = new Set(['addEventListener', 'getElementById', 'textContent', 'innerHTML', 'appendChild', 'createElement', 'style', 'setAttribute', 'querySelector', 'console', 'log', 'document', 'window']);
 
-            // Quoted strings
-            escaped = escaped.replace(
-                /(&quot;[^&]*&quot;|&#39;[^&]*&#39;)/g,
-                '<span class="token string">$1</span>'
-            );
+            // Single-pass tokenizer: process left-to-right without re-processing
+            while (i < escaped.length) {
+                // HTML comments (&lt;!-- ... --&gt;)
+                if (escaped.substr(i, 7) === '&lt;!--') {
+                    const endIdx = escaped.indexOf('--&gt;', i);
+                    if (endIdx !== -1) {
+                        const comment = escaped.substring(i, endIdx + 6);
+                        result += '<span class="token comment">' + comment + '</span>';
+                        i = endIdx + 6;
+                        continue;
+                    }
+                }
 
-            // JavaScript keywords
-            const jsKeywords = /\b(function|let|const|var|if|else|return|for|while|do|switch|case|break|continue|try|catch|finally|throw|new|this|class|extends|import|export|default|async|await|yield)\b/g;
-            escaped = escaped.replace(jsKeywords, '<span class="token keyword">$1</span>');
+                // HTML tags (&lt;tagname&gt; or &lt;/tagname&gt;)
+                if (escaped.substr(i, 4) === '&lt;') {
+                    const endIdx = escaped.indexOf('&gt;', i);
+                    if (endIdx !== -1) {
+                        const fullTag = escaped.substring(i, endIdx + 4);
+                        const tagMatch = fullTag.match(/^&lt;(\/?[\w-]+)/);
 
-            // Built-in functions
-            const jsFunctions = /\b(addEventListener|getElementById|textContent|innerHTML|appendChild|createElement|style|setAttribute|getElementById|querySelector|console|log|document|window)\b/g;
-            escaped = escaped.replace(jsFunctions, '<span class="token function">$1</span>');
+                        if (tagMatch) {
+                            // Highlight tag structure: &lt; + tagname + attributes + &gt;
+                            result += '<span class="token bracket">&lt;</span>';
+                            result += '<span class="token tag">' + tagMatch[1] + '</span>';
 
-            // Numbers
-            escaped = escaped.replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="token number">$1</span>');
+                            // Process attributes within tag (name="value")
+                            const rest = fullTag.substring(tagMatch[0].length);
+                            const highlighted = rest.replace(
+                                /(\w+)=(&quot;[^&]*&quot;|&#39;[^&]*&#39;)/g,
+                                '<span class="token attr-name">$1</span>=<span class="token attr-value">$2</span>'
+                            );
+                            result += highlighted;
+                            i = endIdx + 4;
+                            continue;
+                        }
+                    }
+                }
 
-            // Comments
-            escaped = escaped.replace(
-                /\/\/.*$/gm,
-                '<span class="token comment">$&</span>'
-            );
+                // JS line comments (//)
+                if (escaped[i] === '/' && escaped[i + 1] === '/') {
+                    const endIdx = escaped.indexOf('\n', i);
+                    const end = endIdx === -1 ? escaped.length : endIdx;
+                    const comment = escaped.substring(i, end);
+                    result += '<span class="token comment">' + comment + '</span>';
+                    i = end;
+                    continue;
+                }
 
-            escaped = escaped.replace(
-                /\/\*[\s\S]*?\*\//g,
-                '<span class="token comment">$&</span>'
-            );
+                // JS block comments (/* ... */)
+                if (escaped[i] === '/' && escaped[i + 1] === '*') {
+                    const endIdx = escaped.indexOf('*/', i);
+                    if (endIdx !== -1) {
+                        const comment = escaped.substring(i, endIdx + 2);
+                        result += '<span class="token comment">' + comment + '</span>';
+                        i = endIdx + 2;
+                        continue;
+                    }
+                }
 
-            return escaped;
+                // Quoted strings (&quot;...&quot; or &#39;...&#39;)
+                if (escaped.substr(i, 6) === '&quot;') {
+                    const endIdx = escaped.indexOf('&quot;', i + 6);
+                    if (endIdx !== -1) {
+                        const str = escaped.substring(i, endIdx + 6);
+                        result += '<span class="token string">' + str + '</span>';
+                        i = endIdx + 6;
+                        continue;
+                    }
+                }
+
+                if (escaped.substr(i, 5) === '&#39;') {
+                    const endIdx = escaped.indexOf('&#39;', i + 5);
+                    if (endIdx !== -1) {
+                        const str = escaped.substring(i, endIdx + 5);
+                        result += '<span class="token string">' + str + '</span>';
+                        i = endIdx + 5;
+                        continue;
+                    }
+                }
+
+                // Numbers (\d+ or \d+.\d+)
+                const numMatch = escaped.substr(i).match(/^\d+(?:\.\d+)?/);
+                if (numMatch) {
+                    result += '<span class="token number">' + numMatch[0] + '</span>';
+                    i += numMatch[0].length;
+                    continue;
+                }
+
+                // Keywords and built-in functions
+                const wordMatch = escaped.substr(i).match(/^[\w$]+/);
+                if (wordMatch) {
+                    const word = wordMatch[0];
+                    if (keywords.has(word)) {
+                        result += '<span class="token keyword">' + word + '</span>';
+                    } else if (functions.has(word)) {
+                        result += '<span class="token function">' + word + '</span>';
+                    } else {
+                        result += word;
+                    }
+                    i += word.length;
+                    continue;
+                }
+
+                // Default: add character as-is
+                result += escaped[i];
+                i++;
+            }
+
+            return result;
         }
 
         // ────────────────────────────────────────────────────────
