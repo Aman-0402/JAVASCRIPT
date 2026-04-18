@@ -21,283 +21,283 @@ initMockTheme();
 const quizData = [
     {
         id: 1,
-        question: "Which of the following is a correct way to declare a variable in JavaScript?",
-        options: ["int x = 10", "var x = 10", "declare x = 10", "variable x = 10"],
-        correct: 1,
-        explanation: "var x = 10 is a valid JavaScript variable declaration."
+        question: "Which one of the following is correct output for the following given JavaScript code?\nvar obj = {\n    length: 20,\n    height: 35,\n};\n\nif ('breadth' in obj === false) {\n    obj.breadth = 12;\n}\nconsole.log(obj.breadth);",
+        options: ["Error", "Undefined", "12", "20"],
+        correct: 2,
+        explanation: "\"breadth\" is not in the object, so the condition is true and the property is added with value 12."
     },
     {
         id: 2,
-        question: "What will be the output of the following code?\nconsole.log(10 + \"5\");",
-        options: ["15", "\"105\"", "105", "Error"],
-        correct: 1,
-        explanation: "When a number is added to a string, JavaScript performs string concatenation."
+        question: "Which of the following is the correct output for the following JavaScript code?\nvar grade = 'Z';\nvar result = 0;\nswitch (grade) {\n    case 'A':\n        result += 10;\n    case 'B':\n        result += 9;\n    case 'C':\n        result += 8;\n    default:\n        result += 0;\n}\ndocument.write(result);",
+        options: ["10", "17", "18", "0"],
+        correct: 3,
+        explanation: "No case matches until default, so result stays 0."
     },
     {
         id: 3,
-        question: "Which operator is used for strict equality in JavaScript?",
-        options: ["==", "=", "===", "!="],
-        correct: 2,
-        explanation: "=== checks both value and type, so it is the strict equality operator."
+        question: "Which type of JavaScript language is ___",
+        options: ["Object-Oriented", "Object-Based", "Assembly-language", "High-level"],
+        correct: 1,
+        explanation: "JavaScript is commonly described as an object-based scripting language."
     },
     {
         id: 4,
-        question: "What will be the output of the following code?\nconsole.log(typeof \"Hello\");",
-        options: ["string", "\"string\"", "text", "object"],
+        question: "Which of the following variables takes precedence over the others if the names are the same?",
+        options: ["Global variable", "The local element", "The two of the above", "None of the above"],
         correct: 1,
-        explanation: "typeof returns the string value \"string\" for text data."
+        explanation: "A local variable shadows a global variable with the same name."
     },
     {
         id: 5,
-        question: "Which loop executes at least once regardless of condition?",
-        options: ["for", "while", "do...while", "foreach"],
-        correct: 2,
-        explanation: "A do...while loop runs its body once before checking the condition."
+        question: "What will happen if the following JavaScript code is executed?\nvar count = 0;\nwhile (count < 10) {\n    console.log(count);\n    count++;\n}",
+        options: ["An error is displayed", "An exception is thrown", "Values stored", "The value of count from 0 to 9 is displayed in the console"],
+        correct: 3,
+        explanation: "The loop prints each value from 0 through 9 and then stops when count becomes 10."
     },
     {
         id: 6,
-        question: "What will be the output of the following code?\nconsole.log(5 == \"5\");",
-        options: ["true", "false", "Error", "undefined"],
-        correct: 0,
-        explanation: "Loose equality converts the string to a number, so 5 == \"5\" is true."
+        question: "Which of the following is not considered as an error in JavaScript?",
+        options: ["Syntax error", "Missing semicolon", "Division by zero", "Missing bracket"],
+        correct: 2,
+        explanation: "JavaScript evaluates division by zero as Infinity instead of throwing an error."
     },
     {
         id: 7,
-        question: "Which method is used to print output in the console?",
-        options: ["print()", "echo()", "console.log()", "write()"],
-        correct: 2,
-        explanation: "console.log() is used to print output in the browser or Node.js console."
+        question: "Which operator is used in switch statement comparison?",
+        options: ["===", "equals", "==", "="],
+        correct: 0,
+        explanation: "switch case matching uses strict equality semantics."
     },
     {
         id: 8,
-        question: "What will be the output of the following code?\nconsole.log(Boolean(0));",
-        options: ["true", "false", "0", "Error"],
-        correct: 1,
-        explanation: "0 is a falsy value in JavaScript, so Boolean(0) returns false."
-    },
-    {
-        id: 9,
-        question: "Which of the following is used to define a constant variable?",
-        options: ["var", "let", "const", "static"],
-        correct: 2,
-        explanation: "const declares a variable whose binding cannot be reassigned."
-    },
-    {
-        id: 10,
-        question: "What will be the output of the following code?\nconsole.log(\"5\" * 2);",
-        options: ["10", "\"10\"", "52", "Error"],
-        correct: 0,
-        explanation: "The multiplication operator converts \"5\" to the number 5, producing 10."
-    },
-    {
-        id: 11,
-        question: "What will be the output of the following code?\nconsole.log(typeof 10);",
-        options: ["\"number\"", "\"int\"", "\"float\"", "number"],
-        correct: 0,
-        explanation: "typeof 10 returns the string \"number\"."
-    },
-    {
-        id: 12,
-        question: "Which of the following is used to add an element at the end of an array?",
-        options: ["pop()", "push()", "shift()", "unshift()"],
-        correct: 1,
-        explanation: "push() adds one or more elements to the end of an array."
-    },
-    {
-        id: 13,
-        question: "What will be the output of the following code?\nconsole.log(null == undefined);",
-        options: ["true", "false", "Error", "undefined"],
-        correct: 0,
-        explanation: "With loose equality, null and undefined are considered equal."
-    },
-    {
-        id: 14,
-        question: "Which of the following is not a JavaScript data type?",
-        options: ["Number", "String", "Boolean", "Character"],
+        question: "Which of the following is used to check property existence?",
+        options: ["exists", "exist", "within", "in"],
         correct: 3,
-        explanation: "JavaScript does not have a separate Character data type."
-    },
-    {
-        id: 15,
-        question: "What will be the output of the following code?\nconsole.log(\"10\" - 3);",
-        options: ["7", "\"7\"", "103", "Error"],
-        correct: 0,
-        explanation: "The subtraction operator converts \"10\" to the number 10, so the result is 7."
-    },
-    {
-        id: 16,
-        question: "Which keyword is used to declare a block-scoped variable?",
-        options: ["var", "let", "static", "define"],
-        correct: 1,
-        explanation: "let creates a block-scoped variable."
-    },
-    {
-        id: 17,
-        question: "What will be the output of the following code?\nconsole.log(!!0);",
-        options: ["true", "false", "0", "Error"],
-        correct: 1,
-        explanation: "Double negation converts a value to Boolean, and 0 becomes false."
-    },
-    {
-        id: 18,
-        question: "Which of the following method converts a JavaScript object into a JSON string?",
-        options: ["JSON.parse()", "JSON.stringify()", "JSON.toObject()", "JSON.convert()"],
-        correct: 1,
-        explanation: "JSON.stringify() converts a JavaScript value or object into a JSON string."
-    },
-    {
-        id: 19,
-        question: "What will be the output of the following code?\nconsole.log(3 + true);",
-        options: ["3", "4", "true", "Error"],
-        correct: 1,
-        explanation: "true is coerced to 1 in numeric addition, so the result is 4."
-    },
-    {
-        id: 20,
-        question: "Which of the following is used to remove the first element from an array?",
-        options: ["pop()", "shift()", "push()", "slice()"],
-        correct: 1,
-        explanation: "shift() removes the first element from an array."
-    },
-    {
-        id: 21,
-        question: "What will be the output of the following code?\nconsole.log(typeof NaN);",
-        options: ["\"NaN\"", "\"number\"", "\"undefined\"", "Error"],
-        correct: 1,
-        explanation: "NaN is still of type number in JavaScript."
-    },
-    {
-        id: 22,
-        question: "Which of the following method removes the last element from an array?",
-        options: ["push()", "pop()", "shift()", "unshift()"],
-        correct: 1,
-        explanation: "pop() removes and returns the last element of an array."
-    },
-    {
-        id: 23,
-        question: "What will be the output of the following code?\nconsole.log(\"6\" / 2);",
-        options: ["3", "\"3\"", "62", "Error"],
-        correct: 0,
-        explanation: "Division converts \"6\" to a number, so the result is 3."
-    },
-    {
-        id: 24,
-        question: "Which of the following is used to combine two or more arrays?",
-        options: ["join()", "concat()", "slice()", "splice()"],
-        correct: 1,
-        explanation: "concat() returns a new array by combining arrays or values."
-    },
-    {
-        id: 25,
-        question: "What will be the output of the following code?\nconsole.log([] == false);",
-        options: ["true", "false", "Error", "undefined"],
-        correct: 0,
-        explanation: "With loose equality, an empty array is coerced and compares equal to false."
-    },
-    {
-        id: 26,
-        question: "Which keyword is used to exit from a loop in JavaScript?",
-        options: ["stop", "break", "return", "exit"],
-        correct: 1,
-        explanation: "break immediately exits the current loop."
-    },
-    {
-        id: 27,
-        question: "What will be the output of the following code?\nconsole.log(typeof undefined);",
-        options: ["\"null\"", "\"undefined\"", "\"object\"", "Error"],
-        correct: 1,
-        explanation: "typeof undefined returns the string \"undefined\"."
-    },
-    {
-        id: 28,
-        question: "Which of the following method is used to extract a part of a string?",
-        options: ["substr()", "push()", "pop()", "join()"],
-        correct: 0,
-        explanation: "substr() is used to extract part of a string."
-    },
-    {
-        id: 29,
-        question: "What will be the output of the following code?\nconsole.log(1 + false);",
-        options: ["1", "0", "false", "Error"],
-        correct: 0,
-        explanation: "false is coerced to 0, so the result of 1 + false is 1."
-    },
-    {
-        id: 30,
-        question: "Which of the following is a correct way to define a function in JavaScript?",
-        options: ["function myFunc() {}", "def myFunc() {}", "func myFunc() {}", "function = myFunc() {}"],
-        correct: 0,
-        explanation: "function myFunc() {} is valid JavaScript function syntax."
-    },
-    {
-        id: 31,
-        question: "What will be the output of the following code?\nconsole.log(\"5\" + 2 + 3);",
-        options: ["10", "523", "55", "Error"],
-        correct: 1,
-        explanation: "Once JavaScript starts string concatenation, the remaining values are appended as strings."
-    },
-    {
-        id: 32,
-        question: "Which of the following method adds an element at the beginning of an array?",
-        options: ["push()", "pop()", "shift()", "unshift()"],
-        correct: 3,
-        explanation: "unshift() adds elements to the beginning of an array."
-    },
-    {
-        id: 33,
-        question: "What will be the output of the following code?\nconsole.log(typeof []);",
-        options: ["\"array\"", "\"object\"", "\"list\"", "Error"],
-        correct: 1,
-        explanation: "Arrays are a kind of object in JavaScript, so typeof [] returns \"object\"."
-    },
-    {
-        id: 34,
-        question: "Which of the following is used to convert a string into an integer?",
-        options: ["parseInt()", "toString()", "Number.toInt()", "convert()"],
-        correct: 0,
-        explanation: "parseInt() converts a string into an integer value."
-    },
-    {
-        id: 35,
-        question: "What will be the output of the following code?\nconsole.log(2 == \"2\" && 2 === \"2\");",
-        options: ["true", "false", "undefined", "Error"],
-        correct: 1,
-        explanation: "2 == \"2\" is true, but 2 === \"2\" is false, so the full expression is false."
-    },
-    {
-        id: 36,
-        question: "Which keyword is used to handle exceptions in JavaScript?",
-        options: ["try", "catch", "throw", "All of the above"],
-        correct: 3,
-        explanation: "try, catch, and throw are all part of JavaScript exception handling."
-    },
-    {
-        id: 37,
-        question: "What will be the output of the following code?\nconsole.log(Boolean(\"0\"));",
-        options: ["true", "false", "0", "Error"],
-        correct: 0,
-        explanation: "Any non-empty string is truthy, including \"0\"."
-    },
-    {
-        id: 38,
-        question: "Which of the following operator is used to check property existence in an object?",
-        options: ["has", "exist", "in", "check"],
-        correct: 2,
         explanation: "The in operator checks whether a property exists in an object."
     },
     {
-        id: 39,
-        question: "What will be the output of the following code?\nconsole.log(0 === false);",
-        options: ["true", "false", "undefined", "Error"],
+        id: 9,
+        question: "Which one is a ternary operator?",
+        options: ["?:", ":", "-", "+"],
+        correct: 0,
+        explanation: "The conditional operator is written as condition ? valueIfTrue : valueIfFalse."
+    },
+    {
+        id: 10,
+        question: "Which of the following is the correct output?\nvar string1 = \"40\";\nvar valueinit = 50;\nalert(string1 + valueinit);",
+        options: ["4090", "90", "4050", "Exception"],
+        correct: 2,
+        explanation: "A string plus a number triggers string concatenation, so the result is \"4050\"."
+    },
+    {
+        id: 11,
+        question: "Which of the following is the correct output for the following JavaScript code?\nvar grade = 'C';\nvar result = 0;\nswitch (grade) {\n    case 'A': {\n        result += 10;\n        break;\n    }\n    case 'B': {\n        result += 9;\n        break;\n    }\n    case 'C': {\n        result += 8;\n        break;\n    }\n    default:\n        result += 0;\n}\ndocument.write(result);",
+        options: ["10", "9", "8", "0"],
+        correct: 2,
+        explanation: "The case 'C' block runs and adds 8, then break stops the switch."
+    },
+    {
+        id: 12,
+        question: "Which of the following is the correct output for the following JavaScript code?\nvar grade = 'D';\nvar result = 0;\nswitch (grade) {\n    case 'A':\n        result += 10;\n    case 'B':\n        result += 9;\n    case 'C':\n        result += 8;\n    case 'D':\n        result += 6;\n    default:\n        result += 0;\n}\ndocument.write(result);",
+        options: ["10", "6", "33", "0"],
         correct: 1,
-        explanation: "Strict equality does not coerce types, so number 0 is not equal to boolean false."
+        explanation: "The switch starts at case 'D', adds 6, then falls through to default and adds 0, leaving 6."
+    },
+    {
+        id: 13,
+        question: "Which one of the following is also known as Conditional Expression:",
+        options: ["Alternative to if-else", "Switch statement", "If-then-else statement", "Immediate if"],
+        correct: 3,
+        explanation: "The ternary conditional operator is often referred to as the immediate if."
+    },
+    {
+        id: 14,
+        question: "In JavaScript, what is a block of statement?",
+        options: ["Conditional block", "Block that combines a number of statements into a single compound statement", "Both conditional block and a single statement", "Block that contains a single statement"],
+        correct: 1,
+        explanation: "A block groups multiple statements together inside curly braces."
+    },
+    {
+        id: 15,
+        question: "Which of the following is the correct output for the following JavaScript code?\nvar x = 5, y = 1;\nvar obj = { x: 10 };\n\nwith (obj) {\n    alert(y);\n}",
+        options: ["1", "Error", "10", "5"],
+        correct: 0,
+        explanation: "The with block changes lookup for object properties, but y is still taken from the outer scope."
+    },
+    {
+        id: 16,
+        question: "When interpreter encounters an empty statement, what will it do:",
+        options: ["Shows a warning", "Prompts to complete the statement", "Throws an error", "Ignores the statement"],
+        correct: 3,
+        explanation: "An empty statement is valid syntax and is simply ignored."
+    },
+    {
+        id: 17,
+        question: "The \"function\" and \"var\" are known as:",
+        options: ["Keywords", "Data types", "Declaration statements", "Prototypes"],
+        correct: 0,
+        explanation: "\"function\" and \"var\" are reserved JavaScript keywords."
+    },
+    {
+        id: 18,
+        question: "Which one of the following is used for calling a function or a method in JavaScript:",
+        options: ["Property Access Expression", "Functional expression", "Invocation expression", "Primary expression"],
+        correct: 2,
+        explanation: "Calling a function is done through an invocation expression."
+    },
+    {
+        id: 19,
+        question: "Which of the following is the correct output for the following JavaScript code?\nvar grade = 'Z';\nvar result = 0;\nswitch (grade) {\n    case 'A':\n        result += 10;\n    case 'B':\n        result += 9;\n    case 'C':\n        result += 8;\n    default:\n        result += 0;\n}\ndocument.write(result);",
+        options: ["10", "17", "18", "0"],
+        correct: 3,
+        explanation: "Since 'Z' matches no case, only default runs and the output remains 0."
+    },
+    {
+        id: 20,
+        question: "Which of the following Number object function returns the value of the number?",
+        options: ["toString()", "valueOf()", "toLocaleString()", "toPrecision()"],
+        correct: 1,
+        explanation: "valueOf() returns the primitive numeric value of a Number object."
+    },
+    {
+        id: 21,
+        question: "Which of the following functions of the Number object formats a number with a different number of digits to the right of the decimal?",
+        options: ["toExponential()", "toFixed()", "toPrecision()", "toLocaleString()"],
+        correct: 1,
+        explanation: "toFixed() formats a number using a fixed number of digits after the decimal point."
+    },
+    {
+        id: 22,
+        question: "Which of the following function of the String object returns the character in the string starting at the specified position via the specified number of characters?",
+        options: ["slice()", "split()", "substr()", "search()"],
+        correct: 2,
+        explanation: "substr() extracts part of a string from a starting position for a given length."
+    },
+    {
+        id: 23,
+        question: "In JavaScript the x === y statement implies that:",
+        options: ["Both x and y are equal in value, type and reference address as well", "Both x and y are equal in value only", "Both are equal in the value and data type", "Both are not same at all"],
+        correct: 2,
+        explanation: "Strict equality means both the value and the data type must match."
+    },
+    {
+        id: 24,
+        question: "Choose the correct snippet from the following to check if the variable \"a\" is not equal to NULL:",
+        options: ["if (a !== null)", "if (a!)", "if (a!null)", "if (a != null)"],
+        correct: 0,
+        explanation: "a !== null is the strict check that only excludes null."
+    },
+    {
+        id: 25,
+        question: "Suppose we have a text \"human\" that we want to convert into string without using the \"new\" operator. Which is the correct way from the following to do so:",
+        options: ["toString()", "String(human)", "String newvariable = \"human\"", "Both human.toString() and String(human)"],
+        correct: 3,
+        explanation: "Both String(human) and human.toString() can produce a string value without using new."
+    },
+    {
+        id: 26,
+        question: "See the given code of JavaScript and choose the correct output from the following:\nfunction comparing() {\n    int x = 9;\n    char y = 9;\n    if (x == y)\n        return true;\n    else\n        return false;\n}",
+        options: ["Compilation error", "False", "Runtime error", "True"],
+        correct: 0,
+        explanation: "int and char are not valid JavaScript declarations, so this code is not valid JavaScript."
+    },
+    {
+        id: 27,
+        question: "What will be the output of the following JavaScript code?\nfunction comparison() {\n    int number = 10;\n    if (number === \"10\")\n        return true;\n    else\n        return false;\n}",
+        options: ["True", "False", "Runtime error", "Compilation error"],
+        correct: 3,
+        explanation: "JavaScript does not support int declarations, so the snippet fails before execution."
+    },
+    {
+        id: 28,
+        question: "Find out the correct output of the following given piece of code:\nfunction fun() {\n    var y = 10;\n    var z = 10;\n    if (y.toString() === z)\n        return true;\n    else\n        return false;\n}",
+        options: ["Logical error", "False", "Runtime error", "True"],
+        correct: 1,
+        explanation: "y.toString() produces the string \"10\" while z is the number 10, so strict equality returns false."
+    },
+    {
+        id: 29,
+        question: "Which one of the following is the correct way for calling the JavaScript code?",
+        options: ["Preprocessor", "Triggering Event", "RMI", "Function/Method"],
+        correct: 3,
+        explanation: "JavaScript code is typically called through functions or methods."
+    },
+    {
+        id: 30,
+        question: "Which of the following type of a variable is volatile?",
+        options: ["Mutable variable", "Dynamic variable", "Volatile variable", "Immutable variable"],
+        correct: 0,
+        explanation: "Among the given choices, a mutable variable is the one whose value can change."
+    },
+    {
+        id: 31,
+        question: "Which of the following option is used as hexadecimal literal beginning?",
+        options: ["00", "0x", "0X", "Both 0x and 0X"],
+        correct: 3,
+        explanation: "JavaScript accepts both 0x and 0X as hexadecimal prefixes."
+    },
+    {
+        id: 32,
+        question: "When there is an indefinite or an infinite value during an arithmetic computation in a program, then JavaScript prints______.",
+        options: ["Prints an exception error", "Prints an overflow error", "Displays \"Infinity\"", "Prints the value as such"],
+        correct: 2,
+        explanation: "JavaScript represents infinite numeric results with the special value Infinity."
+    },
+    {
+        id: 33,
+        question: "Which one of the following operator is used to check whether a specific property exists or not?",
+        options: ["Exists", "exist", "within", "in"],
+        correct: 3,
+        explanation: "The in operator checks whether an object has a given property."
+    },
+    {
+        id: 34,
+        question: "Which one of the following is an ternary operator:",
+        options: ["?:", ":", "-", "+"],
+        correct: 0,
+        explanation: "The ternary conditional operator is written as ? :"
+    },
+    {
+        id: 35,
+        question: "\"An expression that can legally appear on the left side of an assignment expression.\" They are called_____:",
+        options: ["Properties", "Prototypes", "Definition", "Lvalue"],
+        correct: 3,
+        explanation: "An lvalue is something that can appear on the left side of an assignment."
+    },
+    {
+        id: 36,
+        question: "Which of the following is the correct output for the following JavaScript code?\nfunction display1(option) {\n    return (option ? \"true\" : \"false\");\n}\n\nvar ans = true;\nconsole.log(display1(ans));",
+        options: ["False", "True", "Runtime error", "Compilation error"],
+        correct: 1,
+        explanation: "Since ans is true, the function returns the string \"true\"."
+    },
+    {
+        id: 37,
+        question: "Which of the following is the correct output for the following JavaScript code?\nvar x = 3;\nvar y = 2;\nvar z = 0;\n\nIf (x == y)\n    document.write(x);\nelseif (x == y)\n    document.write(x);\nelse\n    document.write(z);",
+        options: ["3", "0", "Error", "2"],
+        correct: 2,
+        explanation: "JavaScript keywords are lowercase, so If and elseif make this invalid syntax."
+    },
+    {
+        id: 38,
+        question: "Among the following given JavaScript snippet codes, which is more efficient:\nCode A:\nfor (var number = 10; number >= 1; number--) {\n    document.writeln(number);\n}\n\nCode B:\nvar number = 10;\nwhile (number >= 1) {\n    document.writeln(number);\n    number++;\n}",
+        options: ["Code 1", "Code 2", "Both Code 1 and Code 2", "Cannot Compare"],
+        correct: 0,
+        explanation: "Code B keeps increasing number and never stops, so Code A is the proper and more efficient choice here."
+    },
+    {
+        id: 39,
+        question: "Which of the following is the correct output for the following JavaScript code?\nvar x = 8;\nif (x > 9) {\n    document.write(9);\n} else {\n    document.write(x);\n}",
+        options: ["9", "0", "8", "Undefined"],
+        correct: 2,
+        explanation: "x is not greater than 9, so the else block runs and writes 8."
     },
     {
         id: 40,
-        question: "Which of the following is a valid way to create an object in JavaScript?",
-        options: ["var obj = [];", "var obj = {};", "var obj = ();", "var obj = <>;"],
-        correct: 1,
-        explanation: "Curly braces create an object literal in JavaScript."
+        question: "Consider the following snippet of JavaScript code:\nvar text = \"testing: 1, 2, 3\";\nvar pattern = /\\d+/g;\n\nWhich one of the following statement is most suitable to check if the pattern matches with the string \"text\"?",
+        options: ["pattern.test(text)", "equals(pattern)", "test(pattern)", "text == pattern"],
+        correct: 0,
+        explanation: "pattern.test(text) returns true or false depending on whether the regular expression matches the string."
     }
 ];
 
