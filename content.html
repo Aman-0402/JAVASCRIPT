@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JavaScript Learning Roadmap — JS Mastery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -176,6 +176,178 @@
     .extra-card-arrow { color: var(--text-3); flex-shrink: 0; transition: color 0.18s; }
     .extra-card:hover .extra-card-arrow { color: var(--yellow); }
     .extra-card-danger:hover .extra-card-arrow { color: #f87171 !important; }
+
+    /* ── CONNECT SECTION ── */
+    .connect-section {
+      max-width: 900px; margin: 0 auto;
+      padding: 60px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .connect-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+    }
+    .connect-label {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--yellow); background: rgba(247,223,30,0.1);
+      border: 1px solid rgba(247,223,30,0.2);
+      padding: 4px 10px; border-radius: 6px; flex-shrink: 0;
+    }
+    .connect-title { font-size: 1.1rem; font-weight: 700; }
+    .connect-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 560px) {
+      .connect-grid { grid-template-columns: 1fr; }
+    }
+    .connect-card {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 18px;
+      transition: all 0.18s; cursor: pointer;
+    }
+    .connect-card:hover {
+      border-color: rgba(100,200,255,0.3);
+      background: rgba(100,200,255,0.04);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .connect-icon {
+      width: 40px; height: 40px; border-radius: 8px; border: 1px solid;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+      background: rgba(100,200,255,0.1); border-color: rgba(100,200,255,0.25);
+    }
+    .connect-content { flex: 1; min-width: 0; }
+    .connect-content-title { font-size: 0.9rem; font-weight: 600; }
+    .connect-content-desc { font-size: 0.75rem; color: var(--text-3); margin-top: 2px; }
+
+    /* ── WRITTEN VALORANT SECTION ── */
+    .written-valorant {
+      max-width: 900px; margin: 0 auto;
+      padding: 40px 24px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .written-valorant img {
+      max-width: 100%;
+      height: auto;
+      width: 100%;
+      object-fit: contain;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .written-valorant img:hover {
+      transform: scale(1.02);
+    }
+
+    /* ── VALORANT MODAL ── */
+    .valorant-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .valorant-modal.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .valorant-modal-content {
+      background: linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.3s ease-in-out;
+      position: relative;
+    }
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .valorant-modal-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: none;
+      border: none;
+      color: var(--text-2);
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 40px; height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .valorant-modal-close:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .valorant-modal-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #9d4edd 0%, #7209b7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .valorant-modal-id {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--yellow);
+      background: rgba(247,223,30,0.1);
+      border: 1px solid rgba(247,223,30,0.2);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+    }
+    .valorant-modal-text {
+      font-size: 1rem;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .valorant-modal-button {
+      background: linear-gradient(135deg, #9d4edd 0%, #7209b7 100%);
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    .valorant-modal-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(157,78,221,0.4);
+    }
   </style>
 </head>
 <body>
@@ -451,5 +623,50 @@
   </div>
 </div>
 
-</body>
+<!-- ══════════════════════════════════════
+     CONNECT SECTION
+     ══════════════════════════════════════ -->
+<div class="connect-section">
+
+  <div class="connect-header">
+    <span class="connect-label">Extra</span>
+    <span class="connect-title">Connect</span>
+    <span class="module-divider"></span>
+  </div>
+  <div class="written-valorant">
+    <img id="valorantImg" src="Extra/valorantomen.png" alt="Valorant" />
+  </div>
+</div>
+
+<!-- VALORANT MODAL -->
+<div id="valorantModal" class="valorant-modal">
+  <div class="valorant-modal-content">
+    <button class="valorant-modal-close" onclick="closeValorantModal()">&times;</button>
+    <div class="valorant-modal-title">Add Me on Valorant</div>
+    <div class="valorant-modal-id">AKARJ #LIVE</div>
+    <div class="valorant-modal-text">Let's have 1 vs 1 if you think you can beat me</div>
+    <button class="valorant-modal-button" onclick="closeValorantModal()">Cool, Let's Play!</button>
+  </div>
+</div>
+
+<script>
+  const valorantImg = document.getElementById('valorantImg');
+  const valorantModal = document.getElementById('valorantModal');
+
+  valorantImg.addEventListener('click', () => {
+    valorantModal.classList.add('active');
+  });
+
+  function closeValorantModal() {
+    valorantModal.classList.remove('active');
+  }
+
+  valorantModal.addEventListener('click', (e) => {
+    if (e.target === valorantModal) {
+      closeValorantModal();
+    }
+  });
+</script>
+
+</body> 
 </html>
