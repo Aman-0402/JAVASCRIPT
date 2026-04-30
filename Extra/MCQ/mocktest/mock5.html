@@ -4,7 +4,374 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Mock Test Set 5 - 41 Questions</title>
-    <link rel="stylesheet" href="mock.css">
+    <style>
+        :root {
+            --bg: #111827;
+            --surface: #172033;
+            --surface-strong: #202b41;
+            --text: #f8fafc;
+            --muted: #a7b0c0;
+            --border: rgba(255, 255, 255, 0.12);
+            --accent: #f7df1e;
+            --accent-ink: #18181b;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+        }
+
+        .light-theme {
+            --bg: #f4f7fb;
+            --surface: #ffffff;
+            --surface-strong: #eef2f7;
+            --text: #172033;
+            --muted: #5f6b7a;
+            --border: rgba(15, 23, 42, 0.12);
+            --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 24px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: min(980px, 100%);
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 26px 30px;
+            background: var(--surface-strong);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex: 0 0 auto;
+        }
+
+        h1 {
+            margin: 0 0 14px;
+            font-size: 28px;
+        }
+
+        .test-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .info-item {
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--muted);
+            background: rgba(255, 255, 255, 0.04);
+            font-size: 14px;
+        }
+
+        .info-item strong {
+            color: var(--text);
+        }
+
+        .mock-theme-toggle {
+            display: grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            flex: 0 0 auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            background: var(--surface);
+            cursor: pointer;
+        }
+
+        .back-btn {
+            min-width: auto;
+            height: 42px;
+            padding: 0 14px;
+        }
+
+        .mock-theme-icon-dark,
+        .light-theme .mock-theme-icon-light {
+            display: none;
+        }
+
+        .light-theme .mock-theme-icon-dark {
+            display: block;
+        }
+
+        .progress-container {
+            height: 8px;
+            background: var(--surface-strong);
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.25s ease;
+        }
+
+        .quiz-container {
+            padding: 30px;
+        }
+
+        .question-text {
+            margin: 0 0 24px;
+            font-size: 22px;
+            white-space: pre-wrap;
+        }
+
+        .options-container {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 26px;
+        }
+
+        .option {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-strong);
+            cursor: pointer;
+            transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+        }
+
+        .option:hover,
+        .option.selected {
+            border-color: var(--accent);
+            background: rgba(247, 223, 30, 0.1);
+        }
+
+        .option input {
+            margin-top: 3px;
+            accent-color: var(--accent);
+        }
+
+        .option-label {
+            flex: 1;
+            white-space: pre-wrap;
+            cursor: pointer;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn {
+            min-width: 130px;
+            border: 0;
+            border-radius: 8px;
+            padding: 12px 18px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn-primary,
+        .btn-success {
+            background: var(--accent);
+            color: var(--accent-ink);
+        }
+
+        .btn-secondary {
+            background: var(--surface-strong);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            display: grid;
+            place-items: center;
+            padding: 22px;
+            background: rgba(0, 0, 0, 0.72);
+        }
+
+        .modal-content {
+            width: min(760px, 100%);
+            max-height: 88vh;
+            overflow: auto;
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .modal-content h2 {
+            margin: 0 0 20px;
+            color: var(--accent);
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .stat-card,
+        .review-item {
+            padding: 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-strong);
+        }
+
+        .stat-card h3 {
+            margin: 0 0 8px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .stat-card p {
+            margin: 0;
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        .result-message {
+            margin: 16px 0 22px;
+            color: var(--muted);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--surface-strong);
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .review-container {
+            display: grid;
+            gap: 14px;
+            margin: 12px 0 20px;
+        }
+
+        .review-item.correct {
+            border-left: 4px solid var(--success);
+        }
+
+        .review-item.incorrect {
+            border-left: 4px solid var(--danger);
+        }
+
+        .review-item h3,
+        .review-item p {
+            margin: 0 0 8px;
+        }
+
+        .review-item .question {
+            white-space: pre-wrap;
+            font-weight: 700;
+        }
+
+        .celebration {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 30;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -20px;
+            width: 10px;
+            height: 18px;
+            background: var(--accent);
+            animation: fall 3s linear infinite;
+        }
+
+        .confetti:nth-child(1) { left: 15%; animation-delay: 0s; }
+        .confetti:nth-child(2) { left: 32%; animation-delay: 0.4s; background: var(--success); }
+        .confetti:nth-child(3) { left: 50%; animation-delay: 0.8s; background: #38bdf8; }
+        .confetti:nth-child(4) { left: 68%; animation-delay: 1.2s; background: #f97316; }
+        .confetti:nth-child(5) { left: 84%; animation-delay: 1.6s; background: #e879f9; }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(540deg);
+            }
+        }
+
+        @media (max-width: 720px) {
+            body {
+                padding: 12px;
+            }
+
+            .header,
+            .quiz-container {
+                padding: 20px;
+            }
+
+            .header {
+                flex-direction: column;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            h1 {
+                font-size: 23px;
+            }
+
+            .question-text {
+                font-size: 19px;
+            }
+
+            .result-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -18,10 +385,13 @@
                     <span class="info-item">Score: <strong id="score">0</strong>/41</span>
                 </div>
             </div>
-            <button type="button" id="mockThemeToggle" class="mock-theme-toggle" aria-label="Toggle theme">
-                <svg class="mock-theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                <svg class="mock-theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            </button>
+            <div class="header-actions">
+                <button type="button" id="backBtn" class="btn btn-secondary back-btn">Back</button>
+                <button type="button" id="mockThemeToggle" class="mock-theme-toggle" aria-label="Toggle theme">
+                    <svg class="mock-theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="mock-theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </div>
         </header>
 
         <!-- Progress Bar -->
@@ -47,9 +417,9 @@
 
             <!-- Navigation Buttons -->
             <div class="button-container">
-                <button type="button" id="prevBtn" class="btn btn-secondary" onclick="previousQuestion()">← Previous</button>
-                <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">Next →</button>
-                <button type="button" id="submitBtn" class="btn btn-success hidden" onclick="submitQuiz()">Submit Quiz</button>
+                <button type="button" id="prevBtn" class="btn btn-secondary">Previous</button>
+                <button type="button" id="nextBtn" class="btn btn-primary">Next</button>
+                <button type="button" id="submitBtn" class="btn btn-success hidden">Submit Quiz</button>
             </div>
         </div>
 
@@ -73,8 +443,8 @@
                 </div>
                 <div class="result-message" id="resultMessage"></div>
                 <div class="button-container">
-                    <button type="button" class="btn btn-primary" onclick="restartQuiz()">Restart Quiz</button>
-                    <button type="button" class="btn btn-secondary" onclick="reviewAnswers()">Review Answers</button>
+                    <button type="button" id="restartBtn" class="btn btn-primary">Restart Quiz</button>
+                    <button type="button" id="reviewBtn" class="btn btn-secondary">Review Answers</button>
                 </div>
             </div>
         </div>
@@ -83,10 +453,10 @@
         <div id="reviewModal" class="modal hidden">
             <div class="modal-content review-content">
                 <h2>Review Your Answers</h2>
-                <button type="button" class="close-btn" onclick="closeReview()">&times;</button>
+                <button type="button" id="closeReviewBtn" class="close-btn" aria-label="Close review">&times;</button>
                 <div id="reviewContainer" class="review-container"></div>
                 <div class="button-container">
-                    <button type="button" class="btn btn-primary" onclick="restartQuiz()">Retake Quiz</button>
+                    <button type="button" id="retakeBtn" class="btn btn-primary">Retake Quiz</button>
                 </div>
             </div>
         </div>

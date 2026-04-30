@@ -92,9 +92,9 @@ const quizData = [
     {
         id: 11,
         question: "What will be the output of the following code?\nvar grade = 'C';\nvar result;\n\nswitch(grade) {\n  case 'A':\n    result += \"10\";\n    break;\n  case 'B':\n    result += \"9\";\n    break;\n  case 'C':\n    result += \"8\";\n    break;\n  default:\n    result += \"0\";\n}\n\ndocument.write(result);",
-        options: ["10", "9", "8", "0"],
-        correct: 3,
-        explanation: "This is a trick question! result is initialized as undefined, not as an empty string. When you do undefined + \"8\", it results in \"undefined8\", which doesn't match any of the options. The actual output is 'undefined8'."
+        options: ["10", "9", "undefined8", "0"],
+        correct: 2,
+        explanation: "This is a trick question! result is initialized as undefined, not as an empty string. When you do undefined + \"8\", the output becomes \"undefined8\"."
     },
     {
         id: 12,
@@ -106,9 +106,9 @@ const quizData = [
     {
         id: 13,
         question: "What will be the output of the following code?\nvar grade = 'Z';\nvar result;\n\nswitch(grade) {\n  case 'A':\n    result += \"10\";\n  case 'B':\n    result += \"9\";\n  case 'C':\n    result += \"8\";\n  default:\n    result += \"0\";\n}\n\ndocument.write(result);",
-        options: ["10", "9", "8", "0"],
+        options: ["10", "9", "8", "undefined0"],
         correct: 3,
-        explanation: "This is another trick question! result is undefined, and 'Z' doesn't match any case, so it goes to default. undefined + \"0\" = \"undefined0\". The actual output is 'undefined0', not just '0'."
+        explanation: "This is another trick question! result is undefined, and 'Z' doesn't match any case, so it goes to default. undefined + \"0\" becomes \"undefined0\", not just \"0\"."
     },
     {
         id: 14,
@@ -170,8 +170,8 @@ const quizData = [
         id: 22,
         question: "Which string method extracts a part of a string?",
         options: ["slice()", "substring()", "substr()", "All of the above"],
-        correct: 2,
-        explanation: "substr() extracts a substring from a string. Note: substr() is deprecated but still widely used. slice() and substring() are modern alternatives."
+        correct: 3,
+        explanation: "slice(), substring(), and substr() can all extract part of a string. Note: substr() is deprecated, so slice() or substring() are preferred."
     },
     {
         id: 23,
@@ -232,8 +232,8 @@ const quizData = [
     {
         id: 31,
         question: "What will be the output of the following code?\nvar x = 10;\nvar y = 20;\nconsole.log(x + y + \"30\");",
-        options: ["3030", "102030", "3030", "4050"],
-        correct: 2,
+        options: ["3030", "102030", "30", "4050"],
+        correct: 0,
         explanation: "10 + 20 = 30, then 30 + \"30\" = \"3030\" (string concatenation). The output is '3030'."
     },
     {
@@ -295,9 +295,9 @@ const quizData = [
     {
         id: 40,
         question: "What will be the output of the following code?\nvar x = 3;\nvar y = ++x + x++;\nconsole.log(y);",
-        options: ["10", "11", "12", "13"],
-        correct: 2,
-        explanation: "++x increments x to 4 and returns 4. Then x++ returns 4 and increments x to 5. So y = 4 + 4 = 8... wait, let me recalculate: ++x makes x=4, then x++ returns 4 and makes x=5. So 4+4=8? No, ++x returns 4, then x is 4, x++ returns 4 but x becomes 5. So y = 4 + 8 = 12."
+        options: ["8", "10", "12", "13"],
+        correct: 0,
+        explanation: "++x increments x to 4 and returns 4. Then x++ returns 4 before incrementing x to 5. So y = 4 + 4 = 8."
     },
     {
         id: 41,
@@ -323,15 +323,25 @@ function loadQuestion() {
     question.options.forEach((option, index) => {
         const optionDiv = document.createElement('div');
         optionDiv.className = 'option';
-        optionDiv.innerHTML = `
-            <input type="radio" name="option" id="option${index}" value="${index}">
-            <label for="option${index}">${String.fromCharCode(65 + index)}) ${option}</label>
-        `;
+
+        const optionInput = document.createElement('input');
+        optionInput.type = 'radio';
+        optionInput.name = 'option';
+        optionInput.id = `option${index}`;
+        optionInput.value = index;
+
+        const optionLabel = document.createElement('label');
+        optionLabel.className = 'option-label';
+        optionLabel.htmlFor = `option${index}`;
+        optionLabel.textContent = `${String.fromCharCode(65 + index)}) ${option}`;
+
+        optionDiv.append(optionInput, optionLabel);
         optionDiv.addEventListener('click', () => selectOption(index));
         optionsContainer.appendChild(optionDiv);
 
         if (userAnswers[currentQuestion] === index) {
-            document.getElementById(`option${index}`).checked = true;
+            optionInput.checked = true;
+            optionDiv.classList.add('selected');
         }
     });
 
@@ -342,7 +352,10 @@ function loadQuestion() {
 
 function selectOption(index) {
     userAnswers[currentQuestion] = index;
-    document.getElementById(`option${index}`).checked = true;
+    document.querySelectorAll('.option').forEach(option => option.classList.remove('selected'));
+    const selectedInput = document.getElementById(`option${index}`);
+    selectedInput.checked = true;
+    selectedInput.closest('.option').classList.add('selected');
 }
 
 function nextQuestion() {
@@ -373,15 +386,15 @@ function updateNavigationButtons() {
     const nextBtn = document.getElementById('nextBtn');
     const submitBtn = document.getElementById('submitBtn');
 
-    prevBtn.style.display = currentQuestion === 0 ? 'none' : 'block';
-    nextBtn.style.display = currentQuestion === quizData.length - 1 ? 'none' : 'block';
-    submitBtn.style.display = currentQuestion === quizData.length - 1 ? 'block' : 'none';
+    prevBtn.classList.toggle('hidden', currentQuestion === 0);
+    nextBtn.classList.toggle('hidden', currentQuestion === quizData.length - 1);
+    submitBtn.classList.toggle('hidden', currentQuestion !== quizData.length - 1);
 }
 
 function submitQuiz() {
     score = 0;
-    userAnswers.forEach((answer, index) => {
-        if (answer === quizData[index].correct) {
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === question.correct) {
             score++;
         }
     });
@@ -456,5 +469,25 @@ function restartQuiz() {
     loadQuestion();
 }
 
+function goBack() {
+    window.location.href = '../mcq_content.html';
+}
+
+function initQuiz() {
+    document.getElementById('backBtn')?.addEventListener('click', goBack);
+    document.getElementById('prevBtn')?.addEventListener('click', previousQuestion);
+    document.getElementById('nextBtn')?.addEventListener('click', nextQuestion);
+    document.getElementById('submitBtn')?.addEventListener('click', submitQuiz);
+    document.getElementById('restartBtn')?.addEventListener('click', restartQuiz);
+    document.getElementById('reviewBtn')?.addEventListener('click', reviewAnswers);
+    document.getElementById('closeReviewBtn')?.addEventListener('click', closeReview);
+    document.getElementById('retakeBtn')?.addEventListener('click', restartQuiz);
+    loadQuestion();
+}
+
 // Initialize quiz
-loadQuestion();
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initQuiz);
+} else {
+    initQuiz();
+}
